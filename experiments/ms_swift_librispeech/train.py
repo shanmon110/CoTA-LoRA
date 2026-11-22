@@ -462,7 +462,13 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
                         if config.get('task') != 'aqa':
                             raise ValueError('Answer-query transport is only supported for single-turn AQA')
                         set_transport_gate(trainer.model, adapter['transport_gate'])
-                    if adapter.get('independent_transport_up', False):
+                    for key in ('transport_signal', 'transport_precision'):
+                        if key in adapter:
+                            from experiments.ms_swift_librispeech import swift_asr_ta_runtime as runtime
+                            getattr(runtime, 'set_' + key)(trainer.model, adapter[key])
+                            initial[key] = adapter[key]
+                    if adapter.get('independent_transport_up', False) or 'transport_gate' in adapter:
+                        # Recount after C and/or the conditional gate were added to the trainable set.
                         initial.update(audit_adapter(trainer.model, native_method, n, projections))
             if gate_lr_multiplier is not None:
                 trainer.optimizer_callback = TransportGateOptimizer(trainer.args, trainer)
@@ -482,6 +488,10 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
             trainer.trajectory = InputTrajectory(resume, record_examples=bool(impl))
             trainer.add_callback(trainer.trajectory)
             trainer.add_callback(Schedule(config['patience'], stop_after, metric))
+            stats_every = config.get('diagnostics', {}).get('adapter_stats_every')
+            if stats_every is not None:
+                from experiments.ms_swift_librispeech.adapter_stats import AdapterStats
+                trainer.add_callback(AdapterStats(output / 'adapter-stats.jsonl', stats_every))
             if impl and hasattr(impl, 'prepare_trainer'):
                 impl.prepare_trainer(trainer, method, resume=resume)
             res = super().train(trainer)

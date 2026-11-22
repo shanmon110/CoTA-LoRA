@@ -1,0 +1,226 @@
+{
+  "arms": {
+    "cota-qa": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "question_audio",
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "adds the conditional gate R exactly as in the legacy runs",
+      "method": "ta-lora",
+      "reference": "cota-static",
+      "trainable_parameters": 1772064
+    },
+    "cota-qa-live": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "question_audio",
+        "transport_gate_lr_multiplier": 16,
+        "transport_precision": "fp32",
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "gate made numerically effective: FP32 transport path and 16x gate learning rate",
+      "method": "ta-lora",
+      "reference": "cota-qa",
+      "trainable_parameters": 1772064
+    },
+    "cota-static": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "static",
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "rank 12 -> rank 8 + answer-query contrast readout C (same budget)",
+      "method": "ta-lora",
+      "reference": "lora-r12",
+      "trainable_parameters": 1769760
+    },
+    "ctrl-audio-mean": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "static",
+        "transport_queries": "text",
+        "transport_signal": "audio_mean",
+        "transport_weighting": "uniform"
+      },
+      "changes": "readout input: E[V|audio]-E[V|text] -> E[V|audio]",
+      "method": "ta-lora",
+      "reference": "cota-static",
+      "trainable_parameters": 1769760
+    },
+    "ctrl-ordinary": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "static",
+        "transport_queries": "text",
+        "transport_signal": "ordinary_matched",
+        "transport_weighting": "uniform"
+      },
+      "changes": "readout input: audio/text contrast -> norm-matched ordinary attention output",
+      "method": "ta-lora",
+      "reference": "cota-static",
+      "trainable_parameters": 1769760
+    },
+    "lora-r12": {
+      "adapter": {
+        "alpha": 24,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 12,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "matched-budget LoRA baseline",
+      "method": "lora",
+      "reference": null,
+      "trainable_parameters": 1769472
+    },
+    "lora-r8": {
+      "adapter": {
+        "alpha": 16,
+        "gate_init": 0.0,
+        "gate_multiplier": 1.0,
+        "independent_transport_up": true,
+        "last_n": 36,
+        "rank": 8,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "ordinary rank 12 -> 8",
+      "method": "lora",
+      "reference": "lora-r12",
+      "trainable_parameters": 1179648
+    },
+    "shared-r12": {
+      "adapter": {
+        "alpha": 24,
+        "gate_init": 1.0,
+        "gate_multiplier": 1.0,
+        "last_n": 36,
+        "rank": 12,
+        "target_modules": [
+          "o_proj"
+        ],
+        "transport_gate": "static",
+        "transport_queries": "text",
+        "transport_weighting": "uniform"
+      },
+      "changes": "adds answer-query transport through the ordinary readout B only (g fixed start 1, no C)",
+      "method": "ta-lora",
+      "reference": "lora-r12",
+      "trainable_parameters": 1769904
+    }
+  },
+  "configs": {
+    "stage0-legacy/cota-qa-s42.json": "98c0daa9b13e17d3bac98a70b1c7a431a579b29dbd17d4d40bd46d96232b607d",
+    "stage0-legacy/cota-qa-s43.json": "4ffb46dd27132e58667f3922b0cfc65b4e85e031fb0058fb673e7e9fe512ecaf",
+    "stage0-legacy/cota-qa-s44.json": "881b7d169f01d7bd44f38bf342056d89769485db96e2b18f4083cc1af82b16fd",
+    "stage0-legacy/cota-qa-s45.json": "bca76d53a679b91085082026afb2d2b1660e994affc72162dbeb20f6d0a16b55",
+    "stage0-legacy/cota-qa-s46.json": "b70538d3cdda119793ee52c58f4ce3fa9ad002ba757539c245460afdf032a691",
+    "stage0-legacy/lora-r12-s42.json": "f16b4817494374396172b6002565ca5d2f0b8473192a14d25a55ed62d8ef63e8",
+    "stage0-legacy/lora-r12-s43.json": "bd6b2274cb44cf2b93d957f60a8fb0f631f1ed64e1fab4a6d83acc2be91d1172",
+    "stage0-legacy/lora-r12-s44.json": "1cf354bd6118ac1e75fa596b6bd86d27e8da9f7ba0e1fda598b2ed96db75986f",
+    "stage0-legacy/lora-r12-s45.json": "d17a4bd723f588b5cceeab7d8ee24ceafb0194d8815244b1ca0481dbb1fcc176",
+    "stage0-legacy/lora-r12-s46.json": "322dfcd5972774060f87a89afebba211dd68d2fb4924e92778f619e12f41bf04",
+    "stage1-lr/cota-static-lr0.0001-s42.json": "bbb7de785dc57e0c48088fa8007086981054f1763c8c50fd480b36fe47463ff1",
+    "stage1-lr/cota-static-lr0.0001-s43.json": "555470ad1b332d9b3453dfb749d45201eb42ec6f0eeb4d08f50ce469d64e8f02",
+    "stage1-lr/cota-static-lr0.0001-s44.json": "43a875f48ca592b20f6793d9b09fb03159f1fc74d0dc8cbd306fd883649deaee",
+    "stage1-lr/cota-static-lr0.0002-s42.json": "3a979c9ed3e3eebf80c3462375471a8b0e5d42eeb066659cad09510f02b47b60",
+    "stage1-lr/cota-static-lr0.0002-s43.json": "e7c71b5e906f53980b997ccdcfe27a2040bf6a97a4fdc0de8347caf6255c1a49",
+    "stage1-lr/cota-static-lr0.0002-s44.json": "2d61c08061c6bc721827e6dd4334841ce2a4667cef44516c8501bff8709eb20a",
+    "stage1-lr/cota-static-lr0.0004-s42.json": "59602d64127314dfb5b58dec61e983d83992f2114835a3860c5034f5fcdff7fc",
+    "stage1-lr/cota-static-lr0.0004-s43.json": "d2df6965a8bd929dfba97f77678dab8e3f4f95c965bfb4088419484f73851257",
+    "stage1-lr/cota-static-lr0.0004-s44.json": "4a055e2b731fc10d7d2c3f1add2c2bc6c1c6765ad13f8d2cdc65c08931f4731d",
+    "stage1-lr/cota-static-lr5e-05-s42.json": "626ab6d5864713387f8538ff6177bb2ddbe2f0a497cc3d6a607467e7e904637a",
+    "stage1-lr/cota-static-lr5e-05-s43.json": "04091747d2a2076e0cae7253adc6680340686ca85940b2dca8c4a6af0700765d",
+    "stage1-lr/cota-static-lr5e-05-s44.json": "f730d7d67670b27150dd6d4d4035edea3373ee4fae2a2274b64fb6a5a27713c9",
+    "stage1-lr/lora-r12-lr0.0001-s42.json": "15b72364e4c0f615ff6a653ad571320fc7748e75f1d9e46ca336d7ed406bc37b",
+    "stage1-lr/lora-r12-lr0.0001-s43.json": "a05442a5fa8b9a0ab39593630ed3f4fcddfd1c7ffb25713befe05960c3cb488c",
+    "stage1-lr/lora-r12-lr0.0001-s44.json": "2e32adc55d79dcfb914d3b8927fde5422f90b347c1656ceed2d97dd88e458df9",
+    "stage1-lr/lora-r12-lr0.0002-s42.json": "5f289e079d34a41bbbc07983984b71aaf19b37e222a6dd72b4a4ae122e61f4e7",
+    "stage1-lr/lora-r12-lr0.0002-s43.json": "440d09c61175c7100cbbcf45a2ea4cc6d812f982431ddb8a89fb65650e45d0f1",
+    "stage1-lr/lora-r12-lr0.0002-s44.json": "129981af42fda4f893666bbe690d31965611c72f1c315fa8dff111fafb109de9",
+    "stage1-lr/lora-r12-lr0.0004-s42.json": "91dbf0ff8e0c54528e490f8491a010ebc85b398783c806d0b19288eadc051b0d",
+    "stage1-lr/lora-r12-lr0.0004-s43.json": "7e44108de2f37098002bd980a2b7466c15f1072dba68952cd085011089870fcf",
+    "stage1-lr/lora-r12-lr0.0004-s44.json": "fd9b0d6c82bcea69c80ecd17a41483038783864a5b8ea909643392d23609d87c",
+    "stage1-lr/lora-r12-lr5e-05-s42.json": "8d1d4752a136b5d5ce17359f638cd436ff39b92d1981de4eff8c3371035f5674",
+    "stage1-lr/lora-r12-lr5e-05-s43.json": "d021f4d13b6dc3339da7d8a3832ba40dbbf7d2283fc3918fff10f3fd9ffc1252",
+    "stage1-lr/lora-r12-lr5e-05-s44.json": "24d6dd22e0838a5bf332c22ee3259f5958494c904dfe308195c1e7650a007424",
+    "stage2-arms/cota-qa-live-s42.json": "fc135d9d70ecaa2e235d975ee79907bb4d4d44763230db3e91efd94df7f1a2af",
+    "stage2-arms/cota-qa-live-s43.json": "4d6fb5a51dea92985f745fb40636246b7a6f3b536e21acc96501df892fae151c",
+    "stage2-arms/cota-qa-live-s44.json": "4985c0770e203ae757179954eda69ba39714102c5d3805d53cb9ea46e0495cc2",
+    "stage2-arms/cota-qa-s42.json": "3766ffb2705c260e25bdd9a0c2794dc72bc29035b455e7b9861638774c2afc06",
+    "stage2-arms/cota-qa-s43.json": "24b3fbfbf3d76960d22e7ade7cd09d08f9265be4f883a9da9edcf69ccb556d07",
+    "stage2-arms/cota-qa-s44.json": "02907d2ceccc982a9b9b8c5da7971b2d8a47a25b5f06b24ce9ecad738949efef",
+    "stage2-arms/cota-static-s42.json": "3a979c9ed3e3eebf80c3462375471a8b0e5d42eeb066659cad09510f02b47b60",
+    "stage2-arms/cota-static-s43.json": "e7c71b5e906f53980b997ccdcfe27a2040bf6a97a4fdc0de8347caf6255c1a49",
+    "stage2-arms/cota-static-s44.json": "2d61c08061c6bc721827e6dd4334841ce2a4667cef44516c8501bff8709eb20a",
+    "stage2-arms/ctrl-audio-mean-s42.json": "dfc44defd8fc9002bb76810eb0a7ceb13862708f1aeeec409424683e99c9c642",
+    "stage2-arms/ctrl-audio-mean-s43.json": "f81e7af5651e8e5bf22395261ca4dcbdf77eed34ede10fece332cb35a31fcb98",
+    "stage2-arms/ctrl-audio-mean-s44.json": "c052fd6ee0870a7dd972439f81e539dcd8bbc0b3baf0265cf4ed125c8c62bf93",
+    "stage2-arms/ctrl-ordinary-s42.json": "4bf289be771370634eb0f1868a2f28655e040a8a2ac64c59ff71856f3867be30",
+    "stage2-arms/ctrl-ordinary-s43.json": "f26e2e83aa430cd4f29a89199f27669ea03679904c401e4db1c7413965148292",
+    "stage2-arms/ctrl-ordinary-s44.json": "3482ef62518fd76231d69120b4996e9ae44a0300ddd735c9927834d3901b9aaf",
+    "stage2-arms/lora-r12-s42.json": "5f289e079d34a41bbbc07983984b71aaf19b37e222a6dd72b4a4ae122e61f4e7",
+    "stage2-arms/lora-r12-s43.json": "440d09c61175c7100cbbcf45a2ea4cc6d812f982431ddb8a89fb65650e45d0f1",
+    "stage2-arms/lora-r12-s44.json": "129981af42fda4f893666bbe690d31965611c72f1c315fa8dff111fafb109de9",
+    "stage2-arms/lora-r8-s42.json": "fabe170560582d61b4b661f5b254bbb4a390188df6093426f52ee111646cabe7",
+    "stage2-arms/lora-r8-s43.json": "5aaf72b3c067f006899ec8dbf06da124fb24d3380f6286f64cae38892035b752",
+    "stage2-arms/lora-r8-s44.json": "b9c8373f174566743e73f509391fe9f7cac6077ebe666fb2f4f5c57dc0a69c48",
+    "stage2-arms/shared-r12-s42.json": "765f7f323b2590927a606d50b770763cdc355635b99e26c7f0e4290b869ff6ea",
+    "stage2-arms/shared-r12-s43.json": "1bec3db65345a903c93ab856be6a169f4a8821c6b93533e824b2134e6038325e",
+    "stage2-arms/shared-r12-s44.json": "ba59ce3824c6402a54807174c4ed76b58bfd3b833133b331990b8cbb425eabdf"
+  },
+  "protocol": "cota-review-01"
+}

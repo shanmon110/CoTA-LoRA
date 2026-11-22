@@ -16,6 +16,16 @@ from typing import NamedTuple
 
 
 TRANSPORT_GATES = ('static', 'question', 'question_audio')
+# Answer-query controls (checkpoint format 9). The defaults reproduce format 8 exactly.
+#   contrast          E[V|audio] - E[V|text], the CoTA signal
+#   audio_mean        E[V|audio] only, i.e. without subtracting the text mean
+#   ordinary          the ordinary attention output at the same query: same position, parameters and
+#                     initialisation as CoTA, no modality partition
+#   ordinary_matched  as ordinary, rescaled per row to the norm of the contrast
+TRANSPORT_SIGNALS = ('contrast', 'audio_mean', 'ordinary', 'ordinary_matched')
+# 'autocast' rounds the gated rank coefficients to the autocast dtype before the readouts (format 8).
+# 'fp32' keeps the whole transport term in FP32 until it is added to the ordinary update.
+TRANSPORT_PRECISIONS = ('autocast', 'fp32')
 
 
 class _SharedAtoms(nn.Module):
@@ -30,6 +40,8 @@ class _SharedAtoms(nn.Module):
         self.transport_queries = 'text'
         self.transport_weighting = 'uniform'
         self.transport_gate = None
+        self.transport_signal = 'contrast'
+        self.transport_precision = 'autocast'
         self.register_parameter('transport_up', None)
         self.register_parameter('gate_weight', None)
         nn.init.kaiming_uniform_(self.down, a=math.sqrt(5))
@@ -62,16 +74,32 @@ class _SharedAtoms(nn.Module):
             features = (features + F.normalize(audio.float(), dim=-1)) / math.sqrt(2)
         return 2 * torch.sigmoid(F.linear(features, self.gate_weight))
 
+    def _fp32_transport(self, contrast, question, device_type):
+        # Under BF16 autocast the format-8 path rounds each gated coefficient back to 8 significant
+        # bits, which erases any multiplier with |m - 1| < 2**-9. Here the rank coefficients, the
+        # multiplier and both readouts stay in FP32, matching what inference without autocast computes.
+        with torch.autocast(device_type=device_type, enabled=False):
+            extra = F.linear(contrast.float(), self.down)
+            if self.gate_weight is not None:
+                extra = extra * self._context_multiplier(F.linear(question, self.down), extra)
+            transport = F.linear(extra * self.gate * self.gate_multiplier, self.up)
+            if self.transport_up is not None:
+                transport = transport + F.linear(extra, self.transport_up)
+        return transport
+
     def answer_update(self, ordinary, contrast, query_indices, question):
         ordinary_update = F.linear(F.linear(ordinary.to(self.down.dtype), self.down), self.up)
-        extra = F.linear(contrast.to(self.down.dtype), self.down)
-        if self.gate_weight is not None:
-            with torch.autocast(device_type=ordinary.device.type, enabled=False):
-                query_features = F.linear(question, self.down)
-                multiplier = self._context_multiplier(query_features, extra)
-            extra = (extra * multiplier).to(extra.dtype)
-        shared = F.linear((extra * self.gate * self.gate_multiplier).to(extra.dtype), self.up)
-        transport = shared + F.linear(extra, self.transport_up)
+        if self.transport_precision == 'fp32':
+            transport = self._fp32_transport(contrast, question, ordinary.device.type)
+        else:
+            extra = F.linear(contrast.to(self.down.dtype), self.down)
+            if self.gate_weight is not None:
+                with torch.autocast(device_type=ordinary.device.type, enabled=False):
+                    query_features = F.linear(question, self.down)
+                    multiplier = self._context_multiplier(query_features, extra)
+                extra = (extra * multiplier).to(extra.dtype)
+            shared = F.linear((extra * self.gate * self.gate_multiplier).to(extra.dtype), self.up)
+            transport = shared if self.transport_up is None else shared + F.linear(extra, self.transport_up)
         index = query_indices[:, None, None].expand(-1, 1, ordinary_update.shape[-1])
         update = ordinary_update.scatter_add(1, index, transport.to(ordinary_update.dtype).unsqueeze(1))
         return self.scale * update
@@ -148,15 +176,26 @@ def set_transport_weighting(outer, weighting):
 def set_transport_gate(outer, mode):
     """Opt in to one answer query and optionally a learned prompt-conditioned multiplier."""
     cfg = outer._ta_lora_config
+    residual = cfg.get('residual_format_version', min(cfg['format_version'], 2))
     if (mode not in TRANSPORT_GATES or cfg['tuner_type'] != 'ta_lora'
-            or outer.config.model_type != 'qwen2_5_omni' or not cfg.get('independent_transport_up', False)
-            or cfg['transport_queries'] != 'text' or cfg['residual_format_version'] != 2
+            or outer.config.model_type != 'qwen2_5_omni'
+            or cfg.get('transport_queries', 'text') != 'text' or residual != 2
             or any(not name.endswith('.self_attn.o_proj') for name in cfg['targets'])):
-        raise ValueError('Answer-query transport requires Qwen2.5-Omni O-only TA with independent transport_up and text queries')
+        raise ValueError('Answer-query transport requires Qwen2.5-Omni O-only TA with text queries')
     if cfg.get('transport_gate', mode) != mode:
         raise ValueError('Cannot change the transport gate mode after configuration')
-    cfg.update(format_version=8, transport_gate=mode)
+    independent = cfg.get('independent_transport_up', False)
+    cfg.setdefault('residual_format_version', residual)
+    cfg.setdefault('gate_multiplier', 1.)
+    cfg.setdefault('transport_queries', 'text')
+    cfg.setdefault('independent_transport_up', independent)
+    # Format 8 always has the independent readout C. The shared-only control (transport through
+    # B*g alone) is written as format 9 so that format-8 readers reject it instead of misreading it.
+    cfg.update(format_version=max(cfg['format_version'], 8 if independent else 9), transport_gate=mode)
     cfg.setdefault('transport_weighting', 'uniform')
+    if cfg['format_version'] >= 9:
+        cfg.setdefault('transport_signal', 'contrast')
+        cfg.setdefault('transport_precision', 'autocast')
     for layer in outer.thinker.model.layers:
         branch = getattr(layer.self_attn, 'ta_adapter', None)
         if branch is not None:
@@ -165,6 +204,33 @@ def set_transport_gate(outer, mode):
                 rank = branch.down.shape[0]
                 branch.gate_weight = nn.Parameter(branch.down.new_zeros(rank, rank),
                                                   requires_grad=branch.up.requires_grad)
+
+
+def _set_answer_option(outer, key, value, choices):
+    cfg = outer._ta_lora_config
+    if value not in choices:
+        raise ValueError(f'{key} must be one of {choices}')
+    if cfg.get('transport_gate') is None:
+        raise ValueError(f'{key} requires answer-query transport; set transport_gate first')
+    if value != choices[0] or cfg['format_version'] >= 9:
+        cfg['format_version'] = 9
+        cfg.setdefault('transport_signal', 'contrast')
+        cfg.setdefault('transport_precision', 'autocast')
+        cfg[key] = value
+    for layer in outer.thinker.model.layers:
+        branch = getattr(layer.self_attn, 'ta_adapter', None)
+        if branch is not None:
+            setattr(branch, key, value)
+
+
+def set_transport_signal(outer, signal):
+    """Choose what the answer-query readout sees; non-default values are matched controls."""
+    _set_answer_option(outer, 'transport_signal', signal, TRANSPORT_SIGNALS)
+
+
+def set_transport_precision(outer, precision):
+    """Choose where the gated rank coefficients are rounded during autocast training."""
+    _set_answer_option(outer, 'transport_precision', precision, TRANSPORT_PRECISIONS)
 
 
 class _AnswerFrame(NamedTuple):
@@ -209,7 +275,8 @@ def _conditional_probs(logits, members):
     return safe.softmax(dim=-1, dtype=torch.float32), present
 
 
-def _answer_contrast(logits, value, mask, cache_position, frame, joint_probabilities):
+def _answer_contrast(logits, value, mask, cache_position, frame, joint_probabilities,
+                     signal='contrast', ordinary=None):
     """Evaluate contrast for one query in each row, with zero on subsequent cache calls."""
     batch, _, query_len, keys = logits.shape
     positions = (torch.arange(keys - query_len, keys, device=logits.device)
@@ -230,15 +297,23 @@ def _answer_contrast(logits, value, mask, cache_position, frame, joint_probabili
     with torch.autocast(device_type=logits.device.type, enabled=False):
         audio_probs, has_audio = _conditional_probs(selected, audio_keys)
         text_probs, has_text = _conditional_probs(selected, text_keys)
-        contrast = (audio_probs - text_probs).unsqueeze(2) @ value.float()
+        weights = audio_probs if signal == 'audio_mean' else audio_probs - text_probs
+        contrast = weights.unsqueeze(2) @ value.float()
         if joint_probabilities is not None:
             joint = joint_probabilities[rows, :, query_indices]
             audio_mass = (joint * audio_keys).sum(dim=-1, keepdim=True)
             text_mass = (joint * text_keys).sum(dim=-1, keepdim=True)
             contrast = contrast * (4 * audio_mass * text_mass).unsqueeze(-1)
         eligible = matches.any(dim=1)[:, None, None] & has_audio & has_text
-        contrast = contrast.squeeze(2).masked_fill(~eligible, 0)
-    return contrast.flatten(1), query_indices
+        contrast = contrast.squeeze(2).masked_fill(~eligible, 0).flatten(1)
+        if signal in ('ordinary', 'ordinary_matched'):
+            # Same query, eligibility, parameters and initialisation; no modality partition.
+            control = ordinary[rows, query_indices].float().masked_fill(~eligible[:, 0], 0)
+            if signal == 'ordinary_matched':
+                scale = contrast.norm(dim=-1, keepdim=True) / control.norm(dim=-1, keepdim=True).clamp_min(1e-12)
+                control = control * scale
+            contrast = control
+    return contrast, query_indices
 
 
 def _transport(logits, value, mask, cache_position, layout, transport_queries='text', joint_probabilities=None):
@@ -320,7 +395,8 @@ def _attention(self,
     ordinary = (weights @ value).transpose(1, 2).contiguous().reshape(b, q, -1)
     base = self.o_proj(ordinary)
     if isinstance(frames[-1], _AnswerFrame):
-        contrast, indices = _answer_contrast(logits, value, mask, cache_position, frames[-1], joint)
+        contrast, indices = _answer_contrast(logits, value, mask, cache_position, frames[-1], joint,
+                                             self.ta_adapter.transport_signal, ordinary)
         update = self.ta_adapter.answer_update(ordinary, contrast, indices, frames[-1].question)
     else:
         contrast = _transport(logits, value, mask, cache_position, frames[-1], self.ta_adapter.transport_queries, joint)
