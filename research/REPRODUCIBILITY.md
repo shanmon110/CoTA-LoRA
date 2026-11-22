@@ -24,7 +24,7 @@ Python 入口：`/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python`。
 | RandLoRA 专用 PEFT | 0.17.1，单独依赖路径 |
 | Accelerate / TRL | 1.7.0 / 0.18.2 |
 
-完整环境快照保留在第三方 provenance 文件中。这里的历史版本记录不等于跨平台安装已验收；Torch/CUDA 与显卡驱动应由接手环境单独核对。根目录 `requirements.txt` 原为 WEST recipe，不能单独视为当前 ms-swift 实验锁文件。
+完整环境快照保留在第三方 provenance 文件中。这里的历史版本记录不等于跨平台安装已验收；Torch/CUDA 与显卡驱动应由接手环境单独核对。原根目录的 WEST `requirements.txt` 已于 2026-11-23 移除；ms-swift 实验的依赖约束见 `experiments/ms_swift_librispeech/environment/`。
 
 ## CPU 定向测试
 

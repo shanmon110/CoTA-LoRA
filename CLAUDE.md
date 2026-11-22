@@ -10,6 +10,12 @@
 4. [论文方法插件](experiments/ms_swift_aqa/paper_plugin.py)、[逐方法配置](experiments/ms_swift_aqa/papers28/configs)、[统一运行与重载验证](experiments/ms_swift_aqa/papers28/run.py)。
 5. [复核与环境说明](research/REPRODUCIBILITY.md)。
 
+## 仓库约定（2026-11-23 起）
+
+- 只有 `main` 一个分支，所有更新直接提交到 `main`。
+- 微调框架只用 ms-swift。WEST 工具包及其依赖已移除，不再引入其他微调框架。
+- 新实验使用新目录；`research/evidence/` 的历史记录不改。
+
 ## 需要准确理解的现状
 
 - 当前 CoTA 为 Omni 36 层 O-only、首答案查询、问题 embedding 均值与音频—文本 attention 聚合差条件门。它不包含最优传输求解器或对比学习损失。

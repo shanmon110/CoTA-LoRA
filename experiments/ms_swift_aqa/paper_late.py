@@ -1,6 +1,6 @@
 """Swift projection adapters for BoRA and LoKRA.
 
-BoRA reuses the project's Eq. 5 contraction in west_adapters.bora.
+BoRA reuses the project's Eq. 5 contraction in branches.bora.
 LoKRA follows AMD-AGI/LoKRA finetune_krank.py at 9e118de65047, including
 its random minor size, stabilization, normalization, and per-layer mean.
 """
@@ -10,8 +10,8 @@ import random
 import torch
 from torch import nn
 
-from west_adapters.base import ProjectionBranch
-from west_adapters.bora import BoRABranch
+from .branches.base import ProjectionBranch
+from .branches.bora import BoRABranch
 from .paper_late_loft import LoFTLinear, make_optimizer
 from .paper_late_ralora import RaLoRALinear
 from .paper_late_igu import IGULinear

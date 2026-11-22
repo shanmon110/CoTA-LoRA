@@ -1532,11 +1532,11 @@
     "adaptation_boundary": "复用 TopLoRABranch，瓶颈对角变化为 exp(RMSNorm(XP))；与作者 TopSingularValue 作等价投影权重对照。",
     "implementation_paths": [
       "experiments/ms_swift_aqa/paper_middle.py",
-      "west_adapters/toplora.py"
+      "experiments/ms_swift_aqa/branches/toplora.py"
     ],
     "implementation_links": [
       "../../experiments/ms_swift_aqa/paper_middle.py",
-      "../../west_adapters/toplora.py"
+      "../../experiments/ms_swift_aqa/branches/toplora.py"
     ],
     "config_path": "experiments/ms_swift_aqa/papers28/configs/toplora.json",
     "config_link": "../../experiments/ms_swift_aqa/papers28/configs/toplora.json",
@@ -1819,11 +1819,11 @@
     "adaptation_boundary": "按论文实现两块 BoRA；项目 2026-11-21 的作者仓库访问记录为 404，不能标为作者代码复用。",
     "implementation_paths": [
       "experiments/ms_swift_aqa/paper_late.py",
-      "west_adapters/bora.py"
+      "experiments/ms_swift_aqa/branches/bora.py"
     ],
     "implementation_links": [
       "../../experiments/ms_swift_aqa/paper_late.py",
-      "../../west_adapters/bora.py"
+      "../../experiments/ms_swift_aqa/branches/bora.py"
     ],
     "config_path": "experiments/ms_swift_aqa/papers28/configs/bora.json",
     "config_link": "../../experiments/ms_swift_aqa/papers28/configs/bora.json",

@@ -1,3 +1,0 @@
-[submodule "west/models/goat_slm/CosyVoice"]
-	path = west/models/goat_slm/CosyVoice
-	url = https://github.com/FunAudioLLM/CosyVoice.git

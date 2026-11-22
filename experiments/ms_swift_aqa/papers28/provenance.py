@@ -58,7 +58,7 @@ def source_tree(protocol, run):
                     continue
                 paths[f'{prefix}/{name.as_posix()}']=f
     include('west',ROOT,('experiments/ms_swift_aqa','experiments/ms_swift_librispeech','experiments/ms_swift_iemocap',
-                         'examples/omni_talora','west_adapters','west','test','requirements.txt','README.md','LICENSE'))
+                         'README.md','LICENSE'))  # archive prefix kept as 'west' so new archives line up with recorded ones
     include('ms-swift',swift,('swift','tests','requirements','requirements.txt','setup.py','setup.cfg','MANIFEST.in',
                               'README.md','README_CN.md','LICENSE'))
     include('official-mmau',Path(protocol['official_mmau']),('evaluation.py','download.py','LICENSE','README.md'))

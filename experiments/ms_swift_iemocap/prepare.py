@@ -9,7 +9,43 @@ from collections import Counter
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from zipfile import ZipFile
-from examples.omni_talora.prepare_manifest import _iemocap
+
+IEMOCAP_EMOTIONS = {
+    "ang": "angry", "hap": "happy", "exc": "excited", "sad": "sad", "neu": "neutral",
+}
+
+
+def _iemocap(root, sessions, skipped):
+    for session in sessions:
+        base = root / f"Session{session}"
+        paths = sorted((base / "dialog" / "EmoEvaluation").glob("*.txt"))
+        if not paths:
+            raise ValueError(f"{base}: missing dialog/EmoEvaluation/*.txt")
+        for path in paths:
+            # Consensus rows begin with a time range; other lines are comments
+            # or individual annotators' votes. Only ASCII IDs/labels are used.
+            with path.open(encoding="latin-1") as f:
+                for n, line in enumerate(f, 1):
+                    line = line.lstrip()
+                    if not line.startswith("["):
+                        continue
+                    _, delim, rest = line.partition("]")
+                    fields = rest.split()
+                    if not delim or len(fields) < 2:
+                        raise ValueError(f"{path}:{n}: malformed consensus annotation")
+                    utt, label = fields[:2]
+                    if label not in IEMOCAP_EMOTIONS:
+                        skipped[label] += 1
+                        continue
+                    turn = re.fullmatch(re.escape(path.stem) + r"_([FM])\d+", utt)
+                    if not turn or not utt.startswith(f"Ses{session:02}"):
+                        raise ValueError(f"{path}:{n}: invalid utterance id {utt!r} for this session/dialog")
+                    wav = base / "sentences" / "wav" / path.stem / f"{utt}.wav"
+                    # The first letter in Ses01F names the dialogue; the FINAL
+                    # F/M utterance suffix identifies who actually speaks.
+                    yield {"id": utt, "audio": wav, "emotion": IEMOCAP_EMOTIONS[label],
+                           "session": session, "speaker": f"Ses{session:02}{turn[1]}"}
+
 
 def prepare(cfg, output):
     if output.exists():
