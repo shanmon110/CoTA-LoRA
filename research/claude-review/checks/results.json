@@ -1,0 +1,236 @@
+{
+  "bf16_gate": {
+    "never_changes_below": 0.001953125,
+    "always_changes_above": 0.00390625,
+    "arms": {
+      "question_audio lr=2e-4": {
+        "mean_abs_deviation": 0.001704730860957945,
+        "median_abs_deviation": 0.0012396574020385742,
+        "exponential_median": 0.0011816293898865276,
+        "share_of_domains_with_median_below_2_pow_minus_9": 1.0,
+        "estimated_fraction_of_coefficients_changed_in_bf16": 0.20195
+      },
+      "fastgate lr=3.2e-3": {
+        "mean_abs_deviation": 0.029311314052729694,
+        "median_abs_deviation": 0.02223043143749237,
+        "exponential_median": 0.02031705469415669,
+        "share_of_domains_with_median_below_2_pow_minus_9": 0.0,
+        "estimated_fraction_of_coefficients_changed_in_bf16": 0.90872
+      }
+    }
+  },
+  "gate_random_walk": {
+    "steps": 160,
+    "rank": 8,
+    "arms": {
+      "gate-probe.json": {
+        "lr": 0.0002,
+        "mean_rms_element": 0.0022676073988097617,
+        "min_rms_element": 0.0008158488781191409,
+        "max_rms_element": 0.004173052962869406,
+        "noise_only_prediction_lr_sqrt_T": 0.002529822128134704,
+        "constant_sign_prediction_lr_T": 0.032,
+        "observed_over_noise_only": 0.8963505274110796,
+        "observed_over_constant_sign": 0.07086273121280505
+      },
+      "gate-probe-fastgate.json": {
+        "lr": 0.0032,
+        "mean_rms_element": 0.03698003959531585,
+        "min_rms_element": 0.016031363978981972,
+        "max_rms_element": 0.06525804102420807,
+        "noise_only_prediction_lr_sqrt_T": 0.04047715405015526,
+        "constant_sign_prediction_lr_T": 0.512,
+        "observed_over_noise_only": 0.9136027584719485,
+        "observed_over_constant_sign": 0.07222663983460127
+      }
+    },
+    "fastgate_over_base_per_layer": {
+      "mean": 16.47921031250523,
+      "lr_ratio": 16.0
+    },
+    "adam_reference_rms_over_lr_sqrt_T": {
+      "snr=0.0": 1.0308211975439496,
+      "snr=0.1": 1.6101006772819841,
+      "snr=0.25": 3.1929602771778463,
+      "snr=0.5": 5.690086261461956,
+      "snr=1.0": 8.967412872894284,
+      "snr=4.0": 12.282960039673581
+    }
+  },
+  "gate_readout_redundancy": {
+    "max_abs_identity_error": 2.779714236567088e-08,
+    "scale": 136.24654086946654,
+    "gate_gradient_at_zero_init": 0.0
+  },
+  "selection": {
+    "arms": {
+      "lora": {
+        "curve_pairs_of_96": [
+          7,
+          19,
+          46,
+          64,
+          75,
+          62
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -13.54
+      },
+      "lora-long": {
+        "curve_pairs_of_96": [
+          35,
+          54,
+          62,
+          87,
+          89,
+          90
+        ],
+        "best_step": 168,
+        "last_regular_eval_is_best": false,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": 1.04
+      },
+      "lora-mixed": {
+        "curve_pairs_of_96": [
+          16,
+          32,
+          48,
+          63,
+          68,
+          64
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -4.17
+      },
+      "question": {
+        "curve_pairs_of_96": [
+          7,
+          18,
+          39,
+          56,
+          70,
+          53
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -17.71
+      },
+      "question_audio": {
+        "curve_pairs_of_96": [
+          6,
+          20,
+          41,
+          51,
+          71,
+          53
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -18.75
+      },
+      "question_audio-fastgate": {
+        "curve_pairs_of_96": [
+          7,
+          19,
+          43,
+          57,
+          68,
+          54
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -14.58
+      },
+      "question_audio-long": {
+        "curve_pairs_of_96": [
+          28,
+          51,
+          55,
+          83,
+          91,
+          87
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -4.17
+      },
+      "question_audio-mixed": {
+        "curve_pairs_of_96": [
+          13,
+          27,
+          45,
+          57,
+          68,
+          64
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -4.17
+      },
+      "static": {
+        "curve_pairs_of_96": [
+          6,
+          17,
+          46,
+          56,
+          66,
+          53
+        ],
+        "best_step": 160,
+        "last_regular_eval_is_best": true,
+        "still_rising_at_selection": true,
+        "change_160_to_168_pp": -13.54
+      }
+    },
+    "median_abs_change_in_8_updates_pp": 13.54,
+    "max_abs_change_in_8_updates_pp": 18.75,
+    "binomial_se_pp_at_70pct_of_96": 4.677071733467427,
+    "same_seed_gate_variants_pairs_of_96": {
+      "static": 66,
+      "question": 70,
+      "question_audio": 71,
+      "fastgate": 68
+    }
+  },
+  "discordance": {
+    "MMAU CoTA vs LoRA": {
+      "candidate_only": 12,
+      "reference_only": 16,
+      "exact_mcnemar_p": 0.5715881884098053
+    },
+    "MMAU CoTA vs CoTA-off": {
+      "candidate_only": 9,
+      "reference_only": 13,
+      "exact_mcnemar_p": 0.5234670639038086
+    },
+    "MMAU LoRA vs frozen": {
+      "candidate_only": 35,
+      "reference_only": 67,
+      "exact_mcnemar_p": 0.001992805585714059
+    },
+    "IEMOCAP-acc CoTA vs LoRA": {
+      "candidate_only": 10,
+      "reference_only": 30,
+      "exact_mcnemar_p": 0.0022214337732293643
+    },
+    "IEMOCAP-acc CoTA vs CoTA-off": {
+      "candidate_only": 14,
+      "reference_only": 12,
+      "exact_mcnemar_p": 0.8450189828872681
+    },
+    "IEMOCAP-acc LoRA vs frozen": {
+      "candidate_only": 81,
+      "reference_only": 20,
+      "exact_mcnemar_p": 6.93092578965037e-10
+    }
+  }
+}
