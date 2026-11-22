@@ -1,4 +1,5 @@
 """Paired statistics for closed-set predictions scored on the same utterances."""
+import re
 from math import comb
 
 import numpy as np
@@ -111,3 +112,23 @@ def wer_contrast(candidate, reference, clusters, *, resamples=10000, seed=42):
     return dict(utterances=len(ids), clusters=k, candidate_wer=float(total[0] / total[2]),
                 reference_wer=float(total[1] / total[2]), delta_wer_pp=100 * float(delta(np.ones((1, k)))[0]),
                 interval_95_pp=[100 * float(low), 100 * float(high)], resamples=resamples, seed=seed)
+
+
+WORD = re.compile(r"[a-z0-9]+(?:'[a-z]+)*")
+# "The transcript is: ...", "The speech is in English and the transcript is: ...", "The speech transcribed is: ..."
+LEAD_IN = re.compile(r"^\s*the (?:speech|audio|transcript|transcription)\b[^:]{0,60}:\s*", re.IGNORECASE)
+
+
+def transcript_errors(reference, hypothesis):
+    """Word edit distance after removing a wrapper such as "The transcript is:" from the hypothesis.
+
+    Returns (word_errors, reference_words, lead_in_removed).
+    """
+    stripped = LEAD_IN.sub('', hypothesis, count=1)
+    ref, hyp = WORD.findall(reference.lower()), WORD.findall(stripped.lower())
+    row = list(range(len(hyp) + 1))
+    for i, a in enumerate(ref, 1):
+        previous, row[0] = row[0], i
+        for j, b in enumerate(hyp, 1):
+            previous, row[j] = row[j], min(row[j] + 1, row[j - 1] + 1, previous + (a != b))
+    return row[-1], len(ref), stripped != hypothesis

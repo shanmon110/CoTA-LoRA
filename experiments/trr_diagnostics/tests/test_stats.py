@@ -91,3 +91,14 @@ def test_wer_contrast_is_a_difference_of_corpus_rates():
         stats.wer_contrast({'u1': (0, 9)}, {'u1': (0, 10)}, clusters)
     with pytest.raises(ValueError):
         stats.wer_contrast({'u1': (0, 10)}, {'u2': (0, 10)}, clusters)
+
+
+def test_transcript_errors_ignore_the_models_lead_in():
+    reference = "And now- and now it's really shitty timing but now I have to go."
+    wrapped = "The transcript is: 'and now and now it's really shitty timing but now i have to go'"
+    assert stats.transcript_errors(reference, wrapped) == (0, 14, True)
+    assert stats.transcript_errors('Yeah, uh. No.', "The speech is in English and the transcript is: 'Yeah, oh no.'") == (1, 3, True)
+    assert stats.transcript_errors('No.', "The speech transcription is: 'no'") == (0, 1, True)
+    assert stats.transcript_errors('The speech was long.', 'The speech was long.') == (0, 4, False)
+    assert stats.transcript_errors('a b c d', 'a x c') == (2, 4, False)
+    assert stats.transcript_errors('a b', '') == (2, 2, False)

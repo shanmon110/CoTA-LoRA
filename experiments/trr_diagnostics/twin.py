@@ -233,15 +233,24 @@ def make_twins(samples, rate, backend, params, conditions=AUDIO_CONDITIONS):
     return {name: wave_ * scale for name, wave_ in out.items()}, scale
 
 
-def contour_stats(samples, rate, backend, params, active=None):
+def voiced_frames(samples, rate, backend):
+    return backend.f0(samples, rate) > 0
+
+
+def contour_stats(samples, rate, backend, params, active=None, voiced_in=None):
     """How much F0 and slow-energy movement a waveform has (the quantities the twins edit).
 
-    active: samples over which the energy contour is measured. Pass the original recording's
-    speech mask when measuring a twin, so both are measured over the same stretch of speech;
-    a twin's own mask grows once quiet passages have been raised.
+    active: samples over which the energy contour is measured.
+    voiced_in: frames over which the F0 contour is measured.
+    Pass the original recording's speech mask and voiced frames when measuring a twin, so both
+    are measured over the same stretch of speech. A twin's own masks grow once quiet passages
+    have been raised: background noise and cross-talk become loud enough to be tracked as pitch.
     """
     f0 = backend.f0(samples, rate)
     voiced = f0 > 0
+    if voiced_in is not None:
+        n = min(voiced.size, voiced_in.size)
+        f0, voiced = f0[:n], voiced[:n] & voiced_in[:n]
     semitones = 12.0 * np.log2(f0[voiced] / np.median(f0[voiced])) if voiced.any() else np.zeros(0)
     power = slow_power(samples, rate, params['energy_window_ms'])
     if active is None:
@@ -272,7 +281,9 @@ def self_check(backend, params, *, harmonics=8, rate=16000):
     source = synthetic_utterance(rate, harmonics=harmonics)
     twins, scale = make_twins(source, rate, backend, params)
     mask = speech_mask(slow_power(source, rate, params['energy_window_ms']), params['energy_floor_db'])
-    stats = {name: contour_stats(wave_, rate, backend, params, mask) for name, wave_ in {'orig': source, **twins}.items()}
+    voiced = voiced_frames(source, rate, backend)
+    stats = {name: contour_stats(wave_, rate, backend, params, mask, voiced)
+             for name, wave_ in {'orig': source, **twins}.items()}
     base = stats['orig']
     checks = {
         'source_has_pitch_movement': base['f0_sd_semitones'] > 2.0,

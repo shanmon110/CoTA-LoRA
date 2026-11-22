@@ -175,14 +175,15 @@ def _transform(job):
     params, backend = _WORKER['params'], _WORKER['backend']
     samples, rate = twin.read_wav(source)
     twins, scale = twin.make_twins(samples, rate, backend, params, list(targets))
-    # Energy movement is measured over the original's speech samples for every condition.
+    # Contour movement is measured over the original's speech samples and voiced frames for every condition.
     mask = twin.speech_mask(twin.slow_power(samples, rate, params['energy_window_ms']), params['energy_floor_db'])
+    voiced = twin.voiced_frames(samples, rate, backend)
     record = dict(id=uid, rate=rate, seconds=samples.size / rate, clipped_samples={}, peak_scale=scale,
-                  stats={'orig': twin.contour_stats(samples, rate, backend, params, mask)})
+                  stats={'orig': twin.contour_stats(samples, rate, backend, params, mask, voiced)})
     for name, path in targets.items():
         record['clipped_samples'][name] = twin.write_wav(path, twins[name], rate)
         saved, saved_rate = twin.read_wav(path)  # measure what the model will hear
-        record['stats'][name] = twin.contour_stats(saved, saved_rate, backend, params, mask)
+        record['stats'][name] = twin.contour_stats(saved, saved_rate, backend, params, mask, voiced)
     return record
 
 
@@ -493,11 +494,18 @@ def report(prepared, arm):
             by_stratum[f'{candidate}-vs-{reference}'] = {name: contrast(candidate, reference, keep, uar=False)
                                                          for name, keep in strata.items() if any(keep)}
 
-    asr, wer = {}, {}
+    asr, wer, asr_raw, lead_in = {}, {}, {}, {}
     for name in (cfg.get('asr') or {}).get('conditions', []):
         rows = completed_predictions(prepared, folder, f'asr-{name}', info)
         if rows is not None:
-            asr[f'asr-{name}'] = {r['id']: (r['word_errors'], r['reference_words']) for r in rows}
+            # The base model often wraps its answer ("The transcript is: '...'"), and does so more
+            # often on resynthesised audio. Scoring the wrapper as word errors would be read as
+            # lost intelligibility, so the lead-in is removed and the transcript rescored.
+            scored = [stats.transcript_errors(r['reference'], r['prediction']) if 'prediction' in r
+                      else (r['word_errors'], r['reference_words'], False) for r in rows]
+            asr[f'asr-{name}'] = {r['id']: (e, n) for r, (e, n, _) in zip(rows, scored)}
+            asr_raw[f'asr-{name}'] = sum(r['word_errors'] for r in rows) / sum(r['reference_words'] for r in rows)
+            lead_in[f'asr-{name}'] = sum(flag for *_, flag in scored) / len(rows)
     dialogue = {m['id']: m[boot['cluster']] for m in manifest}
     for candidate, reference in (cfg.get('asr') or {}).get('contrasts', []):
         if f'asr-{candidate}' in asr and f'asr-{reference}' in asr:
@@ -522,6 +530,7 @@ def report(prepared, arm):
     result = dict(arm=arm, identity=identity, smoke_limit=info['smoke_limit'],
                   utterances=len(labels), dialogues=len(set(clusters)), conditions=conditions, contrasts=contrasts,
                   strata=by_stratum, asr_wer={k: sum(e for e, _ in v.values()) / sum(w for _, w in v.values()) for k, v in asr.items()},
+                  asr_wer_as_scored=asr_raw, asr_lead_in_rate=lead_in,
                   wer_contrasts=wer, qc=info['qc'], decision=cfg['decision'],
                   verdicts=verdicts, raw_verdicts=raw_verdicts,
                   interpretation=dict(eligible=not reasons, reasons=reasons),
@@ -562,8 +571,9 @@ def render(result):
             lines.append(f"| {stratum} | {c['utterances']} | {100 * c['reference_accuracy']:.1f} | "
                          f"{100 * c['candidate_accuracy']:.1f} | {pp(c['delta_accuracy_pp'])} | {ci(c['accuracy_interval_95_pp'])} |")
     if result['asr_wer']:
-        lines += ['', '| ASR input | WER % |', '|---|---:|']
-        lines += [f'| {name} | {100 * value:.2f} |' for name, value in result['asr_wer'].items()]
+        lines += ['', '| ASR input | WER % | WER % with lead-in counted | answers with a lead-in |', '|---|---:|---:|---:|']
+        lines += [f"| {name} | {100 * value:.2f} | {100 * result['asr_wer_as_scored'][name]:.2f} | "
+                  f"{100 * result['asr_lead_in_rate'][name]:.0f}% |" for name, value in result['asr_wer'].items()]
         lines += [f"\n{name}: {pp(w['delta_wer_pp'])} pp, 95% CI {ci(w['interval_95_pp'])}" for name, w in result['wer_contrasts'].items()]
     lines += ['', f"Acoustic QC of the twins: {'pass' if result['qc']['passed'] else 'FAIL'}", '',
               '| twin | F0 SD / original | energy SD / original |', '|---|---:|---:|']
