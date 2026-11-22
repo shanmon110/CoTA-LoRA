@@ -132,12 +132,14 @@ def _transform(job):
     uid, source, targets = job
     params, backend = _WORKER['params'], _WORKER['backend']
     samples, rate = twin.read_wav(source)
-    twins, scales = twin.make_twins(samples, rate, backend, params, list(targets))
-    record = dict(id=uid, rate=rate, seconds=samples.size / rate, clipped_samples={}, peak_scale=scales,
-                  stats={'orig': twin.contour_stats(samples, rate, backend, params)})
+    twins, scale = twin.make_twins(samples, rate, backend, params, list(targets))
+    # Energy movement is measured over the original's speech samples for every condition.
+    mask = twin.speech_mask(twin.slow_power(samples, rate, params['energy_window_ms']), params['energy_floor_db'])
+    record = dict(id=uid, rate=rate, seconds=samples.size / rate, clipped_samples={}, peak_scale=scale,
+                  stats={'orig': twin.contour_stats(samples, rate, backend, params, mask)})
     for name, path in targets.items():
         record['clipped_samples'][name] = twin.write_wav(path, twins[name], rate)
-        record['stats'][name] = twin.contour_stats(twins[name], rate, backend, params)
+        record['stats'][name] = twin.contour_stats(twins[name], rate, backend, params, mask)
     return record
 
 
@@ -163,18 +165,22 @@ def summarize_qc(records, conditions, limits):
                              median_energy_sd_ratio_to_orig=ratios['energy_sd_db'],
                              utterances_without_voicing=sum(r['stats'][name]['f0_sd_semitones'] is None for r in records),
                              clipped_samples=sum(r['clipped_samples'].get(name, 0) for r in records),
-                             peak_scaled_utterances=sum(r['peak_scale'].get(name, 1.0) < 1.0 for r in records))
+                             max_rms_error_between_twins=max(abs(r['stats'][name]['rms'] / r['stats'][conditions[0]]['rms'] - 1.0)
+                                                             for r in records) if name != 'orig' else 0.0)
     keep_lo, keep_hi = limits['kept_ratio']
     expectations = {'sham': ('keep', 'keep'), 'flat_f0': ('flat', 'keep'),
                     'flat_energy': ('keep', 'flat'), 'flat_both': ('flat', 'flat')}
     checks = {}
     for name in conditions:
+        checks[f'{name}:level_matches_other_twins'] = summary[name]['max_rms_error_between_twins'] < 0.01
+        checks[f'{name}:no_clipping'] = summary[name]['clipped_samples'] == 0
         for key, mode, limit in (('median_f0_sd_ratio_to_orig', expectations[name][0], limits['flat_f0_max_ratio']),
                                  ('median_energy_sd_ratio_to_orig', expectations[name][1], limits['flat_energy_max_ratio'])):
             value = summary[name][key]
             checks[f'{name}:{key}:{mode}'] = (value is not None and
                                              (value <= limit if mode == 'flat' else keep_lo <= value <= keep_hi))
-    return dict(conditions=summary, checks=checks, passed=all(checks.values()))
+    return dict(conditions=summary, utterances_scaled_below_original_level=sum(r['peak_scale'] < 1.0 for r in records),
+                checks=checks, passed=all(checks.values()))
 
 
 def git_head():
@@ -370,8 +376,10 @@ def decide(decision, contrasts, wer):
                                      'at_most_small' if -band <= low and high <= band else 'inconclusive')
     if (v := get('orig-vs-text')):
         verdicts['audio_beyond_transcript'] = 'yes' if v[1] > 0 else 'no' if v[2] <= 0 else 'inconclusive'
+    if (w := wer.get('asr-sham-vs-asr-orig')):
+        verdicts['resynthesis_keeps_words'] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
     if (w := wer.get('asr-flat_both-vs-asr-sham')):
-        verdicts['intelligibility_kept'] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
+        verdicts['flattening_keeps_words'] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
     return verdicts
 
 

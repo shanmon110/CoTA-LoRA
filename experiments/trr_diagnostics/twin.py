@@ -1,13 +1,18 @@
 """Prosody-flattened twins of an utterance.
 
-sham         analysis -> synthesis with every parameter untouched (vocoder artefacts only)
+sham         pitch analysis -> resynthesis with the contour untouched (resynthesis artefacts only)
 flat_f0      same path, voiced F0 pulled to its utterance median
 flat_energy  sham output with its slow energy contour pulled to its median
 flat_both    flat_f0 output with its slow energy contour pulled to its median
 
-Duration, spectral envelope, aperiodicity and voicing decisions are kept. Every output is
-trimmed or padded to the input length and scaled to the input RMS, so conditions differ in
-the contour that was edited and in nothing a global gain could explain.
+The default backend is Praat's overlap-add (PSOLA) resynthesis, which moves pitch periods of
+the recorded waveform instead of rebuilding the signal from vocoder parameters. The first GPU
+smoke run showed why: WORLD copy-synthesis of these recordings tripled the base model's word
+error rate before any contour was edited. WORLD stays available as backend "world".
+
+Every output is trimmed or padded to the input length and scaled to the input RMS. If any twin
+of an utterance would clip, all twins of that utterance are scaled down together, so the twins
+always share one level and differ only in the contour that was edited.
 
 Scope: F0 and slow energy only. Rhythm, pausing and voice quality are not edited.
 """
@@ -20,7 +25,7 @@ import numpy as np
 from scipy.signal import fftconvolve
 
 AUDIO_CONDITIONS = ('sham', 'flat_f0', 'flat_energy', 'flat_both')
-DEFAULTS = dict(backend='world', frame_period_ms=5.0, f0_floor_hz=60.0, f0_ceil_hz=600.0,
+DEFAULTS = dict(backend='praat', frame_period_ms=10.0, f0_floor_hz=75.0, f0_ceil_hz=600.0,
                 energy_window_ms=250.0, energy_floor_db=30.0, max_gain_db=12.0, gain_edge_ms=50.0,
                 strength=1.0)
 
@@ -108,15 +113,59 @@ def rms(samples):
     return float(np.sqrt(np.mean(np.square(samples))))
 
 
-def finish(samples, reference, limit=0.99):
-    """Match the reference length and RMS; scale down further only if the peak would clip."""
+def match_level(samples, reference):
+    """Trim or pad to the reference length and scale to the reference RMS."""
     out = fit_length(samples, reference.size)
     level = rms(out)
-    if level > 0:
-        out = out * (rms(reference) / level)
-    peak = float(np.max(np.abs(out)))
-    scale = min(1.0, limit / peak) if peak > 0 else 1.0
-    return out * scale, scale
+    return out * (rms(reference) / level) if level > 0 else out
+
+
+def common_peak_scale(waves, limit=0.99):
+    """One gain for a set of waveforms that keeps the loudest of them below the clipping limit."""
+    peak = max(float(np.max(np.abs(wave_))) for wave_ in waves)
+    return min(1.0, limit / peak) if peak > 0 else 1.0
+
+
+class Praat:
+    """Praat pitch tier + overlap-add resynthesis (praat-parselmouth)."""
+    name = 'praat'
+
+    def __init__(self, frame_period_ms, f0_floor_hz, f0_ceil_hz):
+        import parselmouth
+        from parselmouth.praat import call
+        self.pm, self.call = parselmouth, call
+        self.version = f'{parselmouth.__version__} (Praat {parselmouth.PRAAT_VERSION})'
+        self.step, self.floor, self.ceil = float(frame_period_ms) / 1000.0, float(f0_floor_hz), float(f0_ceil_hz)
+
+    def _sound(self, samples, rate):
+        return self.pm.Sound(np.ascontiguousarray(samples, dtype=np.float64), sampling_frequency=float(rate))
+
+    def _manipulation(self, sound):
+        return self.call(sound, 'To Manipulation', self.step, self.floor, self.ceil)
+
+    def f0(self, samples, rate):
+        pitch = self._sound(samples, rate).to_pitch(time_step=self.step, pitch_floor=self.floor, pitch_ceiling=self.ceil)
+        return np.asarray(pitch.selected_array['frequency'], dtype=np.float64)
+
+    def analyze(self, samples, rate):
+        """F0 at the pitch-tier points (voiced only), plus what resynthesis needs."""
+        sound = self._sound(samples, rate)
+        tier = self.call(self._manipulation(sound), 'Extract pitch tier')
+        count = int(self.call(tier, 'Get number of points'))
+        times = [self.call(tier, 'Get time from index', i) for i in range(1, count + 1)]
+        values = [self.call(tier, 'Get value at index', i) for i in range(1, count + 1)]
+        return np.asarray(values, dtype=np.float64), (sound, times)
+
+    def synthesize(self, f0, state, rate):
+        sound, times = state
+        manipulation = self._manipulation(sound)
+        tier = self.call(manipulation, 'Extract pitch tier')
+        if times:
+            self.call(tier, 'Remove points between', sound.xmin - 1.0, sound.xmax + 1.0)
+            for time, value in zip(times, f0, strict=True):
+                self.call(tier, 'Add point', float(time), float(value))
+            self.call([tier, manipulation], 'Replace pitch tier')
+        return np.asarray(self.call(manipulation, 'Get resynthesis (overlap-add)').values[0], dtype=np.float64)
 
 
 class World:
@@ -149,14 +198,17 @@ class World:
         return self.pw.synthesize(np.ascontiguousarray(f0, dtype=np.float64), envelope, aperiodicity, rate, self.period)
 
 
+BACKENDS = {'praat': Praat, 'world': World}
+
+
 def make_backend(params):
-    if params['backend'] != 'world':
-        raise ValueError(f"Unknown vocoder backend {params['backend']!r}")
-    return World(params['frame_period_ms'], params['f0_floor_hz'], params['f0_ceil_hz'])
+    if params['backend'] not in BACKENDS:
+        raise ValueError(f"Unknown resynthesis backend {params['backend']!r}")
+    return BACKENDS[params['backend']](params['frame_period_ms'], params['f0_floor_hz'], params['f0_ceil_hz'])
 
 
 def make_twins(samples, rate, backend, params, conditions=AUDIO_CONDITIONS):
-    """Return {condition: waveform} and {condition: peak-guard scale} for the requested twins."""
+    """Return {condition: waveform} for the requested twins and the one gain applied to all of them."""
     unknown = set(conditions) - set(AUDIO_CONDITIONS)
     if unknown:
         raise ValueError(f'Unknown twin conditions: {sorted(unknown)}')
@@ -171,22 +223,30 @@ def make_twins(samples, rate, backend, params, conditions=AUDIO_CONDITIONS):
             resynth[flat] = fit_length(backend.synthesize(contour, state, rate), samples.size)
         return resynth[flat]
 
-    out, scales = {}, {}
+    out = {}
     for name in conditions:
         wave_ = carrier(name in ('flat_f0', 'flat_both'))
         if name in ('flat_energy', 'flat_both'):
             wave_ = wave_ * energy_gain(wave_, rate, **energy)
-        out[name], scales[name] = finish(wave_, samples)
-    return out, scales
+        out[name] = match_level(wave_, samples)
+    scale = common_peak_scale(out.values())
+    return {name: wave_ * scale for name, wave_ in out.items()}, scale
 
 
-def contour_stats(samples, rate, backend, params):
-    """How much F0 and slow-energy movement a waveform has (the quantities the twins edit)."""
+def contour_stats(samples, rate, backend, params, active=None):
+    """How much F0 and slow-energy movement a waveform has (the quantities the twins edit).
+
+    active: samples over which the energy contour is measured. Pass the original recording's
+    speech mask when measuring a twin, so both are measured over the same stretch of speech;
+    a twin's own mask grows once quiet passages have been raised.
+    """
     f0 = backend.f0(samples, rate)
     voiced = f0 > 0
     semitones = 12.0 * np.log2(f0[voiced] / np.median(f0[voiced])) if voiced.any() else np.zeros(0)
     power = slow_power(samples, rate, params['energy_window_ms'])
-    active = speech_mask(power, params['energy_floor_db'])
+    if active is None:
+        active = speech_mask(power, params['energy_floor_db'])
+    active = active & (power > 0)
     level = 10.0 * np.log10(power[active]) if active.any() else np.zeros(0)
     return dict(voiced_fraction=float(voiced.mean()), f0_median_hz=float(np.median(f0[voiced])) if voiced.any() else None,
                 f0_sd_semitones=float(semitones.std()) if semitones.size else None,
@@ -204,16 +264,21 @@ def synthetic_utterance(rate=16000, seconds=2.0, harmonics=8, f0=(120.0, 220.0),
 
 
 def self_check(backend, params, *, harmonics=8, rate=16000):
-    """Run every twin on a synthetic glide and test that each edit did what it claims."""
+    """Run every twin on a synthetic glide and test that each edit did what it claims.
+
+    This only shows that the backend is installed and wired correctly. Whether resynthesis
+    damages real speech is decided by the sham-versus-original word error rate, not here.
+    """
     source = synthetic_utterance(rate, harmonics=harmonics)
-    twins, _ = make_twins(source, rate, backend, params)
-    stats = {name: contour_stats(wave_, rate, backend, params) for name, wave_ in {'orig': source, **twins}.items()}
+    twins, scale = make_twins(source, rate, backend, params)
+    mask = speech_mask(slow_power(source, rate, params['energy_window_ms']), params['energy_floor_db'])
+    stats = {name: contour_stats(wave_, rate, backend, params, mask) for name, wave_ in {'orig': source, **twins}.items()}
     base = stats['orig']
     checks = {
         'source_has_pitch_movement': base['f0_sd_semitones'] > 2.0,
         'source_has_energy_movement': base['energy_sd_db'] > 3.0,
         'lengths_equal': all(wave_.size == source.size for wave_ in twins.values()),
-        'rms_matched': all(abs(s['rms'] / base['rms'] - 1.0) < 0.02 for s in stats.values()),
+        'rms_matched': all(abs(s['rms'] / (scale * base['rms']) - 1.0) < 0.02 for n, s in stats.items() if n != 'orig'),
         'sham_keeps_pitch': abs(stats['sham']['f0_sd_semitones'] / base['f0_sd_semitones'] - 1.0) < 0.2,
         'sham_keeps_energy': abs(stats['sham']['energy_sd_db'] / base['energy_sd_db'] - 1.0) < 0.2,
         'flat_f0_removes_pitch': stats['flat_f0']['f0_sd_semitones'] < 0.15 * base['f0_sd_semitones'],
@@ -228,13 +293,14 @@ def self_check(backend, params, *, harmonics=8, rate=16000):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Check the vocoder on a synthetic glide, or flatten one file.')
+    parser = argparse.ArgumentParser(description='Check the resynthesis backend on a synthetic glide, or flatten one file.')
     parser.add_argument('--self-check', action='store_true')
     parser.add_argument('--input')
     parser.add_argument('--output')
     parser.add_argument('--condition', choices=AUDIO_CONDITIONS, default='flat_both')
+    parser.add_argument('--backend', choices=sorted(BACKENDS), default=DEFAULTS['backend'])
     args = parser.parse_args()
-    settings = dict(DEFAULTS)
+    settings = dict(DEFAULTS, backend=args.backend)
     vocoder = make_backend(settings)
     if args.self_check:
         result = self_check(vocoder, settings)

@@ -187,7 +187,7 @@ def test_report_contrasts_strata_and_verdicts(corpus):
     assert result['asr_wer'] == {'asr-sham': pytest.approx(1 / 20), 'asr-flat_both': pytest.approx(3 / 20)}
     assert result['wer_contrasts']['asr-flat_both-vs-asr-sham']['delta_wer_pp'] == pytest.approx(10)
     assert result['verdicts'] == dict(vocoder_artifacts='pass', f0_energy_use='uses',
-                                      audio_beyond_transcript='yes', intelligibility_kept='fail')
+                                      audio_beyond_transcript='yes', flattening_keeps_words='fail')
     assert '| flat_both-vs-sham |' in markdown and 'SMOKE' not in markdown and 'failed to run: question_only' in markdown
     assert json.loads((folder / 'report.json').read_text())['verdicts'] == result['verdicts']
 
@@ -213,7 +213,9 @@ def test_other_verdicts():
     assert d2.decide(decision, {'orig-vs-text': make(-3, -6, -0.1)}, {})['audio_beyond_transcript'] == 'no'
     assert d2.decide(decision, {'orig-vs-text': make(1, -1, 3)}, {})['audio_beyond_transcript'] == 'inconclusive'
     wer = {'asr-flat_both-vs-asr-sham': dict(delta_wer_pp=1.9)}
-    assert d2.decide(decision, {}, wer) == {'intelligibility_kept': 'pass'}
+    assert d2.decide(decision, {}, wer) == {'flattening_keeps_words': 'pass'}
+    damaged = {'asr-sham-vs-asr-orig': dict(delta_wer_pp=16.6)}
+    assert d2.decide(decision, {}, damaged) == {'resynthesis_keeps_words': 'fail'}
 
 
 def test_run_scores_conditions_once_and_survives_optional_failures(corpus, monkeypatch):

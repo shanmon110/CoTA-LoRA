@@ -20,9 +20,9 @@
     }
   },
   "twin": {
-    "backend": "world",
-    "frame_period_ms": 5.0,
-    "f0_floor_hz": 60.0,
+    "backend": "praat",
+    "frame_period_ms": 10.0,
+    "f0_floor_hz": 75.0,
     "f0_ceil_hz": 600.0,
     "energy_window_ms": 250.0,
     "energy_floor_db": 30.0,

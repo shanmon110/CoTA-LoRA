@@ -51,6 +51,17 @@ def _speech_like(seconds=3.0, seed=0):
     return signal
 
 
+def test_energy_stats_use_the_given_mask():
+    signal = _speech_like()
+    mask = twin.speech_mask(twin.slow_power(signal, RATE, 250), 30)
+    flat = signal * twin.energy_gain(signal, RATE, window_ms=250, floor_db=30, max_gain_db=12, edge_ms=50)
+    vocoder = SineVocoder()
+    before = twin.contour_stats(signal, RATE, vocoder, PARAMS, mask)['energy_sd_db']
+    after = twin.contour_stats(flat, RATE, vocoder, PARAMS, mask)['energy_sd_db']
+    assert after < 0.35 * before
+    assert twin.contour_stats(signal, RATE, vocoder, PARAMS)['energy_sd_db'] == pytest.approx(before)
+
+
 def test_energy_gain_flattens_speech_and_leaves_pauses_alone():
     signal = _speech_like()
     kwargs = dict(window_ms=250, floor_db=30, max_gain_db=12, edge_ms=50)
@@ -70,17 +81,34 @@ def test_energy_gain_flattens_speech_and_leaves_pauses_alone():
     assert np.allclose(twin.energy_gain(np.zeros(RATE), RATE, **kwargs), 1.0)
 
 
-def test_finish_matches_length_and_level_and_guards_the_peak():
+def test_level_matching_and_the_shared_peak_guard():
     reference = 0.1 * np.sin(np.linspace(0, 200, 4000))
-    out, scale = twin.finish(np.ones(5000) * 0.5, reference)
-    assert out.size == 4000 and scale == 1.0
-    assert twin.rms(out) == pytest.approx(twin.rms(reference))
-    short, _ = twin.finish(np.ones(10), reference)
+    out = twin.match_level(np.ones(5000) * 0.5, reference)
+    assert out.size == 4000 and twin.rms(out) == pytest.approx(twin.rms(reference))
+    short = twin.match_level(np.ones(10), reference)
     assert short.size == 4000 and np.all(short[10:] == 0)
-    spike = np.zeros(4000)
-    spike[0] = 1.0
-    loud, scale = twin.finish(spike, np.ones(4000) * 0.5)
-    assert scale < 1.0 and np.max(np.abs(loud)) == pytest.approx(0.99)
+    assert twin.common_peak_scale([np.array([0.5, -0.2]), np.array([0.1])]) == 1.0
+    assert twin.common_peak_scale([np.array([0.5]), np.array([-1.98])]) == pytest.approx(0.5)
+
+
+class PeakyVocoder(SineVocoder):
+    """Resynthesis that adds a click, as a parametric vocoder can on a near-full-scale recording."""
+
+    def synthesize(self, f0, amplitude, rate):
+        out = super().synthesize(f0, amplitude, rate)
+        if np.ptp(f0) > 1e-6:      # only the carrier whose pitch still moves gets the click
+            out[100] = 10 * np.max(np.abs(out))
+        return out
+
+
+def test_twins_of_one_utterance_share_one_level_even_when_one_would_clip():
+    source = twin.synthetic_utterance(RATE, harmonics=1, amplitude=(0.3, 0.9))
+    twins, scale = twin.make_twins(source, RATE, PeakyVocoder(), PARAMS)
+    assert scale < 1.0
+    levels = {name: twin.rms(wave_) for name, wave_ in twins.items()}
+    assert max(levels.values()) / min(levels.values()) == pytest.approx(1.0, abs=1e-9)
+    assert levels['sham'] == pytest.approx(scale * twin.rms(source))
+    assert max(np.max(np.abs(wave_)) for wave_ in twins.values()) == pytest.approx(0.99)
 
 
 def test_wav_round_trip_and_clipping_count(tmp_path):
@@ -105,12 +133,13 @@ def test_zero_strength_twins_equal_the_sham():
 
 def test_only_requested_twins_are_made_and_unknown_names_fail():
     source = twin.synthetic_utterance(RATE, harmonics=1)
-    twins, scales = twin.make_twins(source, RATE, SineVocoder(), PARAMS, ['flat_both'])
-    assert list(twins) == ['flat_both'] and list(scales) == ['flat_both']
+    twins, scale = twin.make_twins(source, RATE, SineVocoder(), PARAMS, ['flat_both'])
+    assert list(twins) == ['flat_both'] and scale == 1.0
     with pytest.raises(ValueError):
         twin.make_twins(source, RATE, SineVocoder(), PARAMS, ['flat_rhythm'])
 
 
-def test_world_backend_is_the_only_backend():
+def test_backends():
+    assert set(twin.BACKENDS) == {'praat', 'world'} and twin.DEFAULTS['backend'] == 'praat'
     with pytest.raises(ValueError):
-        twin.make_backend(dict(PARAMS, backend='praat'))
+        twin.make_backend(dict(PARAMS, backend='griffin-lim'))
