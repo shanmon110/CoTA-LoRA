@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 757,
+  "accuracy": 0.757,
+  "by_domain": {
+    "music": {
+      "correct": 236,
+      "total": 334,
+      "accuracy": 0.7065868263473054
+    },
+    "sound": {
+      "correct": 275,
+      "total": 333,
+      "accuracy": 0.8258258258258259
+    },
+    "speech": {
+      "correct": 246,
+      "total": 333,
+      "accuracy": 0.7387387387387387
+    }
+  },
+  "macro_domain_accuracy": 0.75705046363729,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 128,
+      "total": 181,
+      "accuracy": 0.7071823204419889
+    },
+    "music/Reasoning": {
+      "correct": 108,
+      "total": 153,
+      "accuracy": 0.7058823529411765
+    },
+    "sound/Information Extraction": {
+      "correct": 82,
+      "total": 93,
+      "accuracy": 0.8817204301075269
+    },
+    "sound/Reasoning": {
+      "correct": 182,
+      "total": 227,
+      "accuracy": 0.801762114537445
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 39,
+      "total": 49,
+      "accuracy": 0.7959183673469388
+    },
+    "speech/Reasoning": {
+      "correct": 207,
+      "total": 284,
+      "accuracy": 0.7288732394366197
+    }
+  },
+  "macro_category_accuracy": 0.781070381566506,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10419205632,
+  "peak_reserved_bytes": 10865344512,
+  "eval_seconds": 115.85203842900228,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "3a64ea1b6c5df4624e06c5b3d22eb05f62f18765ad43527e724b7053ff76baf2",
+  "config_sha256": "f0f36a87c7ff9d5d3f5da387e9bacf8aa716678d0274363a755612e6b6362b0e",
+  "files": {
+    "adapter_model.safetensors": "3a64ea1b6c5df4624e06c5b3d22eb05f62f18765ad43527e724b7053ff76baf2",
+    "adapter_config.json": "f0f36a87c7ff9d5d3f5da387e9bacf8aa716678d0274363a755612e6b6362b0e"
+  },
+  "method": "unilora"
+}

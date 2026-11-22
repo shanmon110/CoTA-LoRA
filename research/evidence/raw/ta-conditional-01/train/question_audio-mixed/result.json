@@ -1,0 +1,26 @@
+{
+  "method": "ta-lora",
+  "best_checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+  "best_pair_accuracy": 0.7083333333333334,
+  "best_step": 160,
+  "global_step": 168,
+  "early_stopped": false,
+  "trainable_parameters": 1772064,
+  "input_trajectory": [
+    "2df839308428db1d0dbb9f2e5f19ff76f20381d239cf31e50826fff7054b8dac",
+    "8f621ae7f291a1a246c59403ebb9bf502ce6f1e847cbe5732e3f2158bbf14efe",
+    "493aa94a8d41d802847c760ab8ae1c1464323be26525fc2a8e5167d16dbbde88",
+    "48d11df6e68e8eabd0221640075fe0269859153afea5fdf3f7358c38025b012b",
+    "d1263846e734373775cc1550b657e81af1a7d832f51c272846db2562c047d282",
+    "ce87c229e0d40bf1eb6e7c77a0d74e3a9dcc3a89e71f3e2905dfd0218fdd3810",
+    "579e24e56ba4a4a1e3fb493441bed7e65b9172f5d4fd3f70837fc09f34756418",
+    "59f28b006cb681d3eabd5de113e94e62eab874002303ef52f8d6547000909c59"
+  ],
+  "init_sha256": "877006183379c3d5fad8b73446b87d5929a6d4fc180ba1a6f2aae10e22cdf3ab",
+  "last_ab_sha256": "d925248cb21ed2baf13f5b748eb5bd5a8bd7eea03b1291158dd35414c79425ed",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "training_seconds": 295.1941580779967,
+  "dev_seconds": 125.10394990100758,
+  "peak_allocated_bytes": 30775255040,
+  "peak_reserved_bytes": 32562479104
+}

@@ -1,0 +1,21 @@
+{
+  "combined_cpu_suite": {
+    "exit_code": 137,
+    "status": "incomplete_SIGKILL",
+    "log": "cpu-tests.log",
+    "cause": "not_confirmed",
+    "cgroup_memory_max": 2147483648,
+    "oom_events_after_termination": 0,
+    "oom_kill_events_after_termination": 0
+  },
+  "conditional_gate_tests": {
+    "passed": 13,
+    "status": "passed",
+    "log": "conditional-gate-tests.log"
+  },
+  "historical_full_suite": {
+    "passed": 186,
+    "skipped": 4,
+    "scope": "historical log only; not this export rerun"
+  }
+}

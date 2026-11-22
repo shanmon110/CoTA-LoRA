@@ -1,0 +1,83 @@
+{
+  "method": "gralora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6065047052474836,
+    "accuracy": 0.5793714746172441,
+    "recalls": {
+      "A": 0.888235294117647,
+      "B": 0.41402714932126694,
+      "C": 0.3346938775510204,
+      "D": 0.7890625
+    },
+    "confusion_matrix": [
+      [
+        151,
+        7,
+        2,
+        10
+      ],
+      [
+        77,
+        183,
+        7,
+        175
+      ],
+      [
+        37,
+        12,
+        82,
+        114
+      ],
+      [
+        65,
+        9,
+        7,
+        303
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.83984375,
+    "best_step": 256,
+    "updates": 256,
+    "trainable": 14966784,
+    "correct": 716,
+    "exact_accuracy": 0.716,
+    "official_text_accuracy": 0.719,
+    "by_domain": {
+      "music": {
+        "correct": 214,
+        "total": 334,
+        "accuracy": 0.6407185628742516
+      },
+      "sound": {
+        "correct": 265,
+        "total": 333,
+        "accuracy": 0.7957957957957958
+      },
+      "speech": {
+        "correct": 237,
+        "total": 333,
+        "accuracy": 0.7117117117117117
+      }
+    },
+    "train_seconds": 569.5025442869519,
+    "training_peak_allocated_gib": 11.647566318511963
+  },
+  "checkpoint": {
+    "method": "gralora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/gralora/checkpoint-256",
+    "step": 256,
+    "dev_accuracy": 0.83984375,
+    "adapter_sha256": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+    "config_sha256": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d",
+    "files": {
+      "adapter_model.safetensors": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+      "adapter_config.json": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/gralora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/gralora"
+}

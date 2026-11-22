@@ -1,0 +1,85 @@
+{
+  "utterances": 1000,
+  "correct": 724,
+  "accuracy": 0.724,
+  "by_domain": {
+    "music": {
+      "correct": 216,
+      "total": 334,
+      "accuracy": 0.6467065868263473
+    },
+    "sound": {
+      "correct": 268,
+      "total": 333,
+      "accuracy": 0.8048048048048048
+    },
+    "speech": {
+      "correct": 240,
+      "total": 333,
+      "accuracy": 0.7207207207207207
+    }
+  },
+  "macro_domain_accuracy": 0.7240773707839576,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 113,
+      "total": 181,
+      "accuracy": 0.6243093922651933
+    },
+    "music/Reasoning": {
+      "correct": 103,
+      "total": 153,
+      "accuracy": 0.673202614379085
+    },
+    "sound/Information Extraction": {
+      "correct": 79,
+      "total": 93,
+      "accuracy": 0.8494623655913979
+    },
+    "sound/Reasoning": {
+      "correct": 178,
+      "total": 227,
+      "accuracy": 0.7841409691629956
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 40,
+      "total": 49,
+      "accuracy": 0.8163265306122449
+    },
+    "speech/Reasoning": {
+      "correct": 200,
+      "total": 284,
+      "accuracy": 0.704225352112676
+    }
+  },
+  "macro_category_accuracy": 0.7568315814682055,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio-mixed-off",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+    "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc",
+    "transport_ablation": {
+      "gate_tensors": 36,
+      "transport_up_tensors": 36,
+      "tensors_zeroed": 72,
+      "scalars_zeroed": 590112
+    }
+  },
+  "no_transport": true,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "predictions_sha256": "0280e38f36dc6c53e8221ee6841fbc7c131548a61b31fee0306da3e3c2c776a8",
+  "eval_seconds": 104.72776672802866,
+  "peak_allocated_bytes": 10306422784,
+  "peak_reserved_bytes": 10752098304
+}

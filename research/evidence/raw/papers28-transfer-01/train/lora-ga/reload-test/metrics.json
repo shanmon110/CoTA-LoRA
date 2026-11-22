@@ -1,0 +1,75 @@
+{
+  "utterances": 1000,
+  "correct": 395,
+  "accuracy": 0.395,
+  "by_domain": {
+    "music": {
+      "correct": 101,
+      "total": 334,
+      "accuracy": 0.3023952095808383
+    },
+    "sound": {
+      "correct": 164,
+      "total": 333,
+      "accuracy": 0.4924924924924925
+    },
+    "speech": {
+      "correct": 130,
+      "total": 333,
+      "accuracy": 0.39039039039039036
+    }
+  },
+  "macro_domain_accuracy": 0.39509269748790704,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 47,
+      "total": 181,
+      "accuracy": 0.2596685082872928
+    },
+    "music/Reasoning": {
+      "correct": 54,
+      "total": 153,
+      "accuracy": 0.35294117647058826
+    },
+    "sound/Information Extraction": {
+      "correct": 41,
+      "total": 93,
+      "accuracy": 0.44086021505376344
+    },
+    "sound/Reasoning": {
+      "correct": 116,
+      "total": 227,
+      "accuracy": 0.5110132158590308
+    },
+    "sound/['Reasoning']": {
+      "correct": 7,
+      "total": 13,
+      "accuracy": 0.5384615384615384
+    },
+    "speech/Information Extraction": {
+      "correct": 32,
+      "total": 49,
+      "accuracy": 0.6530612244897959
+    },
+    "speech/Reasoning": {
+      "correct": 98,
+      "total": 284,
+      "accuracy": 0.34507042253521125
+    }
+  },
+  "macro_category_accuracy": 0.44301090016531725,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 109.95921574597014,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "1920500c3c8c3662eeaea1118f68903a926a19d6f903112b30f829f242127878",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "34290eddc1c098adcbf32fd0a05b72531d0067216fd9d4bc8ddd7166e99aa62d",
+    "paper_residual.safetensors": "448a34c2f8d4b3f0cfe1303c0e50c4db24686927108ec0d730aa983dddb27cf0",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  },
+  "method": "lora-ga"
+}

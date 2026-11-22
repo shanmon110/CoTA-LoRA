@@ -1,0 +1,15 @@
+{
+  "training_config": "../../../conf/training/touch_asu_asr.json",
+  "generation_config": "../../../aishell/asr/conf/generation_config.json",
+  "selection_steps": [2500, 5000],
+  "adapter_attention_backend": "flash_attention_2",
+  "adapters": [
+    "../../../conf/adapters/ta-lora.json",
+    "../../../conf/adapters/o-lora.json",
+    "../../../conf/adapters/qv-lora.json",
+    "../../../conf/adapters/toplora.json",
+    "../../../conf/adapters/bora.json",
+    "../../../conf/adapters/dora.json",
+    "../../../conf/adapters/eva.json"
+  ]
+}

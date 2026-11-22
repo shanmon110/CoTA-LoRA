@@ -1,0 +1,49 @@
+{
+  "uar": 0.5981071274663712,
+  "accuracy": 0.5511684125705076,
+  "recalls": {
+    "A": 0.9411764705882353,
+    "B": 0.47285067873303166,
+    "C": 0.43673469387755104,
+    "D": 0.5416666666666666
+  },
+  "confusion_matrix": [
+    [
+      160,
+      5,
+      3,
+      2
+    ],
+    [
+      145,
+      209,
+      11,
+      77
+    ],
+    [
+      72,
+      12,
+      107,
+      54
+    ],
+    [
+      150,
+      14,
+      12,
+      208
+    ]
+  ],
+  "utterances": 1241,
+  "method": "bora",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 113.11212817399064,
+  "peak_allocated_bytes": 10166403584,
+  "peak_reserved_bytes": 10278141952,
+  "predictions_sha256": "bacc4b1da303094a7202e432d4262e9ffe477b23fe5cb754eedbfbe1a8d910a4",
+  "adapter_sha256": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+  "config_sha256": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1",
+  "files": {
+    "adapter_model.safetensors": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+    "adapter_config.json": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1"
+  }
+}

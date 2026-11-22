@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 738,
+  "accuracy": 0.738,
+  "by_domain": {
+    "music": {
+      "correct": 227,
+      "total": 334,
+      "accuracy": 0.6796407185628742
+    },
+    "sound": {
+      "correct": 267,
+      "total": 333,
+      "accuracy": 0.8018018018018018
+    },
+    "speech": {
+      "correct": 244,
+      "total": 333,
+      "accuracy": 0.7327327327327328
+    }
+  },
+  "macro_domain_accuracy": 0.7380584176991363,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 124,
+      "total": 181,
+      "accuracy": 0.6850828729281768
+    },
+    "music/Reasoning": {
+      "correct": 103,
+      "total": 153,
+      "accuracy": 0.673202614379085
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 180,
+      "total": 227,
+      "accuracy": 0.7929515418502202
+    },
+    "sound/['Reasoning']": {
+      "correct": 9,
+      "total": 13,
+      "accuracy": 0.6923076923076923
+    },
+    "speech/Information Extraction": {
+      "correct": 38,
+      "total": 49,
+      "accuracy": 0.7755102040816326
+    },
+    "speech/Reasoning": {
+      "correct": 206,
+      "total": 284,
+      "accuracy": 0.7253521126760564
+    }
+  },
+  "macro_category_accuracy": 0.7404452450917455,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10301130240,
+  "peak_reserved_bytes": 10745806848,
+  "eval_seconds": 100.23503662197618,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+  "config_sha256": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5",
+  "files": {
+    "adapter_model.safetensors": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+    "adapter_config.json": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5"
+  },
+  "method": "lora"
+}

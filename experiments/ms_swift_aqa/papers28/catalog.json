@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "method": "expressive-power",
+    "conference": "ICLR",
+    "label": "Expressive-Power",
+    "title": "The Expressive Power of Low-Rank Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/154926e0b66e2b2a8c1120852f31a12d-Abstract-Conference.html",
+    "scope": "作者理论示例已复现，真实模型的逐层构造见下一行"
+  },
+  {
+    "id": 2,
+    "method": "longlora-omni",
+    "conference": "ICLR",
+    "label": "LongLoRA",
+    "title": "LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/211ab571cc9f3802afa6ffff52ae3e5b-Abstract-Conference.html"
+  },
+  {
+    "id": 3,
+    "method": "vera",
+    "conference": "ICLR",
+    "label": "VeRA",
+    "title": "VeRA: Vector-based Random Matrix Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/1b53ad08de383a049e9668a9d0b6a053-Abstract-Conference.html"
+  },
+  {
+    "id": 4,
+    "method": "dora",
+    "conference": "ICML",
+    "label": "DoRA",
+    "title": "DoRA: Weight-Decomposed Low-Rank Adaptation",
+    "paper": "https://proceedings.mlr.press/v235/liu24bn.html"
+  },
+  {
+    "id": 5,
+    "method": "fourierft",
+    "conference": "ICML",
+    "label": "FourierFT",
+    "title": "Parameter-Efficient Fine-Tuning with Discrete Fourier Transform",
+    "paper": "https://proceedings.mlr.press/v235/gao24o.html"
+  },
+  {
+    "id": 6,
+    "method": "lora-plus",
+    "conference": "ICML",
+    "label": "LoRA+",
+    "title": "LoRA+: Efficient Low Rank Adaptation of Large Models",
+    "paper": "https://proceedings.mlr.press/v235/hayou24a.html"
+  },
+  {
+    "id": 7,
+    "method": "lora-ga",
+    "conference": "NeurIPS",
+    "label": "LoRA-GA",
+    "title": "LoRA-GA: Low-Rank Adaptation with Gradient Approximation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/62c4718cc334f6a0a62fb81c4a2095a1-Abstract-Conference.html"
+  },
+  {
+    "id": 8,
+    "method": "pissa",
+    "conference": "NeurIPS",
+    "label": "PiSSA",
+    "title": "PiSSA: Principal Singular Values and Singular Vectors Adaptation of Large Language Models",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/db36f4d603cc9e3a2a5e10b93e6428f2-Abstract-Conference.html"
+  },
+  {
+    "id": 9,
+    "method": "loram-train-small",
+    "conference": "ICLR",
+    "label": "LoRAM-train-small",
+    "title": "Train Small, Infer Large: Memory-Efficient LoRA Training for Large Language Models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/d022216357816e483433914204aa80ee-Abstract-Conference.html"
+  },
+  {
+    "id": 10,
+    "method": "randlora",
+    "conference": "ICLR",
+    "label": "RandLoRA",
+    "title": "RandLoRA: Full rank parameter-efficient fine-tuning of large models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/382b95a6580cfb0b5ca33c74b4e0e770-Abstract-Conference.html"
+  },
+  {
+    "id": 11,
+    "method": "lowra",
+    "conference": "ICML",
+    "label": "LowRA",
+    "title": "LowRA: Accurate and Efficient LoRA Fine-Tuning of LLMs under 2 Bits",
+    "paper": "https://proceedings.mlr.press/v267/zhou25ak.html"
+  },
+  {
+    "id": 12,
+    "method": "aurora",
+    "conference": "NeurIPS",
+    "label": "AuroRA",
+    "title": "AuroRA: Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/34aae5b7991a4fb4fe3081ca4f94549c-Abstract-Conference.html"
+  },
+  {
+    "id": 13,
+    "method": "eva",
+    "conference": "NeurIPS",
+    "label": "EVA",
+    "title": "Parameter Efficient Fine-tuning via Explained Variance Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/41d33bd41fd44bd9dba0e092047cf213-Abstract-Conference.html"
+  },
+  {
+    "id": 14,
+    "method": "flylora",
+    "conference": "NeurIPS",
+    "label": "FlyLoRA",
+    "title": "FlyLoRA: Boosting Task Decoupling and Parameter Efficiency via Implicit Rank-Wise Mixture-of-Experts",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0f234479d4be0102b6a9ec5ebf75e881-Abstract-Conference.html"
+  },
+  {
+    "id": 15,
+    "method": "gralora",
+    "conference": "NeurIPS",
+    "label": "GraLoRA",
+    "title": "GraLoRA: Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/89f8c6687c4adafe4d500444cd3db39a-Abstract-Conference.html"
+  },
+  {
+    "id": 16,
+    "method": "magnitude-loram",
+    "conference": "NeurIPS",
+    "label": "Magnitude-LoRAM",
+    "title": "The Primacy of Magnitude in Low-Rank Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0010665e949927b74faf6e3ada6d7f72-Abstract-Conference.html"
+  },
+  {
+    "id": 17,
+    "method": "rolora-federated",
+    "conference": "NeurIPS",
+    "label": "RoLoRA-federated",
+    "title": "Robust Federated Finetuning of LLMs via Alternating Optimization of LoRA",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/adf17e7346b6be4c2f2bb40de572e5bc-Abstract-Conference.html"
+  },
+  {
+    "id": 18,
+    "method": "toplora",
+    "conference": "NeurIPS",
+    "label": "TopLoRA",
+    "title": "Beyond Higher Rank: Token-wise Input-Output Projections for Efficient Low-Rank Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/c74429a930838b5bac03c681f0a0ce11-Abstract-Conference.html"
+  },
+  {
+    "id": 19,
+    "method": "unilora",
+    "conference": "NeurIPS",
+    "label": "Uni-LoRA",
+    "title": "Uni-LoRA: One Vector is All You Need",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e596a70b60dcf7c6e0ac1a2d73e7470-Abstract-Conference.html"
+  },
+  {
+    "id": 20,
+    "method": "alora",
+    "conference": "NeurIPS",
+    "label": "aLoRA",
+    "title": "Activated LoRA: Fine-tuned LLMs for Intrinsics",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/4d0b6303d4a4811445f69f357bf6def5-Abstract-Conference.html"
+  },
+  {
+    "id": 21,
+    "method": "bora",
+    "conference": "ICLR",
+    "label": "BoRA",
+    "title": "BoRA: Towards More Expressive Low-Rank Adaptation with Block Diversity",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e8b0c97b34fdaf58b2f48f8cca85e76a-Abstract-Conference.html"
+  },
+  {
+    "id": 22,
+    "method": "igu-lora",
+    "conference": "ICLR",
+    "label": "IGU-LoRA",
+    "title": "IGU-LoRA: Adaptive Rank Allocation via Integrated Gradients and Uncertainty-Aware Scoring",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/407106f4b56040b2e8dcad75a6e461e5-Abstract-Conference.html"
+  },
+  {
+    "id": 23,
+    "method": "loft",
+    "conference": "ICLR",
+    "label": "LoFT",
+    "title": "LoFT: Low-Rank Adaptation That Behaves Like Full Fine-Tuning",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7428310c0f97f1c6bb2ef1be99c1ec2a-Abstract-Conference.html"
+  },
+  {
+    "id": 24,
+    "method": "lora-mixer",
+    "conference": "ICLR",
+    "label": "LoRA-Mixer",
+    "title": "LoRA-Mixer: Coordinate Modular LoRA Experts Through Serial Attention Routing",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/18610cbcd1da57854aa05ebdc5cd3168-Abstract-Conference.html"
+  },
+  {
+    "id": 25,
+    "method": "loragen",
+    "conference": "ICLR",
+    "label": "LoRAGen",
+    "title": "LoRAGen: Structure-Aware Weight Space Learning for LoRA Generation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc7c087b5e965075c8946b9ff57e3d64-Abstract-Conference.html"
+  },
+  {
+    "id": 26,
+    "method": "ralora",
+    "conference": "ICLR",
+    "label": "RaLoRA",
+    "title": "Gradient Intrinsic Dimensionality Alignment：Narrowing The Gap Between Low-Rank Adaptation and Full Fine-Tuning",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b4b967d4222d87fa5b28b6ec7144058-Abstract-Conference.html"
+  },
+  {
+    "id": 27,
+    "method": "stable-lora",
+    "conference": "ICLR",
+    "label": "Stable-LoRA",
+    "title": "Stable-LoRA: Stabilizing Feature Learning of Low-Rank Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2962d47082d07cd6e28272ab471e0526-Abstract-Conference.html"
+  },
+  {
+    "id": 28,
+    "method": "lokra",
+    "conference": "ICML",
+    "label": "LoKRA",
+    "title": "Low Kruskal-Rank Adaptation",
+    "paper": "https://proceedings.mlr.press/v306/xu26ae.html"
+  }
+]

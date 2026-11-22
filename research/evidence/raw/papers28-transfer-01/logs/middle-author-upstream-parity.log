@@ -1,0 +1,23 @@
+0.7530219554901123 2.0
+{
+  "aurora": {
+    "author_sha256": "815e070d231c7febb01bcfa8699cf1b994f71d960bd276f61e7c19a2afb781ee",
+    "output_max_abs": 0.0,
+    "input_grad_max_abs": 0.0
+  },
+  "gralora": {
+    "author_sha256": "425202473cb6fb3951e0af90b55ee34304a73070c1fe55f6ddd8aa1244ef8b63",
+    "output_max_abs": 0.0,
+    "input_grad_max_abs": 0.0
+  },
+  "magnitude-loram": {
+    "author_sha256": "13184af97958ab892fae466d11a7c7b2829f434e1975d7011b7df885d1c9d8d6",
+    "output_max_abs": 0.0,
+    "input_grad_max_abs": 0.0
+  },
+  "toplora": {
+    "author_sha256": "d283be853d497284c1f1cd205d2f6f25b4aced43e9093e9ef29de9fe9f4ea6fe",
+    "output_max_abs": 0.0,
+    "input_grad_max_abs": 0.0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "longlora-omni",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/longlora-omni/checkpoint-128",
+  "step": 128,
+  "dev_accuracy": 0.79296875,
+  "adapter_sha256": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+  "config_sha256": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676",
+  "files": {
+    "adapter_model.safetensors": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+    "adapter_config.json": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676"
+  }
+}

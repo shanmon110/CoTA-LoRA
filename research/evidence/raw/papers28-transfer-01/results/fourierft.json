@@ -1,0 +1,83 @@
+{
+  "method": "fourierft",
+  "archived_training": true,
+  "ser": {
+    "uar": 0.2628822201957706,
+    "accuracy": 0.2264302981466559,
+    "recalls": {
+      "A": 0.40588235294117647,
+      "B": 0.251131221719457,
+      "C": 0.363265306122449,
+      "D": 0.03125
+    },
+    "confusion_matrix": [
+      [
+        69,
+        45,
+        41,
+        15
+      ],
+      [
+        178,
+        111,
+        132,
+        21
+      ],
+      [
+        109,
+        38,
+        89,
+        9
+      ],
+      [
+        141,
+        88,
+        143,
+        12
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.30859375,
+    "best_step": 256,
+    "updates": 256,
+    "trainable": 504000,
+    "correct": 314,
+    "exact_accuracy": 0.314,
+    "official_text_accuracy": 0.316,
+    "by_domain": {
+      "music": {
+        "correct": 94,
+        "total": 334,
+        "accuracy": 0.281437125748503
+      },
+      "sound": {
+        "correct": 124,
+        "total": 333,
+        "accuracy": 0.37237237237237236
+      },
+      "speech": {
+        "correct": 96,
+        "total": 333,
+        "accuracy": 0.2882882882882883
+      }
+    },
+    "train_seconds": 802.8113031959801,
+    "training_peak_allocated_gib": 11.457262516021729
+  },
+  "checkpoint": {
+    "method": "fourierft",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/fourierft/checkpoint-256",
+    "step": 256,
+    "dev_accuracy": 0.30859375,
+    "adapter_sha256": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56",
+    "config_sha256": "d3a4b1536a7c4357d9ee7678c58f583fbc704770e2e3f715b9d16aeb8e8b4f1a",
+    "files": {
+      "adapter_model.safetensors": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56",
+      "adapter_config.json": "d3a4b1536a7c4357d9ee7678c58f583fbc704770e2e3f715b9d16aeb8e8b4f1a"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/fourierft",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/fourierft"
+}

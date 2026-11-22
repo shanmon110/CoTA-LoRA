@@ -1,0 +1,44 @@
+Experiment Setting:
+| width: 8
+| target_depth: 1
+| frozen_depth: 1
+| rank: 4
+| use_bias: 1
+| activation: relu
+| std: 0.25
+| method: ours
+| batch_size: 256
+| n_epochs: 1000
+| lr: 0.001
+| n_test: 5000
+| weight_decay: 0
+| init_mode: default
+| pretrained: 0
+| pretrained_epochs: 1000
+| pretrained_lr: 0.001
+| pretrained_level: 3
+| tune_bias: 1
+| last_layers: 1
+| seed: 123
+| rank_step: 0
+| task: regression
+| n_train: inf
+| best_epoch: 0
+| n_head: 2
+| seq_length: 10
+| better_optim: 0
+| dropout: 0.1
+| exp: tfn
+| wandb: 0
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 213.42it/s]
+Singular values: tensor([23.0801, 16.1421, 10.3977,  7.1086,  6.1699,  4.4010,  1.2946,  0.1127])
+Singular values: tensor([8.6794e+02, 3.7527e+01, 1.9411e+01, 1.6738e+01, 1.2141e+01, 3.2864e+00,
+        1.7716e+00, 2.4524e-01])
+Singular values: tensor([18.6995, 18.3997, 13.4138,  8.2431,  6.8036,  5.4997,  3.7173,  1.5674])
+Singular values: tensor([473.7789,  58.1711,  19.9317,  15.7287,  11.4758,   6.0435,   3.2793,
+          0.4747])
+WARNING: our construction does not offer exact representation!
+The maximum discrepancy is 7.346426627918845e-06
+Singular values: tensor([1.1149, 0.7019, 0.5213, 0.4525, 0.2165, 0.1167, 0.0646, 0.0201])
+Test loss: 0.0000
+Test loss on shifted test set: 0.0000

@@ -1,0 +1,77 @@
+{
+  "utterances": 1000,
+  "correct": 395,
+  "accuracy": 0.395,
+  "by_domain": {
+    "music": {
+      "correct": 101,
+      "total": 334,
+      "accuracy": 0.3023952095808383
+    },
+    "sound": {
+      "correct": 164,
+      "total": 333,
+      "accuracy": 0.4924924924924925
+    },
+    "speech": {
+      "correct": 130,
+      "total": 333,
+      "accuracy": 0.39039039039039036
+    }
+  },
+  "macro_domain_accuracy": 0.39509269748790704,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 47,
+      "total": 181,
+      "accuracy": 0.2596685082872928
+    },
+    "music/Reasoning": {
+      "correct": 54,
+      "total": 153,
+      "accuracy": 0.35294117647058826
+    },
+    "sound/Information Extraction": {
+      "correct": 41,
+      "total": 93,
+      "accuracy": 0.44086021505376344
+    },
+    "sound/Reasoning": {
+      "correct": 116,
+      "total": 227,
+      "accuracy": 0.5110132158590308
+    },
+    "sound/['Reasoning']": {
+      "correct": 7,
+      "total": 13,
+      "accuracy": 0.5384615384615384
+    },
+    "speech/Information Extraction": {
+      "correct": 32,
+      "total": 49,
+      "accuracy": 0.6530612244897959
+    },
+    "speech/Reasoning": {
+      "correct": 98,
+      "total": 284,
+      "accuracy": 0.34507042253521125
+    }
+  },
+  "macro_category_accuracy": 0.44301090016531725,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 107.98226361197885,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "fd39c663c1b258e817f454859140202f168f5d3c6b616f21ad685c4034283eec",
+  "config_sha256": "2c6b8995e63944c7c003429e4bf7254b604d5f50ca6a3be51a2a747ec47b1bf7",
+  "files": {
+    "adapter_model.safetensors": "ec0b34a66ecba31113e18f0d02d7bca1399b0deab500bd760c4ea02e4454017e",
+    "paper_residual.safetensors": "4516283ab50ac852185665e71bd34121e07c01dbba80380b7fb1501b10579e94",
+    "converted/default/adapter_model.safetensors": "d3d33402f5b1a44d0cec8efcb52ef37b2b918d36008d665b4820d74a096d91ce",
+    "adapter_config.json": "6bf0c0f235cc72b7309a0f6a37e911aefe182e9cf006151a66e90fe6df3b37c0",
+    "converted/default/adapter_config.json": "01fb9832752eae39a2ed4c581666c832cf25a9a18dad9a84ac1062bc85ad5be0"
+  },
+  "method": "pissa"
+}

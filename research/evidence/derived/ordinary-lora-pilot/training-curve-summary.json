@@ -1,0 +1,44 @@
+{
+  "points": [
+    {
+      "step": 32,
+      "mean_loss_previous_32_steps": 0.2037167353125,
+      "source_dev_accuracy": 0.80078125,
+      "source_dev_correct_of_256": 205
+    },
+    {
+      "step": 64,
+      "mean_loss_previous_32_steps": 0.184326531875,
+      "source_dev_accuracy": 0.80078125,
+      "source_dev_correct_of_256": 205
+    },
+    {
+      "step": 96,
+      "mean_loss_previous_32_steps": 0.1703462178125,
+      "source_dev_accuracy": 0.8046875,
+      "source_dev_correct_of_256": 206
+    },
+    {
+      "step": 128,
+      "mean_loss_previous_32_steps": 0.146570786875,
+      "source_dev_accuracy": 0.79296875,
+      "source_dev_correct_of_256": 203
+    },
+    {
+      "step": 160,
+      "mean_loss_previous_32_steps": 0.0837365134375,
+      "source_dev_accuracy": 0.8046875,
+      "source_dev_correct_of_256": 206
+    },
+    {
+      "step": 192,
+      "mean_loss_previous_32_steps": 0.072805951875,
+      "source_dev_accuracy": 0.80078125,
+      "source_dev_correct_of_256": 205
+    }
+  ],
+  "notes": [
+    "Training loss is averaged from logged scalar values over the preceding 32 updates.",
+    "AVQA development accuracy only; no target-set trajectory or development cross-entropy was logged."
+  ]
+}

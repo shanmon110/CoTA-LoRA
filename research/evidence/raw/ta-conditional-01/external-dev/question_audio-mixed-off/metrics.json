@@ -1,0 +1,70 @@
+{
+  "utterances": 261,
+  "correct": 202,
+  "accuracy": 0.7739463601532567,
+  "by_domain": {
+    "music": {
+      "correct": 72,
+      "total": 87,
+      "accuracy": 0.8275862068965517
+    },
+    "sound": {
+      "correct": 73,
+      "total": 87,
+      "accuracy": 0.8390804597701149
+    },
+    "speech": {
+      "correct": 57,
+      "total": 87,
+      "accuracy": 0.6551724137931034
+    }
+  },
+  "macro_domain_accuracy": 0.7739463601532567,
+  "by_category": {
+    "music/Comparative": {
+      "correct": 17,
+      "total": 22,
+      "accuracy": 0.7727272727272727
+    },
+    "music/Counting": {
+      "correct": 55,
+      "total": 65,
+      "accuracy": 0.8461538461538461
+    },
+    "sound/original Clotho question": {
+      "correct": 73,
+      "total": 87,
+      "accuracy": 0.8390804597701149
+    },
+    "speech/speech emotion": {
+      "correct": 57,
+      "total": 87,
+      "accuracy": 0.6551724137931034
+    }
+  },
+  "macro_category_accuracy": 0.7782834981110843,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio-mixed-off",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+    "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc",
+    "transport_ablation": {
+      "gate_tensors": 36,
+      "transport_up_tensors": 36,
+      "tensors_zeroed": 72,
+      "scalars_zeroed": 590112
+    }
+  },
+  "no_transport": true,
+  "manifest_sha256": "44d2cb45ae69a704362c9bb1db47921971c0f29a6487c299974128ca750d034a",
+  "predictions_sha256": "33255b8751861bc1cea513ed048a3ec46d0282b76ff5b0e34a3f701f7615aa0e",
+  "eval_seconds": 50.65279378800187,
+  "peak_allocated_bytes": 12536836608,
+  "peak_reserved_bytes": 13990100992
+}

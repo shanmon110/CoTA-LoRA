@@ -1,0 +1,12 @@
+{
+  "method": "bora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/bora/checkpoint-224",
+  "step": 224,
+  "dev_accuracy": 0.8203125,
+  "adapter_sha256": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+  "config_sha256": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1",
+  "files": {
+    "adapter_model.safetensors": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+    "adapter_config.json": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1"
+  }
+}

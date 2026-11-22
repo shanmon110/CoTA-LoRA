@@ -1,0 +1,468 @@
+{
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "classes": {
+    "A": "angry",
+    "B": "happy/excited",
+    "C": "sad",
+    "D": "neutral"
+  },
+  "arms": {
+    "frozen-base": {
+      "uar": 0.5994471827192416,
+      "accuracy": 0.572119258662369,
+      "recalls": {
+        "A": 0.8941176470588236,
+        "B": 0.41855203619909503,
+        "C": 0.3142857142857143,
+        "D": 0.7708333333333334
+      },
+      "class_recalls": {
+        "angry": 0.8941176470588236,
+        "happy/excited": 0.41855203619909503,
+        "sad": 0.3142857142857143,
+        "neutral": 0.7708333333333334
+      },
+      "predicted_counts": {
+        "A": 390,
+        "B": 210,
+        "C": 87,
+        "D": 554
+      },
+      "confusion_matrix": [
+        [
+          152,
+          7,
+          1,
+          10
+        ],
+        [
+          105,
+          185,
+          5,
+          147
+        ],
+        [
+          57,
+          10,
+          77,
+          101
+        ],
+        [
+          76,
+          8,
+          4,
+          296
+        ]
+      ],
+      "utterances": 1241,
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345"
+      },
+      "predictions_sha256": "b72c04f5f75ff36d30bf99adbd26f6c1d8d66743920df5ee7c726420a3c7d529",
+      "eval_seconds": 74.03463779500453,
+      "peak_allocated_bytes": 10106407424
+    },
+    "lora-mixed": {
+      "uar": 0.6373801443654384,
+      "accuracy": 0.621273166800967,
+      "recalls": {
+        "A": 0.8705882352941177,
+        "B": 0.5158371040723982,
+        "C": 0.37142857142857144,
+        "D": 0.7916666666666666
+      },
+      "class_recalls": {
+        "angry": 0.8705882352941177,
+        "happy/excited": 0.5158371040723982,
+        "sad": 0.37142857142857144,
+        "neutral": 0.7916666666666666
+      },
+      "predicted_counts": {
+        "A": 301,
+        "B": 271,
+        "C": 111,
+        "D": 558
+      },
+      "confusion_matrix": [
+        [
+          148,
+          8,
+          3,
+          11
+        ],
+        [
+          67,
+          228,
+          8,
+          139
+        ],
+        [
+          33,
+          17,
+          91,
+          104
+        ],
+        [
+          53,
+          18,
+          9,
+          304
+        ]
+      ],
+      "utterances": 1241,
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/lora-mixed/checkpoint-160",
+        "weights_sha256": "dc870811b7da74102f4d1f8423864b1f3815d1e9b60ac552f027e0d65957f186",
+        "adapter_config_sha256": "76eaac757eeb30c4b121252e4adc077a2e5f972122932d8c484417867f743584"
+      },
+      "predictions_sha256": "1f377b19c261dcd8d9783a75363b0add726d74e85b2fbe5ed3f6b00ef8e0522a",
+      "eval_seconds": 74.57006844301941,
+      "peak_allocated_bytes": 10113485312
+    },
+    "question_audio-mixed": {
+      "uar": 0.6295952876342845,
+      "accuracy": 0.6051571313456889,
+      "recalls": {
+        "A": 0.9,
+        "B": 0.49547511312217196,
+        "C": 0.37551020408163266,
+        "D": 0.7473958333333334
+      },
+      "class_recalls": {
+        "angry": 0.9,
+        "happy/excited": 0.49547511312217196,
+        "sad": 0.37551020408163266,
+        "neutral": 0.7473958333333334
+      },
+      "predicted_counts": {
+        "A": 358,
+        "B": 262,
+        "C": 110,
+        "D": 511
+      },
+      "confusion_matrix": [
+        [
+          153,
+          7,
+          2,
+          8
+        ],
+        [
+          86,
+          219,
+          8,
+          129
+        ],
+        [
+          48,
+          18,
+          92,
+          87
+        ],
+        [
+          71,
+          18,
+          8,
+          287
+        ]
+      ],
+      "utterances": 1241,
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+        "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+        "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+      },
+      "predictions_sha256": "1538ec4a7e6ca6a252c47385221050bfc1ce4296c55613d3efaa0bfbbfdff635",
+      "eval_seconds": 97.81063367100433,
+      "peak_allocated_bytes": 10113543168
+    },
+    "question_audio-mixed-off": {
+      "uar": 0.6260632137470373,
+      "accuracy": 0.6035455278001611,
+      "recalls": {
+        "A": 0.8823529411764706,
+        "B": 0.4796380090497738,
+        "C": 0.37142857142857144,
+        "D": 0.7708333333333334
+      },
+      "class_recalls": {
+        "angry": 0.8823529411764706,
+        "happy/excited": 0.4796380090497738,
+        "sad": 0.37142857142857144,
+        "neutral": 0.7708333333333334
+      },
+      "predicted_counts": {
+        "A": 327,
+        "B": 249,
+        "C": 111,
+        "D": 554
+      },
+      "confusion_matrix": [
+        [
+          150,
+          7,
+          4,
+          9
+        ],
+        [
+          77,
+          212,
+          8,
+          145
+        ],
+        [
+          35,
+          15,
+          91,
+          104
+        ],
+        [
+          65,
+          15,
+          8,
+          296
+        ]
+      ],
+      "utterances": 1241,
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+        "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+        "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc",
+        "transport_ablation": {
+          "gate_tensors": 36,
+          "transport_up_tensors": 36,
+          "tensors_zeroed": 72,
+          "scalars_zeroed": 590112
+        }
+      },
+      "predictions_sha256": "92bd0dae7e287ffe6d252c04b367dfdc76961982a39f029c3ad5ab5c0eaac16a",
+      "eval_seconds": 94.34548511198955,
+      "peak_allocated_bytes": 10113543168
+    }
+  },
+  "contrasts": {
+    "question_audio-mixed vs frozen-base": {
+      "uar": {
+        "delta_pp": 3.014810491504294,
+        "interval_95_pp": [
+          1.1467100327680442,
+          4.848089177717242
+        ]
+      },
+      "accuracy": {
+        "delta_pp": 3.30378726833199,
+        "interval_95_pp": [
+          1.001414095358926,
+          5.443897831833306
+        ]
+      },
+      "recall": {
+        "A": {
+          "delta_pp": 0.5882352941176471,
+          "interval_95_pp": [
+            -1.7699115044247788,
+            2.692567567567564
+          ]
+        },
+        "B": {
+          "delta_pp": 7.6923076923076925,
+          "interval_95_pp": [
+            5.304989550679206,
+            10.368061646410222
+          ]
+        },
+        "C": {
+          "delta_pp": 6.122448979591836,
+          "interval_95_pp": [
+            1.7481501057082454,
+            10.452961672473867
+          ]
+        },
+        "D": {
+          "delta_pp": -2.34375,
+          "interval_95_pp": [
+            -5.555797101449275,
+            0.9050115514483734
+          ]
+        }
+      },
+      "candidate_only_correct": 65,
+      "reference_only_correct": 24,
+      "resamples": 10000,
+      "valid_uar_resamples": 10000,
+      "seed": 42,
+      "clusters": 31,
+      "cluster_unit": "original dialogue annotation file"
+    },
+    "lora-mixed vs frozen-base": {
+      "uar": {
+        "delta_pp": 3.7932961646196945,
+        "interval_95_pp": [
+          1.5781859548351034,
+          6.275760142363292
+        ]
+      },
+      "accuracy": {
+        "delta_pp": 4.915390813859791,
+        "interval_95_pp": [
+          2.213972883435928,
+          7.6690674795015905
+        ]
+      },
+      "recall": {
+        "A": {
+          "delta_pp": -2.3529411764705883,
+          "interval_95_pp": [
+            -5.555555555555555,
+            0.8066155258326753
+          ]
+        },
+        "B": {
+          "delta_pp": 9.728506787330318,
+          "interval_95_pp": [
+            6.507573618993849,
+            13.38406385281385
+          ]
+        },
+        "C": {
+          "delta_pp": 5.714285714285714,
+          "interval_95_pp": [
+            0.3543951998822059,
+            12.109408791089965
+          ]
+        },
+        "D": {
+          "delta_pp": 2.083333333333333,
+          "interval_95_pp": [
+            -1.2618495682375808,
+            5.924214498859048
+          ]
+        }
+      },
+      "candidate_only_correct": 81,
+      "reference_only_correct": 20,
+      "resamples": 10000,
+      "valid_uar_resamples": 10000,
+      "seed": 42,
+      "clusters": 31,
+      "cluster_unit": "original dialogue annotation file"
+    },
+    "question_audio-mixed vs lora-mixed": {
+      "uar": {
+        "delta_pp": -0.7784856731154001,
+        "interval_95_pp": [
+          -2.0784596078253474,
+          0.3613748185481383
+        ]
+      },
+      "accuracy": {
+        "delta_pp": -1.6116035455278,
+        "interval_95_pp": [
+          -3.0016028364869616,
+          -0.2798305669589458
+        ]
+      },
+      "recall": {
+        "A": {
+          "delta_pp": 2.941176470588235,
+          "interval_95_pp": [
+            0.0,
+            5.46875
+          ]
+        },
+        "B": {
+          "delta_pp": -2.0361990950226243,
+          "interval_95_pp": [
+            -3.816860156912638,
+            -0.49501894633907884
+          ]
+        },
+        "C": {
+          "delta_pp": 0.40816326530612246,
+          "interval_95_pp": [
+            -2.5974025974025974,
+            2.91981474367183
+          ]
+        },
+        "D": {
+          "delta_pp": -4.427083333333334,
+          "interval_95_pp": [
+            -6.744868035190615,
+            -2.4539125466137386
+          ]
+        }
+      },
+      "candidate_only_correct": 10,
+      "reference_only_correct": 30,
+      "resamples": 10000,
+      "valid_uar_resamples": 10000,
+      "seed": 42,
+      "clusters": 31,
+      "cluster_unit": "original dialogue annotation file"
+    },
+    "question_audio-mixed vs question_audio-mixed-off": {
+      "uar": {
+        "delta_pp": 0.35320738872472063,
+        "interval_95_pp": [
+          -0.494304429525443,
+          1.2159928451563977
+        ]
+      },
+      "accuracy": {
+        "delta_pp": 0.16116035455278002,
+        "interval_95_pp": [
+          -0.6140451936292344,
+          0.9449259354628857
+        ]
+      },
+      "recall": {
+        "A": {
+          "delta_pp": 1.7647058823529411,
+          "interval_95_pp": [
+            0.0,
+            3.816793893129771
+          ]
+        },
+        "B": {
+          "delta_pp": 1.583710407239819,
+          "interval_95_pp": [
+            0.6011648484375047,
+            3.3743367600729544
+          ]
+        },
+        "C": {
+          "delta_pp": 0.40816326530612246,
+          "interval_95_pp": [
+            -1.092896174863388,
+            1.6778523489932886
+          ]
+        },
+        "D": {
+          "delta_pp": -2.34375,
+          "interval_95_pp": [
+            -3.968253968253968,
+            -1.0581544824502578
+          ]
+        }
+      },
+      "candidate_only_correct": 14,
+      "reference_only_correct": 12,
+      "resamples": 10000,
+      "valid_uar_resamples": 10000,
+      "seed": 42,
+      "clusters": 31,
+      "cluster_unit": "original dialogue annotation file"
+    }
+  }
+}

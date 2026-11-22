@@ -1,0 +1,12 @@
+{
+  "method": "gralora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/gralora/checkpoint-256",
+  "step": 256,
+  "dev_accuracy": 0.83984375,
+  "adapter_sha256": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+  "config_sha256": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d",
+  "files": {
+    "adapter_model.safetensors": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+    "adapter_config.json": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "utterances": 256,
+  "correct": 58,
+  "accuracy": 0.2265625,
+  "by_domain": {},
+  "by_category": {},
+  "by_question_relation": {
+    "Both": {
+      "correct": 58,
+      "total": 254,
+      "accuracy": 0.2283464566929134
+    },
+    "Sound": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "View": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    }
+  },
+  "macro_question_relation_accuracy": 0.07611548556430446,
+  "by_question_type": {
+    "Come From": {
+      "correct": 14,
+      "total": 80,
+      "accuracy": 0.175
+    },
+    "Happening": {
+      "correct": 10,
+      "total": 52,
+      "accuracy": 0.19230769230769232
+    },
+    "Used For": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "Where": {
+      "correct": 8,
+      "total": 29,
+      "accuracy": 0.27586206896551724
+    },
+    "Which": {
+      "correct": 25,
+      "total": 92,
+      "accuracy": 0.2717391304347826
+    },
+    "Why": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    }
+  },
+  "macro_question_type_accuracy": 0.31915148195133203,
+  "seconds": 17.114344111992978,
+  "peak_allocated_bytes": 10027443712,
+  "peak_reserved_bytes": 13342081024
+}

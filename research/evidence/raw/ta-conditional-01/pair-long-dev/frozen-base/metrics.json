@@ -1,0 +1,39 @@
+{
+  "utterances": 240,
+  "correct": 99,
+  "accuracy": 0.4125,
+  "by_domain": {
+    "count": {
+      "correct": 25,
+      "total": 80,
+      "accuracy": 0.3125
+    },
+    "loudness": {
+      "correct": 38,
+      "total": 80,
+      "accuracy": 0.475
+    },
+    "timing": {
+      "correct": 36,
+      "total": 80,
+      "accuracy": 0.45
+    }
+  },
+  "macro_domain_accuracy": 0.41250000000000003,
+  "by_category": {},
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "frozen-base",
+  "tuner": "frozen-base",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345"
+  },
+  "no_transport": false,
+  "manifest_sha256": "eb2b15ba723d0532a59cc20e3cfd7197c336d705ba0cc2dcbb882ab7dcdd7a8f",
+  "predictions_sha256": "2f63bd44b75ecba356187a1ebc84d6f00306e670f0730f073effe2a76f8e721d",
+  "eval_seconds": 30.01695184397977,
+  "peak_allocated_bytes": 9980109824,
+  "peak_reserved_bytes": 10263461888
+}

@@ -1,0 +1,98 @@
+{
+  "method": "known-target-qo",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.25,
+    "accuracy": 0.136986301369863,
+    "recalls": {
+      "A": 1.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 0.0
+    },
+    "confusion_matrix": [
+      [
+        170,
+        0,
+        0,
+        0
+      ],
+      [
+        442,
+        0,
+        0,
+        0
+      ],
+      [
+        245,
+        0,
+        0,
+        0
+      ],
+      [
+        384,
+        0,
+        0,
+        0
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.2734375,
+    "best_step": null,
+    "updates": 0,
+    "trainable": 2359296,
+    "correct": 385,
+    "exact_accuracy": 0.385,
+    "official_text_accuracy": 0.386,
+    "by_domain": {
+      "music": {
+        "correct": 100,
+        "total": 334,
+        "accuracy": 0.2994011976047904
+      },
+      "sound": {
+        "correct": 158,
+        "total": 333,
+        "accuracy": 0.4744744744744745
+      },
+      "speech": {
+        "correct": 127,
+        "total": 333,
+        "accuracy": 0.3813813813813814
+      }
+    },
+    "train_seconds": 77.68198550998932,
+    "training_peak_allocated_gib": 0.0
+  },
+  "checkpoint": {
+    "method": "known-target-qo",
+    "strategy": "source-selected dense teacher; independent linear construction",
+    "teacher_selection": {
+      "method": "full",
+      "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/full/checkpoint-32",
+      "step": 32,
+      "dev_accuracy": 0.28125,
+      "adapter_sha256": "d9af2af3b516cb20e5ffac8c9203b3bcea4edc294d8373921f74190c9d88bd75",
+      "config_sha256": "c905629be1848af633332259778a389bb4eb3fff5793e059235ac304d03fa1d3",
+      "files": {
+        "model-00001-of-00002.safetensors": "5ddab5b0b195af505d01475414ae3533c216c674aec51dcd1d553be300735ef7",
+        "model-00002-of-00002.safetensors": "715327d911bd2925eaf54e9fe3ef1773d7ffa8c186f19b756f489aeb8c282482",
+        "config.json": "24e8691154453fd7355731075ca383ae1893daa325d0cf38652cba56ccd6d26e",
+        "model.safetensors.index.json": "89b4a3e73928002f458ba47757a64f997965537b18b6b75e11ec75096bafc077"
+      }
+    },
+    "construction_sha256": "243901dbc70976ddb4eba0b6ef599b8359bf519391c15c7661e725076a467256",
+    "step": null,
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01/omni-control/checkpoint-constructed",
+    "adapter_sha256": "144ded1e705ef184bc200831e625e39947892b473173b07ff988b54824f6b43a",
+    "config_sha256": "bf53bcf3eef205a5ddb4cf862d8c31e84b44e4233f10c2abc52f6b062f8031fc",
+    "files": {
+      "adapter_model.safetensors": "144ded1e705ef184bc200831e625e39947892b473173b07ff988b54824f6b43a",
+      "adapter_config.json": "bf53bcf3eef205a5ddb4cf862d8c31e84b44e4233f10c2abc52f6b062f8031fc"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01/omni-control",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/known-target-qo"
+}

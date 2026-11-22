@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 719,
+  "accuracy": 0.719,
+  "by_domain": {
+    "music": {
+      "correct": 218,
+      "total": 334,
+      "accuracy": 0.6526946107784432
+    },
+    "sound": {
+      "correct": 262,
+      "total": 333,
+      "accuracy": 0.7867867867867868
+    },
+    "speech": {
+      "correct": 239,
+      "total": 333,
+      "accuracy": 0.7177177177177178
+    }
+  },
+  "macro_domain_accuracy": 0.7190663717609826,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 112,
+      "total": 181,
+      "accuracy": 0.6187845303867403
+    },
+    "music/Reasoning": {
+      "correct": 106,
+      "total": 153,
+      "accuracy": 0.6928104575163399
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 172,
+      "total": 227,
+      "accuracy": 0.7577092511013216
+    },
+    "sound/['Reasoning']": {
+      "correct": 12,
+      "total": 13,
+      "accuracy": 0.9230769230769231
+    },
+    "speech/Information Extraction": {
+      "correct": 40,
+      "total": 49,
+      "accuracy": 0.8163265306122449
+    },
+    "speech/Reasoning": {
+      "correct": 199,
+      "total": 284,
+      "accuracy": 0.7007042253521126
+    }
+  },
+  "macro_category_accuracy": 0.7640173707807196,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 112.06823120103218,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+  "config_sha256": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7",
+  "files": {
+    "adapter_model.safetensors": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+    "adapter_config.json": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7"
+  },
+  "method": "lokra"
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "commit": null,
+    "commit_status": "not_recorded_in_capture",
+    "license": "Apache-2.0",
+    "license_path": "snapshot/ms-swift/LICENSE",
+    "local_modifications": "possible; this is the locally captured source, not a claim of an unmodified upstream checkout",
+    "local_source": "/root/autodl-tmp/ms-swift-librispeech/src/ms-swift",
+    "name": "ms-swift",
+    "repository_url": "https://github.com/modelscope/ms-swift",
+    "version": "4.7.0.dev0"
+  },
+  {
+    "commit": null,
+    "commit_status": "installed_distribution_without_recorded_git_commit",
+    "license": "Apache-2.0",
+    "license_path": "snapshot/peft-default/peft-0.15.2.dist-info/LICENSE",
+    "local_source": "resolved peft package selected by the capture interpreter; see provenance/environment.json and the project provenance.py",
+    "name": "peft-default",
+    "repository_url": "https://github.com/huggingface/peft",
+    "version": "0.15.2"
+  },
+  {
+    "commit": null,
+    "commit_status": "installed_distribution_without_recorded_git_commit",
+    "license": "Apache-2.0",
+    "license_path": "snapshot/peft-randlora/peft-0.17.1.dist-info/licenses/LICENSE",
+    "local_source": "/root/autodl-tmp/r1-aqa/paper-envs/peft-0.17.1",
+    "name": "peft-randlora",
+    "repository_url": "https://github.com/huggingface/peft",
+    "version": "0.17.1"
+  },
+  {
+    "commit": "110127f54c0dfba3faa5ec9feee4a7e4148679c5",
+    "commit_evidence": "local MMAU provenance.json labels_and_evaluator; download.py git_revision",
+    "evaluation_sha256": "85480e1c0dfe8ee1406e9c6e598eff0dca9e0216701f076faf69081c6aab1558",
+    "license": "Apache-2.0",
+    "license_path": "snapshot/official-mmau/LICENSE",
+    "local_source": "/root/autodl-tmp/r1-aqa/mmau",
+    "name": "official-mmau",
+    "project_authored_files": [
+      "download.py"
+    ],
+    "project_license_path": "licenses/PROJECT-APACHE-2.0.txt",
+    "repository_url": "https://github.com/Sakshi113/MMAU",
+    "upstream_files": [
+      "LICENSE",
+      "README.md",
+      "evaluation.py"
+    ]
+  },
+  {
+    "commit": null,
+    "license": "Apache-2.0",
+    "license_path": "licenses/PROJECT-APACHE-2.0.txt",
+    "local_source": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01",
+    "name": "cpu-diagnostics",
+    "origin": "project-authored verification scripts retained under the existing project Apache-2.0 license",
+    "repository_url": null
+  },
+  {
+    "commit": "eaeb7d3f265853343b234172ed44cd7623c5212a",
+    "commit_evidence": "project experiments/ms_swift_aqa/papers28/expressive.py REVISION",
+    "export_status": "reference_only_no_source_bytes_copied",
+    "files": {
+      "paper01-reference/official/helper.py": {
+        "bytes": 3093,
+        "executable": false,
+        "sha256": "788e3c40822977fa90974f14dfb83f0c83c75c8f0760f21414e7d6eaab530a04"
+      },
+      "paper01-reference/official/load_model.py": {
+        "bytes": 12267,
+        "executable": false,
+        "sha256": "5bb6d03cb8a7e27ebf26c55679e7dfcef929719df685eaed9d9de366ca16dc3a"
+      },
+      "paper01-reference/official/run_exp.py": {
+        "bytes": 42268,
+        "executable": false,
+        "sha256": "9d7db4f92b1f11744edd5109dc915ce5e7477185edca6bd8194e3753650aab6a"
+      },
+      "paper01-reference/run_tfn.py": {
+        "bytes": 42282,
+        "executable": false,
+        "sha256": "ce9910077aefe1ce86b436fe6c78ef3f0b499c73d4a3ef98d3e3090a5e602855"
+      },
+      "paper01-reference/transformer.diff": {
+        "bytes": 829,
+        "executable": false,
+        "sha256": "9bc2b9df4e03ec773ca49c3e0156be85d27d9977203d400305e437fa9c6d2f50"
+      }
+    },
+    "license": null,
+    "license_status": "No explicit redistribution license was present in the captured five files or the inspected local cached author sources. Upstream web/API inspection was unavailable; no claim that upstream has no license.",
+    "local_source": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01",
+    "name": "paper01-reference",
+    "repository_url": "https://github.com/UW-Madison-Lee-Lab/Expressive_Power_of_LoRA"
+  }
+]

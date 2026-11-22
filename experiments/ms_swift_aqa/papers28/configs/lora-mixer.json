@@ -1,0 +1,15 @@
+{
+  "method":"lora-mixer", "rank":8, "alpha":8, "gradient_checkpointing":false,
+  "target_modules":["q_proj","k_proj","v_proj","o_proj"],
+  "settings":{
+    "num_experts":4, "top_k":3, "router_hidden":256,
+    "balance_alpha":0.1,"entropy_gamma":0.1,"balance_loss_weight":0.1,"preserve_weight":0.00001,
+    "domains":["Which","Come From","Happening","Where"],
+    "descriptions":["Identify an object or event in an audio clip from the given answer choices.",
+      "Determine the source of a sound in an audio clip from the given answer choices.",
+      "Describe an activity, event or sequence heard in an audio clip by choosing the correct option.",
+      "Identify the location or scene of an audio clip by choosing the correct option."],
+    "examples_per_expert":64,"stage_accumulation":4,
+    "source_manifest":"/root/autodl-tmp/r1-aqa/data/pilot-01/train.jsonl"
+  }
+}

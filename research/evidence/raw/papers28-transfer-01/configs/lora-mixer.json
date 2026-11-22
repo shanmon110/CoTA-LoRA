@@ -1,0 +1,77 @@
+{
+  "adapter": {
+    "alpha": 8,
+    "gate_init": 0.0,
+    "gate_multiplier": 1.0,
+    "independent_transport_up": true,
+    "last_n": 36,
+    "rank": 8,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "transport_queries": "all_valid"
+  },
+  "generation": {
+    "batch_size": 2
+  },
+  "methods": [
+    "lora-mixer"
+  ],
+  "model": "/root/autodl-tmp/west-preflight/model",
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "model_type": "qwen2_5_omni",
+  "objective": "sft",
+  "patience": 3,
+  "snapshot_manifest": "experiments/ms_swift_librispeech/evidence/verified_snapshot.json",
+  "swift_source": "/root/autodl-tmp/ms-swift-librispeech/src/ms-swift",
+  "task": "aqa",
+  "training": {
+    "data_seed": 42,
+    "dataloader_num_workers": 0,
+    "disable_tqdm": true,
+    "eval_steps": 32,
+    "gradient_accumulation_steps": 4,
+    "gradient_checkpointing": false,
+    "learning_rate": 0.0002,
+    "logging_steps": 1,
+    "lr_scheduler_type": "constant",
+    "max_length": 2048,
+    "num_train_epochs": 2,
+    "optim": "adamw_torch",
+    "per_device_eval_batch_size": 2,
+    "per_device_train_batch_size": 4,
+    "save_steps": 32,
+    "seed": 42,
+    "warmup_ratio": 0,
+    "weight_decay": 0.0
+  },
+  "method_options": {
+    "lora-mixer": {
+      "num_experts": 4,
+      "top_k": 3,
+      "router_hidden": 256,
+      "balance_alpha": 0.1,
+      "entropy_gamma": 0.1,
+      "balance_loss_weight": 0.1,
+      "preserve_weight": 1e-05,
+      "domains": [
+        "Which",
+        "Come From",
+        "Happening",
+        "Where"
+      ],
+      "descriptions": [
+        "Identify an object or event in an audio clip from the given answer choices.",
+        "Determine the source of a sound in an audio clip from the given answer choices.",
+        "Describe an activity, event or sequence heard in an audio clip by choosing the correct option.",
+        "Identify the location or scene of an audio clip by choosing the correct option."
+      ],
+      "examples_per_expert": 64,
+      "stage_accumulation": 4,
+      "source_manifest": "/root/autodl-tmp/r1-aqa/data/pilot-01/train.jsonl"
+    }
+  }
+}

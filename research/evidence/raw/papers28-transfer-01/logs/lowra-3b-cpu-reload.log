@@ -1,0 +1,17 @@
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+Qwen2_5OmniToken2WavModel does not support eager attention implementation, fall back to sdpa
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00, 19.49it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 18.79it/s]
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00, 19.99it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00, 19.22it/s]
+{
+  "projections": 252,
+  "released_dense_weights": 252,
+  "trainable": 14966784,
+  "adapter_bytes": 59924056,
+  "idx": "0e0d2c87e4b54f1f87caa2af6717f9459f396ba1fb8a0039ead08786ad9c3ed4",
+  "clean_reload_logits_match": "bitwise",
+  "max_abs_logit_change": 20.84375,
+  "device": "cpu",
+  "backward": true,
+  "optimizer": true
+}

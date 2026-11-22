@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 735,
+  "accuracy": 0.735,
+  "by_domain": {
+    "music": {
+      "correct": 223,
+      "total": 334,
+      "accuracy": 0.6676646706586826
+    },
+    "sound": {
+      "correct": 270,
+      "total": 333,
+      "accuracy": 0.8108108108108109
+    },
+    "speech": {
+      "correct": 242,
+      "total": 333,
+      "accuracy": 0.7267267267267268
+    }
+  },
+  "macro_domain_accuracy": 0.7350674027320734,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 117,
+      "total": 181,
+      "accuracy": 0.6464088397790055
+    },
+    "music/Reasoning": {
+      "correct": 106,
+      "total": 153,
+      "accuracy": 0.6928104575163399
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 182,
+      "total": 227,
+      "accuracy": 0.801762114537445
+    },
+    "sound/['Reasoning']": {
+      "correct": 10,
+      "total": 13,
+      "accuracy": 0.7692307692307693
+    },
+    "speech/Information Extraction": {
+      "correct": 39,
+      "total": 49,
+      "accuracy": 0.7959183673469388
+    },
+    "speech/Reasoning": {
+      "correct": 203,
+      "total": 284,
+      "accuracy": 0.7147887323943662
+    }
+  },
+  "macro_category_accuracy": 0.7513755654606028,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 110.54812675894937,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  },
+  "method": "rolora-federated"
+}

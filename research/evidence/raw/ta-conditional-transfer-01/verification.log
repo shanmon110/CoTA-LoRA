@@ -1,0 +1,10 @@
+Verified 1241 Session 5 items from 31 original dialogues
+frozen-base: UAR 59.94% · accuracy 57.21%
+lora-mixed: UAR 63.74% · accuracy 62.13%
+question_audio-mixed: UAR 62.96% · accuracy 60.52%
+question_audio-mixed-off: UAR 62.61% · accuracy 60.35%
+question_audio-mixed vs frozen-base: UAR Δ +3.01 pp, 95% CI [1.1467100327680442, 4.848089177717242]
+lora-mixed vs frozen-base: UAR Δ +3.79 pp, 95% CI [1.5781859548351034, 6.275760142363292]
+question_audio-mixed vs lora-mixed: UAR Δ -0.78 pp, 95% CI [-2.0784596078253474, 0.3613748185481383]
+question_audio-mixed vs question_audio-mixed-off: UAR Δ +0.35 pp, 95% CI [-0.494304429525443, 1.2159928451563977]
+{"verified": {"frozen-base": 757, "lora-mixed": 725, "question_audio-mixed": 721, "question_audio-mixed-off": 725}, "missing": []}

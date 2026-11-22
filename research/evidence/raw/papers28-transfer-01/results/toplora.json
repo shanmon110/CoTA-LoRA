@@ -1,0 +1,83 @@
+{
+  "method": "toplora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6330949807807739,
+    "accuracy": 0.5930701047542305,
+    "recalls": {
+      "A": 0.9117647058823529,
+      "B": 0.4321266968325792,
+      "C": 0.4775510204081633,
+      "D": 0.7109375
+    },
+    "confusion_matrix": [
+      [
+        155,
+        7,
+        4,
+        4
+      ],
+      [
+        100,
+        191,
+        13,
+        138
+      ],
+      [
+        54,
+        11,
+        117,
+        63
+      ],
+      [
+        88,
+        11,
+        12,
+        273
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.8203125,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 21678048,
+    "correct": 714,
+    "exact_accuracy": 0.714,
+    "official_text_accuracy": 0.716,
+    "by_domain": {
+      "music": {
+        "correct": 213,
+        "total": 334,
+        "accuracy": 0.6377245508982036
+      },
+      "sound": {
+        "correct": 264,
+        "total": 333,
+        "accuracy": 0.7927927927927928
+      },
+      "speech": {
+        "correct": 237,
+        "total": 333,
+        "accuracy": 0.7117117117117117
+      }
+    },
+    "train_seconds": 346.8520451699733,
+    "training_peak_allocated_gib": 11.71103286743164
+  },
+  "checkpoint": {
+    "method": "toplora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/toplora/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.8203125,
+    "adapter_sha256": "212071407274bd1322f7e5f3631d8afb90eff70b33cd4be87a420eeb400088e1",
+    "config_sha256": "e4d82d58264d5d4078982f7e58399c957444440f6c9c7830ab2cf34a7be4b93f",
+    "files": {
+      "adapter_model.safetensors": "212071407274bd1322f7e5f3631d8afb90eff70b33cd4be87a420eeb400088e1",
+      "adapter_config.json": "e4d82d58264d5d4078982f7e58399c957444440f6c9c7830ab2cf34a7be4b93f"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/toplora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/toplora"
+}

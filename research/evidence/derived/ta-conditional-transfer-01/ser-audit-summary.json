@@ -1,0 +1,57 @@
+{
+  "session": 5,
+  "n": 1241,
+  "manifest": "/root/autodl-tmp/iemocap/swift-ser/data/test.jsonl",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "classes": {
+    "A": "angry",
+    "B": "happy/excited",
+    "C": "sad",
+    "D": "neutral"
+  },
+  "original_tags": {
+    "ang": "A",
+    "hap": "B",
+    "exc": "B",
+    "sad": "C",
+    "neu": "D"
+  },
+  "n_dialogues": 31,
+  "duration_seconds": {
+    "min": 0.7799375,
+    "median": 3.322125,
+    "max": 34.13875
+  },
+  "train_overlap_checks": {
+    "short": {
+      "manifest": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/train.jsonl",
+      "manifest_sha256": "aabb76719b47cc357991ea3187eb733636cd5c4a6107be4c6fc3362e6102c820",
+      "utterances": 2688,
+      "utterance_or_source_id_overlap": 0,
+      "wav_sha256_overlap": 0,
+      "pcm_sha256_overlap": 0
+    },
+    "long": {
+      "manifest": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/train.jsonl",
+      "manifest_sha256": "5536875376029d13589ebf9fbba6195e4a5a441742036e1098c95074142c847f",
+      "utterances": 2688,
+      "utterance_or_source_id_overlap": 0,
+      "wav_sha256_overlap": 0,
+      "pcm_sha256_overlap": 0
+    },
+    "mixed": {
+      "manifest": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/train.jsonl",
+      "manifest_sha256": "5a0a094a44fb3063870e5f737b0e610ac5c7f349b8bb0b7cc072988ae21f3b39",
+      "utterances": 2688,
+      "utterance_or_source_id_overlap": 0,
+      "wav_sha256_overlap": 0,
+      "pcm_sha256_overlap": 0
+    }
+  },
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "limitations": [
+    "Session 5 already evaluated in historical runs, but these AVQA checkpoints were selected on a separate paired development set.",
+    "Exact whole-file and PCM matching cannot exclude short reused clips across benchmarks or unknown pretraining overlap.",
+    "Paired dialogue bootstrap does not represent variability across sessions or speakers."
+  ]
+}

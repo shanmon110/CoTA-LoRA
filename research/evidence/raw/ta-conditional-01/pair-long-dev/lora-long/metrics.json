@@ -1,0 +1,42 @@
+{
+  "utterances": 240,
+  "correct": 232,
+  "accuracy": 0.9666666666666667,
+  "by_domain": {
+    "count": {
+      "correct": 79,
+      "total": 80,
+      "accuracy": 0.9875
+    },
+    "loudness": {
+      "correct": 73,
+      "total": 80,
+      "accuracy": 0.9125
+    },
+    "timing": {
+      "correct": 80,
+      "total": 80,
+      "accuracy": 1.0
+    }
+  },
+  "macro_domain_accuracy": 0.9666666666666667,
+  "by_category": {},
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "lora-long",
+  "tuner": "lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/lora-long/checkpoint-168",
+    "weights_sha256": "b0c667183a2ff2389027af373e72be56e27b9352a347f6bb00a9f415c1a2bcde",
+    "adapter_config_sha256": "76eaac757eeb30c4b121252e4adc077a2e5f972122932d8c484417867f743584"
+  },
+  "no_transport": false,
+  "manifest_sha256": "eb2b15ba723d0532a59cc20e3cfd7197c336d705ba0cc2dcbb882ab7dcdd7a8f",
+  "predictions_sha256": "a6cf90b08fc4c0a6ec960b43fe17b5d1ec6da120ae3359b5bcc4e12a08d0aff9",
+  "eval_seconds": 29.36097505997168,
+  "peak_allocated_bytes": 9987187712,
+  "peak_reserved_bytes": 10269753344
+}

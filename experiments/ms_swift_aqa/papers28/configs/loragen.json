@@ -1,0 +1,11 @@
+{
+  "method":"loragen","rank":2,"alpha":2,"target_modules":["q_proj","v_proj"],
+  "settings":{
+    "train_sha256":"7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d",
+    "heldout_question_types":["Why","Before Next"],
+    "source_description":"Listen to events in an audio clip. Choose the option explaining why the event occurred or what happened immediately before or after it.",
+    "latent_dim":64,"hidden_dim":128,"num_experts":4,"top_k":1,
+    "ae_lr":0.001115,"ae_steps":512,"denoiser_lr":0.0001,"denoiser_layers":4,
+    "diffusion_steps":500,"sampling_steps":64,"diffusion_updates":1024,"batch_size":4
+  }
+}

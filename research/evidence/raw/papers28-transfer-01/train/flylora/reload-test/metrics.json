@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 715,
+  "accuracy": 0.715,
+  "by_domain": {
+    "music": {
+      "correct": 210,
+      "total": 334,
+      "accuracy": 0.6287425149700598
+    },
+    "sound": {
+      "correct": 266,
+      "total": 333,
+      "accuracy": 0.7987987987987988
+    },
+    "speech": {
+      "correct": 239,
+      "total": 333,
+      "accuracy": 0.7177177177177178
+    }
+  },
+  "macro_domain_accuracy": 0.7150863438288587,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 109,
+      "total": 181,
+      "accuracy": 0.6022099447513812
+    },
+    "music/Reasoning": {
+      "correct": 101,
+      "total": 153,
+      "accuracy": 0.6601307189542484
+    },
+    "sound/Information Extraction": {
+      "correct": 75,
+      "total": 93,
+      "accuracy": 0.8064516129032258
+    },
+    "sound/Reasoning": {
+      "correct": 179,
+      "total": 227,
+      "accuracy": 0.788546255506608
+    },
+    "sound/['Reasoning']": {
+      "correct": 12,
+      "total": 13,
+      "accuracy": 0.9230769230769231
+    },
+    "speech/Information Extraction": {
+      "correct": 41,
+      "total": 49,
+      "accuracy": 0.8367346938775511
+    },
+    "speech/Reasoning": {
+      "correct": 198,
+      "total": 284,
+      "accuracy": 0.6971830985915493
+    }
+  },
+  "macro_category_accuracy": 0.7591904639516409,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10538884608,
+  "peak_reserved_bytes": 10980687872,
+  "eval_seconds": 119.00802889099577,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+  "config_sha256": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d",
+  "files": {
+    "adapter_model.safetensors": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+    "adapter_config.json": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d"
+  },
+  "method": "flylora"
+}

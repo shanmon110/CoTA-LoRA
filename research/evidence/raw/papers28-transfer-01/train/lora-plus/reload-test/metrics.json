@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 404,
+  "accuracy": 0.404,
+  "by_domain": {
+    "music": {
+      "correct": 172,
+      "total": 334,
+      "accuracy": 0.5149700598802395
+    },
+    "sound": {
+      "correct": 134,
+      "total": 333,
+      "accuracy": 0.4024024024024024
+    },
+    "speech": {
+      "correct": 98,
+      "total": 333,
+      "accuracy": 0.29429429429429427
+    }
+  },
+  "macro_domain_accuracy": 0.4038889188589787,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 94,
+      "total": 181,
+      "accuracy": 0.5193370165745856
+    },
+    "music/Reasoning": {
+      "correct": 78,
+      "total": 153,
+      "accuracy": 0.5098039215686274
+    },
+    "sound/Information Extraction": {
+      "correct": 46,
+      "total": 93,
+      "accuracy": 0.4946236559139785
+    },
+    "sound/Reasoning": {
+      "correct": 85,
+      "total": 227,
+      "accuracy": 0.3744493392070485
+    },
+    "sound/['Reasoning']": {
+      "correct": 3,
+      "total": 13,
+      "accuracy": 0.23076923076923078
+    },
+    "speech/Information Extraction": {
+      "correct": 9,
+      "total": 49,
+      "accuracy": 0.1836734693877551
+    },
+    "speech/Reasoning": {
+      "correct": 89,
+      "total": 284,
+      "accuracy": 0.31338028169014087
+    }
+  },
+  "macro_category_accuracy": 0.37514813073019526,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 109.78683943103533,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  },
+  "method": "lora-plus"
+}

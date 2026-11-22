@@ -1,0 +1,83 @@
+{
+  "method": "loft",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.40325320031858897,
+    "accuracy": 0.33601933924254634,
+    "recalls": {
+      "A": 0.9117647058823529,
+      "B": 0.40271493212669685,
+      "C": 0.22040816326530613,
+      "D": 0.078125
+    },
+    "confusion_matrix": [
+      [
+        155,
+        8,
+        7,
+        0
+      ],
+      [
+        240,
+        178,
+        11,
+        13
+      ],
+      [
+        166,
+        22,
+        54,
+        3
+      ],
+      [
+        308,
+        34,
+        12,
+        30
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.70703125,
+    "best_step": 96,
+    "updates": 192,
+    "trainable": 14966784,
+    "correct": 559,
+    "exact_accuracy": 0.559,
+    "official_text_accuracy": 0.564,
+    "by_domain": {
+      "music": {
+        "correct": 152,
+        "total": 334,
+        "accuracy": 0.4550898203592814
+      },
+      "sound": {
+        "correct": 227,
+        "total": 333,
+        "accuracy": 0.6816816816816816
+      },
+      "speech": {
+        "correct": 180,
+        "total": 333,
+        "accuracy": 0.5405405405405406
+      }
+    },
+    "train_seconds": 458.62455936090555,
+    "training_peak_allocated_gib": 12.093610286712646
+  },
+  "checkpoint": {
+    "method": "loft",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loft/checkpoint-96",
+    "step": 96,
+    "dev_accuracy": 0.70703125,
+    "adapter_sha256": "c408b03ca08c5df66c2c7954bfdc227d5d9685a00bba6b9978d45ad55c267c6d",
+    "config_sha256": "77bebdc4b64ad8c1338340d0f2ee9863aa80865f651f4f1956480e42f5f147b7",
+    "files": {
+      "adapter_model.safetensors": "c408b03ca08c5df66c2c7954bfdc227d5d9685a00bba6b9978d45ad55c267c6d",
+      "adapter_config.json": "77bebdc4b64ad8c1338340d0f2ee9863aa80865f651f4f1956480e42f5f147b7"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loft",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/loft"
+}

@@ -1,0 +1,91 @@
+{
+  "model_type": "Qwen2_5OmniForConditionalGeneration",
+  "processor_type": "Qwen2_5OmniProcessor",
+  "template_type": "Qwen2_5OmniTemplate",
+  "system": "You are a helpful assistant.",
+  "talker_active": false,
+  "template_prefix_without_audio_tokens": 38,
+  "supervised_suffix": "<|im_end|>\n",
+  "splits": {
+    "train": {
+      "count": 28539,
+      "min_frames": 141,
+      "max_frames": 2453,
+      "min_audio_tokens": 35,
+      "max_audio_tokens": 613,
+      "max_sequence_tokens": 775,
+      "median_sequence_tokens": 450,
+      "over_limit": 0,
+      "native_encoded_examples": [
+        {
+          "id": "1183-124566-0005",
+          "feature_frames": 141,
+          "audio_tokens": 35,
+          "sequence_tokens": 80,
+          "supervised_tokens": 7
+        },
+        {
+          "id": "2836-5355-0014",
+          "feature_frames": 1400,
+          "audio_tokens": 350,
+          "sequence_tokens": 459,
+          "supervised_tokens": 71
+        },
+        {
+          "id": "7859-102521-0017",
+          "feature_frames": 2453,
+          "audio_tokens": 613,
+          "sequence_tokens": 775,
+          "supervised_tokens": 124
+        }
+      ],
+      "lengths_include_reference": true
+    },
+    "dev-clean": {
+      "count": 2703,
+      "min_frames": 145,
+      "max_frames": 3265,
+      "min_audio_tokens": 36,
+      "max_audio_tokens": 816,
+      "max_sequence_tokens": 1019,
+      "median_sequence_tokens": 215,
+      "over_limit": 0,
+      "native_encoded_examples": [
+        {
+          "id": "3081-166546-0073",
+          "feature_frames": 145,
+          "audio_tokens": 36,
+          "sequence_tokens": 77,
+          "supervised_tokens": 3
+        },
+        {
+          "id": "3081-166546-0059",
+          "feature_frames": 592,
+          "audio_tokens": 148,
+          "sequence_tokens": 203,
+          "supervised_tokens": 17
+        },
+        {
+          "id": "422-122949-0013",
+          "feature_frames": 3265,
+          "audio_tokens": 816,
+          "sequence_tokens": 1002,
+          "supervised_tokens": 148
+        }
+      ],
+      "lengths_include_reference": true
+    },
+    "test-clean": {
+      "count": 2620,
+      "min_frames": 129,
+      "max_frames": 3496,
+      "min_audio_tokens": 32,
+      "max_audio_tokens": 874,
+      "max_sequence_tokens": 912,
+      "median_sequence_tokens": 183.0,
+      "over_limit": 0,
+      "native_encoded_examples": [],
+      "lengths_include_reference": false
+    }
+  }
+}

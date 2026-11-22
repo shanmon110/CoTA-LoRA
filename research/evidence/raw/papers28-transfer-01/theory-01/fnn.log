@@ -1,0 +1,35 @@
+Experiment Setting:
+| width: 8
+| target_depth: 1
+| frozen_depth: 2
+| rank: 3
+| use_bias: 1
+| activation: relu
+| std: 0.25
+| method: ours
+| batch_size: 256
+| n_epochs: 5000
+| lr: 0.0001
+| n_test: 5000
+| weight_decay: 0.01
+| init_mode: uniform_singular_values
+| pretrained: 0
+| pretrained_epochs: 1000
+| pretrained_lr: 0.001
+| pretrained_level: 3
+| tune_bias: 1
+| last_layers: 1
+| seed: 123
+| rank_step: 0
+| task: regression
+| n_train: inf
+| best_epoch: 0
+| n_head: 2
+| seq_length: 10
+| better_optim: 0
+| dropout: 0.1
+| exp: fnn
+| wandb: 0
+Singular values: tensor([0.5820, 0.5820, 0.5820, 0.5820, 0.5820, 0.5820, 0.5820, 0.5820])
+Test loss: 0.0329
+Test loss on shifted test set: 3.0024

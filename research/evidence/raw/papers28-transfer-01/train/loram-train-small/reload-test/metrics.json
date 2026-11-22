@@ -1,0 +1,76 @@
+{
+  "utterances": 1000,
+  "correct": 750,
+  "accuracy": 0.75,
+  "by_domain": {
+    "music": {
+      "correct": 232,
+      "total": 334,
+      "accuracy": 0.6946107784431138
+    },
+    "sound": {
+      "correct": 275,
+      "total": 333,
+      "accuracy": 0.8258258258258259
+    },
+    "speech": {
+      "correct": 243,
+      "total": 333,
+      "accuracy": 0.7297297297297297
+    }
+  },
+  "macro_domain_accuracy": 0.7500554446662231,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 130,
+      "total": 181,
+      "accuracy": 0.7182320441988951
+    },
+    "music/Reasoning": {
+      "correct": 102,
+      "total": 153,
+      "accuracy": 0.6666666666666666
+    },
+    "sound/Information Extraction": {
+      "correct": 79,
+      "total": 93,
+      "accuracy": 0.8494623655913979
+    },
+    "sound/Reasoning": {
+      "correct": 185,
+      "total": 227,
+      "accuracy": 0.8149779735682819
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 41,
+      "total": 49,
+      "accuracy": 0.8367346938775511
+    },
+    "speech/Reasoning": {
+      "correct": 202,
+      "total": 284,
+      "accuracy": 0.7112676056338029
+    }
+  },
+  "macro_category_accuracy": 0.7776421708129203,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 107.29423299001064,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "7794f0c220144aff9c8d6a0ef2ef32e7f2a700bfba48dad050cfbe5b1f93c5e8",
+  "config_sha256": "01e48e182a6066ba951e5139caebc6cd112dcd137bb4a0d169fd49d544adfd7b",
+  "files": {
+    "adapter_model.safetensors": "9a5e865cd729b34366f46a36037138f47b065d4f11acb80f9d661bcf8b5db343",
+    "recovered/adapter_model.safetensors": "81bb4c410af366ff0f2201037eca99199d3796971e51b9e27d3b059476e14bf1",
+    "adapter_config.json": "1e243ab134491d5e47f8d3728065c12170e37bc31afa548334b2e03f383d497d",
+    "recovered/adapter_config.json": "1e243ab134491d5e47f8d3728065c12170e37bc31afa548334b2e03f383d497d"
+  },
+  "method": "loram-train-small"
+}

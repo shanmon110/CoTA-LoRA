@@ -1,0 +1,50 @@
+{
+  "utterances": 240,
+  "correct": 161,
+  "accuracy": 0.6708333333333333,
+  "by_domain": {
+    "count": {
+      "correct": 59,
+      "total": 80,
+      "accuracy": 0.7375
+    },
+    "loudness": {
+      "correct": 58,
+      "total": 80,
+      "accuracy": 0.725
+    },
+    "timing": {
+      "correct": 44,
+      "total": 80,
+      "accuracy": 0.55
+    }
+  },
+  "macro_domain_accuracy": 0.6708333333333334,
+  "by_category": {},
+  "by_question_relation": {},
+  "by_question_type": {},
+  "pair_accuracy": 0.40625,
+  "by_pair_kind": {
+    "change": {
+      "pairs": 96,
+      "both_correct": 39,
+      "both_correct_rate": 0.40625,
+      "individual_correct": 132,
+      "individual_accuracy": 0.6875,
+      "flips": 50,
+      "flip_rate": 0.5208333333333334
+    },
+    "invariant": {
+      "pairs": 24,
+      "both_correct": 13,
+      "both_correct_rate": 0.5416666666666666,
+      "individual_correct": 29,
+      "individual_accuracy": 0.6041666666666666,
+      "flips": 3,
+      "flip_rate": 0.125
+    }
+  },
+  "seconds": 14.04719886899693,
+  "peak_allocated_bytes": 9814219264,
+  "peak_reserved_bytes": 19518193664
+}

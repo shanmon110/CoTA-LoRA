@@ -1,0 +1,9 @@
+{
+  "best_accuracy": 0.73046875,
+  "best_step": null,
+  "protocol": "Fixed generated adapter; development accuracy is diagnostic only",
+  "global_step": 1600,
+  "trainable_parameters": 460800,
+  "training_seconds": 132.3008418030222,
+  "peak_allocated_bytes": 12316709888
+}

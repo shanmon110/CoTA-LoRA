@@ -1,0 +1,69 @@
+{
+  "utterances": 256,
+  "correct": 75,
+  "accuracy": 0.29296875,
+  "by_domain": {},
+  "by_category": {},
+  "by_question_relation": {
+    "Both": {
+      "correct": 75,
+      "total": 254,
+      "accuracy": 0.2952755905511811
+    },
+    "Sound": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "View": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    }
+  },
+  "macro_question_relation_accuracy": 0.09842519685039369,
+  "by_question_type": {
+    "Come From": {
+      "correct": 24,
+      "total": 80,
+      "accuracy": 0.3
+    },
+    "Happening": {
+      "correct": 16,
+      "total": 52,
+      "accuracy": 0.3076923076923077
+    },
+    "Used For": {
+      "correct": 1,
+      "total": 1,
+      "accuracy": 1.0
+    },
+    "Where": {
+      "correct": 5,
+      "total": 29,
+      "accuracy": 0.1724137931034483
+    },
+    "Which": {
+      "correct": 27,
+      "total": 92,
+      "accuracy": 0.29347826086956524
+    },
+    "Why": {
+      "correct": 2,
+      "total": 2,
+      "accuracy": 1.0
+    }
+  },
+  "macro_question_type_accuracy": 0.5122640602775536,
+  "peak_allocated_bytes": 9744406528,
+  "peak_reserved_bytes": 9816768512,
+  "eval_seconds": 21.470847764983773,
+  "manifest_sha256": "64b0976c45a56c7406b30935b49367f464e1e22d9bce295b5e0ac8505e288d9f",
+  "adapter_sha256": "53d40097066384b214deb324556e9c4dbbc7d012d8c7a65b58fb6b274f7cda15",
+  "config_sha256": "3bccc3ff41d7acb9db995ff5e952aac841f49ebaaa3913e88745e0735c7fa8bc",
+  "files": {
+    "adapter_model.safetensors": "53d40097066384b214deb324556e9c4dbbc7d012d8c7a65b58fb6b274f7cda15",
+    "adapter_config.json": "3bccc3ff41d7acb9db995ff5e952aac841f49ebaaa3913e88745e0735c7fa8bc"
+  },
+  "method": "eva"
+}

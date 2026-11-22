@@ -1,0 +1,83 @@
+{
+  "method": "eva",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.2166248350301659,
+    "accuracy": 0.19661563255439163,
+    "recalls": {
+      "A": 0.48823529411764705,
+      "B": 0.27149321266968324,
+      "C": 0.0,
+      "D": 0.10677083333333333
+    },
+    "confusion_matrix": [
+      [
+        83,
+        54,
+        0,
+        33
+      ],
+      [
+        245,
+        120,
+        0,
+        77
+      ],
+      [
+        117,
+        92,
+        0,
+        36
+      ],
+      [
+        219,
+        124,
+        0,
+        41
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.29296875,
+    "best_step": 32,
+    "updates": 128,
+    "trainable": 13801984,
+    "correct": 379,
+    "exact_accuracy": 0.379,
+    "official_text_accuracy": 0.382,
+    "by_domain": {
+      "music": {
+        "correct": 90,
+        "total": 334,
+        "accuracy": 0.2694610778443114
+      },
+      "sound": {
+        "correct": 159,
+        "total": 333,
+        "accuracy": 0.4774774774774775
+      },
+      "speech": {
+        "correct": 130,
+        "total": 333,
+        "accuracy": 0.39039039039039036
+      }
+    },
+    "train_seconds": 229.68321096594445,
+    "training_peak_allocated_gib": 11.593217372894287
+  },
+  "checkpoint": {
+    "method": "eva",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/eva/checkpoint-32",
+    "step": 32,
+    "dev_accuracy": 0.29296875,
+    "adapter_sha256": "53d40097066384b214deb324556e9c4dbbc7d012d8c7a65b58fb6b274f7cda15",
+    "config_sha256": "3bccc3ff41d7acb9db995ff5e952aac841f49ebaaa3913e88745e0735c7fa8bc",
+    "files": {
+      "adapter_model.safetensors": "53d40097066384b214deb324556e9c4dbbc7d012d8c7a65b58fb6b274f7cda15",
+      "adapter_config.json": "3bccc3ff41d7acb9db995ff5e952aac841f49ebaaa3913e88745e0735c7fa8bc"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/eva",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/eva"
+}

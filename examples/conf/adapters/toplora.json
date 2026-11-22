@@ -1,0 +1,9 @@
+{
+  "method": "toplora",
+  "r": 8,
+  "lora_alpha": 16,
+  "last_n": 4,
+  "target_modules": [
+    "o_proj"
+  ]
+}

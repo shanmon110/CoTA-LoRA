@@ -1,0 +1,12 @@
+{
+  "hypothesis": "After phase 1, the learned gate stayed near 1 despite a non-negligible independent transport residual. Increase the AdamW learning rate for gate_weight only by 16\u00d7 with an otherwise identical start, target modules, data order and budget. Compare same-arm on/off as well as against original learning rate and LoRA. Predeclared before any question_audio official result.",
+  "setting": {
+    "lr_ordinary": 0.0002,
+    "lr_gate": 0.0032
+  },
+  "probe": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/gate-probe.json",
+  "phase_one_public_results_seen": [
+    "lora"
+  ],
+  "train_seed": 42
+}

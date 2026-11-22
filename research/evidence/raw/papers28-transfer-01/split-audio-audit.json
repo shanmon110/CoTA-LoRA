@@ -1,0 +1,39 @@
+{
+  "manifest_sha256": {
+    "train": "7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d",
+    "dev": "64b0976c45a56c7406b30935b49367f464e1e22d9bce295b5e0ac8505e288d9f",
+    "test": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+    "ser": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe"
+  },
+  "pcm": "16 kHz mono rounded PCM signed 16-bit little-endian",
+  "split_rows": {
+    "train": 2048,
+    "dev": 256,
+    "test": 1000,
+    "ser": 1241
+  },
+  "unique_pcm": {
+    "train": 2045,
+    "dev": 256,
+    "test": 904,
+    "ser": 1241
+  },
+  "split_pcm_intersections": {
+    "train / dev": 0,
+    "train / test": 0,
+    "train / ser": 0,
+    "dev / test": 0,
+    "dev / ser": 0,
+    "test / ser": 0
+  },
+  "avqa_train_dev_common_source_videos": 0,
+  "ser_sessions": [
+    5
+  ],
+  "ser_reference_counts": {
+    "D": 384,
+    "A": 170,
+    "C": 245,
+    "B": 442
+  }
+}

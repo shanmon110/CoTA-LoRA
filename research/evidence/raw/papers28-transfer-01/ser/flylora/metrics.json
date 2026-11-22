@@ -1,0 +1,49 @@
+{
+  "uar": 0.6327376383245606,
+  "accuracy": 0.6107977437550363,
+  "recalls": {
+    "A": 0.8235294117647058,
+    "B": 0.43665158371040724,
+    "C": 0.4530612244897959,
+    "D": 0.8177083333333334
+  },
+  "confusion_matrix": [
+    [
+      140,
+      7,
+      7,
+      16
+    ],
+    [
+      57,
+      193,
+      16,
+      176
+    ],
+    [
+      16,
+      11,
+      111,
+      107
+    ],
+    [
+      44,
+      14,
+      12,
+      314
+    ]
+  ],
+  "utterances": 1241,
+  "method": "flylora",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 101.75438979000319,
+  "peak_allocated_bytes": 10346004992,
+  "peak_reserved_bytes": 10454302720,
+  "predictions_sha256": "597eb14aae3a419a8b77f0109cb08a007cd53e543411b07ba77bf3dab6fcb6e2",
+  "adapter_sha256": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+  "config_sha256": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d",
+  "files": {
+    "adapter_model.safetensors": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+    "adapter_config.json": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d"
+  }
+}

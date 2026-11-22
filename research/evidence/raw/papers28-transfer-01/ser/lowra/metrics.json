@@ -1,0 +1,49 @@
+{
+  "uar": 0.25,
+  "accuracy": 0.136986301369863,
+  "recalls": {
+    "A": 1.0,
+    "B": 0.0,
+    "C": 0.0,
+    "D": 0.0
+  },
+  "confusion_matrix": [
+    [
+      170,
+      0,
+      0,
+      0
+    ],
+    [
+      442,
+      0,
+      0,
+      0
+    ],
+    [
+      245,
+      0,
+      0,
+      0
+    ],
+    [
+      384,
+      0,
+      0,
+      0
+    ]
+  ],
+  "utterances": 1241,
+  "method": "lowra",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 102.48357337503694,
+  "peak_allocated_bytes": 5502525440,
+  "peak_reserved_bytes": 9716105216,
+  "predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+  "adapter_sha256": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+  "config_sha256": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf",
+  "files": {
+    "adapter_model.safetensors": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+    "adapter_config.json": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf"
+  }
+}

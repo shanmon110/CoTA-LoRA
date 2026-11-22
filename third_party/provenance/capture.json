@@ -1,0 +1,7 @@
+{
+  "archive_sha256": "8274738a6bf2a0c3fba122627b3f0cd23693025b531496b8745e9aa65f71370c",
+  "files": 1474,
+  "finished_utc": "2026-11-21T08:08:18.516275+00:00",
+  "scope": "Capture of local source bytes at the recorded time. Historical training processes and earlier checkpoints may have used other bytes. Weights, audio, manifests, predictions and training logs are kept in their separately identified experiment locations.",
+  "started_utc": "2026-11-21T08:08:16.962238+00:00"
+}

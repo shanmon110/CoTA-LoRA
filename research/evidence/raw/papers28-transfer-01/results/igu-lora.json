@@ -1,0 +1,83 @@
+{
+  "method": "igu-lora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6006869574752978,
+    "accuracy": 0.5753424657534246,
+    "recalls": {
+      "A": 0.8941176470588236,
+      "B": 0.4253393665158371,
+      "C": 0.3020408163265306,
+      "D": 0.78125
+    },
+    "confusion_matrix": [
+      [
+        152,
+        7,
+        1,
+        10
+      ],
+      [
+        105,
+        188,
+        6,
+        143
+      ],
+      [
+        54,
+        14,
+        74,
+        103
+      ],
+      [
+        72,
+        8,
+        4,
+        300
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.71484375,
+    "best_step": 32,
+    "updates": 128,
+    "trainable": 29937600,
+    "correct": 756,
+    "exact_accuracy": 0.756,
+    "official_text_accuracy": 0.757,
+    "by_domain": {
+      "music": {
+        "correct": 236,
+        "total": 334,
+        "accuracy": 0.7065868263473054
+      },
+      "sound": {
+        "correct": 276,
+        "total": 333,
+        "accuracy": 0.8288288288288288
+      },
+      "speech": {
+        "correct": 244,
+        "total": 333,
+        "accuracy": 0.7327327327327328
+      }
+    },
+    "train_seconds": 304.7183506479487,
+    "training_peak_allocated_gib": 11.871069431304932
+  },
+  "checkpoint": {
+    "method": "igu-lora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/igu-lora/checkpoint-32",
+    "step": 32,
+    "dev_accuracy": 0.71484375,
+    "adapter_sha256": "3e57974461fd7f72bac090e6d0a75536bac0b87ef29feff8d495f093e8330726",
+    "config_sha256": "a493ed98dd48b4e4b11fe08e0a29aec220288ebcca2c62e857bb7fe4974133dc",
+    "files": {
+      "adapter_model.safetensors": "3e57974461fd7f72bac090e6d0a75536bac0b87ef29feff8d495f093e8330726",
+      "adapter_config.json": "a493ed98dd48b4e4b11fe08e0a29aec220288ebcca2c62e857bb7fe4974133dc"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/igu-lora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/igu-lora"
+}

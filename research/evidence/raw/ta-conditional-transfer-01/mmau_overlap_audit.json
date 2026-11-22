@@ -1,0 +1,75 @@
+{
+  "test_n": 1000,
+  "test_encoded": 904,
+  "test_pcm": 904,
+  "train_splits": {
+    "original_avqa": {
+      "n": 2048,
+      "distinct_encoded": 2045,
+      "distinct_pcm": 2045,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d"
+    },
+    "short_pairs": {
+      "n": 640,
+      "distinct_encoded": 640,
+      "distinct_pcm": 640,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "c962f89c2f8fc3c42f0bf426d2f1b3e4452f8de95b1c74c7c255f2b9a8bfe557"
+    },
+    "long_pairs": {
+      "n": 640,
+      "distinct_encoded": 640,
+      "distinct_pcm": 640,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "06a784bdb626c3f75e85c571db1c922182a1ce20268397309620e41b7acd1c98"
+    },
+    "mixed_pairs": {
+      "n": 640,
+      "distinct_encoded": 640,
+      "distinct_pcm": 640,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "96e5d9edbda130557f5a31c7359cb1fa430318bbcc8c5f45b4fd1f998a6a5e4c"
+    },
+    "mixed_actual": {
+      "n": 2688,
+      "distinct_encoded": 2685,
+      "distinct_pcm": 2685,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "5a0a094a44fb3063870e5f737b0e610ac5c7f349b8bb0b7cc072988ae21f3b39"
+    },
+    "mixed_selection": {
+      "n": 240,
+      "distinct_encoded": 240,
+      "distinct_pcm": 240,
+      "overlap": {
+        "ids": 0,
+        "encoded": 0,
+        "pcm": 0
+      },
+      "manifest_sha256": "6bbf60069bd1af7bd8659751cad06f24b1ccbdcf54de2b664afc79d86f883695"
+    }
+  },
+  "pcm_definition": "SHA256 of decoded mono 16 kHz rounded int16 PCM",
+  "limitation": "Exact duplicate checks do not identify differently edited source recordings or pretraining leakage."
+}

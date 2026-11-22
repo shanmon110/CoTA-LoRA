@@ -1,0 +1,84 @@
+{
+  "task": "asr",
+  "processor": "/root/.cache/west-preflight/processor/f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "budget": {
+    "max_audio_seconds": null,
+    "max_batch_frames": null,
+    "max_sequence_length": null
+  },
+  "batch_size": 1,
+  "prefilter": false,
+  "splits": {
+    "train": {
+      "input": "/root/autodl-tmp/west-preflight/manifests/asr/train.jsonl",
+      "input_sha256": "f2e0ffdfc3dafcb890ddc0fa5ca1704da5a8076c09801293443f67030e138cb0",
+      "total": 28539,
+      "eligible": 28539,
+      "over_limit": 0,
+      "reason_counts": {},
+      "largest_eligible_batch_frames": 2453,
+      "eligible_batch_fits": true,
+      "over_limit_manifest_order_batches": 0,
+      "duration_seconds": {
+        "min": 1.41,
+        "p50": 13.995,
+        "p90": 15.81,
+        "p95": 16.085,
+        "p99": 16.703099999999992,
+        "max": 24.525
+      },
+      "frames": {
+        "min": 141,
+        "p50": 1400.0,
+        "p90": 1581.0,
+        "p95": 1609.0,
+        "p99": 1670.619999999999,
+        "max": 2453
+      },
+      "sequence_length": {
+        "min": 109,
+        "p50": 479.0,
+        "p90": 535.0,
+        "p95": 545.0,
+        "p99": 563.0,
+        "max": 804
+      }
+    },
+    "dev": {
+      "input": "/root/autodl-tmp/west-preflight/manifests/asr/dev.jsonl",
+      "input_sha256": "e155b67e573f9d2e43c28091627ee7e08b4ef9599aac8691ca316eaee92fdd45",
+      "total": 2703,
+      "eligible": 2703,
+      "over_limit": 0,
+      "reason_counts": {},
+      "largest_eligible_batch_frames": 3265,
+      "eligible_batch_fits": true,
+      "over_limit_manifest_order_batches": 0,
+      "duration_seconds": {
+        "min": 1.445,
+        "p50": 5.92,
+        "p90": 13.329000000000006,
+        "p95": 16.4135,
+        "p99": 23.755000000000006,
+        "max": 32.645
+      },
+      "frames": {
+        "min": 145,
+        "p50": 592.0,
+        "p90": 1333.4000000000005,
+        "p95": 1641.8000000000002,
+        "p99": 2375.5000000000005,
+        "max": 3265
+      },
+      "sequence_length": {
+        "min": 103,
+        "p50": 215.0,
+        "p90": 400.0,
+        "p95": 477.0,
+        "p99": 660.8800000000001,
+        "max": 883
+      }
+    }
+  }
+}

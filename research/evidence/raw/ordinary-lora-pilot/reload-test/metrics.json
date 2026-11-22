@@ -1,0 +1,69 @@
+{
+  "utterances": 1000,
+  "correct": 724,
+  "accuracy": 0.724,
+  "by_domain": {
+    "music": {
+      "correct": 219,
+      "total": 334,
+      "accuracy": 0.655688622754491
+    },
+    "sound": {
+      "correct": 269,
+      "total": 333,
+      "accuracy": 0.8078078078078078
+    },
+    "speech": {
+      "correct": 236,
+      "total": 333,
+      "accuracy": 0.7087087087087087
+    }
+  },
+  "macro_domain_accuracy": 0.7240683797570026,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 115,
+      "total": 181,
+      "accuracy": 0.6353591160220995
+    },
+    "music/Reasoning": {
+      "correct": 104,
+      "total": 153,
+      "accuracy": 0.6797385620915033
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 180,
+      "total": 227,
+      "accuracy": 0.7929515418502202
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 37,
+      "total": 49,
+      "accuracy": 0.7551020408163265
+    },
+    "speech/Reasoning": {
+      "correct": 199,
+      "total": 284,
+      "accuracy": 0.7007042253521126
+    }
+  },
+  "macro_category_accuracy": 0.7498170013864948,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 106.96970876201522,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+  "method": "lora"
+}

@@ -1,0 +1,83 @@
+{
+  "method": "loragen",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6221853525063872,
+    "accuracy": 0.6059629331184528,
+    "recalls": {
+      "A": 0.788235294117647,
+      "B": 0.38461538461538464,
+      "C": 0.4122448979591837,
+      "D": 0.9036458333333334
+    },
+    "confusion_matrix": [
+      [
+        134,
+        5,
+        6,
+        25
+      ],
+      [
+        52,
+        170,
+        16,
+        204
+      ],
+      [
+        15,
+        4,
+        101,
+        125
+      ],
+      [
+        20,
+        7,
+        10,
+        347
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.73046875,
+    "best_step": null,
+    "updates": 1600,
+    "trainable": 460800,
+    "correct": 738,
+    "exact_accuracy": 0.738,
+    "official_text_accuracy": 0.74,
+    "by_domain": {
+      "music": {
+        "correct": 227,
+        "total": 334,
+        "accuracy": 0.6796407185628742
+      },
+      "sound": {
+        "correct": 267,
+        "total": 333,
+        "accuracy": 0.8018018018018018
+      },
+      "speech": {
+        "correct": 244,
+        "total": 333,
+        "accuracy": 0.7327327327327328
+      }
+    },
+    "train_seconds": 132.3008418030222,
+    "training_peak_allocated_gib": 11.470829963684082
+  },
+  "checkpoint": {
+    "method": "loragen",
+    "strategy": "fixed source-task description and single generated adapter",
+    "step": null,
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loragen/checkpoint-generated",
+    "adapter_sha256": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+    "config_sha256": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5",
+    "files": {
+      "adapter_model.safetensors": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+      "adapter_config.json": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loragen",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/loragen"
+}

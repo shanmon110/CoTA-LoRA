@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_publication_recovers_interrupted_directory_rename_and_rejects_changes __
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-195/test_publication_recovers_inte0')
+
+    def test_publication_recovers_interrupted_directory_rename_and_rejects_changes(tmp_path):
+        import json
+>       from experiments.ms_swift_aqa.papers28.known_target import published
+E       ImportError: cannot import name 'published' from 'experiments.ms_swift_aqa.papers28.known_target' (/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/known_target.py)
+
+experiments/ms_swift_aqa/tests/test_papers28_known_target.py:74: ImportError
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_aqa/tests/test_papers28_known_target.py::test_publication_recovers_interrupted_directory_rename_and_rejects_changes
+1 failed, 4 deselected, 1 warning in 4.89s

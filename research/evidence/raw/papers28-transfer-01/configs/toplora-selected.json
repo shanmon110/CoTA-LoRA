@@ -1,0 +1,12 @@
+{
+  "method": "toplora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/toplora/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.8203125,
+  "adapter_sha256": "212071407274bd1322f7e5f3631d8afb90eff70b33cd4be87a420eeb400088e1",
+  "config_sha256": "e4d82d58264d5d4078982f7e58399c957444440f6c9c7830ab2cf34a7be4b93f",
+  "files": {
+    "adapter_model.safetensors": "212071407274bd1322f7e5f3631d8afb90eff70b33cd4be87a420eeb400088e1",
+    "adapter_config.json": "e4d82d58264d5d4078982f7e58399c957444440f6c9c7830ab2cf34a7be4b93f"
+  }
+}

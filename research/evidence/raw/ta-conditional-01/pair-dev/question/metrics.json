@@ -1,0 +1,42 @@
+{
+  "utterances": 240,
+  "correct": 208,
+  "accuracy": 0.8666666666666667,
+  "by_domain": {
+    "count": {
+      "correct": 78,
+      "total": 80,
+      "accuracy": 0.975
+    },
+    "loudness": {
+      "correct": 74,
+      "total": 80,
+      "accuracy": 0.925
+    },
+    "timing": {
+      "correct": 56,
+      "total": 80,
+      "accuracy": 0.7
+    }
+  },
+  "macro_domain_accuracy": 0.8666666666666667,
+  "by_category": {},
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "7d770e59257c3780b6bd075014f2f56185d7dcdf0fcf72e7ebd757dd1b7d01a1",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question/checkpoint-160",
+    "weights_sha256": "bbd45addd2020273f3e90c93b7438066344648ea3c4bd20294be4fdeb419ea72",
+    "adapter_config_sha256": "0d3f28b75004b2c949f7321e5883213c8ac5e4db03fb0fa77f5c25dfced398de"
+  },
+  "no_transport": false,
+  "manifest_sha256": "8109b6cabf48a23d2c329d4c5e2211428e33b2362c63735fa7e6efce98e2970d",
+  "predictions_sha256": "5176d7e106b049a1f264c2eb27965d5431c950f5c74513a95b93b59453d562bc",
+  "eval_seconds": 21.87770776398247,
+  "peak_allocated_bytes": 9641343488,
+  "peak_reserved_bytes": 9669967872
+}

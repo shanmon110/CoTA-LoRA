@@ -1,0 +1,49 @@
+{
+  "uar": 0.626039959252932,
+  "accuracy": 0.5858178887993554,
+  "recalls": {
+    "A": 0.9176470588235294,
+    "B": 0.4072398190045249,
+    "C": 0.4448979591836735,
+    "D": 0.734375
+  },
+  "confusion_matrix": [
+    [
+      156,
+      6,
+      3,
+      5
+    ],
+    [
+      103,
+      180,
+      12,
+      147
+    ],
+    [
+      53,
+      11,
+      109,
+      72
+    ],
+    [
+      82,
+      10,
+      10,
+      282
+    ]
+  ],
+  "utterances": 1241,
+  "method": "lokra",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 91.10180745902471,
+  "peak_allocated_bytes": 10166274560,
+  "peak_reserved_bytes": 10278141952,
+  "predictions_sha256": "0caf4d1770baf9953a00d25954519ddc912e004d4c3a990dfcd3e3224eb443c3",
+  "adapter_sha256": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+  "config_sha256": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7",
+  "files": {
+    "adapter_model.safetensors": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+    "adapter_config.json": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7"
+  }
+}

@@ -1,0 +1,21 @@
+..s..                                                                    [100%]
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_loraplus_uses_matched_native_factors_and_actual_group_rates
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_pissa_restores_exact_bf16_residual_and_nonzero_weights
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_ga_calibrates_only_training_batches_and_restores_exactly
+experiments/ms_swift_aqa/tests/test_paper_early_loram.py::test_random_structured_pruning_and_zero_filled_recovery
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/utils/save_and_load.py:236: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+4 passed, 1 skipped, 5 warnings in 5.89s

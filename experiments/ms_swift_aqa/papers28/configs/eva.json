@@ -1,0 +1,1 @@
+{"method":"eva","settings":{"samples":64,"batch_size":2,"rho":2.0,"tau":0.99,"max_forwards":500}}

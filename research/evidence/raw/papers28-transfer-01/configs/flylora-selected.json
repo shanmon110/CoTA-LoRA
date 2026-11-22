@@ -1,0 +1,12 @@
+{
+  "method": "flylora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/flylora/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.828125,
+  "adapter_sha256": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+  "config_sha256": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d",
+  "files": {
+    "adapter_model.safetensors": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9",
+    "adapter_config.json": "04c280d7b031bb986846142f8a21742ac47531ed9977a0b402085c3522b7c27d"
+  }
+}

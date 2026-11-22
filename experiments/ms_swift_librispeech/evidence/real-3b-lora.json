@@ -1,0 +1,75 @@
+{
+  "ab_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+  "trainable_parameters": 131072,
+  "target_layers": [
+    32,
+    33,
+    34,
+    35
+  ],
+  "trainable_names": [
+    "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_A.default.weight",
+    "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_B.default.weight",
+    "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_A.default.weight",
+    "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_B.default.weight",
+    "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_A.default.weight",
+    "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_B.default.weight",
+    "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_A.default.weight",
+    "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_B.default.weight"
+  ],
+  "ab_init_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+  "method": "lora",
+  "initial_logits_sha256": "afe9e5046889aabdbd204ea4ae794795cd6819a06ebd2be10e79c3e18ec2debd",
+  "restored_logits_sha256": "6866f6f5e5b85c8f2037402a16428da19d14c1073242bfb60b19828fdef0ef64",
+  "muted_audio_logits_sha256": "a26f874549c6f4864df4f408f2d087b6b5a8c2b2246f329fd80526805e3c8547",
+  "trainable_gradients": [
+    {
+      "loss": 0.22206982970237732,
+      "gradient_norms": {
+        "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_A.default.weight": 0.0,
+        "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_B.default.weight": 0.033693812787532806,
+        "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_A.default.weight": 0.0,
+        "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_B.default.weight": 0.02858685329556465,
+        "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_A.default.weight": 0.0,
+        "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_B.default.weight": 0.024968666955828667,
+        "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_A.default.weight": 0.0,
+        "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_B.default.weight": 0.011772903613746166
+      }
+    },
+    {
+      "loss": 0.22046801447868347,
+      "gradient_norms": {
+        "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_A.default.weight": 0.0066785551607608795,
+        "base_model.model.thinker.model.layers.32.self_attn.o_proj.lora_B.default.weight": 0.033537570387125015,
+        "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_A.default.weight": 0.006339691579341888,
+        "base_model.model.thinker.model.layers.33.self_attn.o_proj.lora_B.default.weight": 0.02852981723845005,
+        "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_A.default.weight": 0.006068493239581585,
+        "base_model.model.thinker.model.layers.34.self_attn.o_proj.lora_B.default.weight": 0.024828974157571793,
+        "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_A.default.weight": 0.003446642542257905,
+        "base_model.model.thinker.model.layers.35.self_attn.o_proj.lora_B.default.weight": 0.01174505241215229
+      }
+    }
+  ],
+  "durations_seconds": [
+    14.085,
+    24.525
+  ],
+  "utterances": [
+    "103-1240-0000",
+    "7859-102521-0017"
+  ],
+  "expanded_tokens": [
+    459,
+    775
+  ],
+  "supervised_tokens": [
+    69,
+    124
+  ],
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "allocated_bytes": 13218328064,
+  "reserved_bytes": 13801357312,
+  "training_seconds": 0.9620215147733688,
+  "training_batch_size": 2,
+  "torch": "2.6.0+cu124"
+}

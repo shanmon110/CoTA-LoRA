@@ -1,0 +1,83 @@
+{
+  "method": "longlora-omni",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.4918486865900206,
+    "accuracy": 0.41579371474617244,
+    "recalls": {
+      "A": 0.9529411764705882,
+      "B": 0.47285067873303166,
+      "C": 0.4530612244897959,
+      "D": 0.08854166666666667
+    },
+    "confusion_matrix": [
+      [
+        162,
+        6,
+        1,
+        1
+      ],
+      [
+        216,
+        209,
+        15,
+        2
+      ],
+      [
+        121,
+        12,
+        111,
+        1
+      ],
+      [
+        311,
+        22,
+        17,
+        34
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.79296875,
+    "best_step": 128,
+    "updates": 224,
+    "trainable": 326281216,
+    "correct": 723,
+    "exact_accuracy": 0.723,
+    "official_text_accuracy": 0.725,
+    "by_domain": {
+      "music": {
+        "correct": 226,
+        "total": 334,
+        "accuracy": 0.6766467065868264
+      },
+      "sound": {
+        "correct": 259,
+        "total": 333,
+        "accuracy": 0.7777777777777778
+      },
+      "speech": {
+        "correct": 238,
+        "total": 333,
+        "accuracy": 0.7147147147147147
+      }
+    },
+    "train_seconds": 634.3309414249961,
+    "training_peak_allocated_gib": 13.967039108276367
+  },
+  "checkpoint": {
+    "method": "longlora-omni",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/longlora-omni/checkpoint-128",
+    "step": 128,
+    "dev_accuracy": 0.79296875,
+    "adapter_sha256": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+    "config_sha256": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676",
+    "files": {
+      "adapter_model.safetensors": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+      "adapter_config.json": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/longlora-omni",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/longlora-omni"
+}

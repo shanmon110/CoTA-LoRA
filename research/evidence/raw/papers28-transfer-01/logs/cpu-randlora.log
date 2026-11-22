@@ -1,0 +1,23 @@
+.                                                                        [100%]
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_randlora_exact_native_update_and_seeded_basis_reload
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_randlora_exact_native_update_and_seeded_basis_reload
+  /root/autodl-tmp/r1-aqa/paper-envs/peft-0.17.1/peft/tuners/randlora/config.py:195: UserWarning: Specified to not save basis_A and basis_B within the state dictionary, instead they will be restored using the PRNG key store in `config.projection_prng_key`. Consider setting `config.save_projection` to `True` to guarantee restoring the checkpoint correctly on all system configurations.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_randlora_exact_native_update_and_seeded_basis_reload
+  /root/autodl-tmp/r1-aqa/paper-envs/peft-0.17.1/peft/utils/save_and_load.py:286: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 3 deselected, 4 warnings in 5.67s

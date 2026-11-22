@@ -1,0 +1,194 @@
+{
+  "utterances": 1000,
+  "correct": 587,
+  "accuracy": 0.587,
+  "by_domain": {
+    "mix-music-speech": {
+      "correct": 44,
+      "total": 82,
+      "accuracy": 0.5365853658536586
+    },
+    "mix-sound-music": {
+      "correct": 6,
+      "total": 11,
+      "accuracy": 0.5454545454545454
+    },
+    "mix-sound-music-speech": {
+      "correct": 17,
+      "total": 24,
+      "accuracy": 0.7083333333333334
+    },
+    "mix-sound-speech": {
+      "correct": 146,
+      "total": 218,
+      "accuracy": 0.6697247706422018
+    },
+    "music": {
+      "correct": 97,
+      "total": 206,
+      "accuracy": 0.470873786407767
+    },
+    "sound": {
+      "correct": 100,
+      "total": 165,
+      "accuracy": 0.6060606060606061
+    },
+    "speech": {
+      "correct": 177,
+      "total": 294,
+      "accuracy": 0.6020408163265306
+    }
+  },
+  "macro_domain_accuracy": 0.5912961748683775,
+  "by_category": {
+    "mix-music-speech/Cultural Layer": {
+      "correct": 5,
+      "total": 11,
+      "accuracy": 0.45454545454545453
+    },
+    "mix-music-speech/Perception Layer": {
+      "correct": 9,
+      "total": 20,
+      "accuracy": 0.45
+    },
+    "mix-music-speech/Semantic Layer": {
+      "correct": 29,
+      "total": 47,
+      "accuracy": 0.6170212765957447
+    },
+    "mix-music-speech/Signal Layer": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 0.25
+    },
+    "mix-sound-music-speech/Cultural Layer": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mix-sound-music-speech/Perception Layer": {
+      "correct": 8,
+      "total": 13,
+      "accuracy": 0.6153846153846154
+    },
+    "mix-sound-music-speech/Semantic Layer": {
+      "correct": 9,
+      "total": 10,
+      "accuracy": 0.9
+    },
+    "mix-sound-music/Cultural Layer": {
+      "correct": 0,
+      "total": 2,
+      "accuracy": 0.0
+    },
+    "mix-sound-music/Perception Layer": {
+      "correct": 6,
+      "total": 8,
+      "accuracy": 0.75
+    },
+    "mix-sound-music/Signal Layer": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    },
+    "mix-sound-speech/Cultural Layer": {
+      "correct": 15,
+      "total": 20,
+      "accuracy": 0.75
+    },
+    "mix-sound-speech/Perception Layer": {
+      "correct": 68,
+      "total": 102,
+      "accuracy": 0.6666666666666666
+    },
+    "mix-sound-speech/Semantic Layer": {
+      "correct": 60,
+      "total": 90,
+      "accuracy": 0.6666666666666666
+    },
+    "mix-sound-speech/Signal Layer": {
+      "correct": 3,
+      "total": 6,
+      "accuracy": 0.5
+    },
+    "music/Cultural Layer": {
+      "correct": 31,
+      "total": 57,
+      "accuracy": 0.543859649122807
+    },
+    "music/Perception Layer": {
+      "correct": 39,
+      "total": 105,
+      "accuracy": 0.37142857142857144
+    },
+    "music/Semantic Layer": {
+      "correct": 17,
+      "total": 30,
+      "accuracy": 0.5666666666666667
+    },
+    "music/Signal Layer": {
+      "correct": 10,
+      "total": 14,
+      "accuracy": 0.7142857142857143
+    },
+    "sound/Cultural Layer": {
+      "correct": 9,
+      "total": 12,
+      "accuracy": 0.75
+    },
+    "sound/Perception Layer": {
+      "correct": 73,
+      "total": 123,
+      "accuracy": 0.5934959349593496
+    },
+    "sound/Semantic Layer": {
+      "correct": 13,
+      "total": 16,
+      "accuracy": 0.8125
+    },
+    "sound/Signal Layer": {
+      "correct": 5,
+      "total": 14,
+      "accuracy": 0.35714285714285715
+    },
+    "speech/Cultural Layer": {
+      "correct": 21,
+      "total": 38,
+      "accuracy": 0.5526315789473685
+    },
+    "speech/Perception Layer": {
+      "correct": 20,
+      "total": 33,
+      "accuracy": 0.6060606060606061
+    },
+    "speech/Semantic Layer": {
+      "correct": 135,
+      "total": 219,
+      "accuracy": 0.6164383561643836
+    },
+    "speech/Signal Layer": {
+      "correct": 1,
+      "total": 4,
+      "accuracy": 0.25
+    }
+  },
+  "macro_category_accuracy": 0.5136459467168258,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio-long",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-long/checkpoint-160",
+    "weights_sha256": "fdca03d968f7aa0f9054e0b6f6c0e7f5b03bdaad950d5fe08109bedb5677c362",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+  },
+  "no_transport": false,
+  "manifest_sha256": "808abd154770384f86ea2f1137c0609d09b92da0dc793ad13478c959f873feee",
+  "predictions_sha256": "0d0e51a19d314cfb1b1fba5979367507b36b06e5bf6b808296bce4e47a43901a",
+  "eval_seconds": 140.82101385801798,
+  "peak_allocated_bytes": 10894662144,
+  "peak_reserved_bytes": 11614027776
+}

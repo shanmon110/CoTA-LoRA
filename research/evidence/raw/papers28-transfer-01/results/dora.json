@@ -1,0 +1,83 @@
+{
+  "method": "dora",
+  "archived_training": true,
+  "ser": {
+    "uar": 0.6107774960945916,
+    "accuracy": 0.564867042707494,
+    "recalls": {
+      "A": 0.9352941176470588,
+      "B": 0.3891402714932127,
+      "C": 0.42857142857142855,
+      "D": 0.6901041666666666
+    },
+    "confusion_matrix": [
+      [
+        159,
+        5,
+        2,
+        4
+      ],
+      [
+        112,
+        172,
+        13,
+        145
+      ],
+      [
+        65,
+        10,
+        105,
+        65
+      ],
+      [
+        98,
+        11,
+        10,
+        265
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.80859375,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 15998976,
+    "correct": 720,
+    "exact_accuracy": 0.72,
+    "official_text_accuracy": 0.722,
+    "by_domain": {
+      "music": {
+        "correct": 215,
+        "total": 334,
+        "accuracy": 0.6437125748502994
+      },
+      "sound": {
+        "correct": 265,
+        "total": 333,
+        "accuracy": 0.7957957957957958
+      },
+      "speech": {
+        "correct": 240,
+        "total": 333,
+        "accuracy": 0.7207207207207207
+      }
+    },
+    "train_seconds": 342.9850309860194,
+    "training_peak_allocated_gib": 24.41515302658081
+  },
+  "checkpoint": {
+    "method": "dora",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/dora/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.80859375,
+    "adapter_sha256": "47af802d540db5fcd2602305e50a3b5b8056f74e118c81da64f79483dec6e273",
+    "config_sha256": "dafa28d9cee1fca7771f0719e3e26fd5b6624bfae2f764150d5c20630aa538da",
+    "files": {
+      "adapter_model.safetensors": "47af802d540db5fcd2602305e50a3b5b8056f74e118c81da64f79483dec6e273",
+      "adapter_config.json": "dafa28d9cee1fca7771f0719e3e26fd5b6624bfae2f764150d5c20630aa538da"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/dora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/dora"
+}

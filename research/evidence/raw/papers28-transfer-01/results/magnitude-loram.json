@@ -1,0 +1,83 @@
+{
+  "method": "magnitude-loram",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.5476452720511281,
+    "accuracy": 0.5269943593875906,
+    "recalls": {
+      "A": 0.6588235294117647,
+      "B": 0.8371040723981901,
+      "C": 0.6816326530612244,
+      "D": 0.013020833333333334
+    },
+    "confusion_matrix": [
+      [
+        112,
+        36,
+        22,
+        0
+      ],
+      [
+        24,
+        370,
+        48,
+        0
+      ],
+      [
+        11,
+        67,
+        167,
+        0
+      ],
+      [
+        45,
+        268,
+        66,
+        5
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.66015625,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 14966784,
+    "correct": 610,
+    "exact_accuracy": 0.61,
+    "official_text_accuracy": 0.613,
+    "by_domain": {
+      "music": {
+        "correct": 205,
+        "total": 334,
+        "accuracy": 0.6137724550898204
+      },
+      "sound": {
+        "correct": 207,
+        "total": 333,
+        "accuracy": 0.6216216216216216
+      },
+      "speech": {
+        "correct": 198,
+        "total": 333,
+        "accuracy": 0.5945945945945946
+      }
+    },
+    "train_seconds": 310.458110229054,
+    "training_peak_allocated_gib": 11.610576629638672
+  },
+  "checkpoint": {
+    "method": "magnitude-loram",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/magnitude-loram/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.66015625,
+    "adapter_sha256": "d293d3d4f5b416dab72bc85546d3102cdd2046ce544bffcfc240f8d564098d76",
+    "config_sha256": "e8605c34be5830d320e2cecadd41f207f916f4090470b219599d66cb487d5dcb",
+    "files": {
+      "adapter_model.safetensors": "d293d3d4f5b416dab72bc85546d3102cdd2046ce544bffcfc240f8d564098d76",
+      "adapter_config.json": "e8605c34be5830d320e2cecadd41f207f916f4090470b219599d66cb487d5dcb"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/magnitude-loram",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/magnitude-loram"
+}

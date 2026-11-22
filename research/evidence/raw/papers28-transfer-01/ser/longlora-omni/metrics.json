@@ -1,0 +1,49 @@
+{
+  "uar": 0.4918486865900206,
+  "accuracy": 0.41579371474617244,
+  "recalls": {
+    "A": 0.9529411764705882,
+    "B": 0.47285067873303166,
+    "C": 0.4530612244897959,
+    "D": 0.08854166666666667
+  },
+  "confusion_matrix": [
+    [
+      162,
+      6,
+      1,
+      1
+    ],
+    [
+      216,
+      209,
+      15,
+      2
+    ],
+    [
+      121,
+      12,
+      111,
+      1
+    ],
+    [
+      311,
+      22,
+      17,
+      34
+    ]
+  ],
+  "utterances": 1241,
+  "method": "longlora-omni",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 87.45905880397186,
+  "peak_allocated_bytes": 10788903424,
+  "peak_reserved_bytes": 10907287552,
+  "predictions_sha256": "483b2f506c16fa81f8c8ebefc145b43727be033b5578ae3557db6cff86711824",
+  "adapter_sha256": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+  "config_sha256": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676",
+  "files": {
+    "adapter_model.safetensors": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e",
+    "adapter_config.json": "1802af48ba330153009ab5f13e8f6bd1b4187eda91de275f39e6d61e10e33676"
+  }
+}

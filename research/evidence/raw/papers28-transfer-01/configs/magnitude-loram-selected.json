@@ -1,0 +1,12 @@
+{
+  "method": "magnitude-loram",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/magnitude-loram/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.66015625,
+  "adapter_sha256": "d293d3d4f5b416dab72bc85546d3102cdd2046ce544bffcfc240f8d564098d76",
+  "config_sha256": "e8605c34be5830d320e2cecadd41f207f916f4090470b219599d66cb487d5dcb",
+  "files": {
+    "adapter_model.safetensors": "d293d3d4f5b416dab72bc85546d3102cdd2046ce544bffcfc240f8d564098d76",
+    "adapter_config.json": "e8605c34be5830d320e2cecadd41f207f916f4090470b219599d66cb487d5dcb"
+  }
+}

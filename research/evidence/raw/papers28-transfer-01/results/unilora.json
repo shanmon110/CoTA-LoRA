@@ -1,0 +1,83 @@
+{
+  "method": "unilora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.599950485001693,
+    "accuracy": 0.5745366639806607,
+    "recalls": {
+      "A": 0.8941176470588236,
+      "B": 0.4276018099547511,
+      "C": 0.3020408163265306,
+      "D": 0.7760416666666666
+    },
+    "confusion_matrix": [
+      [
+        152,
+        7,
+        1,
+        10
+      ],
+      [
+        103,
+        189,
+        6,
+        144
+      ],
+      [
+        56,
+        12,
+        74,
+        103
+      ],
+      [
+        74,
+        8,
+        4,
+        298
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.71875,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 23040,
+    "correct": 757,
+    "exact_accuracy": 0.757,
+    "official_text_accuracy": 0.758,
+    "by_domain": {
+      "music": {
+        "correct": 236,
+        "total": 334,
+        "accuracy": 0.7065868263473054
+      },
+      "sound": {
+        "correct": 275,
+        "total": 333,
+        "accuracy": 0.8258258258258259
+      },
+      "speech": {
+        "correct": 246,
+        "total": 333,
+        "accuracy": 0.7387387387387387
+      }
+    },
+    "train_seconds": 335.1227231490193,
+    "training_peak_allocated_gib": 11.53639841079712
+  },
+  "checkpoint": {
+    "method": "unilora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/unilora/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.71875,
+    "adapter_sha256": "3a64ea1b6c5df4624e06c5b3d22eb05f62f18765ad43527e724b7053ff76baf2",
+    "config_sha256": "f0f36a87c7ff9d5d3f5da387e9bacf8aa716678d0274363a755612e6b6362b0e",
+    "files": {
+      "adapter_model.safetensors": "3a64ea1b6c5df4624e06c5b3d22eb05f62f18765ad43527e724b7053ff76baf2",
+      "adapter_config.json": "f0f36a87c7ff9d5d3f5da387e9bacf8aa716678d0274363a755612e6b6362b0e"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/unilora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/unilora"
+}

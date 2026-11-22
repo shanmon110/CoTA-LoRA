@@ -1,0 +1,15 @@
+{
+  "pinned_sha256": {
+    "/root/autodl-tmp/r1-aqa/data/pilot-01/train.jsonl": "7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/pair-train.jsonl": "c962f89c2f8fc3c42f0bf426d2f1b3e4452f8de95b1c74c7c255f2b9a8bfe557",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/pair-dev.jsonl": "8109b6cabf48a23d2c329d4c5e2211428e33b2362c63735fa7e6efce98e2970d",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/train.jsonl": "aabb76719b47cc357991ea3187eb733636cd5c4a6107be4c6fc3362e6102c820",
+    "/root/autodl-tmp/MMAR/runs/ta-diagnosis-01/multidomain/dev.jsonl": "44d2cb45ae69a704362c9bb1db47921971c0f29a6487c299974128ca750d034a",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/pair-train.jsonl": "06a784bdb626c3f75e85c571db1c922182a1ce20268397309620e41b7acd1c98",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/pair-dev.jsonl": "eb2b15ba723d0532a59cc20e3cfd7197c336d705ba0cc2dcbb882ab7dcdd7a8f",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/train.jsonl": "5536875376029d13589ebf9fbba6195e4a5a441742036e1098c95074142c847f",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/pair-train.jsonl": "96e5d9edbda130557f5a31c7359cb1fa430318bbcc8c5f45b4fd1f998a6a5e4c",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/pair-dev.jsonl": "6bbf60069bd1af7bd8659751cad06f24b1ccbdcf54de2b664afc79d86f883695",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/train.jsonl": "5a0a094a44fb3063870e5f737b0e610ac5c7f349b8bb0b7cc072988ae21f3b39"
+  }
+}

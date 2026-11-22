@@ -1,0 +1,315 @@
+{
+  "status": "failed",
+  "finished_utc": "2026-11-21T04:21:51.363898+00:00",
+  "run": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01",
+  "protocol_sha256": "1c32929d9cc337c57002d9a666099811035d3ed5a34ac5d36b6112437056f4be",
+  "paper_methods": [
+    {
+      "method": "longlora-omni",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/longlora-omni.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-longlora-omni.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 2
+    },
+    {
+      "method": "vera",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/vera.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-vera.json",
+      "training_source": "archived",
+      "source": "archived_fit_current_verification",
+      "paper": 3
+    },
+    {
+      "method": "dora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/dora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-dora.json",
+      "training_source": "archived",
+      "source": "archived_fit_current_verification",
+      "paper": 4
+    },
+    {
+      "method": "fourierft",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/fourierft.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-fourierft.json",
+      "training_source": "archived",
+      "source": "archived_fit_current_verification",
+      "paper": 5
+    },
+    {
+      "method": "lora-plus",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lora-plus.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lora-plus.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 6
+    },
+    {
+      "method": "lora-ga",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lora-ga.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lora-ga.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 7
+    },
+    {
+      "method": "pissa",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/pissa.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-pissa.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 8
+    },
+    {
+      "method": "loram-train-small",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/loram-train-small.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-loram-train-small.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 9
+    },
+    {
+      "method": "randlora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/randlora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-randlora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 10
+    },
+    {
+      "method": "lowra",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lowra.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lowra.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 11
+    },
+    {
+      "method": "aurora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/aurora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-aurora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 12
+    },
+    {
+      "method": "eva",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/eva.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-eva.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 13
+    },
+    {
+      "method": "flylora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/flylora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-flylora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 14
+    },
+    {
+      "method": "gralora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/gralora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-gralora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 15
+    },
+    {
+      "method": "magnitude-loram",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/magnitude-loram.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-magnitude-loram.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 16
+    },
+    {
+      "method": "rolora-federated",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/rolora-federated.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-rolora-federated.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 17
+    },
+    {
+      "method": "toplora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/toplora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-toplora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 18
+    },
+    {
+      "method": "unilora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/unilora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-unilora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 19
+    },
+    {
+      "method": "alora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/alora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-alora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 20
+    },
+    {
+      "method": "bora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/bora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-bora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 21
+    },
+    {
+      "method": "igu-lora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/igu-lora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-igu-lora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 22
+    },
+    {
+      "method": "loft",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/loft.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-loft.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 23
+    },
+    {
+      "method": "lora-mixer",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lora-mixer.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lora-mixer.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 24
+    },
+    {
+      "method": "loragen",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/loragen.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-loragen.json",
+      "training_source": "current_run",
+      "source": "generated_from_avqa_experts",
+      "paper": 25
+    },
+    {
+      "method": "ralora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/ralora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-ralora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 26
+    },
+    {
+      "method": "stable-lora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/stable-lora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-stable-lora.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 27
+    },
+    {
+      "method": "lokra",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lokra.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lokra.json",
+      "training_source": "current_run",
+      "source": "current_source_fit",
+      "paper": 28
+    }
+  ],
+  "theory": {
+    "method": "expressive-power",
+    "paper": 1,
+    "source": "authors_cpu_examples",
+    "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01/result.json",
+    "status": "verified",
+    "author_revision": "eaeb7d3f265853343b234172ed44cd7623c5212a"
+  },
+  "teacher_diagnostic": {
+    "method": "known-target-qo",
+    "status": "verified",
+    "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/known-target-qo.json",
+    "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-known-target-qo.json",
+    "training_source": "current_run",
+    "source": "same_source_trained_teacher_diagnostic",
+    "paper": 1
+  },
+  "references": [
+    {
+      "method": "lora",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lora.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lora.json",
+      "training_source": "archived",
+      "source": "archived_fit_current_verification"
+    },
+    {
+      "method": "lora-recompute",
+      "status": "verified",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results/lora-recompute.json",
+      "verification": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/status-lora-recompute.json",
+      "training_source": "current_run",
+      "source": "current_source_fit"
+    },
+    {
+      "method": "frozen-base",
+      "source": "archived_frozen_predictions",
+      "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/paired-target-scores.json",
+      "status": "verified"
+    }
+  ],
+  "counts": {
+    "paper_methods": {
+      "expected": 27,
+      "verified": 27
+    },
+    "theory": {
+      "expected": 1,
+      "verified": 1
+    },
+    "teacher_diagnostic": {
+      "expected": 1,
+      "verified": 1
+    },
+    "references": {
+      "expected": 3,
+      "verified": 3
+    }
+  },
+  "paired_replay": {
+    "status": "missing_or_invalid",
+    "evidence": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/paired-target-scores.json"
+  },
+  "errors": []
+}

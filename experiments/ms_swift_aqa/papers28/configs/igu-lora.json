@@ -1,0 +1,1 @@
+{"method":"igu-lora","alpha":1,"settings":{"initial_rank_multiplier":2,"dropout":0.3,"beta1":0.85,"beta2":0.85,"pruning_steps":64,"prune_interval":8,"prune_warmup":16,"stage_accumulation":4,"path_points":20}}

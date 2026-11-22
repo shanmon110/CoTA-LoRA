@@ -1,0 +1,12 @@
+{
+  "method": "rolora-federated",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/rolora-federated/checkpoint-160",
+  "step": 160,
+  "dev_accuracy": 0.828125,
+  "adapter_sha256": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  }
+}

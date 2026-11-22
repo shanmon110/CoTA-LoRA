@@ -1,0 +1,51 @@
+{
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-fastgate/checkpoint-160",
+  "best_step": 160,
+  "hashes": {
+    "optimizer": "7b1eac80b33c74f10021876b69e781d9071b1a62a394c8b5881301935f81e86d",
+    "scheduler": "dab72829c94ea84a0ea263a36df2f5bcb9702c6654673964ef61e2373661b8e8",
+    "adapter": "78be9f2209a93029dd8b33bac09e77aeab52eac5ed19d676d24c8c41942926ee",
+    "config": "fd1fe21dea1bf3a03b977fbc865c107a0b38ebe5dfe8c92fd5de67d6f5c84c17"
+  },
+  "groups": [
+    {
+      "initial_lr": 0.0002,
+      "current_lr": 0.0002,
+      "weight_decay": 0.0,
+      "tensors": 144,
+      "elements": 1769760
+    },
+    {
+      "initial_lr": 0.0032,
+      "current_lr": 0.0032,
+      "weight_decay": 0.0,
+      "tensors": 36,
+      "elements": 2304
+    },
+    {
+      "initial_lr": 0.0002,
+      "current_lr": 0.0002,
+      "weight_decay": 0.0,
+      "tensors": 0,
+      "elements": 0
+    }
+  ],
+  "phase1_gate_weight_frobenius": {
+    "n": 36,
+    "mean": 0.018140859190478094,
+    "min": 0.006526791024953127,
+    "p05": 0.009215329540893435,
+    "median": 0.01736442930996418,
+    "p95": 0.029681614134460688,
+    "max": 0.033384423702955246
+  },
+  "fastgate_weight_frobenius": {
+    "n": 36,
+    "mean": 0.2958403167625268,
+    "min": 0.12825091183185577,
+    "p05": 0.13584091886878014,
+    "median": 0.2953207939863205,
+    "p95": 0.47912459075450897,
+    "max": 0.5220643281936646
+  }
+}

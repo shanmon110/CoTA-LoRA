@@ -1,0 +1,60 @@
+{
+  "all_exported_source_files_utf8": true,
+  "archive_bytes": 2741933,
+  "archive_capture_digest_match": true,
+  "archive_local_path": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/sources/83075b150b88cbe603e29d7aee7aeab976fc280b9482606f906d69eb80014b5a/sources.tar.gz",
+  "archive_members_validated": 1474,
+  "archive_sha256": "8274738a6bf2a0c3fba122627b3f0cd23693025b531496b8745e9aa65f71370c",
+  "credential_scan": {
+    "candidate_count": 0,
+    "limitation": "pattern scan is not a proof of absence of every possible secret",
+    "patterns": [
+      "PEM private keys",
+      "GitHub tokens",
+      "Hugging Face tokens",
+      "OpenAI keys",
+      "AWS AKIA access key IDs"
+    ],
+    "scope": "all non-west archive members"
+  },
+  "excluded_project_files": 299,
+  "excluded_unlicensed_reference_files": 5,
+  "exported_source_bytes": 10484934,
+  "exported_source_files": 1170,
+  "exported_utc": "2026-11-22T12:52:36.797036+00:00",
+  "path_checks": [
+    "relative normalized POSIX paths",
+    "no parent traversal",
+    "no duplicate names",
+    "regular files only",
+    "no links or devices",
+    "destination confined to third_party"
+  ],
+  "per_component": {
+    "cpu-diagnostics": {
+      "bytes": 14474,
+      "files": 3
+    },
+    "ms-swift": {
+      "bytes": 7152202,
+      "files": 864
+    },
+    "official-mmau": {
+      "bytes": 24580,
+      "files": 4
+    },
+    "peft-default": {
+      "bytes": 1478212,
+      "files": 135
+    },
+    "peft-randlora": {
+      "bytes": 1815466,
+      "files": 164
+    }
+  },
+  "scope": "Historical source-byte snapshot for inspection. No model weights, experiment raw datasets, audio, checkpoints, venv, tokens or original archive were copied. Small synthetic upstream test fixtures are retained as source-package test assets.",
+  "source_environment_sha256": "5b301693a367b24cb8ad318c36c4516094f4c402734a3151c13b88b3f62065e2",
+  "source_files_modified_during_export": false,
+  "source_manifest_exact_match": true,
+  "source_manifest_sha256": "83075b150b88cbe603e29d7aee7aeab976fc280b9482606f906d69eb80014b5a"
+}

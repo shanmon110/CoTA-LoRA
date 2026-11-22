@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 716,
+  "accuracy": 0.716,
+  "by_domain": {
+    "music": {
+      "correct": 214,
+      "total": 334,
+      "accuracy": 0.6407185628742516
+    },
+    "sound": {
+      "correct": 265,
+      "total": 333,
+      "accuracy": 0.7957957957957958
+    },
+    "speech": {
+      "correct": 237,
+      "total": 333,
+      "accuracy": 0.7117117117117117
+    }
+  },
+  "macro_domain_accuracy": 0.7160753567939198,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 116,
+      "total": 181,
+      "accuracy": 0.6408839779005525
+    },
+    "music/Reasoning": {
+      "correct": 98,
+      "total": 153,
+      "accuracy": 0.6405228758169934
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 176,
+      "total": 227,
+      "accuracy": 0.775330396475771
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 39,
+      "total": 49,
+      "accuracy": 0.7959183673469388
+    },
+    "speech/Reasoning": {
+      "correct": 198,
+      "total": 284,
+      "accuracy": 0.6971830985915493
+    }
+  },
+  "macro_category_accuracy": 0.7478146056721436,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 124.99326003500028,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+  "config_sha256": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d",
+  "files": {
+    "adapter_model.safetensors": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0",
+    "adapter_config.json": "41616dc536bcfe3a3c3add94205535c8bf4612a9ef07a483ccb77445f09af30d"
+  },
+  "method": "gralora"
+}

@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 727,
+  "accuracy": 0.727,
+  "by_domain": {
+    "music": {
+      "correct": 221,
+      "total": 334,
+      "accuracy": 0.6616766467065869
+    },
+    "sound": {
+      "correct": 266,
+      "total": 333,
+      "accuracy": 0.7987987987987988
+    },
+    "speech": {
+      "correct": 240,
+      "total": 333,
+      "accuracy": 0.7207207207207207
+    }
+  },
+  "macro_domain_accuracy": 0.7270653887420355,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 118,
+      "total": 181,
+      "accuracy": 0.6519337016574586
+    },
+    "music/Reasoning": {
+      "correct": 103,
+      "total": 153,
+      "accuracy": 0.673202614379085
+    },
+    "sound/Information Extraction": {
+      "correct": 79,
+      "total": 93,
+      "accuracy": 0.8494623655913979
+    },
+    "sound/Reasoning": {
+      "correct": 177,
+      "total": 227,
+      "accuracy": 0.7797356828193832
+    },
+    "sound/['Reasoning']": {
+      "correct": 10,
+      "total": 13,
+      "accuracy": 0.7692307692307693
+    },
+    "speech/Information Extraction": {
+      "correct": 38,
+      "total": 49,
+      "accuracy": 0.7755102040816326
+    },
+    "speech/Reasoning": {
+      "correct": 202,
+      "total": 284,
+      "accuracy": 0.7112676056338029
+    }
+  },
+  "macro_category_accuracy": 0.7443347061990756,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10359154176,
+  "peak_reserved_bytes": 10804527104,
+  "eval_seconds": 107.97248408698943,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "6d1672b8ab8aedece411413b97ac42cbffe898edbfa1160506d49a604df7fcf0",
+  "config_sha256": "67adc466961f76351b212cbdafb478f0a7376de9ec81fc2467ee623a5d5ac694",
+  "files": {
+    "adapter_model.safetensors": "6d1672b8ab8aedece411413b97ac42cbffe898edbfa1160506d49a604df7fcf0",
+    "adapter_config.json": "67adc466961f76351b212cbdafb478f0a7376de9ec81fc2467ee623a5d5ac694"
+  },
+  "method": "stable-lora"
+}

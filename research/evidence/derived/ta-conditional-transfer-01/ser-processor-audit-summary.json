@@ -1,0 +1,10 @@
+{
+  "count": 1241,
+  "frame_deltas": {
+    "0": 1241
+  },
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "max_sequence": 2048,
+  "prompt_verified": true,
+  "full_audio_preserved": true
+}

@@ -1,0 +1,12 @@
+{
+  "method": "lowra",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lowra/checkpoint-96",
+  "step": 96,
+  "dev_accuracy": 0.28125,
+  "adapter_sha256": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+  "config_sha256": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf",
+  "files": {
+    "adapter_model.safetensors": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+    "adapter_config.json": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf"
+  }
+}

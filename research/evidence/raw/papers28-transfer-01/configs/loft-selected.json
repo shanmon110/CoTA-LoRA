@@ -1,0 +1,12 @@
+{
+  "method": "loft",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loft/checkpoint-96",
+  "step": 96,
+  "dev_accuracy": 0.70703125,
+  "adapter_sha256": "c408b03ca08c5df66c2c7954bfdc227d5d9685a00bba6b9978d45ad55c267c6d",
+  "config_sha256": "77bebdc4b64ad8c1338340d0f2ee9863aa80865f651f4f1956480e42f5f147b7",
+  "files": {
+    "adapter_model.safetensors": "c408b03ca08c5df66c2c7954bfdc227d5d9685a00bba6b9978d45ad55c267c6d",
+    "adapter_config.json": "77bebdc4b64ad8c1338340d0f2ee9863aa80865f651f4f1956480e42f5f147b7"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "randlora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/randlora/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.2890625,
+  "adapter_sha256": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+  "config_sha256": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9",
+  "files": {
+    "adapter_model.safetensors": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+    "adapter_config.json": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9"
+  }
+}

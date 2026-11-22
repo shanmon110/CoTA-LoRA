@@ -1,0 +1,15 @@
+..s.                                                                     [100%]
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+experiments/ms_swift_aqa/tests/test_paper_middle_lowra.py::test_mixed_packed_bytes_error_and_allocation
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+    warnings.warn(problem)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+3 passed, 1 skipped, 2 warnings in 18.89s

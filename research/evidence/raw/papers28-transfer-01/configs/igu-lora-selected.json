@@ -1,0 +1,12 @@
+{
+  "method": "igu-lora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/igu-lora/checkpoint-32",
+  "step": 32,
+  "dev_accuracy": 0.71484375,
+  "adapter_sha256": "3e57974461fd7f72bac090e6d0a75536bac0b87ef29feff8d495f093e8330726",
+  "config_sha256": "a493ed98dd48b4e4b11fe08e0a29aec220288ebcca2c62e857bb7fe4974133dc",
+  "files": {
+    "adapter_model.safetensors": "3e57974461fd7f72bac090e6d0a75536bac0b87ef29feff8d495f093e8330726",
+    "adapter_config.json": "a493ed98dd48b4e4b11fe08e0a29aec220288ebcca2c62e857bb7fe4974133dc"
+  }
+}

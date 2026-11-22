@@ -1,0 +1,53 @@
+{
+  "uar": 0.6159076370932989,
+  "accuracy": 0.5914585012087027,
+  "recalls": {
+    "A": 0.9117647058823529,
+    "B": 0.46153846153846156,
+    "C": 0.3142857142857143,
+    "D": 0.7760416666666666
+  },
+  "confusion_matrix": [
+    [
+      155,
+      7,
+      1,
+      7
+    ],
+    [
+      87,
+      204,
+      3,
+      148
+    ],
+    [
+      46,
+      14,
+      77,
+      108
+    ],
+    [
+      67,
+      14,
+      5,
+      298
+    ]
+  ],
+  "utterances": 1241,
+  "method": "lora",
+  "tuner": "lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "2d8db620dd94318f6537fc8886a79e612e7e655bca6d882e49f2aed73877df7e",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/lora/checkpoint-96",
+    "weights_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+    "adapter_config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "predictions_sha256": "a8401c3a91840a74238b3ac7a2f5094d0dbf7eec8d7dcd5fe0540bf057ab75ac",
+  "eval_seconds": 85.636611103022,
+  "peak_allocated_bytes": 10166274560,
+  "peak_reserved_bytes": 10278141952
+}

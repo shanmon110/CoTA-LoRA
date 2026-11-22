@@ -1,0 +1,15 @@
+{
+  "hypothesis": "Short (5\u20137 seconds) acoustic pairs underrepresent event spacing in natural MMAR. The same audible events redistributed over 20\u201324 seconds should test sensitivity to duration without changing labels, source, examples, options, or planned updates.",
+  "arms": [
+    "lora-long",
+    "question_audio-long"
+  ],
+  "selection": "earliest maximum long change-pair both-correct on long development",
+  "comparison": "old short-trained counterparts scored on both pair versions and real external dev. Complete MMAR for both long counterparts and trained transport ablation. Frozen base from previous verified 1000-question run.",
+  "decision": "Prepared before any new MMAR score. Execute once if every phase-one arm is below published 87.3%. This is a duration-only intervention for constrained pairs, and still uses the same original AVQA recordings.",
+  "data_hashes": {
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/pair-train.jsonl": "06a784bdb626c3f75e85c571db1c922182a1ce20268397309620e41b7acd1c98",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/pair-dev.jsonl": "eb2b15ba723d0532a59cc20e3cfd7197c336d705ba0cc2dcbb882ab7dcdd7a8f",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/long/train.jsonl": "5536875376029d13589ebf9fbba6195e4a5a441742036e1098c95074142c847f"
+  }
+}

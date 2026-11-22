@@ -1,0 +1,38 @@
+{
+  "base_config": "omni3b-pilot.json",
+  "reference_run": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01",
+  "data": "/root/autodl-tmp/r1-aqa/data/pilot-01",
+  "mmau": "/root/autodl-tmp/r1-aqa/mmau",
+  "reference_methods": ["lora", "dora", "ta-lora"],
+  "methods": [
+    "rslora", "bone", "vera", "adapter", "adalora", "fourierft", "boft",
+    "llamapro", "reft", "lora_llm", "full", "longlora", "ia3"
+  ],
+  "method_options": {
+    "ia3": {},
+    "bone": {"reft_rank": 8, "init_weights": "true"},
+    "vera": {"vera_rank": 256, "vera_projection_prng_key": 0, "vera_dropout": 0.0, "vera_d_initial": 0.1},
+    "adapter": {"adapter_length": 96, "adapter_act": "gelu"},
+    "adalora": {
+      "adalora_init_r": 12, "adalora_target_r": 8, "adalora_tinit": 8,
+      "adalora_tfinal": 16, "adalora_deltaT": 1, "adalora_beta1": 0.85,
+      "adalora_beta2": 0.85, "adalora_orth_reg_weight": 0.5
+    },
+    "fourierft": {"fourier_n_frequency": 2000, "fourier_scaling": 300.0},
+    "boft": {"boft_block_size": 4, "boft_block_num": 0, "boft_n_butterfly_factor": 2, "boft_dropout": 0.0},
+    "llamapro": {"llamapro_num_new_blocks": 1, "llamapro_num_groups": 1},
+    "reft": {"reft_rank": 8, "reft_layer_key": "thinker.model.layers",
+             "reft_layers": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35],
+             "reft_intervention_type": "LoreftIntervention"}
+  },
+  "training_overrides": {
+    "fourierft": {"gradient_checkpointing": true},
+    "boft": {"gradient_checkpointing": true},
+    "lora_llm": {"gradient_checkpointing": true, "vit_gradient_checkpointing": true},
+    "full": {"gradient_checkpointing": true, "optim": "adamw_torch_fused"}
+  },
+  "on_training_cuda_oom": [
+    {"per_device_train_batch_size": 2, "gradient_accumulation_steps": 8, "gradient_checkpointing": true},
+    {"per_device_train_batch_size": 1, "gradient_accumulation_steps": 16, "gradient_checkpointing": true}
+  ]
+}

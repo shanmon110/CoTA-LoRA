@@ -1,0 +1,1 @@
+{"method":"flylora","rank":32,"alpha":64,"gradient_checkpointing":false,"settings":{"top_k":8,"bias_step":0.001,"routing":"signed_author_peft"}}

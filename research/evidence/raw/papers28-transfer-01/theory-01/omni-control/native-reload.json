@@ -1,0 +1,21 @@
+{
+  "checked_projection_count": 72,
+  "shape": [
+    2048,
+    2048
+  ],
+  "rank": 8,
+  "scale": 2,
+  "dense_dtype": "bfloat16",
+  "adapter_dtype": "float32",
+  "exact_loaded_factor_count": 144,
+  "exact_bf16_projection_forwards": 72,
+  "checkpoint_identity": {
+    "adapter_sha256": "144ded1e705ef184bc200831e625e39947892b473173b07ff988b54824f6b43a",
+    "config_sha256": "bf53bcf3eef205a5ddb4cf862d8c31e84b44e4233f10c2abc52f6b062f8031fc",
+    "files": {
+      "adapter_model.safetensors": "144ded1e705ef184bc200831e625e39947892b473173b07ff988b54824f6b43a",
+      "adapter_config.json": "bf53bcf3eef205a5ddb4cf862d8c31e84b44e4233f10c2abc52f6b062f8031fc"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "uar": 0.5986294998768739,
+  "accuracy": 0.5688960515713135,
+  "recalls": {
+    "A": 0.9294117647058824,
+    "B": 0.4819004524886878,
+    "C": 0.30612244897959184,
+    "D": 0.6770833333333334
+  },
+  "confusion_matrix": [
+    [
+      158,
+      6,
+      1,
+      5
+    ],
+    [
+      123,
+      213,
+      6,
+      100
+    ],
+    [
+      80,
+      14,
+      75,
+      76
+    ],
+    [
+      105,
+      14,
+      5,
+      260
+    ]
+  ],
+  "utterances": 1241,
+  "method": "alora",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 114.03944629203761,
+  "peak_allocated_bytes": 10166276608,
+  "peak_reserved_bytes": 10278141952,
+  "predictions_sha256": "b775e4f4e99ed6c9aebbcb7b6dfa74203373f73b6d8af916b2dec793b3192fd5",
+  "adapter_sha256": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+  "config_sha256": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158",
+  "files": {
+    "adapter_model.safetensors": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+    "adapter_config.json": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158"
+  }
+}

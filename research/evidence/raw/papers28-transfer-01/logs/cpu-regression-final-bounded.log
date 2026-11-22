@@ -1,0 +1,56 @@
+................................s..................................s.... [ 47%]
+...........................ss........................................... [ 94%]
+.........                                                                [100%]
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+../../../root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_pissa_restores_exact_bf16_residual_and_nonzero_weights
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_ga_calibrates_only_training_batches_and_restores_exactly
+experiments/ms_swift_aqa/tests/test_paper_early_loram.py::test_random_structured_pruning_and_zero_filled_recovery
+experiments/ms_swift_aqa/tests/test_paper_protocol.py::test_eva_zero_rank_native_clean_restore
+experiments/ms_swift_aqa/tests/test_structural_suite.py::test_multimodal_update_and_clean_reload[lora_llm]
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/utils/save_and_load.py:236: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_middle_lowra.py::test_mixed_packed_bytes_error_and_allocation
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: The TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12050. The TBB threading layer is disabled.
+    warnings.warn(problem)
+
+experiments/ms_swift_aqa/tests/test_paper_protocol.py::test_eva_zero_rank_native_clean_restore
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/tuners/lora/config.py:579: UserWarning: `init_lora_weights` is 'eva' but `eva_config` is not specified. Using default EVA config.
+    warnings.warn("`init_lora_weights` is 'eva' but `eva_config` is not specified. Using default EVA config.")
+
+experiments/ms_swift_aqa/tests/test_paper_protocol.py::test_eva_zero_rank_native_clean_restore
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/mapping_func.py:96: UserWarning: lora with eva initialization used with low_cpu_mem_usage=False. Setting low_cpu_mem_usage=True can improve the maximum batch size possible for eva initialization.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_swift_native_coverage_and_clean_reload[adalora-540]
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/tuners/adalora/config.py:96: UserWarning: Note that `r` is not used in AdaLora and will be ignored.If you intended to set the initial rank, use `init_r` instead.
+    warnings.warn(
+
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/transformers/trainer.py:4064: UserWarning: mtime may not be reliable on this filesystem, falling back to numerical ordering
+    warnings.warn("mtime may not be reliable on this filesystem, falling back to numerical ordering")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+149 passed, 4 skipped, 23 warnings in 13.53s

@@ -1,0 +1,43 @@
+................................s............F
+=================================== FAILURES ===================================
+________ test_swift_paper_tuner_updates_on_omni_audio_and_reloads[bora] ________
+experiments/ms_swift_aqa/tests/test_paper_late.py:271: in test_swift_paper_tuner_updates_on_omni_audio_and_reloads
+    tuner.prepare_model(kwargs, model)
+experiments/ms_swift_aqa/paper_plugin.py:89: in prepare_model
+    return install(model, spec)
+           ^^^^^^^^^^^^^^^^^^^^
+experiments/ms_swift_aqa/paper_plugin.py:50: in install
+    select_targets(model, spec['targets'])
+experiments/ms_swift_aqa/paper_plugin.py:34: in select_targets
+    projections = ordered_projections({path.rsplit('.', 1)[1] for path in targets})
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+experiments/ms_swift_librispeech/adapter_audit.py:15: in ordered_projections
+    raise ValueError('Select unique decoder projections including o_proj')
+E   ValueError: Select unique decoder projections including o_proj
+----------------------------- Captured stderr call -----------------------------
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+------------------------------ Captured log call -------------------------------
+WARNING  transformers.modeling_rope_utils:modeling_rope_utils.py:467 Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+../../../root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_pissa_restores_exact_bf16_residual_and_nonzero_weights
+experiments/ms_swift_aqa/tests/test_paper_early.py::test_ga_calibrates_only_training_batches_and_restores_exactly
+experiments/ms_swift_aqa/tests/test_paper_early_loram.py::test_random_structured_pruning_and_zero_filled_recovery
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/utils/save_and_load.py:236: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_aqa/tests/test_paper_late.py::test_swift_paper_tuner_updates_on_omni_audio_and_reloads[bora]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 44 passed, 1 skipped, 5 warnings in 12.58s

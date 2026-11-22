@@ -1,0 +1,423 @@
+{
+  "dataset": "MMAU v05.15.25 Test-mini",
+  "missing": [],
+  "n": 1000,
+  "clusters": 904,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "annotations_sha256": "9f18fda99f8dbc2bc5ecd6323fb5063309f54969810b5c6f1caeb3b8d904cf1c",
+  "official_scorer_sha256": "85480e1c0dfe8ee1406e9c6e598eff0dca9e0216701f076faf69081c6aab1558",
+  "provenance": {
+    "dataset": "MMAU-v05.15.25 Test-mini",
+    "repo": "gamma-lab-umd/MMAU-test-mini",
+    "hf_revision": "ccd9696c0111ea7060827598f310558df0b71b0a",
+    "labels_and_evaluator": "https://github.com/Sakshi113/MMAU/tree/110127f54c0dfba3faa5ec9feee4a7e4148679c5",
+    "source_sha256": {
+      "test_mini.parquet": "54b76f440db843546f9ad49a1518cc22371f63a266f034ba6bd4343b7b6fde86",
+      "mmau-test-mini.json": "9f18fda99f8dbc2bc5ecd6323fb5063309f54969810b5c6f1caeb3b8d904cf1c",
+      "evaluation.py": "85480e1c0dfe8ee1406e9c6e598eff0dca9e0216701f076faf69081c6aab1558"
+    },
+    "test_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+    "items": 1000,
+    "decoded_waveforms": 1000,
+    "distinct_encoded_waveforms": 904,
+    "domains": {
+      "sound": 333,
+      "speech": 333,
+      "music": 334
+    },
+    "formats": {
+      "WAV": 954,
+      "MP3": 46
+    },
+    "native_sample_rates": {
+      "32000": 252,
+      "44100": 226,
+      "48000": 92,
+      "16000": 411,
+      "24000": 19
+    },
+    "duration_seconds": {
+      "total": 14325.464982426303,
+      "min": 1.4512471655328798,
+      "max": 34.4785
+    },
+    "option_counts": {
+      "4": 948,
+      "2": 27,
+      "8": 1,
+      "5": 24
+    },
+    "rows_with_duplicate_choices": 27,
+    "rows_with_repeated_gold": 16,
+    "mp3_frame_estimate_differs": 38,
+    "id_semantics": "Public item UUID. source_id groups identical encoded media by SHA256; original recording identifiers are unavailable.",
+    "annotations": "Pinned official GitHub JSON; Parquet and GitHub joined by UUID in GitHub row order.",
+    "hf_annotation_differences": []
+  },
+  "baseline_reused": true,
+  "scores": {
+    "frozen-base": {
+      "correct": 757,
+      "n": 1000,
+      "accuracy": 0.757,
+      "strict": 756,
+      "by_domain": {
+        "sound": {
+          "n": 333,
+          "correct": 276,
+          "accuracy": 0.8288288288288288,
+          "strict": 276
+        },
+        "music": {
+          "n": 334,
+          "correct": 235,
+          "accuracy": 0.7035928143712575,
+          "strict": 235
+        },
+        "speech": {
+          "n": 333,
+          "correct": 246,
+          "accuracy": 0.7387387387387387,
+          "strict": 245
+        }
+      },
+      "macro_domain_accuracy": 0.757053460646275,
+      "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+      "predictions_sha256": "c92fdc09191d714779d631a895edaf158922127c71945cb29496085fbb863c19",
+      "identity": {
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "source": "archived unchanged checkpoint-free evaluation"
+      },
+      "evaluation_seconds": 91.06688528700033,
+      "peak_allocated_gib": 9.59195852279663
+    },
+    "lora-mixed": {
+      "correct": 725,
+      "n": 1000,
+      "accuracy": 0.725,
+      "strict": 724,
+      "by_domain": {
+        "sound": {
+          "n": 333,
+          "correct": 262,
+          "accuracy": 0.7867867867867868,
+          "strict": 262
+        },
+        "music": {
+          "n": 334,
+          "correct": 219,
+          "accuracy": 0.655688622754491,
+          "strict": 219
+        },
+        "speech": {
+          "n": 333,
+          "correct": 244,
+          "accuracy": 0.7327327327327328,
+          "strict": 243
+        }
+      },
+      "macro_domain_accuracy": 0.7250693807580036,
+      "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+      "predictions_sha256": "8cb4e8d4117e23a912b3d362908e48e83b353d378cd4406cfa876a252d9a090d",
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/lora-mixed/checkpoint-160",
+        "weights_sha256": "dc870811b7da74102f4d1f8423864b1f3815d1e9b60ac552f027e0d65957f186",
+        "adapter_config_sha256": "76eaac757eeb30c4b121252e4adc077a2e5f972122932d8c484417867f743584"
+      },
+      "evaluation_seconds": 107.56845761404838,
+      "peak_allocated_gib": 9.59855031967163
+    },
+    "question_audio-mixed": {
+      "correct": 721,
+      "n": 1000,
+      "accuracy": 0.721,
+      "strict": 720,
+      "by_domain": {
+        "sound": {
+          "n": 333,
+          "correct": 262,
+          "accuracy": 0.7867867867867868,
+          "strict": 262
+        },
+        "music": {
+          "n": 334,
+          "correct": 217,
+          "accuracy": 0.6497005988023952,
+          "strict": 217
+        },
+        "speech": {
+          "n": 333,
+          "correct": 242,
+          "accuracy": 0.7267267267267268,
+          "strict": 241
+        }
+      },
+      "macro_domain_accuracy": 0.7210713707719695,
+      "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+      "predictions_sha256": "3effb729d67221223a6d7202e1cd021dc6572a7a1627fdb2a611c3c94e2d233e",
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+        "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+        "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+      },
+      "evaluation_seconds": 108.06596338801319,
+      "peak_allocated_gib": 9.598604202270508
+    },
+    "question_audio-mixed-off": {
+      "correct": 725,
+      "n": 1000,
+      "accuracy": 0.725,
+      "strict": 724,
+      "by_domain": {
+        "sound": {
+          "n": 333,
+          "correct": 268,
+          "accuracy": 0.8048048048048048,
+          "strict": 268
+        },
+        "music": {
+          "n": 334,
+          "correct": 216,
+          "accuracy": 0.6467065868263473,
+          "strict": 216
+        },
+        "speech": {
+          "n": 333,
+          "correct": 241,
+          "accuracy": 0.7237237237237237,
+          "strict": 240
+        }
+      },
+      "macro_domain_accuracy": 0.7250783717849586,
+      "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+      "predictions_sha256": "0280e38f36dc6c53e8221ee6841fbc7c131548a61b31fee0306da3e3c2c776a8",
+      "identity": {
+        "base_model": "/root/autodl-tmp/west-preflight/model",
+        "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+        "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+        "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+        "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+        "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc",
+        "transport_ablation": {
+          "gate_tensors": 36,
+          "transport_up_tensors": 36,
+          "tensors_zeroed": 72,
+          "scalars_zeroed": 590112
+        }
+      },
+      "evaluation_seconds": 104.72776672802866,
+      "peak_allocated_gib": 9.598604202270508
+    }
+  },
+  "pairs": {
+    "question_audio-mixed vs lora-mixed": {
+      "overall": {
+        "delta_pp": -0.4,
+        "interval_95_pp": [
+          -1.4288283658787253,
+          0.6085192697768763
+        ],
+        "clusters": 904,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 12,
+        "reference_only_correct": 16
+      },
+      "sound": {
+        "delta_pp": 0.0,
+        "interval_95_pp": [
+          -1.8073654133148909,
+          1.8181818181818181
+        ],
+        "clusters": 311,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 5,
+        "reference_only_correct": 5
+      },
+      "music": {
+        "delta_pp": -0.5988023952095809,
+        "interval_95_pp": [
+          -2.6470588235294117,
+          1.4836795252225519
+        ],
+        "clusters": 290,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 5,
+        "reference_only_correct": 7
+      },
+      "speech": {
+        "delta_pp": -0.6006006006006006,
+        "interval_95_pp": [
+          -2.108592982200706,
+          0.8849557522123894
+        ],
+        "clusters": 303,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 2,
+        "reference_only_correct": 4
+      }
+    },
+    "question_audio-mixed vs question_audio-mixed-off": {
+      "overall": {
+        "delta_pp": -0.4,
+        "interval_95_pp": [
+          -1.3157894736842106,
+          0.5005005005005005
+        ],
+        "clusters": 904,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 9,
+        "reference_only_correct": 13
+      },
+      "sound": {
+        "delta_pp": -1.8018018018018018,
+        "interval_95_pp": [
+          -3.9274924471299095,
+          0.0
+        ],
+        "clusters": 311,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 3,
+        "reference_only_correct": 9
+      },
+      "music": {
+        "delta_pp": 0.29940119760479045,
+        "interval_95_pp": [
+          -1.492537313432836,
+          2.08955223880597
+        ],
+        "clusters": 290,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 5,
+        "reference_only_correct": 4
+      },
+      "speech": {
+        "delta_pp": 0.3003003003003003,
+        "interval_95_pp": [
+          0.0,
+          0.9174311926605505
+        ],
+        "clusters": 303,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 1,
+        "reference_only_correct": 0
+      }
+    },
+    "question_audio-mixed vs frozen-base": {
+      "overall": {
+        "delta_pp": -3.5999999999999996,
+        "interval_95_pp": [
+          -5.566411103690358,
+          -1.5984015984015985
+        ],
+        "clusters": 904,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 35,
+        "reference_only_correct": 71
+      },
+      "sound": {
+        "delta_pp": -4.2042042042042045,
+        "interval_95_pp": [
+          -7.6452599388379205,
+          -0.8928571428571429
+        ],
+        "clusters": 311,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 10,
+        "reference_only_correct": 24
+      },
+      "music": {
+        "delta_pp": -5.389221556886228,
+        "interval_95_pp": [
+          -9.495548961424332,
+          -1.2232415902140672
+        ],
+        "clusters": 290,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 16,
+        "reference_only_correct": 34
+      },
+      "speech": {
+        "delta_pp": -1.2012012012012012,
+        "interval_95_pp": [
+          -4.093567251461988,
+          1.5060240963855422
+        ],
+        "clusters": 303,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 9,
+        "reference_only_correct": 13
+      }
+    },
+    "lora-mixed vs frozen-base": {
+      "overall": {
+        "delta_pp": -3.2,
+        "interval_95_pp": [
+          -5.120548697252062,
+          -1.2280933986787792
+        ],
+        "clusters": 904,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 35,
+        "reference_only_correct": 67
+      },
+      "sound": {
+        "delta_pp": -4.2042042042042045,
+        "interval_95_pp": [
+          -7.668711656441718,
+          -0.9009009009009009
+        ],
+        "clusters": 311,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 10,
+        "reference_only_correct": 24
+      },
+      "music": {
+        "delta_pp": -4.790419161676647,
+        "interval_95_pp": [
+          -8.772328548644339,
+          -0.8928571428571429
+        ],
+        "clusters": 290,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 15,
+        "reference_only_correct": 31
+      },
+      "speech": {
+        "delta_pp": -0.6006006006006006,
+        "interval_95_pp": [
+          -3.363914373088685,
+          2.127659574468085
+        ],
+        "clusters": 303,
+        "resamples": 10000,
+        "seed": 42,
+        "candidate_only_correct": 10,
+        "reference_only_correct": 12
+      }
+    }
+  },
+  "inference": "Greedy single allowed answer letter, mapped back to original answer option text for official scoring.",
+  "intervals": "PCM-cluster bootstrap for fixed seed-42 checkpoints.",
+  "checked_at": "2026-11-20T21:36:46.450343+00:00"
+}

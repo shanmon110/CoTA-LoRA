@@ -1,0 +1,108 @@
+{
+  "mixed_data": {
+    "train": {
+      "items": 640,
+      "pairs": 320,
+      "variants": {
+        "long": 160,
+        "short": 160
+      },
+      "by_domain_and_kind": {
+        "count/change": {
+          "long": 43,
+          "short": 43
+        },
+        "count/invariant": {
+          "long": 10,
+          "short": 11
+        },
+        "loudness/change": {
+          "long": 43,
+          "short": 42
+        },
+        "loudness/invariant": {
+          "long": 11,
+          "short": 11
+        },
+        "timing/change": {
+          "long": 42,
+          "short": 43
+        },
+        "timing/invariant": {
+          "long": 11,
+          "short": 10
+        }
+      },
+      "answer_labels_by_variant": {
+        "long": {
+          "A": 140,
+          "B": 127,
+          "C": 27,
+          "D": 26
+        },
+        "short": {
+          "A": 131,
+          "B": 122,
+          "C": 35,
+          "D": 32
+        }
+      }
+    },
+    "dev": {
+      "items": 240,
+      "pairs": 120,
+      "variants": {
+        "short": 60,
+        "long": 60
+      },
+      "by_domain_and_kind": {
+        "count/change": {
+          "long": 16,
+          "short": 16
+        },
+        "count/invariant": {
+          "long": 4,
+          "short": 4
+        },
+        "loudness/change": {
+          "long": 16,
+          "short": 16
+        },
+        "loudness/invariant": {
+          "long": 4,
+          "short": 4
+        },
+        "timing/change": {
+          "long": 16,
+          "short": 16
+        },
+        "timing/invariant": {
+          "long": 4,
+          "short": 4
+        }
+      },
+      "answer_labels_by_variant": {
+        "long": {
+          "A": 52,
+          "B": 51,
+          "C": 8,
+          "D": 9
+        },
+        "short": {
+          "A": 46,
+          "B": 54,
+          "C": 9,
+          "D": 11
+        }
+      }
+    },
+    "assignment": {
+      "method": "seeded SHA-256 pair ID within domain and kind",
+      "seed": 42,
+      "covers_existing_sources": true,
+      "same_duration_for_pair_members": true,
+      "labels_and_order_preserved": true,
+      "avoids_answer_value": true
+    }
+  }
+}

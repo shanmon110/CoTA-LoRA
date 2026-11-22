@@ -1,0 +1,1 @@
+{"method":"loram-train-small","settings":{"prune_fraction":0.5,"first_intact":4,"last_intact":2,"mask_seed":42,"alignment":"none"}}

@@ -1,0 +1,3 @@
+original: /root/autodl-tmp/MMAR/runs/papers28-transfer-01/logs/original-disposition-f546c3dd93793ac1.json replay start: 2026-11-21T08:07:20.822098+00:00
+/root/autodl-tmp/MMAR/runs/papers28-transfer-01/paired-target-scores.json
+end 2026-11-21T08:07:44.788110+00:00 complete {'paper_methods': {'expected': 27, 'verified': 27}, 'theory': {'expected': 1, 'verified': 1}, 'teacher_diagnostic': {'expected': 1, 'verified': 1}, 'references': {'expected': 3, 'verified': 3}} {'status': 'verified', 'evidence': '/root/autodl-tmp/MMAR/runs/papers28-transfer-01/paired-target-scores.json'}

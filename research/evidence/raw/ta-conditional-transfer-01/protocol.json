@@ -1,0 +1,46 @@
+{
+  "datasets": {
+    "ser": {
+      "manifest": "/root/autodl-tmp/iemocap/swift-ser/data/test.jsonl",
+      "sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe"
+    },
+    "mmau": {
+      "manifest": "/root/autodl-tmp/r1-aqa/data/pilot-01/test.jsonl",
+      "sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612"
+    }
+  },
+  "arms": {
+    "frozen-base": {
+      "config": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/lora-mixed.json",
+      "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+      "off": false
+    },
+    "lora-mixed": {
+      "config": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/lora-mixed.json",
+      "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+      "off": false,
+      "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/lora-mixed/checkpoint-160",
+      "weights_sha256": "dc870811b7da74102f4d1f8423864b1f3815d1e9b60ac552f027e0d65957f186",
+      "adapter_config_sha256": "76eaac757eeb30c4b121252e4adc077a2e5f972122932d8c484417867f743584"
+    },
+    "question_audio-mixed": {
+      "config": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/question_audio-mixed.json",
+      "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+      "off": false,
+      "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+      "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+      "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+    },
+    "question_audio-mixed-off": {
+      "config": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/question_audio-mixed.json",
+      "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+      "off": true,
+      "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+      "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+      "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+    }
+  },
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "previous_analysis_sha256": "5c450fa218e5039c1d07e7a9e85186a55f7408b2f223eaea4b44ae6c12493c55",
+  "decoding": "BF16, batch 2, greedy one allowed option letter"
+}

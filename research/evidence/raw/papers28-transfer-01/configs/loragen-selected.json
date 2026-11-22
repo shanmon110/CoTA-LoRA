@@ -1,0 +1,12 @@
+{
+  "method": "loragen",
+  "strategy": "fixed source-task description and single generated adapter",
+  "step": null,
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loragen/checkpoint-generated",
+  "adapter_sha256": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+  "config_sha256": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5",
+  "files": {
+    "adapter_model.safetensors": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583",
+    "adapter_config.json": "4f88470a73690e0fe0b2aa74cf364cc2f941cc0d1f2e66841a5bade601ba95b5"
+  }
+}

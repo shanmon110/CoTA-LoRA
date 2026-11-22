@@ -1,0 +1,83 @@
+{
+  "method": "ralora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.5776487758564964,
+    "accuracy": 0.5366639806607575,
+    "recalls": {
+      "A": 0.9352941176470588,
+      "B": 0.3891402714932127,
+      "C": 0.3142857142857143,
+      "D": 0.671875
+    },
+    "confusion_matrix": [
+      [
+        159,
+        6,
+        1,
+        4
+      ],
+      [
+        133,
+        172,
+        8,
+        129
+      ],
+      [
+        71,
+        10,
+        77,
+        87
+      ],
+      [
+        110,
+        10,
+        6,
+        258
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.83984375,
+    "best_step": 256,
+    "updates": 256,
+    "trainable": 14966784,
+    "correct": 727,
+    "exact_accuracy": 0.727,
+    "official_text_accuracy": 0.729,
+    "by_domain": {
+      "music": {
+        "correct": 218,
+        "total": 334,
+        "accuracy": 0.6526946107784432
+      },
+      "sound": {
+        "correct": 269,
+        "total": 333,
+        "accuracy": 0.8078078078078078
+      },
+      "speech": {
+        "correct": 240,
+        "total": 333,
+        "accuracy": 0.7207207207207207
+      }
+    },
+    "train_seconds": 556.5814553679083,
+    "training_peak_allocated_gib": 11.64768648147583
+  },
+  "checkpoint": {
+    "method": "ralora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/ralora/checkpoint-256",
+    "step": 256,
+    "dev_accuracy": 0.83984375,
+    "adapter_sha256": "c06f5a08936ec3dc7a737e991b770998dafc9b183a045ba0515ec5548775f908",
+    "config_sha256": "8f4842ceeae04da28e5f1354be5d7f7059d0e21e524926ab09d9788423be7462",
+    "files": {
+      "adapter_model.safetensors": "c06f5a08936ec3dc7a737e991b770998dafc9b183a045ba0515ec5548775f908",
+      "adapter_config.json": "8f4842ceeae04da28e5f1354be5d7f7059d0e21e524926ab09d9788423be7462"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/ralora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/ralora"
+}

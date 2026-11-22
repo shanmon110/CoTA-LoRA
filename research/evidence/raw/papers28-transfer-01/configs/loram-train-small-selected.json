@@ -1,0 +1,14 @@
+{
+  "method": "loram-train-small",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/loram-train-small/checkpoint-256",
+  "step": 256,
+  "dev_accuracy": 0.734375,
+  "adapter_sha256": "7794f0c220144aff9c8d6a0ef2ef32e7f2a700bfba48dad050cfbe5b1f93c5e8",
+  "config_sha256": "01e48e182a6066ba951e5139caebc6cd112dcd137bb4a0d169fd49d544adfd7b",
+  "files": {
+    "adapter_model.safetensors": "9a5e865cd729b34366f46a36037138f47b065d4f11acb80f9d661bcf8b5db343",
+    "recovered/adapter_model.safetensors": "81bb4c410af366ff0f2201037eca99199d3796971e51b9e27d3b059476e14bf1",
+    "adapter_config.json": "1e243ab134491d5e47f8d3728065c12170e37bc31afa548334b2e03f383d497d",
+    "recovered/adapter_config.json": "1e243ab134491d5e47f8d3728065c12170e37bc31afa548334b2e03f383d497d"
+  }
+}

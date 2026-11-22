@@ -1,0 +1,12 @@
+{
+  "method": "lora-plus",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lora-plus/checkpoint-32",
+  "step": 32,
+  "dev_accuracy": 0.49609375,
+  "adapter_sha256": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  }
+}

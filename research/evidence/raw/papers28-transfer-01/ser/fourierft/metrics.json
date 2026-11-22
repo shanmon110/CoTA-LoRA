@@ -1,0 +1,53 @@
+{
+  "uar": 0.2628822201957706,
+  "accuracy": 0.2264302981466559,
+  "recalls": {
+    "A": 0.40588235294117647,
+    "B": 0.251131221719457,
+    "C": 0.363265306122449,
+    "D": 0.03125
+  },
+  "confusion_matrix": [
+    [
+      69,
+      45,
+      41,
+      15
+    ],
+    [
+      178,
+      111,
+      132,
+      21
+    ],
+    [
+      109,
+      38,
+      89,
+      9
+    ],
+    [
+      141,
+      88,
+      143,
+      12
+    ]
+  ],
+  "utterances": 1241,
+  "method": "fourierft",
+  "tuner": "fourierft",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "cf3d176e87f66ff5bc1a7898bf6a74fa938df334ae77584541948901200309ea",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/fourierft/checkpoint-256",
+    "weights_sha256": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56",
+    "adapter_config_sha256": "d3a4b1536a7c4357d9ee7678c58f583fbc704770e2e3f715b9d16aeb8e8b4f1a"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "predictions_sha256": "ed1c4d34e5d5399ef08d2e5dc91ff7686430b35ced87dacab6fb982b51d74e02",
+  "eval_seconds": 121.3257208620198,
+  "peak_allocated_bytes": 10278683136,
+  "peak_reserved_bytes": 10332667904
+}

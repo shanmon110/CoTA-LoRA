@@ -1,0 +1,42 @@
+{
+  "utterances": 240,
+  "correct": 206,
+  "accuracy": 0.8583333333333333,
+  "by_domain": {
+    "count": {
+      "correct": 71,
+      "total": 80,
+      "accuracy": 0.8875
+    },
+    "loudness": {
+      "correct": 66,
+      "total": 80,
+      "accuracy": 0.825
+    },
+    "timing": {
+      "correct": 69,
+      "total": 80,
+      "accuracy": 0.8625
+    }
+  },
+  "macro_domain_accuracy": 0.8583333333333334,
+  "by_category": {},
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio-mixed",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+    "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+  },
+  "no_transport": false,
+  "manifest_sha256": "6bbf60069bd1af7bd8659751cad06f24b1ccbdcf54de2b664afc79d86f883695",
+  "predictions_sha256": "c4e7be89bdf2fac18fb715a829ade8a96197b9f20117dc7075af7fd0db995767",
+  "eval_seconds": 26.953398832993116,
+  "peak_allocated_bytes": 9987244544,
+  "peak_reserved_bytes": 10269753344
+}

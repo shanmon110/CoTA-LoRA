@@ -1,0 +1,83 @@
+{
+  "method": "bora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.5981071274663712,
+    "accuracy": 0.5511684125705076,
+    "recalls": {
+      "A": 0.9411764705882353,
+      "B": 0.47285067873303166,
+      "C": 0.43673469387755104,
+      "D": 0.5416666666666666
+    },
+    "confusion_matrix": [
+      [
+        160,
+        5,
+        3,
+        2
+      ],
+      [
+        145,
+        209,
+        11,
+        77
+      ],
+      [
+        72,
+        12,
+        107,
+        54
+      ],
+      [
+        150,
+        14,
+        12,
+        208
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.8203125,
+    "best_step": 224,
+    "updates": 256,
+    "trainable": 14974848,
+    "correct": 715,
+    "exact_accuracy": 0.715,
+    "official_text_accuracy": 0.718,
+    "by_domain": {
+      "music": {
+        "correct": 221,
+        "total": 334,
+        "accuracy": 0.6616766467065869
+      },
+      "sound": {
+        "correct": 262,
+        "total": 333,
+        "accuracy": 0.7867867867867868
+      },
+      "speech": {
+        "correct": 232,
+        "total": 333,
+        "accuracy": 0.6966966966966966
+      }
+    },
+    "train_seconds": 641.0687709340127,
+    "training_peak_allocated_gib": 11.648046970367432
+  },
+  "checkpoint": {
+    "method": "bora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/bora/checkpoint-224",
+    "step": 224,
+    "dev_accuracy": 0.8203125,
+    "adapter_sha256": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+    "config_sha256": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1",
+    "files": {
+      "adapter_model.safetensors": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118",
+      "adapter_config.json": "c77a8d974e45668c2400ccc4a938d94b8968e538acb4a2ecbf3983dce4bbecf1"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/bora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/bora"
+}

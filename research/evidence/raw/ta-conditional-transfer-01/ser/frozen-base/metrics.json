@@ -1,0 +1,50 @@
+{
+  "uar": 0.5994471827192416,
+  "accuracy": 0.572119258662369,
+  "recalls": {
+    "A": 0.8941176470588236,
+    "B": 0.41855203619909503,
+    "C": 0.3142857142857143,
+    "D": 0.7708333333333334
+  },
+  "confusion_matrix": [
+    [
+      152,
+      7,
+      1,
+      10
+    ],
+    [
+      105,
+      185,
+      5,
+      147
+    ],
+    [
+      57,
+      10,
+      77,
+      101
+    ],
+    [
+      76,
+      8,
+      4,
+      296
+    ]
+  ],
+  "utterances": 1241,
+  "method": "frozen-base",
+  "tuner": "frozen-base",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "predictions_sha256": "b72c04f5f75ff36d30bf99adbd26f6c1d8d66743920df5ee7c726420a3c7d529",
+  "eval_seconds": 74.03463779500453,
+  "peak_allocated_bytes": 10106407424,
+  "peak_reserved_bytes": 10219421696
+}

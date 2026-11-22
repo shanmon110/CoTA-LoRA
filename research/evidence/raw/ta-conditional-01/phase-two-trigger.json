@@ -1,0 +1,10 @@
+{
+  "results_correct_per_1000": {
+    "lora": 600,
+    "static": 593,
+    "question": 596,
+    "question_audio": 596
+  },
+  "reference": 873,
+  "trigger": "All first-phase candidates score below the published reference. Test the planned within-source duration shift independently of MMAR item results."
+}

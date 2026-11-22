@@ -1,0 +1,83 @@
+{
+  "method": "alora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.5986294998768739,
+    "accuracy": 0.5688960515713135,
+    "recalls": {
+      "A": 0.9294117647058824,
+      "B": 0.4819004524886878,
+      "C": 0.30612244897959184,
+      "D": 0.6770833333333334
+    },
+    "confusion_matrix": [
+      [
+        158,
+        6,
+        1,
+        5
+      ],
+      [
+        123,
+        213,
+        6,
+        100
+      ],
+      [
+        80,
+        14,
+        75,
+        76
+      ],
+      [
+        105,
+        14,
+        5,
+        260
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.76953125,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 14966784,
+    "correct": 733,
+    "exact_accuracy": 0.733,
+    "official_text_accuracy": 0.734,
+    "by_domain": {
+      "music": {
+        "correct": 219,
+        "total": 334,
+        "accuracy": 0.655688622754491
+      },
+      "sound": {
+        "correct": 271,
+        "total": 333,
+        "accuracy": 0.8138138138138138
+      },
+      "speech": {
+        "correct": 243,
+        "total": 333,
+        "accuracy": 0.7297297297297297
+      }
+    },
+    "train_seconds": 345.2186863440438,
+    "training_peak_allocated_gib": 17.188654899597168
+  },
+  "checkpoint": {
+    "method": "alora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/alora/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.76953125,
+    "adapter_sha256": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+    "config_sha256": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158",
+    "files": {
+      "adapter_model.safetensors": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+      "adapter_config.json": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/alora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/alora"
+}

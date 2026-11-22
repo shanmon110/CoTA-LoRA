@@ -1,0 +1,2524 @@
+[
+  {
+    "id": 1,
+    "method": "expressive-power",
+    "conference": "ICLR",
+    "label": "Expressive-Power",
+    "title": "The Expressive Power of Low-Rank Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/154926e0b66e2b2a8c1120852f31a12d-Abstract-Conference.html",
+    "scope": "作者合成理论示例复算；真实 Omni 已知教师局部压缩为独立 diagnostic，不等同完整 Transformer 定理或常规微调实验。",
+    "year": 2024,
+    "authors": [
+      "Zeng, Yuchen",
+      "Lee, Kangwook"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2024/file/154926e0b66e2b2a8c1120852f31a12d-Paper-Conference.pdf",
+    "implementation_kind": "theory_replay_and_known_teacher_diagnostic",
+    "adaptation_boundary": "两部分：作者合成 FNN/Transformer 理论示例复算；另用同源全参教师的 72 个 Q/O 矩阵做 depth=1、rank=8 的解析压缩诊断。后者需要已训练教师，构造 0 步不等于无教师训练成本，不能代表完整 Transformer 定理在 Omni 上成立。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/papers28/expressive.py",
+      "experiments/ms_swift_aqa/papers28/known_target.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/papers28/expressive.py",
+      "../../experiments/ms_swift_aqa/papers28/known_target.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/known-target-qo.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/known-target-qo.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/UW-Madison-Lee-Lab/Expressive_Power_of_LoRA/tree/eaeb7d3f265853343b234172ed44cd7623c5212a",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/UW-Madison-Lee-Lab/Expressive_Power_of_LoRA",
+        "commit": "eaeb7d3f265853343b234172ed44cd7623c5212a",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/154926e0b66e2b2a8c1120852f31a12d-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "The Expressive Power of Low-Rank Adaptation"
+        ],
+        "citation_author": [
+          "Zeng, Yuchen",
+          "Lee, Kangwook"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2024"
+        ],
+        "citation_firstpage": [
+          "5078"
+        ],
+        "citation_lastpage": [
+          "5123"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2024/file/154926e0b66e2b2a8c1120852f31a12d-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2024-05-31"
+        ]
+      }
+    },
+    "original_source_record": "| 1 | Expressive Power。作者的构造法从已知冻结和目标网络权重解析地构造 LoRA 因子。[作者代码](https://github.com/UW-Madison-Lee-Lab/Expressive_Power_of_LoRA/tree/eaeb7d3f265853343b234172ed44cd7623c5212a) | 作者的已知目标构造在两个合成网络复算。另以同批 AVQA 全参数教师的 72 个方形 Q/O 矩阵作 depth=1 的独立压缩控制，并用生成的适配器转移评估。作者完整 Transformer 证明的结构假设与 Qwen 的分组查询注意力、非方形 SwiGLU 不同。 |"
+  },
+  {
+    "id": 2,
+    "method": "longlora-omni",
+    "conference": "ICLR",
+    "label": "LongLoRA",
+    "title": "LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/211ab571cc9f3802afa6ffff52ae3e5b-Abstract-Conference.html",
+    "year": 2024,
+    "authors": [
+      "Chen, Yukang",
+      "Qian, Shengju",
+      "Tang, Haotian",
+      "Lai, Xin",
+      "Liu, Zhijian",
+      "Han, Song",
+      "Jia, Jiaya"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2024/file/211ab571cc9f3802afa6ffff52ae3e5b-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "将 shifted short attention 移植至 Omni，保留因果 mask、GQA 和多模态 RoPE；训练 embedding/norm，推理恢复全注意力。采用统一音频协议，不构成原论文长上下文扩展能力复测。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_longlora.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_longlora.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/longlora-omni.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/longlora-omni.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/JIA-Lab-research/LongLoRA/tree/d4eb344c5ccc9e91c0812a2b2aeea69070df8c33",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/JIA-Lab-research/LongLoRA",
+        "commit": "d4eb344c5ccc9e91c0812a2b2aeea69070df8c33",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/JIA-Lab-research/LongLoRA/d4eb344c5ccc9e91c0812a2b2aeea69070df8c33/LICENSE",
+          "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/211ab571cc9f3802afa6ffff52ae3e5b-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "LongLoRA: Efficient Fine-tuning of Long-Context Large Language Models"
+        ],
+        "citation_author": [
+          "Chen, Yukang",
+          "Qian, Shengju",
+          "Tang, Haotian",
+          "Lai, Xin",
+          "Liu, Zhijian",
+          "Han, Song",
+          "Jia, Jiaya"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2024"
+        ],
+        "citation_firstpage": [
+          "8220"
+        ],
+        "citation_lastpage": [
+          "8238"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2024/file/211ab571cc9f3802afa6ffff52ae3e5b-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2024-05-31"
+        ]
+      }
+    },
+    "original_source_record": "| 2 | LongLoRA。作者训练时使用 shifted short attention，推理时恢复全注意力。[作者代码](https://github.com/JIA-Lab-research/LongLoRA/tree/d4eb344c5ccc9e91c0812a2b2aeea69070df8c33) | 原生 Swift 的 longlora 入口检查 Llama 类型。Omni 移植需要保留因果 mask、GQA 和多模态 RoPE，单列上下文长度及可训练 embedding/norm 的选择。 |"
+  },
+  {
+    "id": 3,
+    "method": "vera",
+    "conference": "ICLR",
+    "label": "VeRA",
+    "title": "VeRA: Vector-based Random Matrix Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/1b53ad08de383a049e9668a9d0b6a053-Abstract-Conference.html",
+    "year": 2024,
+    "authors": [
+      "Kopiczko, Dawid",
+      "Blankevoort, Tijmen",
+      "Asano, Yuki"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2024/file/1b53ad08de383a049e9668a9d0b6a053-Paper-Conference.pdf",
+    "implementation_kind": "native_peft_with_integration",
+    "adaptation_boundary": "PEFT 0.15.2 的共享冻结 A/B 与每层向量；工程补充精确目标匹配和共享 buffer 重载。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/peft_suite.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/peft_suite.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/vera.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/vera.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "项目页",
+        "url": "https://dkopi.github.io/vera/",
+        "type": "project_page_or_paper_reference"
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.15.2",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.15.2",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/1b53ad08de383a049e9668a9d0b6a053-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "VeRA: Vector-based Random Matrix Adaptation"
+        ],
+        "citation_author": [
+          "Kopiczko, Dawid",
+          "Blankevoort, Tijmen",
+          "Asano, Yuki"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2024"
+        ],
+        "citation_firstpage": [
+          "6815"
+        ],
+        "citation_lastpage": [
+          "6835"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2024/file/1b53ad08de383a049e9668a9d0b6a053-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2024-05-31"
+        ]
+      }
+    },
+    "original_source_record": "| 3 | VeRA。作者项目页推荐 PEFT 入口。[项目页](https://dkopi.github.io/vera/) | 使用本机 PEFT 0.15.2 的共享冻结 A/B 和每层可训练向量。沿用已有 peft_suite 的精确目标选择和共享 buffer 重载适配。 |"
+  },
+  {
+    "id": 4,
+    "method": "dora",
+    "conference": "ICML",
+    "label": "DoRA",
+    "title": "DoRA: Weight-Decomposed Low-Rank Adaptation",
+    "paper": "https://proceedings.mlr.press/v235/liu24bn.html",
+    "year": 2024,
+    "authors": [
+      "Shih-Yang Liu",
+      "Chien-Yi Wang",
+      "Hongxu Yin",
+      "Pavlo Molchanov",
+      "Yu-Chiang Frank Wang",
+      "Kwang-Ting Cheng",
+      "Min-Hung Chen"
+    ],
+    "paper_pdf": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24bn/liu24bn.pdf",
+    "implementation_kind": "native_peft",
+    "adaptation_boundary": "实际实现是原生 PEFT use_dora；审计幅值向量及 A/B。NVlabs 仅作为作者来源链接，许可与 PEFT 分开记录。",
+    "implementation_paths": [
+      "experiments/ms_swift_librispeech/train.py",
+      "experiments/ms_swift_librispeech/adapter_audit.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_librispeech/train.py",
+      "../../experiments/ms_swift_librispeech/adapter_audit.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/dora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/dora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/NVlabs/DoRA/tree/7e2f10abbe8efe212c8fca1d983ae1d04ef13a18",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/NVlabs/DoRA",
+        "commit": "7e2f10abbe8efe212c8fca1d983ae1d04ef13a18",
+        "license": {
+          "license": "LicenseRef-NVIDIA-DoRA-NonCommercial",
+          "license_url": "https://raw.githubusercontent.com/NVlabs/DoRA/7e2f10abbe8efe212c8fca1d983ae1d04ef13a18/LICENSE",
+          "license_sha256": "f3f508bf47a67cc18985b8cb9a85d935da36cb6e34fb31af52e18fe76aab5a0f",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.15.2",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.15.2",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.mlr.press/v235/liu24bn.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_publisher": [
+          "PMLR"
+        ],
+        "citation_title": [
+          "DoRA: Weight-Decomposed Low-Rank Adaptation"
+        ],
+        "citation_language": [
+          "en"
+        ],
+        "citation_abstract_html_url": [
+          "https://proceedings.mlr.press/v235/liu24bn.html"
+        ],
+        "citation_pdf_url": [
+          "https://raw.githubusercontent.com/mlresearch/v235/main/assets/liu24bn/liu24bn.pdf"
+        ],
+        "citation_firstpage": [
+          "32100"
+        ],
+        "citation_lastpage": [
+          "32121"
+        ],
+        "citation_author": [
+          "Shih-Yang Liu",
+          "Chien-Yi Wang",
+          "Hongxu Yin",
+          "Pavlo Molchanov",
+          "Yu-Chiang Frank Wang",
+          "Kwang-Ting Cheng",
+          "Min-Hung Chen"
+        ],
+        "citation_publication_date": [
+          "2024/07/08"
+        ],
+        "citation_inbook_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_conference_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_issn": [
+          "2640-3498"
+        ]
+      }
+    },
+    "original_source_record": "| 4 | DoRA。采用权重幅值和方向的原生 PEFT 实现。[作者代码](https://github.com/NVlabs/DoRA/tree/7e2f10abbe8efe212c8fca1d983ae1d04ef13a18) | 通过 use_dora 开启，审计可训练的幅值向量、A/B 矩阵和全部目标投影。 |"
+  },
+  {
+    "id": 5,
+    "method": "fourierft",
+    "conference": "ICML",
+    "label": "FourierFT",
+    "title": "Parameter-Efficient Fine-Tuning with Discrete Fourier Transform",
+    "paper": "https://proceedings.mlr.press/v235/gao24o.html",
+    "year": 2024,
+    "authors": [
+      "Ziqi Gao",
+      "Qichao Wang",
+      "Aochuan Chen",
+      "Zijing Liu",
+      "Bingzhe Wu",
+      "Liang Chen",
+      "Jia Li"
+    ],
+    "paper_pdf": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/gao24o/gao24o.pdf",
+    "implementation_kind": "native_peft_with_sparse_computation",
+    "adaptation_boundary": "作者推荐 PEFT；工程在同一频率采样/系数上使用经稠密前向与梯度对照的稀疏计算。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/peft_suite.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/peft_suite.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/fourierft.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/fourierft.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者说明",
+        "url": "https://github.com/Chaos96/fourierft/tree/98c7893abbc204ae34b0c4fe59d5ae1fe2b45bce",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/Chaos96/fourierft",
+        "commit": "98c7893abbc204ae34b0c4fe59d5ae1fe2b45bce",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.15.2",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.15.2",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.mlr.press/v235/gao24o.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_publisher": [
+          "PMLR"
+        ],
+        "citation_title": [
+          "Parameter-Efficient Fine-Tuning with Discrete Fourier Transform"
+        ],
+        "citation_language": [
+          "en"
+        ],
+        "citation_abstract_html_url": [
+          "https://proceedings.mlr.press/v235/gao24o.html"
+        ],
+        "citation_pdf_url": [
+          "https://raw.githubusercontent.com/mlresearch/v235/main/assets/gao24o/gao24o.pdf"
+        ],
+        "citation_firstpage": [
+          "14884"
+        ],
+        "citation_lastpage": [
+          "14901"
+        ],
+        "citation_author": [
+          "Ziqi Gao",
+          "Qichao Wang",
+          "Aochuan Chen",
+          "Zijing Liu",
+          "Bingzhe Wu",
+          "Liang Chen",
+          "Jia Li"
+        ],
+        "citation_publication_date": [
+          "2024/07/08"
+        ],
+        "citation_inbook_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_conference_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_issn": [
+          "2640-3498"
+        ]
+      }
+    },
+    "original_source_record": "| 5 | FourierFT。作者仓库当前将官方实现指向 HF PEFT。[作者说明](https://github.com/Chaos96/fourierft/tree/98c7893abbc204ae34b0c4fe59d5ae1fe2b45bce) | 原生 PEFT 频率采样和系数，沿用工程已通过稠密输出与梯度对照的稀疏计算。 |"
+  },
+  {
+    "id": 6,
+    "method": "lora-plus",
+    "conference": "ICML",
+    "label": "LoRA+",
+    "title": "LoRA+: Efficient Low Rank Adaptation of Large Models",
+    "paper": "https://proceedings.mlr.press/v235/hayou24a.html",
+    "year": 2024,
+    "authors": [
+      "Soufiane Hayou",
+      "Nikhil Ghosh",
+      "Bin Yu"
+    ],
+    "paper_pdf": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/hayou24a/hayou24a.pdf",
+    "implementation_kind": "native_swift_optimizer_configuration",
+    "adaptation_boundary": "Swift 原生 B:A 学习率比 16；与普通 LoRA 配对初始化，审计实际 AdamW 成员及学习率。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/lora-plus.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/lora-plus.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/nikhilgsh/loraplus/tree/a0c44bfec0eff97b9574469366bc6b0ccc28838d",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/nikhilgsh/loraplus",
+        "commit": "a0c44bfec0eff97b9574469366bc6b0ccc28838d",
+        "license": {
+          "license": "MIT",
+          "license_url": "https://raw.githubusercontent.com/nikhilgsh/loraplus/a0c44bfec0eff97b9574469366bc6b0ccc28838d/LICENSE",
+          "license_sha256": "147e9eb8a08012f15e978c648118cf2011886fed901e92ac61ccb97f186b4769",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.mlr.press/v235/hayou24a.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_publisher": [
+          "PMLR"
+        ],
+        "citation_title": [
+          "LoRA+: Efficient Low Rank Adaptation of Large Models"
+        ],
+        "citation_language": [
+          "en"
+        ],
+        "citation_abstract_html_url": [
+          "https://proceedings.mlr.press/v235/hayou24a.html"
+        ],
+        "citation_pdf_url": [
+          "https://raw.githubusercontent.com/mlresearch/v235/main/assets/hayou24a/hayou24a.pdf"
+        ],
+        "citation_firstpage": [
+          "17783"
+        ],
+        "citation_lastpage": [
+          "17806"
+        ],
+        "citation_author": [
+          "Soufiane Hayou",
+          "Nikhil Ghosh",
+          "Bin Yu"
+        ],
+        "citation_publication_date": [
+          "2024/07/08"
+        ],
+        "citation_inbook_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_conference_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_issn": [
+          "2640-3498"
+        ]
+      }
+    },
+    "original_source_record": "| 6 | LoRA+。原论文提出给 B 和 A 使用不同学习率。[作者代码](https://github.com/nikhilgsh/loraplus/tree/a0c44bfec0eff97b9574469366bc6b0ccc28838d) | 使用 Swift 原生 lorap_lr_ratio=16。每个 A 与普通 LoRA 使用相同初始化，记录实际 AdamW 参数成员和学习率。 |"
+  },
+  {
+    "id": 7,
+    "method": "lora-ga",
+    "conference": "NeurIPS",
+    "label": "LoRA-GA",
+    "title": "LoRA-GA: Low-Rank Adaptation with Gradient Approximation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/62c4718cc334f6a0a62fb81c4a2095a1-Abstract-Conference.html",
+    "year": 2024,
+    "authors": [
+      "Wang, Shaowen",
+      "Yu, Linxi",
+      "Li, Jian"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2024/file/62c4718cc334f6a0a62fb81c4a2095a1-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "ArB2r、stable_gamma=16；以 16 条 AVQA 训练样本估计梯度。保留实际 BF16 冻结残差及最终 FP32 因子，重载不重新近似残差。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_early.py",
+      "experiments/ms_swift_aqa/paper_early_ga.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_early.py",
+      "../../experiments/ms_swift_aqa/paper_early_ga.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/lora-ga.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/lora-ga.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者实现",
+        "url": "https://github.com/Outsider565/LoRA-GA/blob/c4cd5372c75b290924214b348008891f744512ef/peft/src/peft/tuners/lora/layer.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/Outsider565/LoRA-GA",
+        "commit": "c4cd5372c75b290924214b348008891f744512ef",
+        "path_in_repository": "peft/src/peft/tuners/lora/layer.py",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/Outsider565/LoRA-GA/c4cd5372c75b290924214b348008891f744512ef/LICENSE",
+          "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/62c4718cc334f6a0a62fb81c4a2095a1-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "LoRA-GA: Low-Rank Adaptation with Gradient Approximation"
+        ],
+        "citation_author": [
+          "Wang, Shaowen",
+          "Yu, Linxi",
+          "Li, Jian"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "37"
+        ],
+        "citation_doi": [
+          "10.52202/079017-1741"
+        ],
+        "citation_firstpage": [
+          "54905"
+        ],
+        "citation_lastpage": [
+          "54931"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2024/file/62c4718cc334f6a0a62fb81c4a2095a1-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2024-12-16"
+        ]
+      }
+    },
+    "original_source_record": "| 7 | LoRA-GA。复用作者公开的 ArB2r 奇异向量选择、stable 缩放和冻结残差公式。[作者实现](https://github.com/Outsider565/LoRA-GA/blob/c4cd5372c75b290924214b348008891f744512ef/peft/src/peft/tuners/lora/layer.py) | 从当前 AVQA 训练集按种子取 16 条，各 1 条组成一个批次。使用 Swift 的音频嵌入、SFT 标签和 compute_loss，从冻结基座计算梯度，转移至 CPU 累加，按投影初始化。stable_gamma=16。保存被减去初始更新后的 BF16 残差、哈希和训练后 FP32 因子。 |"
+  },
+  {
+    "id": 8,
+    "method": "pissa",
+    "conference": "NeurIPS",
+    "label": "PiSSA",
+    "title": "PiSSA: Principal Singular Values and Singular Vectors Adaptation of Large Language Models",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/db36f4d603cc9e3a2a5e10b93e6428f2-Abstract-Conference.html",
+    "year": 2024,
+    "authors": [
+      "Meng, Fanxu",
+      "Wang, Zhaohui",
+      "Zhang, Muhan"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2024/file/db36f4d603cc9e3a2a5e10b93e6428f2-Paper-Conference.pdf",
+    "implementation_kind": "native_peft_with_exact_residual_reload",
+    "adaptation_boundary": "PEFT pissa_niter_16 快速 SVD；保留实际 BF16 冻结残差与因子，按原计算顺序重载。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/pissa.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/pissa.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/MuLabPKU/PiSSA/tree/a6e4c9c1d8bc1b73c0fd2f524be8e00e26043395",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/MuLabPKU/PiSSA",
+        "commit": "a6e4c9c1d8bc1b73c0fd2f524be8e00e26043395",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.15.2",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.15.2",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/db36f4d603cc9e3a2a5e10b93e6428f2-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "PiSSA: Principal Singular Values and Singular Vectors Adaptation of Large Language Models"
+        ],
+        "citation_author": [
+          "Meng, Fanxu",
+          "Wang, Zhaohui",
+          "Zhang, Muhan"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "37"
+        ],
+        "citation_doi": [
+          "10.52202/079017-3846"
+        ],
+        "citation_firstpage": [
+          "121038"
+        ],
+        "citation_lastpage": [
+          "121072"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2024/file/db36f4d603cc9e3a2a5e10b93e6428f2-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2024-12-16"
+        ]
+      }
+    },
+    "original_source_record": "| 8 | PiSSA。作者已将奇异分量初始化并入 PEFT。[作者代码](https://github.com/MuLabPKU/PiSSA/tree/a6e4c9c1d8bc1b73c0fd2f524be8e00e26043395) | 原生 pissa_niter_16 随机快速 SVD。保存实际 BF16 残差和最终因子，在新基座上按原运算顺序重载。残差在同一次训练的各 checkpoint 之间用硬链接共享，每个 checkpoint 可以独立复制。 |"
+  },
+  {
+    "id": 9,
+    "method": "loram-train-small",
+    "conference": "ICLR",
+    "label": "LoRAM-train-small",
+    "title": "Train Small, Infer Large: Memory-Efficient LoRA Training for Large Language Models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/d022216357816e483433914204aa80ee-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Zhang, Jun",
+      "Wang, Jue",
+      "Li, Huan",
+      "Shou, Shou",
+      "Chen, Ke",
+      "You, Yang",
+      "Xie, Guiming",
+      "Gong, Xuejian",
+      "Zhou, Kunlong"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2025/file/d022216357816e483433914204aa80ee-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "LoRAM-Rand 无持续预训练对齐消融；保留首 4/末 2 层，中间随机保留一半 MLP 通道及成组注意力头。小张量训练，补零恢复至原模型推理；非论文含对齐的主方案。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_early_loram.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_early_loram.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/loram-train-small.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/loram-train-small.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/junzhang-zj/LoRAM/tree/ce64e68bbb3a24d21d1a85e883f71323879acb88/loram",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/junzhang-zj/LoRAM",
+        "commit": "ce64e68bbb3a24d21d1a85e883f71323879acb88",
+        "path_in_repository": "loram",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/junzhang-zj/LoRAM/ce64e68bbb3a24d21d1a85e883f71323879acb88/LICENSE",
+          "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      },
+      {
+        "label": "论文与附录",
+        "url": "https://arxiv.org/html/2502.13533",
+        "type": "project_page_or_paper_reference"
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/d022216357816e483433914204aa80ee-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Train Small, Infer Large: Memory-Efficient LoRA Training for Large Language Models"
+        ],
+        "citation_author": [
+          "Zhang, Jun",
+          "Wang, Jue",
+          "Li, Huan",
+          "Shou, Shou",
+          "Chen, Ke",
+          "You, Yang",
+          "Xie, Guiming",
+          "Gong, Xuejian",
+          "Zhou, Kunlong"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2025"
+        ],
+        "citation_firstpage": [
+          "83693"
+        ],
+        "citation_lastpage": [
+          "83722"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2025/file/d022216357816e483433914204aa80ee-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2025-05-01"
+        ]
+      }
+    },
+    "original_source_record": "| 9 | LoRAM，本文使用 **LoRAM-Rand、无持续预训练对齐**。这是论文附录 C/J 报告的消融条件。[作者代码](https://github.com/junzhang-zj/LoRAM/tree/ce64e68bbb3a24d21d1a85e883f71323879acb88/loram) · [论文与附录](https://arxiv.org/html/2502.13533) | 作者公开脚本面向 Llama-3-70B。移植同一裁剪和补零恢复操作，保留前 4 和后 2 层，在中间层随机保留一半 MLP 中间通道与成组 KV/Q 头。50% 比例适配 3B 的两个 KV 头。训练实际使用较小张量，验证和测试使用原尺寸基座加恢复后的适配器。checkpoint 同时保存训练用窄因子、掩码和 recovered 目录。论文主方案包含裁剪后的持续预训练对齐，当前固定语料实验只评估无对齐条件。 |"
+  },
+  {
+    "id": 10,
+    "method": "randlora",
+    "conference": "ICLR",
+    "label": "RandLoRA",
+    "title": "RandLoRA: Full rank parameter-efficient fine-tuning of large models",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/382b95a6580cfb0b5ca33c74b4e0e770-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Albert, Paul",
+      "Zhang, Frederic",
+      "Saratchandran, Hemanth",
+      "Rodriguez-Opazo, Cristian",
+      "Hengel, Anton",
+      "Abbasnejad, Ehsan"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2025/file/382b95a6580cfb0b5ca33c74b4e0e770-Paper-Conference.pdf",
+    "implementation_kind": "native_peft_0.17.1",
+    "adaptation_boundary": "仅此方法用隔离 PEFT 0.17.1；r=32、alpha=640，固定 key=42 并验证共享随机基 SHA-256。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_early.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/randlora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/randlora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "official_sources": [
+      {
+        "label": "作者代码",
+        "url": "https://github.com/PaulAlbert31/RandLoRA/tree/371d82f4ef713fc4c35d6cb581d37eef558dbb31",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/PaulAlbert31/RandLoRA",
+        "commit": "371d82f4ef713fc4c35d6cb581d37eef558dbb31",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      },
+      {
+        "label": "上游合入 PR",
+        "url": "https://github.com/huggingface/peft/pull/2464",
+        "type": "project_page_or_paper_reference"
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.17.1",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.17.1",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/382b95a6580cfb0b5ca33c74b4e0e770-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "RandLoRA: Full rank parameter-efficient fine-tuning of large models"
+        ],
+        "citation_author": [
+          "Albert, Paul",
+          "Zhang, Frederic",
+          "Saratchandran, Hemanth",
+          "Rodriguez-Opazo, Cristian",
+          "Hengel, Anton",
+          "Abbasnejad, Ehsan"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2025"
+        ],
+        "citation_firstpage": [
+          "22258"
+        ],
+        "citation_lastpage": [
+          "22270"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2025/file/382b95a6580cfb0b5ca33c74b4e0e770-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2025-05-01"
+        ]
+      }
+    },
+    "original_source_record": "| 10 | RandLoRA。作者推荐合入 PEFT 的实现。[作者代码](https://github.com/PaulAlbert31/RandLoRA/tree/371d82f4ef713fc4c35d6cb581d37eef558dbb31) · [上游合入 PR](https://github.com/huggingface/peft/pull/2464) | 只有这一组使用隔离的 PEFT 0.17.1。原生 r=32，alpha=640，多组共享随机基形成可满秩更新。固定 PRNG key=42，在干净进程重建共享基并验证训练时写入的 SHA-256。 |"
+  },
+  {
+    "id": 11,
+    "method": "lowra",
+    "conference": "ICML",
+    "label": "LowRA",
+    "title": "LowRA: Accurate and Efficient LoRA Fine-Tuning of LLMs under 2 Bits",
+    "paper": "https://proceedings.mlr.press/v267/zhou25ak.html",
+    "year": 2025,
+    "authors": [
+      "Zikai Zhou",
+      "Qizheng Zhang",
+      "Hermann Kumbong",
+      "Kunle Olukotun"
+    ],
+    "paper_pdf": "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhou25ak/zhou25ak.pdf",
+    "implementation_kind": "paper_based_independent_port",
+    "adaptation_boundary": "所钉作者仓库仅发布预告；按论文独立实现混合 1/2/4-bit 量化、1.75 code bits/投影权重及一次 LoftQ 初始化。它改变有效基座；1.75 不含元数据、未量化模块和运行时内存。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle_lowra.py",
+      "experiments/ms_swift_aqa/paper_middle_lowra_runtime.py",
+      "experiments/ms_swift_aqa/paper_middle_lowra_triton.py",
+      "experiments/ms_swift_aqa/paper_middle_lowra_verify.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle_lowra.py",
+      "../../experiments/ms_swift_aqa/paper_middle_lowra_runtime.py",
+      "../../experiments/ms_swift_aqa/paper_middle_lowra_triton.py",
+      "../../experiments/ms_swift_aqa/paper_middle_lowra_verify.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/lowra.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/lowra.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "Stanford source snapshot",
+        "url": "https://github.com/stanford-ppl/LowRA/tree/2920cd297680e26da5f8648e95a644f953bdd102",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/stanford-ppl/LowRA",
+        "commit": "2920cd297680e26da5f8648e95a644f953bdd102",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.mlr.press/v267/zhou25ak.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_publisher": [
+          "PMLR"
+        ],
+        "citation_title": [
+          "LowRA: Accurate and Efficient LoRA Fine-Tuning of LLMs under 2 Bits"
+        ],
+        "citation_language": [
+          "en"
+        ],
+        "citation_abstract_html_url": [
+          "https://proceedings.mlr.press/v267/zhou25ak.html"
+        ],
+        "citation_pdf_url": [
+          "https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhou25ak/zhou25ak.pdf"
+        ],
+        "citation_firstpage": [
+          "79570"
+        ],
+        "citation_lastpage": [
+          "79594"
+        ],
+        "citation_author": [
+          "Zikai Zhou",
+          "Qizheng Zhang",
+          "Hermann Kumbong",
+          "Kunle Olukotun"
+        ],
+        "citation_publication_date": [
+          "2025/10/06"
+        ],
+        "citation_inbook_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_conference_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_issn": [
+          "2640-3498"
+        ]
+      }
+    },
+    "original_source_record": "| 11 LowRA | Paper reproduction. Stanford's pinned repository includes a release announcement only. The offline job uses the actual frozen decoder weights, 64-weight absmax groups, two per-channel weighted Lloyd iterations initialized from Appendix F, and the average of the two learned threshold sets. One 128-cluster KMeans per input width precedes the cluster integer program and per-cluster minimum-cost allocation. The latter is solved as an integral transportation LP or exact marginal-cost sort. Budget is 1.75 code bits per decoder-projection weight across 1/2/4-bit output channels. One LoftQ step initializes rank-8 factors using a seeded, two-iteration randomized SVD of the quantization residual. The port has its own Triton unpack kernel with per-channel tables. The audio tower, embeddings and output head retain their original precision. This arm changes the effective base. | [ICML paper](https://proceedings.mlr.press/v267/zhou25ak.html) · [Stanford source snapshot](https://github.com/stanford-ppl/LowRA/tree/2920cd297680e26da5f8648e95a644f953bdd102) |"
+  },
+  {
+    "id": 12,
+    "method": "aurora",
+    "conference": "NeurIPS",
+    "label": "AuroRA",
+    "title": "AuroRA: Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/34aae5b7991a4fb4fe3081ca4f94549c-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Dong, Haonan",
+      "Zhu, Wenhao",
+      "Song, Guojie",
+      "Wang, Liang"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/34aae5b7991a4fb4fe3081ca4f94549c-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "移植作者 ANL：rank 2、alpha 4、5 网格区间、三次 B 样条与 tanh 分支；训练和推理均执行非线性映射。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/aurora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/aurora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author ANL",
+        "url": "https://github.com/ins1stenc3/AuroRA/blob/cb9148a78b6ab36a71fc8db79626332e7dd95688/commonsense_reasoning/peft/src/peft/tuners/ANL.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/ins1stenc3/AuroRA",
+        "commit": "cb9148a78b6ab36a71fc8db79626332e7dd95688",
+        "path_in_repository": "commonsense_reasoning/peft/src/peft/tuners/ANL.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/34aae5b7991a4fb4fe3081ca4f94549c-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "AuroRA: Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping"
+        ],
+        "citation_author": [
+          "Dong, Haonan",
+          "Zhu, Wenhao",
+          "Song, Guojie",
+          "Wang, Liang"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-1241"
+        ],
+        "citation_firstpage": [
+          "36929"
+        ],
+        "citation_lastpage": [
+          "36961"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/34aae5b7991a4fb4fe3081ca4f94549c-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 12 AuroRA | Port of the authors’ commonsense-reasoning ANL and training path. Rank 2, alpha 4, uniform grid of five intervals, cubic B-splines. The nonlinear bottleneck adds a twice-tanh-transformed linear branch to a learned spline branch. Both train and eval execute that token-wise function. CPU forward parity checked directly against the pinned author ANL with identical weights. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/34aae5b7991a4fb4fe3081ca4f94549c-Abstract-Conference.html) · [author ANL](https://github.com/ins1stenc3/AuroRA/blob/cb9148a78b6ab36a71fc8db79626332e7dd95688/commonsense_reasoning/peft/src/peft/tuners/ANL.py) |"
+  },
+  {
+    "id": 13,
+    "method": "eva",
+    "conference": "NeurIPS",
+    "label": "EVA",
+    "title": "Parameter Efficient Fine-tuning via Explained Variance Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/41d33bd41fd44bd9dba0e092047cf213-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Paischer, Fabian",
+      "Hauzenberger, Lukas",
+      "Schmied, Thomas",
+      "Alkin, Benedikt",
+      "Deisenroth, Marc",
+      "Hochreiter, Sepp"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/41d33bd41fd44bd9dba0e092047cf213-Paper-Conference.pdf",
+    "implementation_kind": "native_peft_with_audio_calibration",
+    "adaptation_boundary": "原生 PEFT 0.15.2 EVA，64 条源训练音频校准、rho=2，仅有效位置参与；重载保留逐层秩。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_eva.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_eva.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/eva.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/eva.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author implementation",
+        "url": "https://github.com/ml-jku/EVA/tree/5cf4a6c31669aafdc33568a7618161bc329a0800",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/ml-jku/EVA",
+        "commit": "5cf4a6c31669aafdc33568a7618161bc329a0800",
+        "license": {
+          "license": "MIT",
+          "license_url": "https://raw.githubusercontent.com/ml-jku/EVA/5cf4a6c31669aafdc33568a7618161bc329a0800/LICENSE",
+          "license_sha256": "69c5979af18de788b7c68b2a082555140e4e0c1642d30439b38956d6ffbbaf37",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "runtime_library": {
+      "name": "peft",
+      "version": "0.15.2",
+      "repository": "https://github.com/huggingface/peft",
+      "version_reference": "https://github.com/huggingface/peft/tree/v0.15.2",
+      "license": "Apache-2.0",
+      "evidence": "Installed package LICENSE inspected; the pinned source-provenance archive, when supplied, identifies actual local bytes."
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/41d33bd41fd44bd9dba0e092047cf213-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Parameter Efficient Fine-tuning via Explained Variance Adaptation"
+        ],
+        "citation_author": [
+          "Paischer, Fabian",
+          "Hauzenberger, Lukas",
+          "Schmied, Thomas",
+          "Alkin, Benedikt",
+          "Deisenroth, Marc",
+          "Hochreiter, Sepp"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-1539"
+        ],
+        "citation_firstpage": [
+          "46215"
+        ],
+        "citation_lastpage": [
+          "46267"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/41d33bd41fd44bd9dba0e092047cf213-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 13 EVA | Native PEFT 0.15.2 EVA with Swift audio forwards. The recipe caps calibration at 64 training examples and requests per-layer rank redistribution with rho 2. Only valid positions contribute. Evaluation restores the fitted adapter with its layer ranks. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/41d33bd41fd44bd9dba0e092047cf213-Abstract-Conference.html) · [author implementation](https://github.com/ml-jku/EVA/tree/5cf4a6c31669aafdc33568a7618161bc329a0800) |"
+  },
+  {
+    "id": 14,
+    "method": "flylora",
+    "conference": "NeurIPS",
+    "label": "FlyLoRA",
+    "title": "FlyLoRA: Boosting Task Decoupling and Parameter Efficiency via Implicit Rank-Wise Mixture-of-Experts",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0f234479d4be0102b6a9ec5ebf75e881-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Zou, Heming",
+      "Zang, Yunliang",
+      "Xu, Wutong",
+      "Zhu, Yao",
+      "Ji, Xiangyang"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/0f234479d4be0102b6a9ec5ebf75e881-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "跟随公式 10/作者 PEFT 分支对有符号 Ax+d 做 top-k；rank 32、top 8。工程冻结评估计数并保留上游输入梯度，修正作者训练分支的评估顺序依赖。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/flylora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/flylora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author PEFT training branch",
+        "url": "https://github.com/gfyddha/FlyLoRA/blob/0da2ffb2354ed80a6a13cff0de0080c0f4b8b4bf/peft/src/peft/tuners/lora/layer.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/gfyddha/FlyLoRA",
+        "commit": "0da2ffb2354ed80a6a13cff0de0080c0f4b8b4bf",
+        "path_in_repository": "peft/src/peft/tuners/lora/layer.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0f234479d4be0102b6a9ec5ebf75e881-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "FlyLoRA: Boosting Task Decoupling and Parameter Efficiency via Implicit Rank-Wise Mixture-of-Experts"
+        ],
+        "citation_author": [
+          "Zou, Heming",
+          "Zang, Yunliang",
+          "Xu, Wutong",
+          "Zhu, Yao",
+          "Ji, Xiangyang"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-0349"
+        ],
+        "citation_firstpage": [
+          "10386"
+        ],
+        "citation_lastpage": [
+          "10419"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/0f234479d4be0102b6a9ec5ebf75e881-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 14 FlyLoRA | The paper describes magnitude routing in prose, while Equation 10 and the author PEFT training branch use top-k on signed (Ax + d). We follow the latter and the authors’ MMLU recipe of rank 32, top 8, alpha 64, manual bias step .001. Checkpoint stores sparse frozen A, bias and trainable B. Only real training tokens update routing counts. Evaluation freezes counts and gradients propagate through A into preceding layers. This avoids the training fork's evaluation-order dependence and detached upstream gradient path. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/0f234479d4be0102b6a9ec5ebf75e881-Abstract-Conference.html) · [author PEFT training branch](https://github.com/gfyddha/FlyLoRA/blob/0da2ffb2354ed80a6a13cff0de0080c0f4b8b4bf/peft/src/peft/tuners/lora/layer.py) |"
+  },
+  {
+    "id": 15,
+    "method": "gralora",
+    "conference": "NeurIPS",
+    "label": "GraLoRA",
+    "title": "GraLoRA: Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/89f8c6687c4adafe4d500444cd3db39a-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Jung, Yeonjoon",
+      "Ahn, Daehyun",
+      "Kim, Hyungjun",
+      "Kim, Taesu",
+      "Park, Eunhyeok"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/89f8c6687c4adafe4d500444cd3db39a-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "作者纯 granular 变体：2 块、hybrid rank=0；用矩形投影稠密重建核对块索引。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/gralora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/gralora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author PEFT layer",
+        "url": "https://github.com/SqueezeBits/GraLoRA/blob/853e7c9b0d5c7eaa01767566ab53c14ef5479c5a/peft/src/peft/tuners/gralora/layer.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/SqueezeBits/GraLoRA",
+        "commit": "853e7c9b0d5c7eaa01767566ab53c14ef5479c5a",
+        "path_in_repository": "peft/src/peft/tuners/gralora/layer.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/89f8c6687c4adafe4d500444cd3db39a-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "GraLoRA: Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning"
+        ],
+        "citation_author": [
+          "Jung, Yeonjoon",
+          "Ahn, Daehyun",
+          "Kim, Hyungjun",
+          "Kim, Taesu",
+          "Park, Eunhyeok"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-3205"
+        ],
+        "citation_firstpage": [
+          "95822"
+        ],
+        "citation_lastpage": [
+          "95845"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/89f8c6687c4adafe4d500444cd3db39a-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 15 GraLoRA | Pure granular author variant, two blocks, hybrid rank zero. Each destination block receives the corresponding rank slice from every source block. A dense reconstruction oracle exercises the exact block indices on a rectangular projection. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/89f8c6687c4adafe4d500444cd3db39a-Abstract-Conference.html) · [author PEFT layer](https://github.com/SqueezeBits/GraLoRA/blob/853e7c9b0d5c7eaa01767566ab53c14ef5479c5a/peft/src/peft/tuners/gralora/layer.py) |"
+  },
+  {
+    "id": 16,
+    "method": "magnitude-loram",
+    "conference": "NeurIPS",
+    "label": "Magnitude-LoRAM",
+    "title": "The Primacy of Magnitude in Low-Rank Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0010665e949927b74faf6e3ada6d7f72-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Zhang, Zicheng",
+      "Li, Haoran",
+      "Zhang, Yifeng",
+      "Gong, Guoqiang",
+      "Wang, Jiaxing",
+      "Hu, Junxing",
+      "Liu, Pengzhang",
+      "Jiang, Qixia"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/0010665e949927b74faf6e3ada6d7f72-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "DST-I 确定性基、对数谱增益与四次根缩放；安装/重载均补偿初始低秩更新。此 Magnitude-LoRAM 与第 9 篇训练小模型的 LoRAM 不同。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/magnitude-loram.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/magnitude-loram.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author LoRAM initialization",
+        "url": "https://github.com/zhangzc21/LoRAM/blob/ff5de895087e99d8d15529803f0b23bed36b9889/layer.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/zhangzc21/LoRAM",
+        "commit": "ff5de895087e99d8d15529803f0b23bed36b9889",
+        "path_in_repository": "layer.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0010665e949927b74faf6e3ada6d7f72-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "The Primacy of Magnitude in Low-Rank Adaptation"
+        ],
+        "citation_author": [
+          "Zhang, Zicheng",
+          "Li, Haoran",
+          "Zhang, Yifeng",
+          "Gong, Guoqiang",
+          "Wang, Jiaxing",
+          "Hu, Junxing",
+          "Liu, Pengzhang",
+          "Jiang, Qixia"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-0002"
+        ],
+        "citation_firstpage": [
+          "39"
+        ],
+        "citation_lastpage": [
+          "69"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/0010665e949927b74faf6e3ada6d7f72-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 16 Magnitude-LoRAM | Author deterministic DST-I basis, logarithmic spectral gain, variance ratio and fourth-root scaling. Install subtracts the scaled initial low-rank matrix from the clean pretrained weight. The same reconstruction runs before loading trained factors on a clean base. Adapter master factors are FP32 throughout this pilot. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/0010665e949927b74faf6e3ada6d7f72-Abstract-Conference.html) · [author LoRAM initialization](https://github.com/zhangzc21/LoRAM/blob/ff5de895087e99d8d15529803f0b23bed36b9889/layer.py) |"
+  },
+  {
+    "id": 17,
+    "method": "rolora-federated",
+    "conference": "NeurIPS",
+    "label": "RoLoRA-federated",
+    "title": "Robust Federated Finetuning of LLMs via Alternating Optimization of LoRA",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/adf17e7346b6be4c2f2bb40de572e5bc-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Chen, Shuangyi",
+      "Guo, Yuanxin",
+      "Ju, Yue",
+      "Dalal, Hardik",
+      "Zhu, Zhongwen",
+      "Khisti, Ashish"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/adf17e7346b6be4c2f2bb40de572e5bc-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "算法 1 的 4 个模拟客户端，每次访问 4 次局部更新，轮流聚合 B/A，并保留源分组。它是统一任务上的模拟联邦实验。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_federated.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_federated.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/rolora-federated.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/rolora-federated.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author supplement and code",
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/adf17e7346b6be4c2f2bb40de572e5bc-Supplemental-Conference.zip",
+        "type": "official_conference_supplement",
+        "sha256": "ca9a64cb64bb48bb0a6dc35179760fe0e561dd566a474877ab42f65453aa4c11",
+        "license": {
+          "license": "Apache-2.0",
+          "checked_method": "SHA-256 and cached ZIP inventory inspected 2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/adf17e7346b6be4c2f2bb40de572e5bc-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Robust Federated Finetuning of LLMs via Alternating Optimization of LoRA"
+        ],
+        "citation_author": [
+          "Chen, Shuangyi",
+          "Guo, Yuanxin",
+          "Ju, Yue",
+          "Dalal, Hardik",
+          "Zhu, Zhongwen",
+          "Khisti, Ashish"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-4009"
+        ],
+        "citation_firstpage": [
+          "120038"
+        ],
+        "citation_lastpage": [
+          "120090"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/adf17e7346b6be4c2f2bb40de572e5bc-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 17 RoLoRA | Federated Algorithm 1 with ordinary PEFT factors, four simulated clients and four local optimizer steps per visit. Clients start from the broadcast factor. Server averages B across clients and then averages A on the next round. The port preserves source groups in client partitioning. The official proceedings ZIP contains RoLoRA-code. Its SHA256 is `ca9a64cb64bb48bb0a6dc35179760fe0e561dd566a474877ab42f65453aa4c11`. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/adf17e7346b6be4c2f2bb40de572e5bc-Abstract-Conference.html) · [author supplement and code](https://proceedings.neurips.cc/paper_files/paper/2025/file/adf17e7346b6be4c2f2bb40de572e5bc-Supplemental-Conference.zip) |"
+  },
+  {
+    "id": 18,
+    "method": "toplora",
+    "conference": "NeurIPS",
+    "label": "TopLoRA",
+    "title": "Beyond Higher Rank: Token-wise Input-Output Projections for Efficient Low-Rank Adaptation",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/c74429a930838b5bac03c681f0a0ce11-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Li, Shiwei",
+      "Luo, Xiandi",
+      "Wang, Haozhao",
+      "Tang, Xing",
+      "Cui, Ziqiang",
+      "Liu, Dugang",
+      "Li, Yuhua",
+      "He, Xiuqiang",
+      "Li, Ruixuan"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/c74429a930838b5bac03c681f0a0ce11-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "复用 TopLoRABranch，瓶颈对角变化为 exp(RMSNorm(XP))；与作者 TopSingularValue 作等价投影权重对照。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py",
+      "west_adapters/toplora.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py",
+      "../../west_adapters/toplora.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/toplora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/toplora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author TopLoRA",
+        "url": "https://github.com/Leopold1423/toplora-neurips25/blob/6bf9f0f489705224a9b6f25f8dff39547bf66ff7/mypeft/toplora.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/Leopold1423/toplora-neurips25",
+        "commit": "6bf9f0f489705224a9b6f25f8dff39547bf66ff7",
+        "path_in_repository": "mypeft/toplora.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/c74429a930838b5bac03c681f0a0ce11-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Beyond Higher Rank: Token-wise Input-Output Projections for Efficient Low-Rank Adaptation"
+        ],
+        "citation_author": [
+          "Li, Shiwei",
+          "Luo, Xiandi",
+          "Wang, Haozhao",
+          "Tang, Xing",
+          "Cui, Ziqiang",
+          "Liu, Dugang",
+          "Li, Yuhua",
+          "He, Xiuqiang",
+          "Li, Ruixuan"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-4552"
+        ],
+        "citation_firstpage": [
+          "136414"
+        ],
+        "citation_lastpage": [
+          "136435"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/c74429a930838b5bac03c681f0a0ce11-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 18 TopLoRA | Reuses this project's TopLoRABranch. The variation in each bottleneck diagonal is exp(RMSNorm(XP)). We verified output parity against the author's TopSingularValue with transposed-equivalent projector weights. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/c74429a930838b5bac03c681f0a0ce11-Abstract-Conference.html) · [author TopLoRA](https://github.com/Leopold1423/toplora-neurips25/blob/6bf9f0f489705224a9b6f25f8dff39547bf66ff7/mypeft/toplora.py) |"
+  },
+  {
+    "id": 19,
+    "method": "unilora",
+    "conference": "NeurIPS",
+    "label": "Uni-LoRA",
+    "title": "Uni-LoRA: One Vector is All You Need",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e596a70b60dcf7c6e0ac1a2d73e7470-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Li, Kaiyang",
+      "Han, Shaobo",
+      "Su, Qing",
+      "Li, Wei",
+      "Cai, Zhipeng",
+      "Ji, Shihao"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/3e596a70b60dcf7c6e0ac1a2d73e7470-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "单个共享 23040 维向量、rank 8、单位缩放；按全局索引出现次数归一化。向量预算来自论文 NLU 设置，任务仍为统一音频协议。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/unilora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/unilora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "author instruction-tuning model",
+        "url": "https://github.com/kaiyangli-ml/Uni-LoRA/blob/4b6804fcf541d82e933dc742804d71f63854d22b/instruction_tuning/peft/src/peft/tuners/unilora/model.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/kaiyangli-ml/Uni-LoRA",
+        "commit": "4b6804fcf541d82e933dc742804d71f63854d22b",
+        "path_in_repository": "instruction_tuning/peft/src/peft/tuners/unilora/model.py",
+        "license": {
+          "license": "unverified",
+          "scope": "Fixed revision root LICENSE, LICENSE.md, LICENSE.txt returned 404; recursive GitHub API was rate-limited. This is not a repository-wide absence finding."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e596a70b60dcf7c6e0ac1a2d73e7470-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Uni-LoRA: One Vector is All You Need"
+        ],
+        "citation_author": [
+          "Li, Kaiyang",
+          "Han, Shaobo",
+          "Su, Qing",
+          "Li, Wei",
+          "Cai, Zhipeng",
+          "Ji, Shihao"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-1461"
+        ],
+        "citation_firstpage": [
+          "43816"
+        ],
+        "citation_lastpage": [
+          "43841"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/3e596a70b60dcf7c6e0ac1a2d73e7470-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 19 Uni-LoRA | Single global vector initialized uniformly within ±0.02. The instruction-tuning author's code balances random index multiplicities over all selected A and B entries, then normalizes by the inverse square root of their global counts. The port uses the common rank 8 and selects a 23,040-entry vector, a budget reported for the paper's NLU runs. Unit branch scaling follows the author implementation. Checkpoints persist exactly one trainable vector and the index maps required to decode it. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e596a70b60dcf7c6e0ac1a2d73e7470-Abstract-Conference.html) · [author instruction-tuning model](https://github.com/kaiyangli-ml/Uni-LoRA/blob/4b6804fcf541d82e933dc742804d71f63854d22b/instruction_tuning/peft/src/peft/tuners/unilora/model.py) |"
+  },
+  {
+    "id": 20,
+    "method": "alora",
+    "conference": "NeurIPS",
+    "label": "aLoRA",
+    "title": "Activated LoRA: Fine-tuned LLMs for Intrinsics",
+    "paper": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/4d0b6303d4a4811445f69f357bf6def5-Abstract-Conference.html",
+    "year": 2025,
+    "authors": [
+      "Greenewald, Kristjan",
+      "Lastras, Luis",
+      "Parnell, Thomas",
+      "Shah, Vraj",
+      "Popa, Lucian",
+      "Zizzo, Giulio",
+      "Gunasekara, Chulaka",
+      "Rawat, Ambrish",
+      "Cox, David"
+    ],
+    "paper_pdf": "https://proceedings.neurips.cc/paper_files/paper/2025/file/4d0b6303d4a4811445f69f357bf6def5-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "PEFT 0.15.2 尚无该功能，工程移植参考版本的最后完整 invocation mask；固定 assistant 前缀 151644/77091/198。未测跨请求 KV 缓存复用或服务延迟。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_middle.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/alora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/alora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/paper_middle_sources.md",
+    "official_sources": [
+      {
+        "label": "IBM release",
+        "url": "https://github.com/IBM/activated-lora/tree/736414e0fe34c452267e16b97492b2b4728e6339",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/IBM/activated-lora",
+        "commit": "736414e0fe34c452267e16b97492b2b4728e6339",
+        "license": {
+          "license": "MIT",
+          "license_url": "https://raw.githubusercontent.com/IBM/activated-lora/736414e0fe34c452267e16b97492b2b4728e6339/LICENSE",
+          "license_sha256": "b91dd88345072cb2292b5e22cf11f129914c0f11eb45b3701f4a82e17243e06b",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      },
+      {
+        "label": "PEFT reference",
+        "url": "https://github.com/huggingface/peft/blob/77daa8d3b7decf2b40238ab47e2c1bd0f26c7749/src/peft/tuners/lora/variants.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/huggingface/peft",
+        "commit": "77daa8d3b7decf2b40238ab47e2c1bd0f26c7749",
+        "path_in_repository": "src/peft/tuners/lora/variants.py",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/huggingface/peft/77daa8d3b7decf2b40238ab47e2c1bd0f26c7749/LICENSE",
+          "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/4d0b6303d4a4811445f69f357bf6def5-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Activated LoRA: Fine-tuned LLMs for Intrinsics"
+        ],
+        "citation_author": [
+          "Greenewald, Kristjan",
+          "Lastras, Luis",
+          "Parnell, Thomas",
+          "Shah, Vraj",
+          "Popa, Lucian",
+          "Zizzo, Giulio",
+          "Gunasekara, Chulaka",
+          "Rawat, Ambrish",
+          "Cox, David"
+        ],
+        "citation_journal_title": [
+          "Advances in Neural Information Processing Systems"
+        ],
+        "citation_volume": [
+          "38"
+        ],
+        "citation_doi": [
+          "10.52202/085713-1769"
+        ],
+        "citation_firstpage": [
+          "53022"
+        ],
+        "citation_lastpage": [
+          "53049"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.neurips.cc/paper_files/paper/2025/file/4d0b6303d4a4811445f69f357bf6def5-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-23"
+        ]
+      }
+    },
+    "original_source_record": "| 20 aLoRA | IBM recommends its upstream PEFT implementation. The active PEFT 0.15.2 predates it. This external adapter implements the referenced PEFT release's last-complete-invocation mask, starting at the first token of the matching sequence. It sees the original IDs before Swift substitutes audio embeddings. Existing Qwen chat templates already contain the invocation consisting of the assistant role prefix, IDs 151644, 77091, 198. A missing invocation fails this evaluation. Greedy decoding starts from the full prompt and supports cached single-token continuation. Separate cross-request cache reuse and serving latency are outside the measured protocol. | [NeurIPS paper](https://proceedings.neurips.cc/paper_files/paper/2025/hash/4d0b6303d4a4811445f69f357bf6def5-Abstract-Conference.html) · [IBM release](https://github.com/IBM/activated-lora/tree/736414e0fe34c452267e16b97492b2b4728e6339) · [PEFT reference](https://github.com/huggingface/peft/blob/77daa8d3b7decf2b40238ab47e2c1bd0f26c7749/src/peft/tuners/lora/variants.py) |"
+  },
+  {
+    "id": 21,
+    "method": "bora",
+    "conference": "ICLR",
+    "label": "BoRA",
+    "title": "BoRA: Towards More Expressive Low-Rank Adaptation with Block Diversity",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e8b0c97b34fdaf58b2f48f8cca85e76a-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Li, Shiwei",
+      "Luo, Xiandi",
+      "Wang, Haozhao",
+      "Tang, Xing",
+      "Cui, Ziqiang",
+      "Liu, Dugang",
+      "Li, Yuhua",
+      "Li, Yichen",
+      "He, xiuqiang",
+      "Li, Ruixuan"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/e8b0c97b34fdaf58b2f48f8cca85e76a-Paper-Conference.pdf",
+    "implementation_kind": "paper_based_independent_port",
+    "adaptation_boundary": "按论文实现两块 BoRA；项目 2026-11-21 的作者仓库访问记录为 404，不能标为作者代码复用。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late.py",
+      "west_adapters/bora.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late.py",
+      "../../west_adapters/bora.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/bora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/bora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "作者主页",
+        "url": "https://leopold1423.github.io/",
+        "type": "project_page_or_paper_reference"
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e8b0c97b34fdaf58b2f48f8cca85e76a-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "BoRA: Towards More Expressive Low-Rank Adaptation with Block Diversity"
+        ],
+        "citation_author": [
+          "Li, Shiwei",
+          "Luo, Xiandi",
+          "Wang, Haozhao",
+          "Tang, Xing",
+          "Cui, Ziqiang",
+          "Liu, Dugang",
+          "Li, Yuhua",
+          "Li, Yichen",
+          "He, xiuqiang",
+          "Li, Ruixuan"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "143975"
+        ],
+        "citation_lastpage": [
+          "143991"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/e8b0c97b34fdaf58b2f48f8cca85e76a-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 21 | BoRA | 复用项目已有的 `west_adapters.bora.BoRABranch`，每个块对有一个归一化指数对角增益，配置为两块。2026-11-21 论文与作者主页所列仓库均返回 404，因此该条以论文为实现依据。测试显式拼接每个块的更新矩阵并比对前向、随机非零权重重载及增益梯度。[论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/e8b0c97b34fdaf58b2f48f8cca85e76a-Abstract-Conference.html) · [作者主页](https://leopold1423.github.io/) |"
+  },
+  {
+    "id": 22,
+    "method": "igu-lora",
+    "conference": "ICLR",
+    "label": "IGU-LoRA",
+    "title": "IGU-LoRA: Adaptive Rank Allocation via Integrated Gradients and Uncertainty-Aware Scoring",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/407106f4b56040b2e8dcad75a6e461e5-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Cui, Xuan",
+      "Li, HuiYue",
+      "Zeng, Run",
+      "Zhao, Yunfei",
+      "Qian, Jinrui",
+      "Duan, Wei",
+      "Liu, Bo",
+      "Zhou, Zhanpeng"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/407106f4b56040b2e8dcad75a6e461e5-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "跟随作者随机积分路径估计与候选秩剪枝；64 次预剪枝更新/256 源样本、初始秩 16、约平均秩 8；最终 SFT 固定掩码。预算按 GQA 各秩分量的实际参数数计算。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late_igu.py",
+      "experiments/ms_swift_aqa/paper_late_stages.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late_igu.py",
+      "../../experiments/ms_swift_aqa/paper_late_stages.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/igu-lora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/igu-lora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "论文",
+        "url": "https://arxiv.org/abs/2603.13792",
+        "type": "project_page_or_paper_reference"
+      },
+      {
+        "label": "作者实现",
+        "url": "https://github.com/Cuixuans/igulora/tree/3f5ba10a6646c81c557e4669b14b072f76822085",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/Cuixuans/igulora",
+        "commit": "3f5ba10a6646c81c557e4669b14b072f76822085",
+        "license": {
+          "license": "no_license_file_in_pinned_archive",
+          "scope": "Existing local source audit and inspected fixed-revision ZIP contain no standalone LICENSE file."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/407106f4b56040b2e8dcad75a6e461e5-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "IGU-LoRA: Adaptive Rank Allocation via Integrated Gradients and Uncertainty-Aware Scoring"
+        ],
+        "citation_author": [
+          "Cui, Xuan",
+          "Li, HuiYue",
+          "Zeng, Run",
+          "Zhao, Yunfei",
+          "Qian, Jinrui",
+          "Duan, Wei",
+          "Liu, Bo",
+          "Zhou, Zhanpeng"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "38129"
+        ],
+        "citation_lastpage": [
+          "38154"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/407106f4b56040b2e8dcad75a6e461e5-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 22 | IGU-LoRA | 接入作者的候选秩剪枝和固定掩码重新训练。依公开代码，每个微批从 20 个积分路径节点抽样，将三因子更新乘以路径系数的三次方，用灵敏度 EMA 与绝对偏差 EMA 的比值选择有效秩。中间剪枝点把未选中的奇异值置零，下一微批仍可使它恢复。最终 SFT 才固定 rank mask。剪枝阶段按作者训练入口在每个微批加入完整的非对角正交正则，同时将交叉熵按累积数归一化。在真实 GQA 投影上按单个秩分量实际占用的参数数目计算预算。初始秩 16，目标约相当于平均秩 8。为了匹配小规模语音实验，将预剪枝设为 64 次更新，用 256 个源训练样本，随后用原清单早停。记录实际有效参数数与物理存储参数数。这一实现遵循作者发布的随机估计路径。论文还描述了包含两个端点的数值积分估计。[论文](https://arxiv.org/abs/2603.13792) · [作者实现](https://github.com/Cuixuans/igulora/tree/3f5ba10a6646c81c557e4669b14b072f76822085) |"
+  },
+  {
+    "id": 23,
+    "method": "loft",
+    "conference": "ICLR",
+    "label": "LoFT",
+    "title": "LoFT: Low-Rank Adaptation That Behaves Like Full Fine-Tuning",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7428310c0f97f1c6bb2ef1be99c1ec2a-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Tastan, Nurbek",
+      "Laskaridis, Stefanos",
+      "Takáč, Martin",
+      "Nandakumar, Karthik",
+      "Horváth, Samuel"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/7428310c0f97f1c6bb2ef1be99c1ec2a-Paper-Conference.pdf",
+    "implementation_kind": "vendored_mit_core_with_integration",
+    "adaptation_boundary": "原样保留 MIT LoFTAdamW/矩函数；单位缩放与交替更新。接入层修正裁剪导入问题，用 Gram 矩阵等价计算 Frobenius 范数，优化器重载恢复交替状态。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late_loft/__init__.py",
+      "experiments/ms_swift_aqa/paper_late_loft/optimizer.py",
+      "experiments/ms_swift_aqa/paper_late_loft/optim_helper.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late_loft/__init__.py",
+      "../../experiments/ms_swift_aqa/paper_late_loft/optimizer.py",
+      "../../experiments/ms_swift_aqa/paper_late_loft/optim_helper.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/loft.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/loft.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "作者实现",
+        "url": "https://github.com/tnurbek/loft/tree/148998d98f901cd7744db7baa5b2b4868fa16bf0",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/tnurbek/loft",
+        "commit": "148998d98f901cd7744db7baa5b2b4868fa16bf0",
+        "license": {
+          "license": "MIT",
+          "license_url": "https://raw.githubusercontent.com/tnurbek/loft/148998d98f901cd7744db7baa5b2b4868fa16bf0/LICENSE",
+          "license_sha256": "60aac4ce5a131f7376e53b703df06f35622d04f6bb233d81b346120f85a2dfbb",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "retained_license": {
+      "path": "experiments/ms_swift_aqa/paper_late_loft/LICENSE",
+      "link": "../../experiments/ms_swift_aqa/paper_late_loft/LICENSE",
+      "sha256": "60aac4ce5a131f7376e53b703df06f35622d04f6bb233d81b346120f85a2dfbb",
+      "license": "MIT"
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7428310c0f97f1c6bb2ef1be99c1ec2a-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "LoFT: Low-Rank Adaptation That Behaves Like Full Fine-Tuning"
+        ],
+        "citation_author": [
+          "Tastan, Nurbek",
+          "Laskaridis, Stefanos",
+          "Takáč, Martin",
+          "Nandakumar, Karthik",
+          "Horváth, Samuel"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "71294"
+        ],
+        "citation_lastpage": [
+          "71324"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/7428310c0f97f1c6bb2ef1be99c1ec2a-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 23 | LoFT | 原样使用作者的 `LoFTAdamW` 和矩函数，保留 MIT 许可证。采用单位缩放、交替更新、两阶矩重投影和投影后更新。发布版回调将 clipping 函数从错误模块导入。以同版本 `clipping.py` 的显式完整梯度裁剪为参照，接入层用 rank 维 Gram 矩阵计算相同的 Frobenius 范数，并复用作者的梯度缩放函数，A/B 两种交替更新方向都做了数值核对。优化器重载同时恢复轮到的因子和重投影用的上一步权重。训练启用这一专用裁剪并关闭 Trainer 自带裁剪。[论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/7428310c0f97f1c6bb2ef1be99c1ec2a-Abstract-Conference.html) · [作者实现](https://github.com/tnurbek/loft/tree/148998d98f901cd7744db7baa5b2b4868fa16bf0) |"
+  },
+  {
+    "id": 24,
+    "method": "lora-mixer",
+    "conference": "ICLR",
+    "label": "LoRA-Mixer",
+    "title": "LoRA-Mixer: Coordinate Modular LoRA Experts Through Serial Attention Routing",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/18610cbcd1da57854aa05ebdc5cd3168-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Li, Wenbing",
+      "Song, Zikai",
+      "Zhou, Hang",
+      "Yu, Junqing",
+      "Zhang, Yunyao",
+      "Yang, Wei"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/18610cbcd1da57854aa05ebdc5cd3168-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "代码依据会议补充包；4 个 AVQA 子任务各 64 样本预训 rank-2 专家，再联合路由。softmax 汇合全部专家，top-3 仅统计负载；保留阶段一参数作距离约束。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late_mixer.py",
+      "experiments/ms_swift_aqa/paper_late_stages.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late_mixer.py",
+      "../../experiments/ms_swift_aqa/paper_late_stages.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/lora-mixer.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/lora-mixer.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "官方补充代码",
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/18610cbcd1da57854aa05ebdc5cd3168-Supplemental-Conference.zip",
+        "type": "official_conference_supplement",
+        "sha256": "2b87e32bd63ab60fb13a4b52294f953f9dba172dae9146a240cd60a3fc9dc486",
+        "license": {
+          "license": "no_license_file_in_supplement",
+          "checked_method": "SHA-256 and cached ZIP inventory inspected 2026-11-22"
+        }
+      },
+      {
+        "label": "作者 README/许可证仓库（该版本无模型实现）",
+        "type": "pinned_author_repository_announcement_only",
+        "url": "https://github.com/hustcselwb/LoRA-Mixer/tree/076f673c5ecd317e50d89b4af45c7145cef6b9fa",
+        "repository": "https://github.com/hustcselwb/LoRA-Mixer",
+        "commit": "076f673c5ecd317e50d89b4af45c7145cef6b9fa",
+        "license": {
+          "license": "Apache-2.0",
+          "scope": "Root LICENSE in inspected author archive; do not infer this applies to the separately distributed conference supplement."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/18610cbcd1da57854aa05ebdc5cd3168-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "LoRA-Mixer: Coordinate Modular LoRA Experts Through Serial Attention Routing"
+        ],
+        "citation_author": [
+          "Li, Wenbing",
+          "Song, Zikai",
+          "Zhou, Hang",
+          "Yu, Junqing",
+          "Zhang, Yunyao",
+          "Yang, Wei"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "14694"
+        ],
+        "citation_lastpage": [
+          "14716"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/18610cbcd1da57854aa05ebdc5cd3168-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 24 | LoRA-Mixer | 以 ICLR 补充代码 `llama3-train.py` 为依据，在 36 层 Q/K/V/O 投影处加入每 token 路由。源 AVQA 的 Which、Come From、Happening、Where 各抽 64 个样本，分别训练 rank 2 专家，然后在共用训练清单上软路由联合训练。每层有四个专家和宽 256 的路由 MLP。根据作者实现，输出按所有专家的 softmax 加权，top-3 用于路由负载统计。RSL 按论文式 5 对有效 token 取平均，并按官方模型在全部已路由投影取均值。有效 token 均值使同一样本的补齐长度不会改变损失。保留第一阶段专家参数作为式 11 的距离约束。原始 GitHub 在查验的提交仅包含 README 与许可证，会议的补充包内有模型与训练源码，SHA-256 为 `2b87e32bd63ab60fb13a4b52294f953f9dba172dae9146a240cd60a3fc9dc486`。[论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/18610cbcd1da57854aa05ebdc5cd3168-Abstract-Conference.html) · [官方补充代码](https://proceedings.iclr.cc/paper_files/paper/2026/file/18610cbcd1da57854aa05ebdc5cd3168-Supplemental-Conference.zip) |"
+  },
+  {
+    "id": 25,
+    "method": "loragen",
+    "conference": "ICLR",
+    "label": "LoRAGen",
+    "title": "LoRAGen: Structure-Aware Weight Space Learning for LoRA Generation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc7c087b5e965075c8946b9ff57e3d64-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Huang, Hao",
+      "Ding, Jingtao",
+      "Liao, Mengqi",
+      "Wang, Xin",
+      "Ban, Jinyang",
+      "Yuan, Yuan",
+      "Wan, Huaiyu",
+      "Li, Yong"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/fc7c087b5e965075c8946b9ff57e3d64-Paper-Conference.pdf",
+    "implementation_kind": "vendored_apache_core_with_integration",
+    "adaptation_boundary": "保留作者 LAE/MoE 解码器、Transformer 去噪器/扩散核心；按论文完整 BA 定义计算夹角损失。只在 4 个 AVQA 专家的 Q/V 因子库做条件生成迁移，非原文 FLAN-T5/Gemma 大任务库；固定源描述与噪声，不由测试集选择。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late_loragen.py",
+      "experiments/ms_swift_aqa/paper_late_gen/autoencoder.py",
+      "experiments/ms_swift_aqa/paper_late_gen/transformer.py",
+      "experiments/ms_swift_aqa/paper_late_gen/diffusion.py",
+      "experiments/ms_swift_aqa/paper_late_gen/position.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late_loragen.py",
+      "../../experiments/ms_swift_aqa/paper_late_gen/autoencoder.py",
+      "../../experiments/ms_swift_aqa/paper_late_gen/transformer.py",
+      "../../experiments/ms_swift_aqa/paper_late_gen/diffusion.py",
+      "../../experiments/ms_swift_aqa/paper_late_gen/position.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/loragen.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/loragen.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "作者实现",
+        "url": "https://github.com/tsinghua-fib-lab/LoRAGen/tree/911a738e63439732e94897f1aefd0d92123c4d9a",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/tsinghua-fib-lab/LoRAGen",
+        "commit": "911a738e63439732e94897f1aefd0d92123c4d9a",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/tsinghua-fib-lab/LoRAGen/911a738e63439732e94897f1aefd0d92123c4d9a/LICENSE",
+          "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "retained_license": {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/LICENSE",
+      "link": "../../experiments/ms_swift_aqa/paper_late_gen/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "license": "Apache-2.0"
+    },
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc7c087b5e965075c8946b9ff57e3d64-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "LoRAGen: Structure-Aware Weight Space Learning for LoRA Generation"
+        ],
+        "citation_author": [
+          "Huang, Hao",
+          "Ding, Jingtao",
+          "Liao, Mengqi",
+          "Wang, Xin",
+          "Ban, Jinyang",
+          "Yuan, Yuan",
+          "Wan, Huaiyu",
+          "Li, Yong"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "156056"
+        ],
+        "citation_lastpage": [
+          "156080"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/fc7c087b5e965075c8946b9ff57e3d64-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 25 | LoRAGen | 直接复用作者 decoder-only LAE、按模块区分的 MoE 解码器、Transformer 去噪器和 `GaussianDiffusion1D`。论文式 2 针对完整 `BA`，公开训练损失却比较各个因子；这里按论文用小型 Gram 矩阵精确计算完整更新的夹角，谱损失使用压缩 QR 与 SVD。生成器拟合上行四个专家的 Q/V 参数，所有 36 层与 Q/V 宽度均取自 Omni。用冻结的 Omni 文本解码器编码任务描述，辅助条件沿用作者实现的全 1 向量。源生成描述在实验前固定为音频事件的原因与先后关系，专家训练排除 Why/Before Next 等非专家题型及对应的整段原始视频。生成一个 rank 2、单位缩放的原生 PEFT checkpoint，对两个目标集重载同一份。此次专家库只有四种 AVQA 子任务，测的是这一小库上的条件生成迁移。发布研究另用了 FLAN-T5/Gemma 任务库。源专家拟合、LAE、扩散训练时间与参数分别记录。小专家库使用 512 次 LAE 更新、1024 次去噪器更新、500 个扩散时刻和 64 次 DDIM 采样。按官方推理脚本采用最终去噪器的 model 权重；源任务不执行周期性 EMA 试评或 checkpoint 搜索。源专家重建、描述正常顺序和轮换后的生成夹角是诊断量。两次生成诊断共用固定噪声。两测试集均不用于选择描述、噪声或权重。[论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc7c087b5e965075c8946b9ff57e3d64-Abstract-Conference.html) · [作者实现](https://github.com/tsinghua-fib-lab/LoRAGen/tree/911a738e63439732e94897f1aefd0d92123c4d9a) |"
+  },
+  {
+    "id": 26,
+    "method": "ralora",
+    "conference": "ICLR",
+    "label": "RaLoRA",
+    "title": "Gradient Intrinsic Dimensionality Alignment：Narrowing The Gap Between Low-Rank Adaptation and Full Fine-Tuning",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b4b967d4222d87fa5b28b6ec7144058-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Ye, Jingqi",
+      "He, Haonan",
+      "Li, Minglei",
+      "Han, Fujun",
+      "Chen, Tao",
+      "Ye, Peng"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5b4b967d4222d87fa5b28b6ec7144058-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "基础 RaLoRA：64 个源微批的完整投影梯度奇异值熵决定逐层块数，固定每块参考秩。未采用补充代码的跨层敏感度 RaLoRA-Pro。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late_ralora.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late_ralora.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/ralora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/ralora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "官方补充代码",
+        "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5b4b967d4222d87fa5b28b6ec7144058-Supplemental-Conference.zip",
+        "type": "official_conference_supplement",
+        "sha256": "a40c3c99d6016e8ca37074f47f545fb6350c9b37836f2d9ba8e232ec95205bdf",
+        "license": {
+          "license": "no_license_file_in_supplement",
+          "checked_method": "SHA-256 and cached ZIP inventory inspected 2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b4b967d4222d87fa5b28b6ec7144058-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Gradient Intrinsic Dimensionality Alignment：Narrowing The Gap Between Low-Rank Adaptation and Full Fine-Tuning"
+        ],
+        "citation_author": [
+          "Ye, Jingqi",
+          "He, Haonan",
+          "Li, Minglei",
+          "Han, Fujun",
+          "Chen, Tao",
+          "Ye, Peng"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "55765"
+        ],
+        "citation_lastpage": [
+          "55790"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/5b4b967d4222d87fa5b28b6ec7144058-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 26 | RaLoRA | 实现论文主方法，为每层按平均完整投影梯度的奇异值熵确定块数。每块有独立的 A/B，对角拼接。固定每块的参考秩后，单层可训练参数数始终为 `rank*(in+out)`。64 个源训练微批、每批一条，梯度搬到 CPU 累加，返回设备逐层计算完整奇异值。checkpoint 自带各层块数，评估可独立恢复。补充代码还实现了引入跨层敏感度预算分配的 RaLoRA-Pro。本实验使用基础版本。补充 ZIP 的 SHA-256 为 `a40c3c99d6016e8ca37074f47f545fb6350c9b37836f2d9ba8e232ec95205bdf`。[论文](https://proceedings.iclr.cc/paper_files/paper/2026/hash/5b4b967d4222d87fa5b28b6ec7144058-Abstract-Conference.html) · [官方补充代码](https://proceedings.iclr.cc/paper_files/paper/2026/file/5b4b967d4222d87fa5b28b6ec7144058-Supplemental-Conference.zip) |"
+  },
+  {
+    "id": 27,
+    "method": "stable-lora",
+    "conference": "ICLR",
+    "label": "Stable-LoRA",
+    "title": "Stable-LoRA: Stabilizing Feature Learning of Low-Rank Adaptation",
+    "paper": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2962d47082d07cd6e28272ab471e0526-Abstract-Conference.html",
+    "year": 2026,
+    "authors": [
+      "Wu, Yize",
+      "GAO, KE",
+      "Li, Ling",
+      "WU, Yanjun"
+    ],
+    "paper_pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/2962d47082d07cd6e28272ab471e0526-Paper-Conference.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "AdamW 前按作者规则缩减 A，系数 0.001；逐层稳定后停缩减并保存状态，训练率/梯度累积沿用统一协议。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/stable-lora.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/stable-lora.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "论文",
+        "url": "https://arxiv.org/abs/2603.05204",
+        "type": "project_page_or_paper_reference"
+      },
+      {
+        "label": "作者实现",
+        "url": "https://github.com/yize-wu/Stable-LoRA/tree/fadecb58739d34b9da51ef3f4f50bc1d38b480bb",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/yize-wu/Stable-LoRA",
+        "commit": "fadecb58739d34b9da51ef3f4f50bc1d38b480bb",
+        "license": {
+          "license": "no_license_file_in_pinned_archive",
+          "scope": "Existing local source audit and inspected fixed-revision ZIP contain no standalone LICENSE file."
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2962d47082d07cd6e28272ab471e0526-Abstract-Conference.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_title": [
+          "Stable-LoRA: Stabilizing Feature Learning of Low-Rank Adaptation"
+        ],
+        "citation_author": [
+          "Wu, Yize",
+          "GAO, KE",
+          "Li, Ling",
+          "WU, Yanjun"
+        ],
+        "citation_journal_title": [
+          "International Conference on Learning Representations"
+        ],
+        "citation_volume": [
+          "2026"
+        ],
+        "citation_firstpage": [
+          "24134"
+        ],
+        "citation_lastpage": [
+          "24149"
+        ],
+        "citation_pdf_url": [
+          "https://proceedings.iclr.cc/paper_files/paper/2026/file/2962d47082d07cd6e28272ab471e0526-Paper-Conference.pdf"
+        ],
+        "citation_publication_date": [
+          "2026-04-20"
+        ]
+      }
+    },
+    "original_source_record": "| 27 | Stable-LoRA | 将作者优化器的 A 缩减步骤接到普通 AdamW 更新之前。每对因子单独比较按大小归一化后的范数。一旦达到作者的稳定条件，该层后续停止缩减。学习率和梯度累积沿用共用协议，缩减系数 0.001 位于论文对照范围内。逐层停止标志随优化器状态恢复。[论文](https://arxiv.org/abs/2603.05204) · [作者实现](https://github.com/yize-wu/Stable-LoRA/tree/fadecb58739d34b9da51ef3f4f50bc1d38b480bb) |"
+  },
+  {
+    "id": 28,
+    "method": "lokra",
+    "conference": "ICML",
+    "label": "LoKRA",
+    "title": "Low Kruskal-Rank Adaptation",
+    "paper": "https://proceedings.mlr.press/v306/xu26ae.html",
+    "year": 2026,
+    "authors": [
+      "Yixing Xu",
+      "Guanchen Li",
+      "Chao Li",
+      "Xuanwu Yin",
+      "Dong Li",
+      "Spandan Tiwari",
+      "Ashish Sirasao",
+      "Emad Barsoum"
+    ],
+    "paper_pdf": "https://raw.githubusercontent.com/mlresearch/v306/main/assets/xu26ae/xu26ae.pdf",
+    "implementation_kind": "author_behavior_port_with_project_integration",
+    "adaptation_boundary": "基础 LoKRA：在普通 BA 上增加采样 Gram 负 logdet 正则，系数 0.001。未采用 Khatri–Rao 的 LoKRA+；也不同于 PEFT 的 Kronecker LoKr。",
+    "implementation_paths": [
+      "experiments/ms_swift_aqa/paper_late.py"
+    ],
+    "implementation_links": [
+      "../../experiments/ms_swift_aqa/paper_late.py"
+    ],
+    "config_path": "experiments/ms_swift_aqa/papers28/configs/lokra.json",
+    "config_link": "../../experiments/ms_swift_aqa/papers28/configs/lokra.json",
+    "source_notes_path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "source_notes_link": "../../experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "official_sources": [
+      {
+        "label": "作者实现",
+        "url": "https://github.com/AMD-AGI/LoKRA/blob/9e118de65047653ced8c968d2ac0f55032bff5d7/finetune_krank.py",
+        "type": "pinned_author_or_reference_code",
+        "repository": "https://github.com/AMD-AGI/LoKRA",
+        "commit": "9e118de65047653ced8c968d2ac0f55032bff5d7",
+        "path_in_repository": "finetune_krank.py",
+        "license": {
+          "license": "Apache-2.0",
+          "license_url": "https://raw.githubusercontent.com/AMD-AGI/LoKRA/9e118de65047653ced8c968d2ac0f55032bff5d7/LICENSE",
+          "license_sha256": "15b9773471d941bb4ff2e4f6f8cb390031dc459036348f2be6e6f02f2832ee1d",
+          "checked_method": "pinned raw license file",
+          "checked_date": "2026-11-22"
+        }
+      }
+    ],
+    "bibliographic_verification": {
+      "checked_date": "2026-11-22",
+      "source": "https://proceedings.mlr.press/v306/xu26ae.html",
+      "http_status": 200,
+      "method": "Official proceedings HTML citation_* metadata; publication year means conference year, not website publication date.",
+      "raw_citation_metadata": {
+        "citation_publisher": [
+          "PMLR"
+        ],
+        "citation_title": [
+          "Low Kruskal-Rank Adaptation"
+        ],
+        "citation_language": [
+          "en"
+        ],
+        "citation_abstract_html_url": [
+          "https://proceedings.mlr.press/v306/xu26ae.html"
+        ],
+        "citation_pdf_url": [
+          "https://raw.githubusercontent.com/mlresearch/v306/main/assets/xu26ae/xu26ae.pdf"
+        ],
+        "citation_firstpage": [
+          "141351"
+        ],
+        "citation_lastpage": [
+          "141366"
+        ],
+        "citation_author": [
+          "Yixing Xu",
+          "Guanchen Li",
+          "Chao Li",
+          "Xuanwu Yin",
+          "Dong Li",
+          "Spandan Tiwari",
+          "Ashish Sirasao",
+          "Emad Barsoum"
+        ],
+        "citation_publication_date": [
+          "2026/09/29"
+        ],
+        "citation_inbook_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_conference_title": [
+          "International Conference on Machine Learning"
+        ],
+        "citation_issn": [
+          "2640-3498"
+        ]
+      }
+    },
+    "original_source_record": "| 28 | LoKRA | 对普通乘积 `BA` 按作者 `finetune_krank.py` 增加训练损失。每次在 A 的列和 B 的行内各随机采样，取正则化 Gram 矩阵的负对数行列式，保留作者对采样大小与层数的归一化。系数 0.001 来自作者示例。使用基础 LoKRA，论文中分别另有 Khatri–Rao 因子构成的增强版本 LoKRA+。此前报告的 PEFT LoKr 对应另一种 Kronecker 方法。[论文](https://proceedings.mlr.press/v306/xu26ae.html) · [作者实现](https://github.com/AMD-AGI/LoKRA/blob/9e118de65047653ced8c968d2ac0f55032bff5d7/finetune_krank.py) |"
+  }
+]

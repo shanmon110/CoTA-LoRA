@@ -1,0 +1,15 @@
+{
+  "completed_mmar_scores": {
+    "lora": 600,
+    "static": 593,
+    "question": 596,
+    "question_audio": 596,
+    "question_audio-off": 593,
+    "question_audio-fastgate": 600,
+    "question_audio-fastgate-off": 591,
+    "lora-long": 597,
+    "question_audio-long": 594,
+    "question_audio-long-off": 590
+  },
+  "reference": 873
+}

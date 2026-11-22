@@ -1,0 +1,7 @@
+{
+  "model_type": "qwen2_5_omni_adapter",
+  "model": "/root/autodl-tmp/west-preflight/Qwen2.5-Omni-7B",
+  "base_sha256": "6075f0ad5da2b880d1fc1318412481b78fc3f1b1d623e520380d2b01128e417b",
+  "plan": "experiments/preflight/asr-plan",
+  "test_manifests": "/root/autodl-tmp/west-preflight/manifests/asr"
+}

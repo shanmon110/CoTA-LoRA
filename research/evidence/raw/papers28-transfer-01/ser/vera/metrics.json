@@ -1,0 +1,53 @@
+{
+  "uar": 0.6072388210091729,
+  "accuracy": 0.5793714746172441,
+  "recalls": {
+    "A": 0.8941176470588236,
+    "B": 0.416289592760181,
+    "C": 0.3346938775510204,
+    "D": 0.7838541666666666
+  },
+  "confusion_matrix": [
+    [
+      152,
+      7,
+      1,
+      10
+    ],
+    [
+      103,
+      184,
+      5,
+      150
+    ],
+    [
+      53,
+      10,
+      82,
+      100
+    ],
+    [
+      71,
+      8,
+      4,
+      301
+    ]
+  ],
+  "utterances": 1241,
+  "method": "vera",
+  "tuner": "vera",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "ac685c268c180f410989efd454002b192921325f157232d6713145e2ab50d0c9",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/vera/checkpoint-224",
+    "weights_sha256": "1f2b74fbad2799d5ed5a179102a2fe0b7a06e6b76ade6c772f727479f1b88a2e",
+    "adapter_config_sha256": "f4406cd5e7be6e44bafca1405d96e323fe445af8f0503687a445d7c960ff8e6d"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "predictions_sha256": "df22810e64a03ef15fa1c6b53a6099974a6c5f8a2675c964846ce90ddc1168d4",
+  "eval_seconds": 84.77321924100397,
+  "peak_allocated_bytes": 10133338624,
+  "peak_reserved_bytes": 10244587520
+}

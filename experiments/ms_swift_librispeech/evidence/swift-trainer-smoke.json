@@ -1,0 +1,42 @@
+{
+  "lora": {
+    "method": "lora",
+    "best_checkpoint": "/root/autodl-tmp/ms-swift-librispeech/smoke-01/lora/checkpoint-1",
+    "best_wer": 0.94,
+    "best_step": 1,
+    "global_step": 2,
+    "early_stopped": true,
+    "trainable_parameters": 131072,
+    "input_trajectory": [
+      "d2ca8bdc981ec5179b5a29baf1e6c3af0c323ce837f1807af13df13ecd50bc49",
+      "d809122b592c6b2c6f71b2a855eea94c850ae42e8290264872baebf650b98216"
+    ],
+    "init_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+    "last_ab_sha256": "5a375777f61cf198124dbfbaf1a66ba8961ac8debe42decba50e2558b8d0c793",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "training_seconds": 2.216988882049918,
+    "dev_seconds": 1.3072936572134495,
+    "peak_allocated_bytes": 11572701184,
+    "peak_reserved_bytes": 12014583808
+  },
+  "ta-lora": {
+    "method": "ta-lora",
+    "best_checkpoint": "/root/autodl-tmp/ms-swift-librispeech/smoke-01/ta-lora/checkpoint-1",
+    "best_wer": 0.94,
+    "best_step": 1,
+    "global_step": 2,
+    "early_stopped": true,
+    "trainable_parameters": 131104,
+    "input_trajectory": [
+      "d2ca8bdc981ec5179b5a29baf1e6c3af0c323ce837f1807af13df13ecd50bc49",
+      "d809122b592c6b2c6f71b2a855eea94c850ae42e8290264872baebf650b98216"
+    ],
+    "init_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+    "last_ab_sha256": "5a375777f61cf198124dbfbaf1a66ba8961ac8debe42decba50e2558b8d0c793",
+    "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+    "training_seconds": 3.687731273472309,
+    "dev_seconds": 1.2879226207733154,
+    "peak_allocated_bytes": 11859485184,
+    "peak_reserved_bytes": 12295602176
+  }
+}

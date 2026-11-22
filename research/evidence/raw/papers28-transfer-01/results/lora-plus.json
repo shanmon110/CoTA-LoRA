@@ -1,0 +1,83 @@
+{
+  "method": "lora-plus",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.36850356729230155,
+    "accuracy": 0.43110394842868655,
+    "recalls": {
+      "A": 0.16470588235294117,
+      "B": 0.9434389140271493,
+      "C": 0.363265306122449,
+      "D": 0.0026041666666666665
+    },
+    "confusion_matrix": [
+      [
+        28,
+        138,
+        4,
+        0
+      ],
+      [
+        8,
+        417,
+        17,
+        0
+      ],
+      [
+        3,
+        153,
+        89,
+        0
+      ],
+      [
+        6,
+        357,
+        20,
+        1
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.49609375,
+    "best_step": 32,
+    "updates": 128,
+    "trainable": 14966784,
+    "correct": 404,
+    "exact_accuracy": 0.404,
+    "official_text_accuracy": 0.408,
+    "by_domain": {
+      "music": {
+        "correct": 172,
+        "total": 334,
+        "accuracy": 0.5149700598802395
+      },
+      "sound": {
+        "correct": 134,
+        "total": 333,
+        "accuracy": 0.4024024024024024
+      },
+      "speech": {
+        "correct": 98,
+        "total": 333,
+        "accuracy": 0.29429429429429427
+      }
+    },
+    "train_seconds": 235.6325819841004,
+    "training_peak_allocated_gib": 11.61057424545288
+  },
+  "checkpoint": {
+    "method": "lora-plus",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lora-plus/checkpoint-32",
+    "step": 32,
+    "dev_accuracy": 0.49609375,
+    "adapter_sha256": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+    "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+    "files": {
+      "adapter_model.safetensors": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f",
+      "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lora-plus",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/lora-plus"
+}

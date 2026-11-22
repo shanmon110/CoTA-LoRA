@@ -1,0 +1,59 @@
+{
+  "adapter": {
+    "alpha": 16,
+    "gate_init": 0.0,
+    "gate_multiplier": 1.0,
+    "independent_transport_up": true,
+    "last_n": 28,
+    "rank": 8,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "transport_queries": "all_valid"
+  },
+  "generation": {
+    "batch_size": 2
+  },
+  "methods": [
+    "lora",
+    "dora",
+    "ta-lora"
+  ],
+  "model": "/root/autodl-tmp/models/Qwen3-ASR-0.6B",
+  "model_revision": "4ce9cc728b473a5aedbe7b6e1ea45646316824dc",
+  "model_type": "qwen3_asr",
+  "objective": "sft",
+  "patience": 3,
+  "snapshot_manifest": "/root/autodl-tmp/iemocap/qwen3-asr-capacity/model-snapshot.json",
+  "swift_source": "/root/autodl-fs/ms-swift",
+  "task": "aqa",
+  "training": {
+    "data_seed": 42,
+    "dataloader_num_workers": 0,
+    "disable_tqdm": true,
+    "eval_steps": 32,
+    "gradient_accumulation_steps": 2,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_kwargs": {
+      "use_reentrant": false
+    },
+    "learning_rate": 0.0002,
+    "logging_steps": 1,
+    "lr_scheduler_type": "constant",
+    "max_length": 2048,
+    "num_train_epochs": 2,
+    "optim": "adamw_torch",
+    "per_device_eval_batch_size": 2,
+    "per_device_train_batch_size": 8,
+    "save_steps": 32,
+    "seed": 42,
+    "warmup_ratio": 0,
+    "weight_decay": 0.0
+  }
+}

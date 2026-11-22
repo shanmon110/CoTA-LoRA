@@ -1,0 +1,49 @@
+{
+  "uar": 0.6223648473812602,
+  "accuracy": 0.5914585012087027,
+  "recalls": {
+    "A": 0.9058823529411765,
+    "B": 0.4253393665158371,
+    "C": 0.3795918367346939,
+    "D": 0.7786458333333334
+  },
+  "confusion_matrix": [
+    [
+      154,
+      7,
+      2,
+      7
+    ],
+    [
+      94,
+      188,
+      8,
+      152
+    ],
+    [
+      45,
+      10,
+      93,
+      97
+    ],
+    [
+      66,
+      11,
+      8,
+      299
+    ]
+  ],
+  "utterances": 1241,
+  "method": "rolora-federated",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 92.90905584400753,
+  "peak_allocated_bytes": 10166274560,
+  "peak_reserved_bytes": 10278141952,
+  "predictions_sha256": "ff72ed0993727cf767ef81df27f7210fff7627b5dcde7dee2621063fe95d07f3",
+  "adapter_sha256": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  }
+}

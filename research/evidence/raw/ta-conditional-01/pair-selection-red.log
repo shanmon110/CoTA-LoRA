@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_pair_accuracy_maximizes_both_correct_and_keeps_first_tie _________
+
+    def test_pair_accuracy_maximizes_both_correct_and_keeps_first_tie():
+        history = [{'step': step, 'eval_pair_accuracy': value, 'eval_accuracy': 1 - value}
+                   for step, value in enumerate([.35, .6, .6, .4], 1)]
+>       assert select(history, 2, 'pair_accuracy') == (2, .6, True)
+E       assert (1, 0.35, True) == (2, 0.6, True)
+E         
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+experiments/ms_swift_librispeech/tests/test_training.py:24: AssertionError
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_librispeech/tests/test_training.py::test_pair_accuracy_maximizes_both_correct_and_keeps_first_tie
+1 failed, 3 deselected, 1 warning in 4.52s

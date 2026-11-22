@@ -1,0 +1,45 @@
+{
+  "scope": "post-hoc same-text diagnostic, no training or prompt selection",
+  "arms": {
+    "frozen-base": {
+      "unique_texts": 17,
+      "utterances": 98,
+      "support": {
+        "C": 21,
+        "D": 43,
+        "B": 34
+      },
+      "accuracy": 0.5510204081632653
+    },
+    "lora-mixed": {
+      "unique_texts": 17,
+      "utterances": 98,
+      "support": {
+        "C": 21,
+        "D": 43,
+        "B": 34
+      },
+      "accuracy": 0.6224489795918368
+    },
+    "question_audio-mixed": {
+      "unique_texts": 17,
+      "utterances": 98,
+      "support": {
+        "C": 21,
+        "D": 43,
+        "B": 34
+      },
+      "accuracy": 0.6020408163265306
+    },
+    "question_audio-mixed-off": {
+      "unique_texts": 17,
+      "utterances": 98,
+      "support": {
+        "C": 21,
+        "D": 43,
+        "B": 34
+      },
+      "accuracy": 0.6020408163265306
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "methods": ["lora", "ta-lora"],
+  "model": "/root/autodl-tmp/west-preflight/model",
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "swift_source": "/root/autodl-fs/ms-swift",
+  "data_source": "/root/autodl-tmp/west-touchasu/comparison-data",
+  "corpus": "/root/autodl-tmp/west-preflight/librispeech/LibriSpeech",
+  "prompt": "Transcribe the speech verbatim in its original language. Reply with the transcript only.",
+  "adapter": {"rank": 8, "alpha": 16, "last_n": 4},
+  "training": {
+    "seed": 42, "data_seed": 42, "per_device_train_batch_size": 2,
+    "per_device_eval_batch_size": 2, "gradient_accumulation_steps": 4,
+    "num_train_epochs": 1, "eval_steps": 892, "save_steps": 892, "learning_rate": 0.0002,
+    "lr_scheduler_type": "constant", "warmup_ratio": 0, "optim": "adamw_torch", "weight_decay": 0.0,
+    "max_length": 2048, "logging_steps": 1, "dataloader_num_workers": 0
+  },
+  "patience": 1,
+  "generation": {"do_sample": false, "num_beams": 1, "batch_size": 2, "max_new_tokens": 128}
+}

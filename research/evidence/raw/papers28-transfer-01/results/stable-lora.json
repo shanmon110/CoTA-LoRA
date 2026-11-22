@@ -1,0 +1,83 @@
+{
+  "method": "stable-lora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.5770871209060547,
+    "accuracy": 0.5205479452054794,
+    "recalls": {
+      "A": 0.9529411764705882,
+      "B": 0.39819004524886875,
+      "C": 0.42857142857142855,
+      "D": 0.5286458333333334
+    },
+    "confusion_matrix": [
+      [
+        162,
+        4,
+        2,
+        2
+      ],
+      [
+        171,
+        176,
+        12,
+        83
+      ],
+      [
+        81,
+        10,
+        105,
+        49
+      ],
+      [
+        164,
+        10,
+        7,
+        203
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.83984375,
+    "best_step": 224,
+    "updates": 256,
+    "trainable": 14966784,
+    "correct": 727,
+    "exact_accuracy": 0.727,
+    "official_text_accuracy": 0.73,
+    "by_domain": {
+      "music": {
+        "correct": 221,
+        "total": 334,
+        "accuracy": 0.6616766467065869
+      },
+      "sound": {
+        "correct": 266,
+        "total": 333,
+        "accuracy": 0.7987987987987988
+      },
+      "speech": {
+        "correct": 240,
+        "total": 333,
+        "accuracy": 0.7207207207207207
+      }
+    },
+    "train_seconds": 689.8279245590675,
+    "training_peak_allocated_gib": 11.647566318511963
+  },
+  "checkpoint": {
+    "method": "stable-lora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/stable-lora/checkpoint-224",
+    "step": 224,
+    "dev_accuracy": 0.83984375,
+    "adapter_sha256": "6d1672b8ab8aedece411413b97ac42cbffe898edbfa1160506d49a604df7fcf0",
+    "config_sha256": "67adc466961f76351b212cbdafb478f0a7376de9ec81fc2467ee623a5d5ac694",
+    "files": {
+      "adapter_model.safetensors": "6d1672b8ab8aedece411413b97ac42cbffe898edbfa1160506d49a604df7fcf0",
+      "adapter_config.json": "67adc466961f76351b212cbdafb478f0a7376de9ec81fc2467ee623a5d5ac694"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/stable-lora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/stable-lora"
+}

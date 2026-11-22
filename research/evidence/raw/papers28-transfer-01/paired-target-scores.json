@@ -1,0 +1,2732 @@
+{
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "score_protocol": "frozen source-selected adapters; no target fitting",
+  "frozen_ser_run": "/root/autodl-tmp/MMAR/runs/ta-conditional-transfer-01",
+  "frozen_mmau_run": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/frozen-base/test",
+  "scorer_sha256": "85480e1c0dfe8ee1406e9c6e598eff0dca9e0216701f076faf69081c6aab1558",
+  "pcm_index_sha256": "40a30f11d833be067fedddeb4935018f208c6abf11722195e1708da6e44b8ddc",
+  "intervals": "Paired percentile cluster bootstrap for fixed checkpoints; unadjusted across comparisons.",
+  "scores": {
+    "frozen-base": {
+      "ser": {
+        "uar": 0.5994471827192416,
+        "accuracy": 0.572119258662369,
+        "recalls": {
+          "A": 0.8941176470588236,
+          "B": 0.41855203619909503,
+          "C": 0.3142857142857143,
+          "D": 0.7708333333333334
+        },
+        "confusion_matrix": [
+          [
+            152,
+            7,
+            1,
+            10
+          ],
+          [
+            105,
+            185,
+            5,
+            147
+          ],
+          [
+            57,
+            10,
+            77,
+            101
+          ],
+          [
+            76,
+            8,
+            4,
+            296
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 757,
+        "official_accuracy": 0.757,
+        "correct_by_domain": {
+          "sound": 276,
+          "speech": 246,
+          "music": 235
+        },
+        "exact_correct": 756,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "b72c04f5f75ff36d30bf99adbd26f6c1d8d66743920df5ee7c726420a3c7d529",
+      "mmau_predictions_sha256": "c92fdc09191d714779d631a895edaf158922127c71945cb29496085fbb863c19",
+      "selected_weights_sha256": null
+    },
+    "alora": {
+      "ser": {
+        "uar": 0.5986294998768739,
+        "accuracy": 0.5688960515713135,
+        "recalls": {
+          "A": 0.9294117647058824,
+          "B": 0.4819004524886878,
+          "C": 0.30612244897959184,
+          "D": 0.6770833333333334
+        },
+        "confusion_matrix": [
+          [
+            158,
+            6,
+            1,
+            5
+          ],
+          [
+            123,
+            213,
+            6,
+            100
+          ],
+          [
+            80,
+            14,
+            75,
+            76
+          ],
+          [
+            105,
+            14,
+            5,
+            260
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 734,
+        "official_accuracy": 0.734,
+        "correct_by_domain": {
+          "sound": 271,
+          "speech": 244,
+          "music": 219
+        },
+        "exact_correct": 733,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "b775e4f4e99ed6c9aebbcb7b6dfa74203373f73b6d8af916b2dec793b3192fd5",
+      "mmau_predictions_sha256": "03d7836f89d71a3b660492c243753a1cba9ec07258cf2b47ad45e9c9aa559c45",
+      "selected_weights_sha256": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b"
+    },
+    "aurora": {
+      "ser": {
+        "uar": 0.6013561794910272,
+        "accuracy": 0.564867042707494,
+        "recalls": {
+          "A": 0.9176470588235294,
+          "B": 0.4072398190045249,
+          "C": 0.35918367346938773,
+          "D": 0.7213541666666666
+        },
+        "confusion_matrix": [
+          [
+            156,
+            6,
+            2,
+            6
+          ],
+          [
+            108,
+            180,
+            8,
+            146
+          ],
+          [
+            59,
+            13,
+            88,
+            85
+          ],
+          [
+            91,
+            10,
+            6,
+            277
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 729,
+        "official_accuracy": 0.729,
+        "correct_by_domain": {
+          "sound": 272,
+          "speech": 242,
+          "music": 215
+        },
+        "exact_correct": 727,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "a10805c162bb5f60eda81f8f9304ad81a48c3b4f6c98e205f3c2e879f3de3871",
+      "mmau_predictions_sha256": "4221155f2215b10775267b4fa7dd8a80ef6485d83b222fc049b4f8b9d6a982a3",
+      "selected_weights_sha256": "3f206a5e0ba00709d7a67468d0b8d29fd9a570b75b37a7959a1c0a216c874770"
+    },
+    "bora": {
+      "ser": {
+        "uar": 0.5981071274663711,
+        "accuracy": 0.5511684125705076,
+        "recalls": {
+          "A": 0.9411764705882353,
+          "B": 0.47285067873303166,
+          "C": 0.43673469387755104,
+          "D": 0.5416666666666666
+        },
+        "confusion_matrix": [
+          [
+            160,
+            5,
+            3,
+            2
+          ],
+          [
+            145,
+            209,
+            11,
+            77
+          ],
+          [
+            72,
+            12,
+            107,
+            54
+          ],
+          [
+            150,
+            14,
+            12,
+            208
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 718,
+        "official_accuracy": 0.718,
+        "correct_by_domain": {
+          "sound": 262,
+          "speech": 235,
+          "music": 221
+        },
+        "exact_correct": 715,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "bacc4b1da303094a7202e432d4262e9ffe477b23fe5cb754eedbfbe1a8d910a4",
+      "mmau_predictions_sha256": "aa5eb435d37b9ab46aa527273fafabf343d406e6f2092512e2504f9a47905884",
+      "selected_weights_sha256": "12cd19863c4b01ea10be78ef89fdf899c7cd938becb077366c03482b5d8a5118"
+    },
+    "dora": {
+      "ser": {
+        "uar": 0.6107774960945916,
+        "accuracy": 0.564867042707494,
+        "recalls": {
+          "A": 0.9352941176470588,
+          "B": 0.3891402714932127,
+          "C": 0.42857142857142855,
+          "D": 0.6901041666666666
+        },
+        "confusion_matrix": [
+          [
+            159,
+            5,
+            2,
+            4
+          ],
+          [
+            112,
+            172,
+            13,
+            145
+          ],
+          [
+            65,
+            10,
+            105,
+            65
+          ],
+          [
+            98,
+            11,
+            10,
+            265
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 722,
+        "official_accuracy": 0.722,
+        "correct_by_domain": {
+          "sound": 265,
+          "speech": 242,
+          "music": 215
+        },
+        "exact_correct": 720,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "3dd46a2b3b69ed8f7597f54f170982d4a7dd3a76aa4fea9ca84e96c09d04cc3c",
+      "mmau_predictions_sha256": "58e932d71508cb976acb76169e0672b23aed562a20cadc6689184ed5e3fc3342",
+      "selected_weights_sha256": "47af802d540db5fcd2602305e50a3b5b8056f74e118c81da64f79483dec6e273"
+    },
+    "eva": {
+      "ser": {
+        "uar": 0.2166248350301659,
+        "accuracy": 0.19661563255439163,
+        "recalls": {
+          "A": 0.48823529411764705,
+          "B": 0.27149321266968324,
+          "C": 0.0,
+          "D": 0.10677083333333333
+        },
+        "confusion_matrix": [
+          [
+            83,
+            54,
+            0,
+            33
+          ],
+          [
+            245,
+            120,
+            0,
+            77
+          ],
+          [
+            117,
+            92,
+            0,
+            36
+          ],
+          [
+            219,
+            124,
+            0,
+            41
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 382,
+        "official_accuracy": 0.382,
+        "correct_by_domain": {
+          "sound": 159,
+          "speech": 133,
+          "music": 90
+        },
+        "exact_correct": 379,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "248122f68d2705b9d6f3a7c4c9d6471b08b9eee6b2d1ecb748bcbdd041b81f6e",
+      "mmau_predictions_sha256": "f4d6a47f3ff7d61189c0c63718256ef2b1c47257738024f50843fe23ec1bb44a",
+      "selected_weights_sha256": "53d40097066384b214deb324556e9c4dbbc7d012d8c7a65b58fb6b274f7cda15"
+    },
+    "flylora": {
+      "ser": {
+        "uar": 0.6327376383245606,
+        "accuracy": 0.6107977437550363,
+        "recalls": {
+          "A": 0.8235294117647058,
+          "B": 0.43665158371040724,
+          "C": 0.4530612244897959,
+          "D": 0.8177083333333334
+        },
+        "confusion_matrix": [
+          [
+            140,
+            7,
+            7,
+            16
+          ],
+          [
+            57,
+            193,
+            16,
+            176
+          ],
+          [
+            16,
+            11,
+            111,
+            107
+          ],
+          [
+            44,
+            14,
+            12,
+            314
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 717,
+        "official_accuracy": 0.717,
+        "correct_by_domain": {
+          "sound": 266,
+          "speech": 241,
+          "music": 210
+        },
+        "exact_correct": 715,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "597eb14aae3a419a8b77f0109cb08a007cd53e543411b07ba77bf3dab6fcb6e2",
+      "mmau_predictions_sha256": "0ab51b52795606030e3c692dc83e37db8075d9a30b077fb7492c9512e8b08c69",
+      "selected_weights_sha256": "9e01a68692ead3ed9a0d57d32a1f6f82c1cb98f694963a144a2fce3cc75854c9"
+    },
+    "fourierft": {
+      "ser": {
+        "uar": 0.2628822201957706,
+        "accuracy": 0.2264302981466559,
+        "recalls": {
+          "A": 0.40588235294117647,
+          "B": 0.251131221719457,
+          "C": 0.363265306122449,
+          "D": 0.03125
+        },
+        "confusion_matrix": [
+          [
+            69,
+            45,
+            41,
+            15
+          ],
+          [
+            178,
+            111,
+            132,
+            21
+          ],
+          [
+            109,
+            38,
+            89,
+            9
+          ],
+          [
+            141,
+            88,
+            143,
+            12
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 316,
+        "official_accuracy": 0.316,
+        "correct_by_domain": {
+          "sound": 124,
+          "speech": 98,
+          "music": 94
+        },
+        "exact_correct": 314,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "ed1c4d34e5d5399ef08d2e5dc91ff7686430b35ced87dacab6fb982b51d74e02",
+      "mmau_predictions_sha256": "c13060e844caf1fbe7d65280157a85f65b17ead5785b55c308f4e044a4f90704",
+      "selected_weights_sha256": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56"
+    },
+    "gralora": {
+      "ser": {
+        "uar": 0.6065047052474836,
+        "accuracy": 0.5793714746172441,
+        "recalls": {
+          "A": 0.888235294117647,
+          "B": 0.41402714932126694,
+          "C": 0.3346938775510204,
+          "D": 0.7890625
+        },
+        "confusion_matrix": [
+          [
+            151,
+            7,
+            2,
+            10
+          ],
+          [
+            77,
+            183,
+            7,
+            175
+          ],
+          [
+            37,
+            12,
+            82,
+            114
+          ],
+          [
+            65,
+            9,
+            7,
+            303
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 719,
+        "official_accuracy": 0.719,
+        "correct_by_domain": {
+          "sound": 266,
+          "speech": 239,
+          "music": 214
+        },
+        "exact_correct": 716,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "55ea7fa1cdf4dcd3e76ac5f3e3e966ef17569774a71e2046a50f86ac07022a41",
+      "mmau_predictions_sha256": "cb908cd15ebfa25b74254e84b7230b69511e2ac7500ee0756b392962ac26ccba",
+      "selected_weights_sha256": "47d03c13cad75b34880183e927d2485737d502e8c7ad05695a953ce6ec9fbcc0"
+    },
+    "igu-lora": {
+      "ser": {
+        "uar": 0.6006869574752978,
+        "accuracy": 0.5753424657534246,
+        "recalls": {
+          "A": 0.8941176470588236,
+          "B": 0.4253393665158371,
+          "C": 0.3020408163265306,
+          "D": 0.78125
+        },
+        "confusion_matrix": [
+          [
+            152,
+            7,
+            1,
+            10
+          ],
+          [
+            105,
+            188,
+            6,
+            143
+          ],
+          [
+            54,
+            14,
+            74,
+            103
+          ],
+          [
+            72,
+            8,
+            4,
+            300
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 757,
+        "official_accuracy": 0.757,
+        "correct_by_domain": {
+          "sound": 276,
+          "speech": 245,
+          "music": 236
+        },
+        "exact_correct": 756,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "df504e9ed818e4e60121bfe1dae4fbe25615203f820448dcfa9da759a7223b6d",
+      "mmau_predictions_sha256": "e079afc49f47f54b3ef97a4fd49bff7a8fa5d3f3461550ec82cbe781b990d46b",
+      "selected_weights_sha256": "3e57974461fd7f72bac090e6d0a75536bac0b87ef29feff8d495f093e8330726"
+    },
+    "known-target-qo": {
+      "ser": {
+        "uar": 0.25,
+        "accuracy": 0.136986301369863,
+        "recalls": {
+          "A": 1.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "confusion_matrix": [
+          [
+            170,
+            0,
+            0,
+            0
+          ],
+          [
+            442,
+            0,
+            0,
+            0
+          ],
+          [
+            245,
+            0,
+            0,
+            0
+          ],
+          [
+            384,
+            0,
+            0,
+            0
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 386,
+        "official_accuracy": 0.386,
+        "correct_by_domain": {
+          "sound": 158,
+          "speech": 128,
+          "music": 100
+        },
+        "exact_correct": 385,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+      "mmau_predictions_sha256": "e54e42b50c01b0fc74e903724665c1ac01ca5ad80f18d99b070a53dec80cbc53",
+      "selected_weights_sha256": "144ded1e705ef184bc200831e625e39947892b473173b07ff988b54824f6b43a"
+    },
+    "loft": {
+      "ser": {
+        "uar": 0.40325320031858897,
+        "accuracy": 0.33601933924254634,
+        "recalls": {
+          "A": 0.9117647058823529,
+          "B": 0.40271493212669685,
+          "C": 0.22040816326530613,
+          "D": 0.078125
+        },
+        "confusion_matrix": [
+          [
+            155,
+            8,
+            7,
+            0
+          ],
+          [
+            240,
+            178,
+            11,
+            13
+          ],
+          [
+            166,
+            22,
+            54,
+            3
+          ],
+          [
+            308,
+            34,
+            12,
+            30
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 564,
+        "official_accuracy": 0.564,
+        "correct_by_domain": {
+          "sound": 228,
+          "speech": 184,
+          "music": 152
+        },
+        "exact_correct": 559,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "40eb0b719f41ee6dc699980c1c7850ca4164eb2b7a51868962f79fda2cb34bea",
+      "mmau_predictions_sha256": "c4e6f66031ebdf6f42190dea2e349fecd3fc6436f8ace848fad61d0303109ae2",
+      "selected_weights_sha256": "c408b03ca08c5df66c2c7954bfdc227d5d9685a00bba6b9978d45ad55c267c6d"
+    },
+    "lokra": {
+      "ser": {
+        "uar": 0.626039959252932,
+        "accuracy": 0.5858178887993554,
+        "recalls": {
+          "A": 0.9176470588235294,
+          "B": 0.4072398190045249,
+          "C": 0.4448979591836735,
+          "D": 0.734375
+        },
+        "confusion_matrix": [
+          [
+            156,
+            6,
+            3,
+            5
+          ],
+          [
+            103,
+            180,
+            12,
+            147
+          ],
+          [
+            53,
+            11,
+            109,
+            72
+          ],
+          [
+            82,
+            10,
+            10,
+            282
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 721,
+        "official_accuracy": 0.721,
+        "correct_by_domain": {
+          "sound": 262,
+          "speech": 241,
+          "music": 218
+        },
+        "exact_correct": 719,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "0caf4d1770baf9953a00d25954519ddc912e004d4c3a990dfcd3e3224eb443c3",
+      "mmau_predictions_sha256": "d21e94e7cc98e50a01b9f567bcdb65b57c9ddd12c824cff4f36454172181d9f7",
+      "selected_weights_sha256": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74"
+    },
+    "longlora-omni": {
+      "ser": {
+        "uar": 0.4918486865900206,
+        "accuracy": 0.41579371474617244,
+        "recalls": {
+          "A": 0.9529411764705882,
+          "B": 0.47285067873303166,
+          "C": 0.4530612244897959,
+          "D": 0.08854166666666667
+        },
+        "confusion_matrix": [
+          [
+            162,
+            6,
+            1,
+            1
+          ],
+          [
+            216,
+            209,
+            15,
+            2
+          ],
+          [
+            121,
+            12,
+            111,
+            1
+          ],
+          [
+            311,
+            22,
+            17,
+            34
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 725,
+        "official_accuracy": 0.725,
+        "correct_by_domain": {
+          "sound": 259,
+          "speech": 240,
+          "music": 226
+        },
+        "exact_correct": 723,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "483b2f506c16fa81f8c8ebefc145b43727be033b5578ae3557db6cff86711824",
+      "mmau_predictions_sha256": "b24c52254de5db0623e33500d630e62b39224a7a84de61c8fce5b7acd08f5d87",
+      "selected_weights_sha256": "43977e56c00e618defa0a58b88d9270f61c5486d16d46da3eb47d2974c1b446e"
+    },
+    "lora-ga": {
+      "ser": {
+        "uar": 0.25,
+        "accuracy": 0.136986301369863,
+        "recalls": {
+          "A": 1.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "confusion_matrix": [
+          [
+            170,
+            0,
+            0,
+            0
+          ],
+          [
+            442,
+            0,
+            0,
+            0
+          ],
+          [
+            245,
+            0,
+            0,
+            0
+          ],
+          [
+            384,
+            0,
+            0,
+            0
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 398,
+        "official_accuracy": 0.398,
+        "correct_by_domain": {
+          "sound": 164,
+          "speech": 133,
+          "music": 101
+        },
+        "exact_correct": 395,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+      "mmau_predictions_sha256": "a04bc57c5ec01c3661d6fe554455df3988ca3650b57bb3f3b8997f332a966025",
+      "selected_weights_sha256": "1920500c3c8c3662eeaea1118f68903a926a19d6f903112b30f829f242127878"
+    },
+    "lora-mixer": {
+      "ser": {
+        "uar": 0.5998001604487949,
+        "accuracy": 0.5640612409347301,
+        "recalls": {
+          "A": 0.9117647058823529,
+          "B": 0.4095022624434389,
+          "C": 0.35918367346938773,
+          "D": 0.71875
+        },
+        "confusion_matrix": [
+          [
+            155,
+            6,
+            2,
+            7
+          ],
+          [
+            107,
+            181,
+            8,
+            146
+          ],
+          [
+            63,
+            12,
+            88,
+            82
+          ],
+          [
+            92,
+            9,
+            7,
+            276
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 730,
+        "official_accuracy": 0.73,
+        "correct_by_domain": {
+          "sound": 273,
+          "speech": 243,
+          "music": 214
+        },
+        "exact_correct": 728,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "5ef1dc3b0e00bc33aeaa1146bbe796bc8efaf849c36230438243b24b7b0f8201",
+      "mmau_predictions_sha256": "a4b637690576de3a8648d59bd4aba51a9572fc827160f1f7e7da5b3934a48885",
+      "selected_weights_sha256": "3ee7c6e0e7b7f9820179f8d89b63bdaa6f20baaaff80c8cbd2245592b9ec5855"
+    },
+    "lora-plus": {
+      "ser": {
+        "uar": 0.36850356729230155,
+        "accuracy": 0.43110394842868655,
+        "recalls": {
+          "A": 0.16470588235294117,
+          "B": 0.9434389140271493,
+          "C": 0.363265306122449,
+          "D": 0.0026041666666666665
+        },
+        "confusion_matrix": [
+          [
+            28,
+            138,
+            4,
+            0
+          ],
+          [
+            8,
+            417,
+            17,
+            0
+          ],
+          [
+            3,
+            153,
+            89,
+            0
+          ],
+          [
+            6,
+            357,
+            20,
+            1
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 408,
+        "official_accuracy": 0.408,
+        "correct_by_domain": {
+          "sound": 135,
+          "speech": 101,
+          "music": 172
+        },
+        "exact_correct": 404,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "a0bc23cf7ae79de266d290ab55b39d9b1f9acc36dfc39118802f59aff4bed83c",
+      "mmau_predictions_sha256": "b851364cc487f5ec8363e0f3fdb04c2193348d0169adf35c650b508bf138bee6",
+      "selected_weights_sha256": "834dbc13877ed472edc3c6f93c2f768f9cce3769fce461bb225d4af9f607c51f"
+    },
+    "lora-recompute": {
+      "ser": {
+        "uar": 0.6159076370932989,
+        "accuracy": 0.5914585012087027,
+        "recalls": {
+          "A": 0.9117647058823529,
+          "B": 0.46153846153846156,
+          "C": 0.3142857142857143,
+          "D": 0.7760416666666666
+        },
+        "confusion_matrix": [
+          [
+            155,
+            7,
+            1,
+            7
+          ],
+          [
+            87,
+            204,
+            3,
+            148
+          ],
+          [
+            46,
+            14,
+            77,
+            108
+          ],
+          [
+            67,
+            14,
+            5,
+            298
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 726,
+        "official_accuracy": 0.726,
+        "correct_by_domain": {
+          "sound": 269,
+          "speech": 238,
+          "music": 219
+        },
+        "exact_correct": 724,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "a8401c3a91840a74238b3ac7a2f5094d0dbf7eec8d7dcd5fe0540bf057ab75ac",
+      "mmau_predictions_sha256": "e3ec044d7c7b4b7e9de34fb7c44f107b0d12e40bb01eaeec3e2f812ea8dc8225",
+      "selected_weights_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44"
+    },
+    "lora": {
+      "ser": {
+        "uar": 0.6159076370932989,
+        "accuracy": 0.5914585012087027,
+        "recalls": {
+          "A": 0.9117647058823529,
+          "B": 0.46153846153846156,
+          "C": 0.3142857142857143,
+          "D": 0.7760416666666666
+        },
+        "confusion_matrix": [
+          [
+            155,
+            7,
+            1,
+            7
+          ],
+          [
+            87,
+            204,
+            3,
+            148
+          ],
+          [
+            46,
+            14,
+            77,
+            108
+          ],
+          [
+            67,
+            14,
+            5,
+            298
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 726,
+        "official_accuracy": 0.726,
+        "correct_by_domain": {
+          "sound": 269,
+          "speech": 238,
+          "music": 219
+        },
+        "exact_correct": 724,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "a8401c3a91840a74238b3ac7a2f5094d0dbf7eec8d7dcd5fe0540bf057ab75ac",
+      "mmau_predictions_sha256": "e3ec044d7c7b4b7e9de34fb7c44f107b0d12e40bb01eaeec3e2f812ea8dc8225",
+      "selected_weights_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44"
+    },
+    "loragen": {
+      "ser": {
+        "uar": 0.6221853525063872,
+        "accuracy": 0.6059629331184528,
+        "recalls": {
+          "A": 0.788235294117647,
+          "B": 0.38461538461538464,
+          "C": 0.4122448979591837,
+          "D": 0.9036458333333334
+        },
+        "confusion_matrix": [
+          [
+            134,
+            5,
+            6,
+            25
+          ],
+          [
+            52,
+            170,
+            16,
+            204
+          ],
+          [
+            15,
+            4,
+            101,
+            125
+          ],
+          [
+            20,
+            7,
+            10,
+            347
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 740,
+        "official_accuracy": 0.74,
+        "correct_by_domain": {
+          "sound": 267,
+          "speech": 246,
+          "music": 227
+        },
+        "exact_correct": 738,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "06537092d5cbdb9f2065f4eccd0675a3ae57a58ebe444e002e3f1386bb05ea41",
+      "mmau_predictions_sha256": "b004eb73365cdecc32b44da81d1428d4815febd6a7bf2e284539c10a450bfc59",
+      "selected_weights_sha256": "f314c17f1723ff96a25693aab28eceb0160299c312d3ae6f8a7609e411b73583"
+    },
+    "loram-train-small": {
+      "ser": {
+        "uar": 0.6360181091667436,
+        "accuracy": 0.6220789685737309,
+        "recalls": {
+          "A": 0.8647058823529412,
+          "B": 0.5180995475113123,
+          "C": 0.35918367346938773,
+          "D": 0.8020833333333334
+        },
+        "confusion_matrix": [
+          [
+            147,
+            8,
+            2,
+            13
+          ],
+          [
+            78,
+            229,
+            7,
+            128
+          ],
+          [
+            30,
+            18,
+            88,
+            109
+          ],
+          [
+            51,
+            17,
+            8,
+            308
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 751,
+        "official_accuracy": 0.751,
+        "correct_by_domain": {
+          "sound": 275,
+          "speech": 244,
+          "music": 232
+        },
+        "exact_correct": 750,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "6f544a6621a73e2dfa340a7cc03baded2750ec9e62af66133e58bec888c5f252",
+      "mmau_predictions_sha256": "0f6c043850ee735eb95fc022d14a1780812db134fdc836043099b96414e25e60",
+      "selected_weights_sha256": "7794f0c220144aff9c8d6a0ef2ef32e7f2a700bfba48dad050cfbe5b1f93c5e8"
+    },
+    "lowra": {
+      "ser": {
+        "uar": 0.25,
+        "accuracy": 0.136986301369863,
+        "recalls": {
+          "A": 1.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "confusion_matrix": [
+          [
+            170,
+            0,
+            0,
+            0
+          ],
+          [
+            442,
+            0,
+            0,
+            0
+          ],
+          [
+            245,
+            0,
+            0,
+            0
+          ],
+          [
+            384,
+            0,
+            0,
+            0
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 398,
+        "official_accuracy": 0.398,
+        "correct_by_domain": {
+          "sound": 164,
+          "speech": 133,
+          "music": 101
+        },
+        "exact_correct": 395,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+      "mmau_predictions_sha256": "a04bc57c5ec01c3661d6fe554455df3988ca3650b57bb3f3b8997f332a966025",
+      "selected_weights_sha256": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480"
+    },
+    "magnitude-loram": {
+      "ser": {
+        "uar": 0.5476452720511281,
+        "accuracy": 0.5269943593875906,
+        "recalls": {
+          "A": 0.6588235294117647,
+          "B": 0.8371040723981901,
+          "C": 0.6816326530612244,
+          "D": 0.013020833333333334
+        },
+        "confusion_matrix": [
+          [
+            112,
+            36,
+            22,
+            0
+          ],
+          [
+            24,
+            370,
+            48,
+            0
+          ],
+          [
+            11,
+            67,
+            167,
+            0
+          ],
+          [
+            45,
+            268,
+            66,
+            5
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 613,
+        "official_accuracy": 0.613,
+        "correct_by_domain": {
+          "sound": 208,
+          "speech": 200,
+          "music": 205
+        },
+        "exact_correct": 610,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "5b44cc70eb4453882fe6120721be3c32a58c3c23392bb650663d7b0a7591fbd7",
+      "mmau_predictions_sha256": "4026f5c0958613958d73499157b5cc150874b50fa13e73e61e0d23f583bb078b",
+      "selected_weights_sha256": "d293d3d4f5b416dab72bc85546d3102cdd2046ce544bffcfc240f8d564098d76"
+    },
+    "pissa": {
+      "ser": {
+        "uar": 0.25,
+        "accuracy": 0.136986301369863,
+        "recalls": {
+          "A": 1.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0
+        },
+        "confusion_matrix": [
+          [
+            170,
+            0,
+            0,
+            0
+          ],
+          [
+            442,
+            0,
+            0,
+            0
+          ],
+          [
+            245,
+            0,
+            0,
+            0
+          ],
+          [
+            384,
+            0,
+            0,
+            0
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 398,
+        "official_accuracy": 0.398,
+        "correct_by_domain": {
+          "sound": 164,
+          "speech": 133,
+          "music": 101
+        },
+        "exact_correct": 395,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+      "mmau_predictions_sha256": "a04bc57c5ec01c3661d6fe554455df3988ca3650b57bb3f3b8997f332a966025",
+      "selected_weights_sha256": "fd39c663c1b258e817f454859140202f168f5d3c6b616f21ad685c4034283eec"
+    },
+    "ralora": {
+      "ser": {
+        "uar": 0.5776487758564964,
+        "accuracy": 0.5366639806607575,
+        "recalls": {
+          "A": 0.9352941176470588,
+          "B": 0.3891402714932127,
+          "C": 0.3142857142857143,
+          "D": 0.671875
+        },
+        "confusion_matrix": [
+          [
+            159,
+            6,
+            1,
+            4
+          ],
+          [
+            133,
+            172,
+            8,
+            129
+          ],
+          [
+            71,
+            10,
+            77,
+            87
+          ],
+          [
+            110,
+            10,
+            6,
+            258
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 729,
+        "official_accuracy": 0.729,
+        "correct_by_domain": {
+          "sound": 269,
+          "speech": 242,
+          "music": 218
+        },
+        "exact_correct": 727,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "322c97e734fffb629fce5b7b8c4065d52324428a1abfb7049446be4ad2ce46ef",
+      "mmau_predictions_sha256": "0b5c9ec97f317283d6f853df325e0e8b5d9a33f8f2dd64291b82dc7af8c8ada9",
+      "selected_weights_sha256": "c06f5a08936ec3dc7a737e991b770998dafc9b183a045ba0515ec5548775f908"
+    },
+    "randlora": {
+      "ser": {
+        "uar": 0.24963985594237695,
+        "accuracy": 0.19500402900886382,
+        "recalls": {
+          "A": 0.03529411764705882,
+          "B": 0.0,
+          "C": 0.963265306122449,
+          "D": 0.0
+        },
+        "confusion_matrix": [
+          [
+            6,
+            0,
+            164,
+            0
+          ],
+          [
+            12,
+            0,
+            430,
+            0
+          ],
+          [
+            9,
+            0,
+            236,
+            0
+          ],
+          [
+            23,
+            0,
+            361,
+            0
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 232,
+        "official_accuracy": 0.232,
+        "correct_by_domain": {
+          "sound": 85,
+          "speech": 74,
+          "music": 73
+        },
+        "exact_correct": 228,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "acb6d0ebdb9baa26b3c57f3bfb19843862ac6db67f14f6e6de82acace9378f60",
+      "mmau_predictions_sha256": "83bb9787c96fe6a7ff08d4db91e407ab2a0cf81379da913167889a2b4c492abd",
+      "selected_weights_sha256": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308"
+    },
+    "rolora-federated": {
+      "ser": {
+        "uar": 0.6223648473812602,
+        "accuracy": 0.5914585012087027,
+        "recalls": {
+          "A": 0.9058823529411765,
+          "B": 0.4253393665158371,
+          "C": 0.3795918367346939,
+          "D": 0.7786458333333334
+        },
+        "confusion_matrix": [
+          [
+            154,
+            7,
+            2,
+            7
+          ],
+          [
+            94,
+            188,
+            8,
+            152
+          ],
+          [
+            45,
+            10,
+            93,
+            97
+          ],
+          [
+            66,
+            11,
+            8,
+            299
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 737,
+        "official_accuracy": 0.737,
+        "correct_by_domain": {
+          "sound": 270,
+          "speech": 244,
+          "music": 223
+        },
+        "exact_correct": 735,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "ff72ed0993727cf767ef81df27f7210fff7627b5dcde7dee2621063fe95d07f3",
+      "mmau_predictions_sha256": "db27c3a5d8d3d8a7ca8d1cd648a15449b867c81b257af7f503cd78b635de248f",
+      "selected_weights_sha256": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687"
+    },
+    "stable-lora": {
+      "ser": {
+        "uar": 0.5770871209060547,
+        "accuracy": 0.5205479452054794,
+        "recalls": {
+          "A": 0.9529411764705882,
+          "B": 0.39819004524886875,
+          "C": 0.42857142857142855,
+          "D": 0.5286458333333334
+        },
+        "confusion_matrix": [
+          [
+            162,
+            4,
+            2,
+            2
+          ],
+          [
+            171,
+            176,
+            12,
+            83
+          ],
+          [
+            81,
+            10,
+            105,
+            49
+          ],
+          [
+            164,
+            10,
+            7,
+            203
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 730,
+        "official_accuracy": 0.73,
+        "correct_by_domain": {
+          "sound": 266,
+          "speech": 243,
+          "music": 221
+        },
+        "exact_correct": 727,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "2f1d075e9877daef9c12efeacae2f8293e749916e36eec59e45e5363f6555e1d",
+      "mmau_predictions_sha256": "628f0a2ddfebc76c6437c622ec2bcc7d3a9f4b05f1469b067d38ac11ee1b0072",
+      "selected_weights_sha256": "6d1672b8ab8aedece411413b97ac42cbffe898edbfa1160506d49a604df7fcf0"
+    },
+    "toplora": {
+      "ser": {
+        "uar": 0.6330949807807739,
+        "accuracy": 0.5930701047542305,
+        "recalls": {
+          "A": 0.9117647058823529,
+          "B": 0.4321266968325792,
+          "C": 0.4775510204081633,
+          "D": 0.7109375
+        },
+        "confusion_matrix": [
+          [
+            155,
+            7,
+            4,
+            4
+          ],
+          [
+            100,
+            191,
+            13,
+            138
+          ],
+          [
+            54,
+            11,
+            117,
+            63
+          ],
+          [
+            88,
+            11,
+            12,
+            273
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 716,
+        "official_accuracy": 0.716,
+        "correct_by_domain": {
+          "sound": 264,
+          "speech": 239,
+          "music": 213
+        },
+        "exact_correct": 714,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "678e9baee8407d2ce09266f4ade8527cd6e90a083c37f5bb807cd80f074a838b",
+      "mmau_predictions_sha256": "82317140848112f829deb61d3b0d471ba9940d5a5a9d9498f1c154890d365200",
+      "selected_weights_sha256": "212071407274bd1322f7e5f3631d8afb90eff70b33cd4be87a420eeb400088e1"
+    },
+    "unilora": {
+      "ser": {
+        "uar": 0.599950485001693,
+        "accuracy": 0.5745366639806607,
+        "recalls": {
+          "A": 0.8941176470588236,
+          "B": 0.4276018099547511,
+          "C": 0.3020408163265306,
+          "D": 0.7760416666666666
+        },
+        "confusion_matrix": [
+          [
+            152,
+            7,
+            1,
+            10
+          ],
+          [
+            103,
+            189,
+            6,
+            144
+          ],
+          [
+            56,
+            12,
+            74,
+            103
+          ],
+          [
+            74,
+            8,
+            4,
+            298
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 758,
+        "official_accuracy": 0.758,
+        "correct_by_domain": {
+          "sound": 275,
+          "speech": 247,
+          "music": 236
+        },
+        "exact_correct": 757,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "b37b378c5f8822e554ad5c22a37eceb6ba1345bcb9f99095179be6e93f2fc442",
+      "mmau_predictions_sha256": "976711fe4caf2674a12e6c5b451333cde42033b01b71041ac56d0db2582ba0e2",
+      "selected_weights_sha256": "3a64ea1b6c5df4624e06c5b3d22eb05f62f18765ad43527e724b7053ff76baf2"
+    },
+    "vera": {
+      "ser": {
+        "uar": 0.6072388210091729,
+        "accuracy": 0.5793714746172441,
+        "recalls": {
+          "A": 0.8941176470588236,
+          "B": 0.416289592760181,
+          "C": 0.3346938775510204,
+          "D": 0.7838541666666666
+        },
+        "confusion_matrix": [
+          [
+            152,
+            7,
+            1,
+            10
+          ],
+          [
+            103,
+            184,
+            5,
+            150
+          ],
+          [
+            53,
+            10,
+            82,
+            100
+          ],
+          [
+            71,
+            8,
+            4,
+            301
+          ]
+        ],
+        "utterances": 1241
+      },
+      "mmau": {
+        "official_correct": 753,
+        "official_accuracy": 0.753,
+        "correct_by_domain": {
+          "sound": 276,
+          "speech": 245,
+          "music": 232
+        },
+        "exact_correct": 752,
+        "n": 1000
+      },
+      "ser_predictions_sha256": "df22810e64a03ef15fa1c6b53a6099974a6c5f8a2675c964846ce90ddc1168d4",
+      "mmau_predictions_sha256": "d0d46cb9da364f82053b950f90f43d69581509a44640d7bc03817c30d6c52e8f",
+      "selected_weights_sha256": "1f2b74fbad2799d5ed5a179102a2fe0b7a06e6b76ade6c772f727479f1b88a2e"
+    }
+  },
+  "ser_by_dialogue_uar": {
+    "clusters": 31,
+    "draws": 10000,
+    "valid_draws": 10000,
+    "seed": 42,
+    "contrasts": {
+      "alora vs lora": {
+        "delta_pp": -1.7278137216425016,
+        "percentile_95_pp": [
+          -3.331278973537229,
+          -0.1804577059538684
+        ],
+        "candidate_only_correct": 38,
+        "reference_only_correct": 66
+      },
+      "aurora vs lora": {
+        "delta_pp": -1.4551457602271722,
+        "percentile_95_pp": [
+          -2.869525620595203,
+          -0.11473662539476549
+        ],
+        "candidate_only_correct": 17,
+        "reference_only_correct": 50
+      },
+      "bora vs lora": {
+        "delta_pp": -1.7800509626927807,
+        "percentile_95_pp": [
+          -3.638602981292172,
+          0.29406436680378323
+        ],
+        "candidate_only_correct": 57,
+        "reference_only_correct": 107
+      },
+      "dora vs lora": {
+        "delta_pp": -0.5130140998707233,
+        "percentile_95_pp": [
+          -2.250632131281038,
+          1.331329439308466
+        ],
+        "candidate_only_correct": 35,
+        "reference_only_correct": 68
+      },
+      "eva vs lora": {
+        "delta_pp": -39.928280206313296,
+        "percentile_95_pp": [
+          -44.89903066493378,
+          -33.77685504843171
+        ],
+        "candidate_only_correct": 91,
+        "reference_only_correct": 581
+      },
+      "flylora vs lora": {
+        "delta_pp": 1.683000123126177,
+        "percentile_95_pp": [
+          -0.7796773764959585,
+          4.490579869076126
+        ],
+        "candidate_only_correct": 69,
+        "reference_only_correct": 45
+      },
+      "fourierft vs lora": {
+        "delta_pp": -35.30254168975283,
+        "percentile_95_pp": [
+          -39.864268580825026,
+          -29.856150441206914
+        ],
+        "candidate_only_correct": 110,
+        "reference_only_correct": 563
+      },
+      "gralora vs lora": {
+        "delta_pp": -0.940293184581531,
+        "percentile_95_pp": [
+          -1.9609235045616689,
+          0.2246494457480801
+        ],
+        "candidate_only_correct": 23,
+        "reference_only_correct": 38
+      },
+      "igu-lora vs lora": {
+        "delta_pp": -1.522067961800111,
+        "percentile_95_pp": [
+          -2.751016441576924,
+          -0.1825072731415774
+        ],
+        "candidate_only_correct": 22,
+        "reference_only_correct": 42
+      },
+      "known-target-qo vs lora": {
+        "delta_pp": -36.590763709329885,
+        "percentile_95_pp": [
+          -40.94277397093287,
+          -31.566815266456757
+        ],
+        "candidate_only_correct": 15,
+        "reference_only_correct": 579
+      },
+      "loft vs lora": {
+        "delta_pp": -21.26544367747099,
+        "percentile_95_pp": [
+          -23.595976233128724,
+          -18.549485283206486
+        ],
+        "candidate_only_correct": 50,
+        "reference_only_correct": 367
+      },
+      "lokra vs lora": {
+        "delta_pp": 1.0132322159633111,
+        "percentile_95_pp": [
+          -0.750989195282285,
+          2.8481838580353225
+        ],
+        "candidate_only_correct": 38,
+        "reference_only_correct": 45
+      },
+      "longlora-omni vs lora": {
+        "delta_pp": -12.405895050327825,
+        "percentile_95_pp": [
+          -14.259615339837442,
+          -10.545883094291476
+        ],
+        "candidate_only_correct": 75,
+        "reference_only_correct": 293
+      },
+      "lora-ga vs lora": {
+        "delta_pp": -36.590763709329885,
+        "percentile_95_pp": [
+          -40.94277397093287,
+          -31.566815266456757
+        ],
+        "candidate_only_correct": 15,
+        "reference_only_correct": 579
+      },
+      "lora-mixer vs lora": {
+        "delta_pp": -1.610747664450396,
+        "percentile_95_pp": [
+          -2.935266889686033,
+          -0.259253275004698
+        ],
+        "candidate_only_correct": 20,
+        "reference_only_correct": 54
+      },
+      "lora-plus vs lora": {
+        "delta_pp": -24.74040698009973,
+        "percentile_95_pp": [
+          -28.374683415920362,
+          -21.08923061830171
+        ],
+        "candidate_only_correct": 238,
+        "reference_only_correct": 437
+      },
+      "lora-recompute vs lora": {
+        "delta_pp": 0.0,
+        "percentile_95_pp": [
+          0.0,
+          0.0
+        ],
+        "candidate_only_correct": 0,
+        "reference_only_correct": 0
+      },
+      "loragen vs lora": {
+        "delta_pp": 0.6277715413088303,
+        "percentile_95_pp": [
+          -1.5783414512377638,
+          2.8811838775120324
+        ],
+        "candidate_only_correct": 91,
+        "reference_only_correct": 73
+      },
+      "loram-train-small vs lora": {
+        "delta_pp": 2.011047207344474,
+        "percentile_95_pp": [
+          0.48300360530959663,
+          3.5643760774851443
+        ],
+        "candidate_only_correct": 64,
+        "reference_only_correct": 26
+      },
+      "lowra vs lora": {
+        "delta_pp": -36.590763709329885,
+        "percentile_95_pp": [
+          -40.94277397093287,
+          -31.566815266456757
+        ],
+        "candidate_only_correct": 15,
+        "reference_only_correct": 579
+      },
+      "magnitude-loram vs lora": {
+        "delta_pp": -6.826236504217076,
+        "percentile_95_pp": [
+          -10.695558201491918,
+          -2.8466979993954933
+        ],
+        "candidate_only_correct": 264,
+        "reference_only_correct": 344
+      },
+      "pissa vs lora": {
+        "delta_pp": -36.590763709329885,
+        "percentile_95_pp": [
+          -40.94277397093287,
+          -31.566815266456757
+        ],
+        "candidate_only_correct": 15,
+        "reference_only_correct": 579
+      },
+      "ralora vs lora": {
+        "delta_pp": -3.8258861236802444,
+        "percentile_95_pp": [
+          -5.426426232384113,
+          -2.4206355603659317
+        ],
+        "candidate_only_correct": 11,
+        "reference_only_correct": 79
+      },
+      "randlora vs lora": {
+        "delta_pp": -36.62677811509219,
+        "percentile_95_pp": [
+          -41.78744009244971,
+          -31.031228147687905
+        ],
+        "candidate_only_correct": 164,
+        "reference_only_correct": 656
+      },
+      "rolora-federated vs lora": {
+        "delta_pp": 0.6457210287961312,
+        "percentile_95_pp": [
+          -0.6891988964239126,
+          2.1410297746964924
+        ],
+        "candidate_only_correct": 30,
+        "reference_only_correct": 30
+      },
+      "stable-lora vs lora": {
+        "delta_pp": -3.8820516187244136,
+        "percentile_95_pp": [
+          -5.657954725844093,
+          -2.351193034444576
+        ],
+        "candidate_only_correct": 41,
+        "reference_only_correct": 129
+      },
+      "toplora vs lora": {
+        "delta_pp": 1.7187343687474987,
+        "percentile_95_pp": [
+          -0.36569453850322786,
+          3.6153776073473605
+        ],
+        "candidate_only_correct": 58,
+        "reference_only_correct": 56
+      },
+      "unilora vs lora": {
+        "delta_pp": -1.5957152091605864,
+        "percentile_95_pp": [
+          -2.9121591317193802,
+          -0.16324750982310696
+        ],
+        "candidate_only_correct": 25,
+        "reference_only_correct": 46
+      },
+      "vera vs lora": {
+        "delta_pp": -0.8668816084125952,
+        "percentile_95_pp": [
+          -2.017093235312832,
+          0.44694769063814266
+        ],
+        "candidate_only_correct": 27,
+        "reference_only_correct": 42
+      },
+      "alora vs frozen-base": {
+        "delta_pp": -0.08176828423677174,
+        "percentile_95_pp": [
+          -1.6071409465223554,
+          1.414427905047715
+        ],
+        "candidate_only_correct": 47,
+        "reference_only_correct": 51
+      },
+      "aurora vs frozen-base": {
+        "delta_pp": 0.1908996771785576,
+        "percentile_95_pp": [
+          -1.1950632118696718,
+          1.5358677302193326
+        ],
+        "candidate_only_correct": 27,
+        "reference_only_correct": 36
+      },
+      "bora vs frozen-base": {
+        "delta_pp": -0.1340055252870509,
+        "percentile_95_pp": [
+          -2.03300118966634,
+          2.1178520564284713
+        ],
+        "candidate_only_correct": 73,
+        "reference_only_correct": 99
+      },
+      "dora vs frozen-base": {
+        "delta_pp": 1.1330313375350065,
+        "percentile_95_pp": [
+          -0.6903216652972971,
+          3.151432082329318
+        ],
+        "candidate_only_correct": 46,
+        "reference_only_correct": 55
+      },
+      "eva vs frozen-base": {
+        "delta_pp": -38.282234768907564,
+        "percentile_95_pp": [
+          -43.162147108220005,
+          -32.1865937284756
+        ],
+        "candidate_only_correct": 95,
+        "reference_only_correct": 561
+      },
+      "flylora vs frozen-base": {
+        "delta_pp": 3.329045560531907,
+        "percentile_95_pp": [
+          0.3035790614020776,
+          6.55507983962443
+        ],
+        "candidate_only_correct": 82,
+        "reference_only_correct": 34
+      },
+      "fourierft vs frozen-base": {
+        "delta_pp": -33.6564962523471,
+        "percentile_95_pp": [
+          -38.035473477847155,
+          -28.23225650871033
+        ],
+        "candidate_only_correct": 117,
+        "reference_only_correct": 546
+      },
+      "gralora vs frozen-base": {
+        "delta_pp": 0.7057522528241988,
+        "percentile_95_pp": [
+          -0.5935373968100662,
+          2.1784010379899224
+        ],
+        "candidate_only_correct": 35,
+        "reference_only_correct": 26
+      },
+      "igu-lora vs frozen-base": {
+        "delta_pp": 0.12397747560561889,
+        "percentile_95_pp": [
+          -0.35630508874285455,
+          0.606370943763904
+        ],
+        "candidate_only_correct": 8,
+        "reference_only_correct": 4
+      },
+      "known-target-qo vs frozen-base": {
+        "delta_pp": -34.94471827192416,
+        "percentile_95_pp": [
+          -39.32177405193514,
+          -29.747611901393395
+        ],
+        "candidate_only_correct": 18,
+        "reference_only_correct": 558
+      },
+      "loft vs frozen-base": {
+        "delta_pp": -19.619398240065262,
+        "percentile_95_pp": [
+          -22.275241155691248,
+          -16.481428533752677
+        ],
+        "candidate_only_correct": 57,
+        "reference_only_correct": 350
+      },
+      "lokra vs frozen-base": {
+        "delta_pp": 2.659277653369041,
+        "percentile_95_pp": [
+          0.7123601249948567,
+          4.813899889624019
+        ],
+        "candidate_only_correct": 54,
+        "reference_only_correct": 37
+      },
+      "longlora-omni vs frozen-base": {
+        "delta_pp": -10.759849612922096,
+        "percentile_95_pp": [
+          -12.797190890403918,
+          -8.695425051631085
+        ],
+        "candidate_only_correct": 81,
+        "reference_only_correct": 275
+      },
+      "lora vs frozen-base": {
+        "delta_pp": 1.6460454374057298,
+        "percentile_95_pp": [
+          0.19460811354482854,
+          2.968158883231464
+        ],
+        "candidate_only_correct": 48,
+        "reference_only_correct": 24
+      },
+      "lora-ga vs frozen-base": {
+        "delta_pp": -34.94471827192416,
+        "percentile_95_pp": [
+          -39.32177405193514,
+          -29.747611901393395
+        ],
+        "candidate_only_correct": 18,
+        "reference_only_correct": 558
+      },
+      "lora-mixer vs frozen-base": {
+        "delta_pp": 0.03529777295533387,
+        "percentile_95_pp": [
+          -1.1164535645243938,
+          1.169374036201134
+        ],
+        "candidate_only_correct": 23,
+        "reference_only_correct": 33
+      },
+      "lora-plus vs frozen-base": {
+        "delta_pp": -23.094361542694003,
+        "percentile_95_pp": [
+          -27.03700134533551,
+          -19.252536651179742
+        ],
+        "candidate_only_correct": 255,
+        "reference_only_correct": 430
+      },
+      "lora-recompute vs frozen-base": {
+        "delta_pp": 1.6460454374057298,
+        "percentile_95_pp": [
+          0.19460811354482854,
+          2.968158883231464
+        ],
+        "candidate_only_correct": 48,
+        "reference_only_correct": 24
+      },
+      "loragen vs frozen-base": {
+        "delta_pp": 2.27381697871456,
+        "percentile_95_pp": [
+          -0.020468644373095018,
+          4.668110710826459
+        ],
+        "candidate_only_correct": 92,
+        "reference_only_correct": 50
+      },
+      "loram-train-small vs frozen-base": {
+        "delta_pp": 3.657092644750204,
+        "percentile_95_pp": [
+          2.1740121578921303,
+          5.2584579738376895
+        ],
+        "candidate_only_correct": 78,
+        "reference_only_correct": 16
+      },
+      "lowra vs frozen-base": {
+        "delta_pp": -34.94471827192416,
+        "percentile_95_pp": [
+          -39.32177405193514,
+          -29.747611901393395
+        ],
+        "candidate_only_correct": 18,
+        "reference_only_correct": 558
+      },
+      "magnitude-loram vs frozen-base": {
+        "delta_pp": -5.1801910668113464,
+        "percentile_95_pp": [
+          -9.287561761770288,
+          -1.0295033965536236
+        ],
+        "candidate_only_correct": 282,
+        "reference_only_correct": 338
+      },
+      "pissa vs frozen-base": {
+        "delta_pp": -34.94471827192416,
+        "percentile_95_pp": [
+          -39.32177405193514,
+          -29.747611901393395
+        ],
+        "candidate_only_correct": 18,
+        "reference_only_correct": 558
+      },
+      "ralora vs frozen-base": {
+        "delta_pp": -2.1798406862745145,
+        "percentile_95_pp": [
+          -3.7266820351545413,
+          -0.8257702926098913
+        ],
+        "candidate_only_correct": 16,
+        "reference_only_correct": 60
+      },
+      "randlora vs frozen-base": {
+        "delta_pp": -34.98073267768647,
+        "percentile_95_pp": [
+          -40.11348365346005,
+          -29.22790911323091
+        ],
+        "candidate_only_correct": 164,
+        "reference_only_correct": 632
+      },
+      "rolora-federated vs frozen-base": {
+        "delta_pp": 2.291766466201861,
+        "percentile_95_pp": [
+          1.0445314759594577,
+          3.7371603275147125
+        ],
+        "candidate_only_correct": 36,
+        "reference_only_correct": 12
+      },
+      "stable-lora vs frozen-base": {
+        "delta_pp": -2.236006181318684,
+        "percentile_95_pp": [
+          -3.913531926670482,
+          -0.7519368613643543
+        ],
+        "candidate_only_correct": 50,
+        "reference_only_correct": 114
+      },
+      "toplora vs frozen-base": {
+        "delta_pp": 3.3647798061532286,
+        "percentile_95_pp": [
+          1.44202556526157,
+          5.324875612899336
+        ],
+        "candidate_only_correct": 65,
+        "reference_only_correct": 39
+      },
+      "unilora vs frozen-base": {
+        "delta_pp": 0.05033022824514344,
+        "percentile_95_pp": [
+          -0.37899708879375216,
+          0.5151744216907489
+        ],
+        "candidate_only_correct": 7,
+        "reference_only_correct": 4
+      },
+      "vera vs frozen-base": {
+        "delta_pp": 0.7791638289931346,
+        "percentile_95_pp": [
+          0.1837733753577989,
+          1.5332884581072428
+        ],
+        "candidate_only_correct": 11,
+        "reference_only_correct": 2
+      }
+    }
+  },
+  "mmau_by_pcm_official_accuracy": {
+    "clusters": 904,
+    "draws": 10000,
+    "valid_draws": 10000,
+    "seed": 42,
+    "contrasts": {
+      "alora vs lora": {
+        "delta_pp": 0.8000000000000007,
+        "percentile_95_pp": [
+          -1.2820512820512777,
+          2.9116465863453738
+        ],
+        "candidate_only_correct": 60,
+        "reference_only_correct": 52
+      },
+      "aurora vs lora": {
+        "delta_pp": 0.30000000000000027,
+        "percentile_95_pp": [
+          -1.225961235324526,
+          1.8811881188118829
+        ],
+        "candidate_only_correct": 34,
+        "reference_only_correct": 31
+      },
+      "bora vs lora": {
+        "delta_pp": -0.8000000000000007,
+        "percentile_95_pp": [
+          -2.7696036665981167,
+          1.1044454198704385
+        ],
+        "candidate_only_correct": 46,
+        "reference_only_correct": 54
+      },
+      "dora vs lora": {
+        "delta_pp": -0.40000000000000036,
+        "percentile_95_pp": [
+          -2.2222222222222148,
+          1.3944918927086154
+        ],
+        "candidate_only_correct": 40,
+        "reference_only_correct": 44
+      },
+      "eva vs lora": {
+        "delta_pp": -34.4,
+        "percentile_95_pp": [
+          -38.2936507936508,
+          -30.550027368071234
+        ],
+        "candidate_only_correct": 82,
+        "reference_only_correct": 426
+      },
+      "flylora vs lora": {
+        "delta_pp": -0.9000000000000008,
+        "percentile_95_pp": [
+          -3.0000000000000027,
+          1.1811606019661824
+        ],
+        "candidate_only_correct": 50,
+        "reference_only_correct": 59
+      },
+      "fourierft vs lora": {
+        "delta_pp": -41.0,
+        "percentile_95_pp": [
+          -44.771613652519555,
+          -37.17434869739479
+        ],
+        "candidate_only_correct": 68,
+        "reference_only_correct": 478
+      },
+      "gralora vs lora": {
+        "delta_pp": -0.7000000000000006,
+        "percentile_95_pp": [
+          -2.5176233635448186,
+          1.012171385911591
+        ],
+        "candidate_only_correct": 38,
+        "reference_only_correct": 45
+      },
+      "igu-lora vs lora": {
+        "delta_pp": 3.1000000000000028,
+        "percentile_95_pp": [
+          0.9072352231751257,
+          5.273631840796023
+        ],
+        "candidate_only_correct": 78,
+        "reference_only_correct": 47
+      },
+      "known-target-qo vs lora": {
+        "delta_pp": -34.0,
+        "percentile_95_pp": [
+          -37.83549021392088,
+          -30.150753768844226
+        ],
+        "candidate_only_correct": 84,
+        "reference_only_correct": 424
+      },
+      "loft vs lora": {
+        "delta_pp": -16.200000000000003,
+        "percentile_95_pp": [
+          -19.320446369860363,
+          -13.192208094020783
+        ],
+        "candidate_only_correct": 56,
+        "reference_only_correct": 218
+      },
+      "lokra vs lora": {
+        "delta_pp": -0.5000000000000004,
+        "percentile_95_pp": [
+          -2.3046670070331308,
+          1.301333899029293
+        ],
+        "candidate_only_correct": 40,
+        "reference_only_correct": 45
+      },
+      "longlora-omni vs lora": {
+        "delta_pp": -0.10000000000000009,
+        "percentile_95_pp": [
+          -2.284011916583906,
+          2.083385054617679
+        ],
+        "candidate_only_correct": 61,
+        "reference_only_correct": 62
+      },
+      "lora-ga vs lora": {
+        "delta_pp": -32.8,
+        "percentile_95_pp": [
+          -36.66341991341992,
+          -28.920508485396386
+        ],
+        "candidate_only_correct": 86,
+        "reference_only_correct": 414
+      },
+      "lora-mixer vs lora": {
+        "delta_pp": 0.40000000000000036,
+        "percentile_95_pp": [
+          -1.2858555885262082,
+          2.0263938297255875
+        ],
+        "candidate_only_correct": 39,
+        "reference_only_correct": 35
+      },
+      "lora-plus vs lora": {
+        "delta_pp": -31.8,
+        "percentile_95_pp": [
+          -35.49055841436327,
+          -28.243130855406307
+        ],
+        "candidate_only_correct": 70,
+        "reference_only_correct": 388
+      },
+      "lora-recompute vs lora": {
+        "delta_pp": 0.0,
+        "percentile_95_pp": [
+          0.0,
+          0.0
+        ],
+        "candidate_only_correct": 0,
+        "reference_only_correct": 0
+      },
+      "loragen vs lora": {
+        "delta_pp": 1.4000000000000012,
+        "percentile_95_pp": [
+          -0.9930733375319092,
+          3.684749232343909
+        ],
+        "candidate_only_correct": 77,
+        "reference_only_correct": 63
+      },
+      "loram-train-small vs lora": {
+        "delta_pp": 2.500000000000002,
+        "percentile_95_pp": [
+          0.29555922966525483,
+          4.728387566779983
+        ],
+        "candidate_only_correct": 77,
+        "reference_only_correct": 52
+      },
+      "lowra vs lora": {
+        "delta_pp": -32.8,
+        "percentile_95_pp": [
+          -36.66341991341992,
+          -28.920508485396386
+        ],
+        "candidate_only_correct": 86,
+        "reference_only_correct": 414
+      },
+      "magnitude-loram vs lora": {
+        "delta_pp": -11.299999999999999,
+        "percentile_95_pp": [
+          -14.49854766633565,
+          -8.191808191808192
+        ],
+        "candidate_only_correct": 82,
+        "reference_only_correct": 195
+      },
+      "pissa vs lora": {
+        "delta_pp": -32.8,
+        "percentile_95_pp": [
+          -36.66341991341992,
+          -28.920508485396386
+        ],
+        "candidate_only_correct": 86,
+        "reference_only_correct": 414
+      },
+      "ralora vs lora": {
+        "delta_pp": 0.30000000000000027,
+        "percentile_95_pp": [
+          -1.5045135406218657,
+          2.083333333333337
+        ],
+        "candidate_only_correct": 44,
+        "reference_only_correct": 41
+      },
+      "randlora vs lora": {
+        "delta_pp": -49.4,
+        "percentile_95_pp": [
+          -53.42615174172947,
+          -45.33600802407222
+        ],
+        "candidate_only_correct": 83,
+        "reference_only_correct": 577
+      },
+      "rolora-federated vs lora": {
+        "delta_pp": 1.100000000000001,
+        "percentile_95_pp": [
+          -0.8032128514056214,
+          3.0000000000000027
+        ],
+        "candidate_only_correct": 52,
+        "reference_only_correct": 41
+      },
+      "stable-lora vs lora": {
+        "delta_pp": 0.40000000000000036,
+        "percentile_95_pp": [
+          -1.494098456473506,
+          2.186933127602538
+        ],
+        "candidate_only_correct": 45,
+        "reference_only_correct": 41
+      },
+      "toplora vs lora": {
+        "delta_pp": -1.0000000000000009,
+        "percentile_95_pp": [
+          -2.876984126984128,
+          0.8064516129032251
+        ],
+        "candidate_only_correct": 39,
+        "reference_only_correct": 49
+      },
+      "unilora vs lora": {
+        "delta_pp": 3.200000000000003,
+        "percentile_95_pp": [
+          0.9999750249750259,
+          5.394676471712776
+        ],
+        "candidate_only_correct": 80,
+        "reference_only_correct": 48
+      },
+      "vera vs lora": {
+        "delta_pp": 2.7000000000000024,
+        "percentile_95_pp": [
+          0.595223347019678,
+          4.819519526799351
+        ],
+        "candidate_only_correct": 72,
+        "reference_only_correct": 45
+      },
+      "alora vs frozen-base": {
+        "delta_pp": -2.300000000000002,
+        "percentile_95_pp": [
+          -4.270109235352537,
+          -0.3984063745019917
+        ],
+        "candidate_only_correct": 37,
+        "reference_only_correct": 60
+      },
+      "aurora vs frozen-base": {
+        "delta_pp": -2.8000000000000025,
+        "percentile_95_pp": [
+          -4.710591539092256,
+          -0.8955001335271934
+        ],
+        "candidate_only_correct": 35,
+        "reference_only_correct": 63
+      },
+      "bora vs frozen-base": {
+        "delta_pp": -3.9000000000000035,
+        "percentile_95_pp": [
+          -5.929774987698136,
+          -1.8830059170436328
+        ],
+        "candidate_only_correct": 34,
+        "reference_only_correct": 73
+      },
+      "dora vs frozen-base": {
+        "delta_pp": -3.500000000000003,
+        "percentile_95_pp": [
+          -5.5776892430278835,
+          -1.4939867396087285
+        ],
+        "candidate_only_correct": 39,
+        "reference_only_correct": 74
+      },
+      "eva vs frozen-base": {
+        "delta_pp": -37.5,
+        "percentile_95_pp": [
+          -41.36904761904761,
+          -33.66331761128868
+        ],
+        "candidate_only_correct": 74,
+        "reference_only_correct": 449
+      },
+      "flylora vs frozen-base": {
+        "delta_pp": -4.0000000000000036,
+        "percentile_95_pp": [
+          -6.31786771964461,
+          -1.7102615694165044
+        ],
+        "candidate_only_correct": 48,
+        "reference_only_correct": 88
+      },
+      "fourierft vs frozen-base": {
+        "delta_pp": -44.1,
+        "percentile_95_pp": [
+          -47.78761061946902,
+          -40.43792913452573
+        ],
+        "candidate_only_correct": 53,
+        "reference_only_correct": 494
+      },
+      "gralora vs frozen-base": {
+        "delta_pp": -3.8000000000000034,
+        "percentile_95_pp": [
+          -5.940594059405946,
+          -1.7733553779915512
+        ],
+        "candidate_only_correct": 36,
+        "reference_only_correct": 74
+      },
+      "igu-lora vs frozen-base": {
+        "delta_pp": 0.0,
+        "percentile_95_pp": [
+          -0.7113821138211354,
+          0.7070885804455107
+        ],
+        "candidate_only_correct": 7,
+        "reference_only_correct": 7
+      },
+      "known-target-qo vs frozen-base": {
+        "delta_pp": -37.1,
+        "percentile_95_pp": [
+          -40.949698137560006,
+          -33.266326592640624
+        ],
+        "candidate_only_correct": 77,
+        "reference_only_correct": 448
+      },
+      "loft vs frozen-base": {
+        "delta_pp": -19.300000000000004,
+        "percentile_95_pp": [
+          -22.532544498484246,
+          -16.14844533600803
+        ],
+        "candidate_only_correct": 53,
+        "reference_only_correct": 246
+      },
+      "lokra vs frozen-base": {
+        "delta_pp": -3.600000000000003,
+        "percentile_95_pp": [
+          -5.643604279782822,
+          -1.5120587052918837
+        ],
+        "candidate_only_correct": 40,
+        "reference_only_correct": 76
+      },
+      "longlora-omni vs frozen-base": {
+        "delta_pp": -3.200000000000003,
+        "percentile_95_pp": [
+          -5.172456682106718,
+          -1.2035806819255366
+        ],
+        "candidate_only_correct": 37,
+        "reference_only_correct": 69
+      },
+      "lora vs frozen-base": {
+        "delta_pp": -3.1000000000000028,
+        "percentile_95_pp": [
+          -5.273631840796023,
+          -0.9090909090909147
+        ],
+        "candidate_only_correct": 46,
+        "reference_only_correct": 77
+      },
+      "lora-ga vs frozen-base": {
+        "delta_pp": -35.9,
+        "percentile_95_pp": [
+          -39.79902010050252,
+          -32.00378803409231
+        ],
+        "candidate_only_correct": 80,
+        "reference_only_correct": 439
+      },
+      "lora-mixer vs frozen-base": {
+        "delta_pp": -2.7000000000000024,
+        "percentile_95_pp": [
+          -4.53172205438066,
+          -0.9036144578313254
+        ],
+        "candidate_only_correct": 29,
+        "reference_only_correct": 56
+      },
+      "lora-plus vs frozen-base": {
+        "delta_pp": -34.900000000000006,
+        "percentile_95_pp": [
+          -38.73519801122514,
+          -31.09989387956565
+        ],
+        "candidate_only_correct": 79,
+        "reference_only_correct": 428
+      },
+      "lora-recompute vs frozen-base": {
+        "delta_pp": -3.1000000000000028,
+        "percentile_95_pp": [
+          -5.273631840796023,
+          -0.9090909090909147
+        ],
+        "candidate_only_correct": 46,
+        "reference_only_correct": 77
+      },
+      "loragen vs frozen-base": {
+        "delta_pp": -1.7000000000000015,
+        "percentile_95_pp": [
+          -3.5246727089627394,
+          0.10081154284784115
+        ],
+        "candidate_only_correct": 35,
+        "reference_only_correct": 52
+      },
+      "loram-train-small vs frozen-base": {
+        "delta_pp": -0.6000000000000005,
+        "percentile_95_pp": [
+          -1.9019019019018923,
+          0.7007007007006962
+        ],
+        "candidate_only_correct": 19,
+        "reference_only_correct": 25
+      },
+      "lowra vs frozen-base": {
+        "delta_pp": -35.9,
+        "percentile_95_pp": [
+          -39.79902010050252,
+          -32.00378803409231
+        ],
+        "candidate_only_correct": 80,
+        "reference_only_correct": 439
+      },
+      "magnitude-loram vs frozen-base": {
+        "delta_pp": -14.400000000000002,
+        "percentile_95_pp": [
+          -17.69464105156724,
+          -11.12177384076991
+        ],
+        "candidate_only_correct": 76,
+        "reference_only_correct": 220
+      },
+      "pissa vs frozen-base": {
+        "delta_pp": -35.9,
+        "percentile_95_pp": [
+          -39.79902010050252,
+          -32.00378803409231
+        ],
+        "candidate_only_correct": 80,
+        "reference_only_correct": 439
+      },
+      "ralora vs frozen-base": {
+        "delta_pp": -2.8000000000000025,
+        "percentile_95_pp": [
+          -4.7244094488189,
+          -0.9009009009009028
+        ],
+        "candidate_only_correct": 32,
+        "reference_only_correct": 60
+      },
+      "randlora vs frozen-base": {
+        "delta_pp": -52.5,
+        "percentile_95_pp": [
+          -56.1936659543139,
+          -48.84642345970439
+        ],
+        "candidate_only_correct": 49,
+        "reference_only_correct": 574
+      },
+      "rolora-federated vs frozen-base": {
+        "delta_pp": -2.0000000000000018,
+        "percentile_95_pp": [
+          -3.707414829659317,
+          -0.3964321110009883
+        ],
+        "candidate_only_correct": 26,
+        "reference_only_correct": 46
+      },
+      "stable-lora vs frozen-base": {
+        "delta_pp": -2.7000000000000024,
+        "percentile_95_pp": [
+          -4.6277665995975825,
+          -0.8056192137720591
+        ],
+        "candidate_only_correct": 34,
+        "reference_only_correct": 61
+      },
+      "toplora vs frozen-base": {
+        "delta_pp": -4.100000000000003,
+        "percentile_95_pp": [
+          -6.176470588235294,
+          -2.0874233249954095
+        ],
+        "candidate_only_correct": 35,
+        "reference_only_correct": 76
+      },
+      "unilora vs frozen-base": {
+        "delta_pp": 0.10000000000000009,
+        "percentile_95_pp": [
+          -0.5882641858315015,
+          0.7858739348559759
+        ],
+        "candidate_only_correct": 6,
+        "reference_only_correct": 5
+      },
+      "vera vs frozen-base": {
+        "delta_pp": -0.40000000000000036,
+        "percentile_95_pp": [
+          -1.288404360753215,
+          0.49407114624505644
+        ],
+        "candidate_only_correct": 8,
+        "reference_only_correct": 12
+      }
+    }
+  }
+}

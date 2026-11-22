@@ -1,0 +1,79 @@
+{
+  "utterances": 1000,
+  "correct": 720,
+  "accuracy": 0.72,
+  "by_domain": {
+    "music": {
+      "correct": 217,
+      "total": 334,
+      "accuracy": 0.6497005988023952
+    },
+    "sound": {
+      "correct": 262,
+      "total": 333,
+      "accuracy": 0.7867867867867868
+    },
+    "speech": {
+      "correct": 241,
+      "total": 333,
+      "accuracy": 0.7237237237237237
+    }
+  },
+  "macro_domain_accuracy": 0.7200703697709686,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 112,
+      "total": 181,
+      "accuracy": 0.6187845303867403
+    },
+    "music/Reasoning": {
+      "correct": 105,
+      "total": 153,
+      "accuracy": 0.6862745098039216
+    },
+    "sound/Information Extraction": {
+      "correct": 78,
+      "total": 93,
+      "accuracy": 0.8387096774193549
+    },
+    "sound/Reasoning": {
+      "correct": 173,
+      "total": 227,
+      "accuracy": 0.762114537444934
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 41,
+      "total": 49,
+      "accuracy": 0.8367346938775511
+    },
+    "speech/Reasoning": {
+      "correct": 200,
+      "total": 284,
+      "accuracy": 0.704225352112676
+    }
+  },
+  "macro_category_accuracy": 0.7561424495998607,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio-mixed",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio-mixed/checkpoint-160",
+    "weights_sha256": "28c34ed6ce9d440c02a7e2a30987d384930e04106c4998741c88d6eced91982f",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "predictions_sha256": "3effb729d67221223a6d7202e1cd021dc6572a7a1627fdb2a611c3c94e2d233e",
+  "eval_seconds": 108.06596338801319,
+  "peak_allocated_bytes": 10306422784,
+  "peak_reserved_bytes": 10752098304
+}

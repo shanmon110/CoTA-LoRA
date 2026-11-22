@@ -1,0 +1,24 @@
+{
+  "best_accuracy": 0.2734375,
+  "best_step": null,
+  "protocol": "Fixed generated adapter; development accuracy is diagnostic only",
+  "global_step": 0,
+  "trainable_parameters": 2359296,
+  "training_seconds": 77.68198550998932,
+  "peak_allocated_bytes": 0,
+  "construction_device": "cpu",
+  "teacher_selection": {
+    "method": "full",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/full/checkpoint-32",
+    "step": 32,
+    "dev_accuracy": 0.28125,
+    "adapter_sha256": "d9af2af3b516cb20e5ffac8c9203b3bcea4edc294d8373921f74190c9d88bd75",
+    "config_sha256": "c905629be1848af633332259778a389bb4eb3fff5793e059235ac304d03fa1d3",
+    "files": {
+      "model-00001-of-00002.safetensors": "5ddab5b0b195af505d01475414ae3533c216c674aec51dcd1d553be300735ef7",
+      "model-00002-of-00002.safetensors": "715327d911bd2925eaf54e9fe3ef1773d7ffa8c186f19b756f489aeb8c282482",
+      "config.json": "24e8691154453fd7355731075ca383ae1893daa325d0cf38652cba56ccd6d26e",
+      "model.safetensors.index.json": "89b4a3e73928002f458ba47757a64f997965537b18b6b75e11ec75096bafc077"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "method": "lora",
+  "best_checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lora-recompute/checkpoint-96",
+  "best_accuracy": 0.8046875,
+  "best_step": 96,
+  "global_step": 192,
+  "early_stopped": true,
+  "trainable_parameters": 14966784,
+  "input_trajectory": [
+    "1ce66240b8b762ba6785bae66b37e23a3e42724987d0a591fe8d9dfbb0247544",
+    "e55d4a4069f6e8ab61bef0fdc3d014807ee75695c02fc7cfa3098075efa386ec",
+    "88fdd1b0dbc96ae755ea4ae45334e3acaf7d1c056e949959fea439cb8ec4c7f7",
+    "230c7bad7276a1c61197ea28991926b23667d78133c593715ef06efdf616f286",
+    "ae75d0b1ded9cfd7ca46baf43aed6243d74179eb35d5af4395112598971abfd5",
+    "68d57fb4c1031f8062f64de2a18994ba6b64a0eb620d259992835489315de223",
+    "b23c9686d0478ad222d10ed877aab3cd5e754bf1c04468e29e7502e4746e8882",
+    "bc4a64bc4c62551d5ad6836e00404a3ad247413f933bebc5bf52daa5e993f875"
+  ],
+  "init_sha256": "be99ff6abb2cfda62dec3d1ffe4dc9908531269564037182651e065c81663d7a",
+  "last_ab_sha256": "f0bfd43c331f396c84b04f97315dda76d4175509f7bd87aab8a24aee8dc57b92",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "training_seconds": 342.07866710302187,
+  "dev_seconds": 97.78258198301774,
+  "peak_allocated_bytes": 12506478592,
+  "peak_reserved_bytes": 13367246848
+}

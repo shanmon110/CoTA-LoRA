@@ -1,0 +1,12 @@
+{
+  "method": "dora",
+  "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/dora/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.80859375,
+  "adapter_sha256": "47af802d540db5fcd2602305e50a3b5b8056f74e118c81da64f79483dec6e273",
+  "config_sha256": "dafa28d9cee1fca7771f0719e3e26fd5b6624bfae2f764150d5c20630aa538da",
+  "files": {
+    "adapter_model.safetensors": "47af802d540db5fcd2602305e50a3b5b8056f74e118c81da64f79483dec6e273",
+    "adapter_config.json": "dafa28d9cee1fca7771f0719e3e26fd5b6624bfae2f764150d5c20630aa538da"
+  }
+}

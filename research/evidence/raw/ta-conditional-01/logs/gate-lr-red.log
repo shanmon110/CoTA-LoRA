@@ -1,0 +1,22 @@
+F
+=================================== FAILURES ===================================
+_____ test_gate_optimizer_keeps_parameter_identity_decay_and_resume_state ______
+
+    def test_gate_optimizer_keeps_parameter_identity_decay_and_resume_state():
+>       from experiments.ms_swift_librispeech.train import scale_transport_gate_lr
+E       ImportError: cannot import name 'scale_transport_gate_lr' from 'experiments.ms_swift_librispeech.train' (/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/train.py)
+
+experiments/ms_swift_librispeech/tests/test_conditional_gate.py:105: ImportError
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_librispeech/tests/test_conditional_gate.py::test_gate_optimizer_keeps_parameter_identity_decay_and_resume_state
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 6 deselected, 1 warning in 4.34s

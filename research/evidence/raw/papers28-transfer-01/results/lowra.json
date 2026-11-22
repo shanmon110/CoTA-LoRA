@@ -1,0 +1,83 @@
+{
+  "method": "lowra",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.25,
+    "accuracy": 0.136986301369863,
+    "recalls": {
+      "A": 1.0,
+      "B": 0.0,
+      "C": 0.0,
+      "D": 0.0
+    },
+    "confusion_matrix": [
+      [
+        170,
+        0,
+        0,
+        0
+      ],
+      [
+        442,
+        0,
+        0,
+        0
+      ],
+      [
+        245,
+        0,
+        0,
+        0
+      ],
+      [
+        384,
+        0,
+        0,
+        0
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.28125,
+    "best_step": 96,
+    "updates": 192,
+    "trainable": 14966784,
+    "correct": 395,
+    "exact_accuracy": 0.395,
+    "official_text_accuracy": 0.398,
+    "by_domain": {
+      "music": {
+        "correct": 101,
+        "total": 334,
+        "accuracy": 0.3023952095808383
+      },
+      "sound": {
+        "correct": 164,
+        "total": 333,
+        "accuracy": 0.4924924924924925
+      },
+      "speech": {
+        "correct": 130,
+        "total": 333,
+        "accuracy": 0.39039039039039036
+      }
+    },
+    "train_seconds": 396.03233583294787,
+    "training_peak_allocated_gib": 7.272857666015625
+  },
+  "checkpoint": {
+    "method": "lowra",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lowra/checkpoint-96",
+    "step": 96,
+    "dev_accuracy": 0.28125,
+    "adapter_sha256": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+    "config_sha256": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf",
+    "files": {
+      "adapter_model.safetensors": "1a02f35a265e805af4b75e9a8ea34abc0fe25420794ddda0d1004b72f7241480",
+      "adapter_config.json": "33d357b2cb51fb72af4d3f242e7369720fdc2a5f4350f945b8922ecf931d23cf"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lowra",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/lowra"
+}

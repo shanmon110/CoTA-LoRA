@@ -1,0 +1,39 @@
+........................................................................ [ 81%]
+................                                                         [100%]
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+../../../root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_swift_native_coverage_and_clean_reload[adalora-540]
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+experiments/ms_swift_aqa/tests/test_peft_suite.py::test_adalora_rank_allocation_clean_reload_and_identical_resume
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/tuners/adalora/config.py:96: UserWarning: Note that `r` is not used in AdaLora and will be ignored.If you intended to set the initial rank, use `init_r` instead.
+    warnings.warn(
+
+experiments/ms_swift_aqa/tests/test_structural_suite.py::test_multimodal_update_and_clean_reload[lora_llm]
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/peft/utils/save_and_load.py:236: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+experiments/ms_swift_librispeech/tests/test_training.py::test_early_stop_and_resume_best_checkpoint
+  /root/autodl-tmp/iemocap/swift-ser/venv-5090/lib/python3.12/site-packages/transformers/trainer.py:4064: UserWarning: mtime may not be reliable on this filesystem, falling back to numerical ordering
+    warnings.warn("mtime may not be reliable on this filesystem, falling back to numerical ordering")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+88 passed, 16 warnings in 9.68s

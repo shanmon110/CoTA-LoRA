@@ -1,0 +1,87 @@
+{
+  "ab_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+  "trainable_parameters": 131104,
+  "target_layers": [
+    32,
+    33,
+    34,
+    35
+  ],
+  "trainable_names": [
+    "thinker.model.layers.32.self_attn.ta_adapter.down",
+    "thinker.model.layers.32.self_attn.ta_adapter.up",
+    "thinker.model.layers.32.self_attn.ta_adapter.gate",
+    "thinker.model.layers.33.self_attn.ta_adapter.down",
+    "thinker.model.layers.33.self_attn.ta_adapter.up",
+    "thinker.model.layers.33.self_attn.ta_adapter.gate",
+    "thinker.model.layers.34.self_attn.ta_adapter.down",
+    "thinker.model.layers.34.self_attn.ta_adapter.up",
+    "thinker.model.layers.34.self_attn.ta_adapter.gate",
+    "thinker.model.layers.35.self_attn.ta_adapter.down",
+    "thinker.model.layers.35.self_attn.ta_adapter.up",
+    "thinker.model.layers.35.self_attn.ta_adapter.gate"
+  ],
+  "ab_init_sha256": "92397e90b8859635b901b68ecb97e75ce17ecfab885b932a5dfec8855a60cbd1",
+  "method": "ta_lora",
+  "initial_logits_sha256": "afe9e5046889aabdbd204ea4ae794795cd6819a06ebd2be10e79c3e18ec2debd",
+  "restored_logits_sha256": "b6f02e4cb91890507137ad8cc1655a122616130414e9229b772d095f2bb7b43b",
+  "muted_audio_logits_sha256": "a26f874549c6f4864df4f408f2d087b6b5a8c2b2246f329fd80526805e3c8547",
+  "trainable_gradients": [
+    {
+      "loss": 0.22206982970237732,
+      "gradient_norms": {
+        "thinker.model.layers.32.self_attn.ta_adapter.down": 0.0,
+        "thinker.model.layers.32.self_attn.ta_adapter.up": 0.033693812787532806,
+        "thinker.model.layers.32.self_attn.ta_adapter.gate": 0.0,
+        "thinker.model.layers.33.self_attn.ta_adapter.down": 0.0,
+        "thinker.model.layers.33.self_attn.ta_adapter.up": 0.02858685329556465,
+        "thinker.model.layers.33.self_attn.ta_adapter.gate": 0.0,
+        "thinker.model.layers.34.self_attn.ta_adapter.down": 0.0,
+        "thinker.model.layers.34.self_attn.ta_adapter.up": 0.024968666955828667,
+        "thinker.model.layers.34.self_attn.ta_adapter.gate": 0.0,
+        "thinker.model.layers.35.self_attn.ta_adapter.down": 0.0,
+        "thinker.model.layers.35.self_attn.ta_adapter.up": 0.011772903613746166,
+        "thinker.model.layers.35.self_attn.ta_adapter.gate": 0.0
+      }
+    },
+    {
+      "loss": 0.22046801447868347,
+      "gradient_norms": {
+        "thinker.model.layers.32.self_attn.ta_adapter.down": 0.0066785551607608795,
+        "thinker.model.layers.32.self_attn.ta_adapter.up": 0.033537570387125015,
+        "thinker.model.layers.32.self_attn.ta_adapter.gate": 0.0002571640652604401,
+        "thinker.model.layers.33.self_attn.ta_adapter.down": 0.006339691579341888,
+        "thinker.model.layers.33.self_attn.ta_adapter.up": 0.02852981723845005,
+        "thinker.model.layers.33.self_attn.ta_adapter.gate": 0.00032058547367341816,
+        "thinker.model.layers.34.self_attn.ta_adapter.down": 0.006068493239581585,
+        "thinker.model.layers.34.self_attn.ta_adapter.up": 0.024828974157571793,
+        "thinker.model.layers.34.self_attn.ta_adapter.gate": 0.0001460630155634135,
+        "thinker.model.layers.35.self_attn.ta_adapter.down": 0.003446642542257905,
+        "thinker.model.layers.35.self_attn.ta_adapter.up": 0.01174505241215229,
+        "thinker.model.layers.35.self_attn.ta_adapter.gate": 4.07823572459165e-05
+      }
+    }
+  ],
+  "durations_seconds": [
+    14.085,
+    24.525
+  ],
+  "utterances": [
+    "103-1240-0000",
+    "7859-102521-0017"
+  ],
+  "expanded_tokens": [
+    459,
+    775
+  ],
+  "supervised_tokens": [
+    69,
+    124
+  ],
+  "gpu": "NVIDIA GeForce RTX 4080 SUPER",
+  "allocated_bytes": 13982022656,
+  "reserved_bytes": 14745075712,
+  "training_seconds": 1.0127490796148777,
+  "training_batch_size": 2,
+  "torch": "2.6.0+cu124"
+}

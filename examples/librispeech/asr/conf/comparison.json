@@ -1,0 +1,12 @@
+{
+  "training_config": "training.json",
+  "adapters": [
+    "../../../conf/adapters/o-lora.json",
+    "../../../conf/adapters/ta-lora.json",
+    "../../../conf/adapters/qv-lora.json",
+    "../../../conf/adapters/toplora.json",
+    "../../../conf/adapters/bora.json",
+    "../../../conf/adapters/dora.json",
+    "../../../conf/adapters/eva.json"
+  ]
+}

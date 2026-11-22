@@ -1,0 +1,188 @@
+{
+  "papers_with_both": 27,
+  "paper_count": 28,
+  "empirical_paper_count": 27,
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "scores": {
+    "lora": {
+      "uar": 0.6159076370932989,
+      "ser_accuracy": 0.5914585012087027,
+      "mmau_official": 0.726,
+      "best": 96
+    },
+    "lora-recompute": {
+      "uar": 0.6159076370932989,
+      "ser_accuracy": 0.5914585012087027,
+      "mmau_official": 0.726,
+      "best": 96
+    },
+    "known-target-qo": {
+      "uar": 0.25,
+      "ser_accuracy": 0.136986301369863,
+      "mmau_official": 0.386,
+      "best": null
+    },
+    "longlora-omni": {
+      "uar": 0.4918486865900206,
+      "ser_accuracy": 0.41579371474617244,
+      "mmau_official": 0.725,
+      "best": 128
+    },
+    "vera": {
+      "uar": 0.6072388210091729,
+      "ser_accuracy": 0.5793714746172441,
+      "mmau_official": 0.753,
+      "best": 224
+    },
+    "dora": {
+      "uar": 0.6107774960945916,
+      "ser_accuracy": 0.564867042707494,
+      "mmau_official": 0.722,
+      "best": 64
+    },
+    "fourierft": {
+      "uar": 0.2628822201957706,
+      "ser_accuracy": 0.2264302981466559,
+      "mmau_official": 0.316,
+      "best": 256
+    },
+    "lora-plus": {
+      "uar": 0.36850356729230155,
+      "ser_accuracy": 0.43110394842868655,
+      "mmau_official": 0.408,
+      "best": 32
+    },
+    "lora-ga": {
+      "uar": 0.25,
+      "ser_accuracy": 0.136986301369863,
+      "mmau_official": 0.398,
+      "best": 160
+    },
+    "pissa": {
+      "uar": 0.25,
+      "ser_accuracy": 0.136986301369863,
+      "mmau_official": 0.398,
+      "best": 192
+    },
+    "loram-train-small": {
+      "uar": 0.6360181091667436,
+      "ser_accuracy": 0.6220789685737309,
+      "mmau_official": 0.751,
+      "best": 256
+    },
+    "randlora": {
+      "uar": 0.24963985594237695,
+      "ser_accuracy": 0.19500402900886382,
+      "mmau_official": 0.232,
+      "best": 64
+    },
+    "lowra": {
+      "uar": 0.25,
+      "ser_accuracy": 0.136986301369863,
+      "mmau_official": 0.398,
+      "best": 96
+    },
+    "aurora": {
+      "uar": 0.6013561794910272,
+      "ser_accuracy": 0.564867042707494,
+      "mmau_official": 0.729,
+      "best": 96
+    },
+    "eva": {
+      "uar": 0.2166248350301659,
+      "ser_accuracy": 0.19661563255439163,
+      "mmau_official": 0.382,
+      "best": 32
+    },
+    "flylora": {
+      "uar": 0.6327376383245606,
+      "ser_accuracy": 0.6107977437550363,
+      "mmau_official": 0.717,
+      "best": 64
+    },
+    "gralora": {
+      "uar": 0.6065047052474836,
+      "ser_accuracy": 0.5793714746172441,
+      "mmau_official": 0.719,
+      "best": 256
+    },
+    "magnitude-loram": {
+      "uar": 0.5476452720511281,
+      "ser_accuracy": 0.5269943593875906,
+      "mmau_official": 0.613,
+      "best": 64
+    },
+    "rolora-federated": {
+      "uar": 0.6223648473812602,
+      "ser_accuracy": 0.5914585012087027,
+      "mmau_official": 0.737,
+      "best": 160
+    },
+    "toplora": {
+      "uar": 0.6330949807807739,
+      "ser_accuracy": 0.5930701047542305,
+      "mmau_official": 0.716,
+      "best": 64
+    },
+    "unilora": {
+      "uar": 0.599950485001693,
+      "ser_accuracy": 0.5745366639806607,
+      "mmau_official": 0.758,
+      "best": 64
+    },
+    "alora": {
+      "uar": 0.5986294998768739,
+      "ser_accuracy": 0.5688960515713135,
+      "mmau_official": 0.734,
+      "best": 64
+    },
+    "bora": {
+      "uar": 0.5981071274663712,
+      "ser_accuracy": 0.5511684125705076,
+      "mmau_official": 0.718,
+      "best": 224
+    },
+    "igu-lora": {
+      "uar": 0.6006869574752978,
+      "ser_accuracy": 0.5753424657534246,
+      "mmau_official": 0.757,
+      "best": 32
+    },
+    "loft": {
+      "uar": 0.40325320031858897,
+      "ser_accuracy": 0.33601933924254634,
+      "mmau_official": 0.564,
+      "best": 96
+    },
+    "lora-mixer": {
+      "uar": 0.5998001604487949,
+      "ser_accuracy": 0.5640612409347301,
+      "mmau_official": 0.73,
+      "best": 96
+    },
+    "loragen": {
+      "uar": 0.6221853525063872,
+      "ser_accuracy": 0.6059629331184528,
+      "mmau_official": 0.74,
+      "best": null
+    },
+    "ralora": {
+      "uar": 0.5776487758564964,
+      "ser_accuracy": 0.5366639806607575,
+      "mmau_official": 0.729,
+      "best": 256
+    },
+    "stable-lora": {
+      "uar": 0.5770871209060547,
+      "ser_accuracy": 0.5205479452054794,
+      "mmau_official": 0.73,
+      "best": 224
+    },
+    "lokra": {
+      "uar": 0.626039959252932,
+      "ser_accuracy": 0.5858178887993554,
+      "mmau_official": 0.721,
+      "best": 64
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "uar": 0.6373801443654386,
+  "accuracy": 0.621273166800967,
+  "recalls": {
+    "A": 0.8705882352941177,
+    "B": 0.5158371040723982,
+    "C": 0.37142857142857144,
+    "D": 0.7916666666666666
+  },
+  "confusion_matrix": [
+    [
+      148,
+      8,
+      3,
+      11
+    ],
+    [
+      67,
+      228,
+      8,
+      139
+    ],
+    [
+      33,
+      17,
+      91,
+      104
+    ],
+    [
+      53,
+      18,
+      9,
+      304
+    ]
+  ],
+  "utterances": 1241,
+  "method": "lora-mixed",
+  "tuner": "lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/lora-mixed/checkpoint-160",
+    "weights_sha256": "dc870811b7da74102f4d1f8423864b1f3815d1e9b60ac552f027e0d65957f186",
+    "adapter_config_sha256": "76eaac757eeb30c4b121252e4adc077a2e5f972122932d8c484417867f743584"
+  },
+  "no_transport": false,
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "predictions_sha256": "1f377b19c261dcd8d9783a75363b0add726d74e85b2fbe5ed3f6b00ef8e0522a",
+  "eval_seconds": 74.57006844301941,
+  "peak_allocated_bytes": 10113485312,
+  "peak_reserved_bytes": 10225713152
+}

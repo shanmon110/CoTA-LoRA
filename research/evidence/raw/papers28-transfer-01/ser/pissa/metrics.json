@@ -1,0 +1,52 @@
+{
+  "uar": 0.25,
+  "accuracy": 0.136986301369863,
+  "recalls": {
+    "A": 1.0,
+    "B": 0.0,
+    "C": 0.0,
+    "D": 0.0
+  },
+  "confusion_matrix": [
+    [
+      170,
+      0,
+      0,
+      0
+    ],
+    [
+      442,
+      0,
+      0,
+      0
+    ],
+    [
+      245,
+      0,
+      0,
+      0
+    ],
+    [
+      384,
+      0,
+      0,
+      0
+    ]
+  ],
+  "utterances": 1241,
+  "method": "pissa",
+  "manifest_sha256": "f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe",
+  "eval_seconds": 85.00205748103326,
+  "peak_allocated_bytes": 10166274560,
+  "peak_reserved_bytes": 10278141952,
+  "predictions_sha256": "554b8e48e344d6c9f99ae679764cc9aeec9e239ffd0cc751de4266070748f5d5",
+  "adapter_sha256": "fd39c663c1b258e817f454859140202f168f5d3c6b616f21ad685c4034283eec",
+  "config_sha256": "2c6b8995e63944c7c003429e4bf7254b604d5f50ca6a3be51a2a747ec47b1bf7",
+  "files": {
+    "adapter_model.safetensors": "ec0b34a66ecba31113e18f0d02d7bca1399b0deab500bd760c4ea02e4454017e",
+    "paper_residual.safetensors": "4516283ab50ac852185665e71bd34121e07c01dbba80380b7fb1501b10579e94",
+    "converted/default/adapter_model.safetensors": "d3d33402f5b1a44d0cec8efcb52ef37b2b918d36008d665b4820d74a096d91ce",
+    "adapter_config.json": "6bf0c0f235cc72b7309a0f6a37e911aefe182e9cf006151a66e90fe6df3b37c0",
+    "converted/default/adapter_config.json": "01fb9832752eae39a2ed4c581666c832cf25a9a18dad9a84ac1062bc85ad5be0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method": "lokra",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lokra/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.8125,
+  "adapter_sha256": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+  "config_sha256": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7",
+  "files": {
+    "adapter_model.safetensors": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+    "adapter_config.json": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7"
+  }
+}

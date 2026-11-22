@@ -1,0 +1,9 @@
+{
+  "stage": "complete",
+  "updated": "2026-11-21T04:03:37.060385+08:00",
+  "arms": [
+    "lora-mixed",
+    "question_audio-mixed"
+  ],
+  "official": true
+}

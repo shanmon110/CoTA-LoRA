@@ -1,0 +1,83 @@
+{
+  "method": "lokra",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.626039959252932,
+    "accuracy": 0.5858178887993554,
+    "recalls": {
+      "A": 0.9176470588235294,
+      "B": 0.4072398190045249,
+      "C": 0.4448979591836735,
+      "D": 0.734375
+    },
+    "confusion_matrix": [
+      [
+        156,
+        6,
+        3,
+        5
+      ],
+      [
+        103,
+        180,
+        12,
+        147
+      ],
+      [
+        53,
+        11,
+        109,
+        72
+      ],
+      [
+        82,
+        10,
+        10,
+        282
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.8125,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 14966784,
+    "correct": 719,
+    "exact_accuracy": 0.719,
+    "official_text_accuracy": 0.721,
+    "by_domain": {
+      "music": {
+        "correct": 218,
+        "total": 334,
+        "accuracy": 0.6526946107784432
+      },
+      "sound": {
+        "correct": 262,
+        "total": 333,
+        "accuracy": 0.7867867867867868
+      },
+      "speech": {
+        "correct": 239,
+        "total": 333,
+        "accuracy": 0.7177177177177178
+      }
+    },
+    "train_seconds": 426.5083130229614,
+    "training_peak_allocated_gib": 11.647566318511963
+  },
+  "checkpoint": {
+    "method": "lokra",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lokra/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.8125,
+    "adapter_sha256": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+    "config_sha256": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7",
+    "files": {
+      "adapter_model.safetensors": "376151ab2c423c15f2b94e575b03f7f9df1fd49192adea2342cbf53c2fffee74",
+      "adapter_config.json": "b988c45e9b2fde337b8621d8df3e52bcae6c36dd941ddda720442dd9945e34c7"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/lokra",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/lokra"
+}

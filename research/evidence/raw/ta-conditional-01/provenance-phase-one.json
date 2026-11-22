@@ -1,0 +1,36 @@
+{
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "gpu": "NVIDIA GeForce RTX 5090, 32607 MiB, 595.71.05",
+  "environment": {
+    "torch": "2.12.1+cu130",
+    "transformers": "4.52.3",
+    "peft": "0.15.2",
+    "ms-swift": "4.7.0.dev0",
+    "python": "/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python",
+    "cuda": "13.0",
+    "reft_packages": {
+      "pyreft": "0.1.0",
+      "pyvene": "0.1.8"
+    }
+  },
+  "code_hashes": {
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/run.py": "a6a74b99860c853d32dc0a8db98c53eabb224976b1467d923736c061dd3b8ba6",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/run.sh": "98034a20a922d3abad970ed1888c58251ad323448b26756a9bbfa7e9f8704422",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/official-first.sh": "6fc9297c4fcb69da1c55360b1a7fced6ebfbd71ba7a9728a096ba3e4be01f8aa",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/second-stage.sh": "7228407e93eea803147fdf5fcc9102f47895e6135103862f941ef3db910d4aec",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/protocol.json": "a208c616907a4f1f0d10158e13893cbc7592a72beeae0b3abb869334cf3461e1",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/phase-two.json": "a2c180a72bfc758574a2945e3cac2447400f7be0279bf95f0b3db9fed08443da",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/lora.json": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/static.json": "2078ae7198cdeb0fefce9aea763cd428b23ab202570f6de019999782c89439fb",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/question.json": "7d770e59257c3780b6bd075014f2f56185d7dcdf0fcf72e7ebd757dd1b7d01a1",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/question_audio.json": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/lora-long.json": "881fd3c7d0868c8def9249263f068d23e49c95b5fdad8b54863569b6978b6345",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/configs/question_audio-long.json": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/swift_asr_ta_runtime.py": "3e2af6767e0fb0993cac0bd93763643ba12750a9d8b8864dc4342012d405ed80",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/plugin.py": "17c0e1e94b27326b504a51739e451475ebc565951093fd2371a3541488b4856b",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/adapter_audit.py": "c6ddcdd5871312dd330d5eb4fc105699116ed0d907db75262a3750864892f08a",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/train.py": "1761712f4ce581e92e099a55160546e40534f44e33ac785240db5d520ef3a076",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/prepare_pairs.py": "3ad3a447d036b085af477c1f71954e7f3b17a06937bf4b07b38b34d82a462315",
+    "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/pair_eval.py": "327fa2f686a1c648e940d7a7036c2ef15d8900624f4e52d6f449b4c79eb46db7"
+  }
+}

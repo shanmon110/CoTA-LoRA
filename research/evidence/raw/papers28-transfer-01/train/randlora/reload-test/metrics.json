@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 228,
+  "accuracy": 0.228,
+  "by_domain": {
+    "music": {
+      "correct": 73,
+      "total": 334,
+      "accuracy": 0.218562874251497
+    },
+    "sound": {
+      "correct": 84,
+      "total": 333,
+      "accuracy": 0.25225225225225223
+    },
+    "speech": {
+      "correct": 71,
+      "total": 333,
+      "accuracy": 0.2132132132132132
+    }
+  },
+  "macro_domain_accuracy": 0.2280094465723208,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 46,
+      "total": 181,
+      "accuracy": 0.2541436464088398
+    },
+    "music/Reasoning": {
+      "correct": 27,
+      "total": 153,
+      "accuracy": 0.17647058823529413
+    },
+    "sound/Information Extraction": {
+      "correct": 34,
+      "total": 93,
+      "accuracy": 0.3655913978494624
+    },
+    "sound/Reasoning": {
+      "correct": 47,
+      "total": 227,
+      "accuracy": 0.20704845814977973
+    },
+    "sound/['Reasoning']": {
+      "correct": 3,
+      "total": 13,
+      "accuracy": 0.23076923076923078
+    },
+    "speech/Information Extraction": {
+      "correct": 13,
+      "total": 49,
+      "accuracy": 0.2653061224489796
+    },
+    "speech/Reasoning": {
+      "correct": 58,
+      "total": 284,
+      "accuracy": 0.20422535211267606
+    }
+  },
+  "macro_category_accuracy": 0.24336497085346606,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10881910272,
+  "peak_reserved_bytes": 11114905600,
+  "eval_seconds": 169.57266468199668,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+  "config_sha256": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9",
+  "files": {
+    "adapter_model.safetensors": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+    "adapter_config.json": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9"
+  },
+  "method": "randlora"
+}

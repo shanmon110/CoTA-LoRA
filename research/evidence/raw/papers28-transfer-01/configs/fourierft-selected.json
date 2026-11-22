@@ -1,0 +1,12 @@
+{
+  "method": "fourierft",
+  "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/fourierft/checkpoint-256",
+  "step": 256,
+  "dev_accuracy": 0.30859375,
+  "adapter_sha256": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56",
+  "config_sha256": "d3a4b1536a7c4357d9ee7678c58f583fbc704770e2e3f715b9d16aeb8e8b4f1a",
+  "files": {
+    "adapter_model.safetensors": "e6af44f786b4a3e0c4c0387fe575fc576a8db4a1eeb72d14b813fcf35610ad56",
+    "adapter_config.json": "d3a4b1536a7c4357d9ee7678c58f583fbc704770e2e3f715b9d16aeb8e8b4f1a"
+  }
+}

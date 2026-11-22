@@ -1,0 +1,37 @@
+# Local environments and caches
+.git/
+__pycache__/
+*.py[cod]
+*.nbc
+*.nbi
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+node_modules/
+.idea/
+.vscode/
+.DS_Store
+# Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+# Large external assets and training output
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.wav
+*.flac
+*.mp3
+*.mp4
+*.tar
+*.tar.gz
+*.zip
+checkpoint-*/
+outputs/
+tensorboard/
+# Preserve exported research logs and aggregate evidence.

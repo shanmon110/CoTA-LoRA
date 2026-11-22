@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_randlora_resume_verifies_saved_basis_before_training ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-200/test_randlora_resume_verifies_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f726f10be90>
+
+    def test_randlora_resume_verifies_saved_basis_before_training(tmp_path, monkeypatch):
+        monkeypatch.setattr(paper_early, 'rand_basis_hash',lambda model:'restored')
+        (tmp_path/'randlora-basis.json').write_text('{"sha256":"training-original"}')
+        trainer=SimpleNamespace(model=None,add_callback=lambda cb:None)
+>       with pytest.raises(ValueError,match='basis'):
+E       Failed: DID NOT RAISE ValueError
+
+experiments/ms_swift_aqa/tests/test_paper_early.py:141: Failed
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_aqa/tests/test_paper_early.py::test_randlora_resume_verifies_saved_basis_before_training
+1 failed, 4 deselected, 1 warning in 4.04s

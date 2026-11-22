@@ -1,0 +1,11 @@
+{
+  "method": "qv-lora",
+  "r": 8,
+  "lora_alpha": 10,
+  "last_n": 4,
+  "target_modules": [
+    "q_proj",
+    "v_proj"
+  ],
+  "match_ta_budget": true
+}

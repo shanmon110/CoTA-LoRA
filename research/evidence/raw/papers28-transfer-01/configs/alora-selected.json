@@ -1,0 +1,12 @@
+{
+  "method": "alora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/alora/checkpoint-64",
+  "step": 64,
+  "dev_accuracy": 0.76953125,
+  "adapter_sha256": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+  "config_sha256": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158",
+  "files": {
+    "adapter_model.safetensors": "b742f4f059ed41d5718a645fc59b879dc30e34424f60e5deb24d1eff975f3b3b",
+    "adapter_config.json": "0735c1ef41e568515af2068c26f01e3a7f368f3a5745ae559413779f9efdb158"
+  }
+}

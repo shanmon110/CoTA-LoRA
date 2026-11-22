@@ -1,0 +1,55 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_native_qv_only_adapter_uses_native_audit_but_ta_needs_o _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-180/test_native_qv_only_adapter_us0')
+
+    def test_native_qv_only_adapter_uses_native_audit_but_ta_needs_o(tmp_path):
+        from experiments.ms_swift_librispeech.plugin import _target_layout
+        from experiments.ms_swift_librispeech.train import digest, model_options
+    
+        tiny = tiny_omni()
+        tiny.config.to_json_file(tmp_path/'config.json')
+        manifest = tmp_path/'snapshot.json'
+        manifest.write_text(json.dumps({'revision':'mini', 'files':{'config.json':digest(tmp_path/'config.json')}}))
+        cfg = dict(model=str(tmp_path), snapshot_manifest=str(manifest), model_revision='mini',
+                   adapter=dict(rank=2, alpha=4, last_n=1, target_modules=['v_proj','q_proj']))
+>       regex = model_options(cfg,'lora')['target_regex']
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+experiments/ms_swift_librispeech/tests/test_adapter_pair.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+experiments/ms_swift_librispeech/train.py:196: in model_options
+    names = ordered_projections(config['adapter'].get('target_modules', ('o_proj',)))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+names = ['v_proj', 'q_proj']
+
+    def ordered_projections(names):
+        ordered = tuple(name for name in PROJECTIONS + MLP_PROJECTIONS if name in names)
+        if 'o_proj' not in ordered or len(ordered) != len(names):
+>           raise ValueError('Select unique decoder projections including o_proj')
+E           ValueError: Select unique decoder projections including o_proj
+
+experiments/ms_swift_librispeech/adapter_audit.py:15: ValueError
+----------------------------- Captured stderr call -----------------------------
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+------------------------------ Captured log call -------------------------------
+WARNING  transformers.modeling_rope_utils:modeling_rope_utils.py:467 Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+=============================== warnings summary ===============================
+../../../root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+experiments/ms_swift_librispeech/tests/test_adapter_pair.py::test_native_qv_only_adapter_uses_native_audit_but_ta_needs_o
+  /root/miniconda3/lib/python3.12/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED experiments/ms_swift_librispeech/tests/test_adapter_pair.py::test_native_qv_only_adapter_uses_native_audit_but_ta_needs_o
+1 failed, 15 deselected, 2 warnings in 6.89s

@@ -1,0 +1,16 @@
+{
+  "model_revision":"f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "base_config":"experiments/ms_swift_aqa/omni3b-pilot.json",
+  "avqa_mmau":"/root/autodl-tmp/r1-aqa/data/pilot-01",
+  "official_mmau":"/root/autodl-tmp/r1-aqa/mmau",
+  "ser":"/root/autodl-tmp/iemocap/swift-ser/data/test.jsonl",
+  "archive":"/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01",
+  "lock":"/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/gpu.lock",
+  "randlora_peft":"/root/autodl-tmp/r1-aqa/paper-envs/peft-0.17.1",
+  "hashes":{
+    "train":"7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d",
+    "dev":"64b0976c45a56c7406b30935b49367f464e1e22d9bce295b5e0ac8505e288d9f",
+    "test":"f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+    "ser":"f3e807d6f88056b59ceed3a8f168d56caf3d53765c84f48ffcd2dfec5d4d6dfe"
+  }
+}

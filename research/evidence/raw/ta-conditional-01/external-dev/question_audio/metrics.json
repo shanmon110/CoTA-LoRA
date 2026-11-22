@@ -1,0 +1,64 @@
+{
+  "utterances": 261,
+  "correct": 204,
+  "accuracy": 0.7816091954022989,
+  "by_domain": {
+    "music": {
+      "correct": 73,
+      "total": 87,
+      "accuracy": 0.8390804597701149
+    },
+    "sound": {
+      "correct": 73,
+      "total": 87,
+      "accuracy": 0.8390804597701149
+    },
+    "speech": {
+      "correct": 58,
+      "total": 87,
+      "accuracy": 0.6666666666666666
+    }
+  },
+  "macro_domain_accuracy": 0.7816091954022988,
+  "by_category": {
+    "music/Comparative": {
+      "correct": 17,
+      "total": 22,
+      "accuracy": 0.7727272727272727
+    },
+    "music/Counting": {
+      "correct": 56,
+      "total": 65,
+      "accuracy": 0.8615384615384616
+    },
+    "sound/original Clotho question": {
+      "correct": 73,
+      "total": 87,
+      "accuracy": 0.8390804597701149
+    },
+    "speech/speech emotion": {
+      "correct": 58,
+      "total": 87,
+      "accuracy": 0.6666666666666666
+    }
+  },
+  "macro_category_accuracy": 0.785003215175629,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "method": "question_audio",
+  "tuner": "ta-lora",
+  "identity": {
+    "base_model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "config_sha256": "e63c7d7dc792e9895f11dbfaff60b156b1fffad92a4ca8bd26a7fd112c20e60b",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/train/question_audio/checkpoint-160",
+    "weights_sha256": "af945f754106da25a999d24b8413cf38503c39188a2675b96ca3679ea7d1ce9c",
+    "adapter_config_sha256": "e13e317be3a023e31aac6d7cb5b5b32f6ca27cbc94f38a7a90b2aea747dc52fc"
+  },
+  "no_transport": false,
+  "manifest_sha256": "44d2cb45ae69a704362c9bb1db47921971c0f29a6487c299974128ca750d034a",
+  "predictions_sha256": "d2c3b26dfcbd735851a89bd0fd96a94788739eafc8b72202ed9a439def57f9e6",
+  "eval_seconds": 50.40483096498065,
+  "peak_allocated_bytes": 12536836608,
+  "peak_reserved_bytes": 13990100992
+}

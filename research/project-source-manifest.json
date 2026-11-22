@@ -1,0 +1,3676 @@
+{
+  "source": "/autodl-fs/data/west-ta-baselines",
+  "scope": "Source snapshot for research handoff. Original workspace unchanged. README, .gitignore and portable handoff will be updated only in exported copy.",
+  "copied": [
+    {
+      "path": ".clang-format",
+      "kind": "file",
+      "bytes": 2722,
+      "sha256": "8fb375f02e82e7a8914cf509764ba8c29d389b1ed5f6471de21c9380ff579943",
+      "source": "/autodl-fs/data/west-ta-baselines/.clang-format"
+    },
+    {
+      "path": ".flake8",
+      "kind": "file",
+      "bytes": 31,
+      "sha256": "3f34541f2182989bdf7473542c7ef393157510eb0060863b67f1f1ce324f46db",
+      "source": "/autodl-fs/data/west-ta-baselines/.flake8"
+    },
+    {
+      "path": ".github/workflows/lint.yaml",
+      "kind": "file",
+      "bytes": 980,
+      "sha256": "3a36c4965eef1f0e663dcf5a592fd54a20882221166bab297538dd2e93c4409f",
+      "source": "/autodl-fs/data/west-ta-baselines/.github/workflows/lint.yaml"
+    },
+    {
+      "path": ".gitignore",
+      "kind": "file",
+      "bytes": 422,
+      "sha256": "9be67c4403e13005e4f6cfe6d10ca72bdd9be09132ab0e5541aea0fd04d124aa",
+      "source": "/autodl-fs/data/west-ta-baselines/.gitignore"
+    },
+    {
+      "path": ".gitmodules",
+      "kind": "file",
+      "bytes": 136,
+      "sha256": "56c491f5b0d9436ef9317f242ee05a05e3a4c6f6b560c36d0866ffab6d328e3c",
+      "source": "/autodl-fs/data/west-ta-baselines/.gitmodules"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "kind": "file",
+      "bytes": 758,
+      "sha256": "19b81d76d4210d4101a7ac3a0068869c57c8364f1c7ef3d6a5e67435ebeb0b37",
+      "source": "/autodl-fs/data/west-ta-baselines/.pre-commit-config.yaml"
+    },
+    {
+      "path": ".style.yapf",
+      "kind": "file",
+      "bytes": 141,
+      "sha256": "37808315ef6e21bebfeaa38fa04e4328205b820fb7aba1f5146fddb76fe599a6",
+      "source": "/autodl-fs/data/west-ta-baselines/.style.yapf"
+    },
+    {
+      "path": "LICENSE",
+      "kind": "file",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "source": "/autodl-fs/data/west-ta-baselines/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "kind": "file",
+      "bytes": 3573,
+      "sha256": "44f2cccac1d83eb321b136d49ec7121141ffd17075cf19dd9c42e7df38e9cfb6",
+      "source": "/autodl-fs/data/west-ta-baselines/README.md"
+    },
+    {
+      "path": "demo/goat_slm/README.md",
+      "kind": "file",
+      "bytes": 4046,
+      "sha256": "47c02ab0276011ab5cae0c67d4670cc277850599bbe05d384e43ed02023735ac",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/goat_slm/README.md"
+    },
+    {
+      "path": "demo/goat_slm/demo_goat_slm.py",
+      "kind": "file",
+      "bytes": 22346,
+      "sha256": "d464f7af3987b54ace03e8c5136ec13a6d90c2af525ef24ae719414903504ed2",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/goat_slm/demo_goat_slm.py"
+    },
+    {
+      "path": "demo/goat_slm/requirements.txt",
+      "kind": "file",
+      "bytes": 3616,
+      "sha256": "257a2e493fd4f8853b7cce4c254fb6adcabbc528e8df341946ee5ea6a3adc751",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/goat_slm/requirements.txt"
+    },
+    {
+      "path": "demo/goat_slm/run_demo_goat_slm.sh",
+      "kind": "file",
+      "bytes": 417,
+      "sha256": "726c9dcecb48bb92a95a637e3e8abc9bda0f07c7bc182eea24a0467e77525d23",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/goat_slm/run_demo_goat_slm.sh"
+    },
+    {
+      "path": "demo/goat_slm/test_goat_slm.py",
+      "kind": "file",
+      "bytes": 14674,
+      "sha256": "3ae5905cad3ca15a4893614801c51cf36bd6d2c2bebab2b1090e54fbcbd67f20",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/goat_slm/test_goat_slm.py"
+    },
+    {
+      "path": "demo/osum_echat/test_osum_echat.py",
+      "kind": "file",
+      "bytes": 2540,
+      "sha256": "d24d7fccb68668835246b3ef653d1efd6c12c1e55fac2f2de5f3d2f87c947e8b",
+      "source": "/autodl-fs/data/west-ta-baselines/demo/osum_echat/test_osum_echat.py"
+    },
+    {
+      "path": "docs/CoTA-LoRA_CLAUDE_HANDOFF.md",
+      "kind": "file",
+      "bytes": 32304,
+      "sha256": "e49c0692acade70688fc9ea4dc1fd1c64595c080ef3c19f0666096db54fbc975",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/CoTA-LoRA_CLAUDE_HANDOFF.md"
+    },
+    {
+      "path": "docs/README.md",
+      "kind": "file",
+      "bytes": 1275,
+      "sha256": "fcfb61222da89c662b847b81662a25134fa50892294681eb6f90837aec2de3bf",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/README.md"
+    },
+    {
+      "path": "docs/data_extractor.md",
+      "kind": "file",
+      "bytes": 3170,
+      "sha256": "01282e688521e1080b3b50a1facbc413b8d458829759c79c42245c325f6dad1f",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/data_extractor.md"
+    },
+    {
+      "path": "docs/data_format.md",
+      "kind": "file",
+      "bytes": 3370,
+      "sha256": "78c5c1786a26cbfd5aaa8cbdde1c8e76510905f113dcb0458f13f581233026b7",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/data_format.md"
+    },
+    {
+      "path": "docs/data_pack.md",
+      "kind": "file",
+      "bytes": 2630,
+      "sha256": "2f85344288ea7192428eb1f54f2bf456a622dc6570d61eff6c1f0eb25869df4a",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/data_pack.md"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-11-18-omni-ta-lora.md",
+      "kind": "file",
+      "bytes": 886,
+      "sha256": "4fa19eec3bfbccf55be91c66fabd8d5cc4e5ab20fae3761cbde9600d887e1e5c",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/superpowers/plans/2026-11-18-omni-ta-lora.md"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-11-21-conditional-ta.md",
+      "kind": "file",
+      "bytes": 1876,
+      "sha256": "4605a194bd13430cdfadd3b8e4271e01ddf903d6693039197ac57a9e4c8fa464",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/superpowers/plans/2026-11-21-conditional-ta.md"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-11-18-omni-ta-lora.md",
+      "kind": "file",
+      "bytes": 1321,
+      "sha256": "e2d9b9d069056c1e3b3032335c5487d394435e42b96686084fee6e47874f2ebf",
+      "source": "/autodl-fs/data/west-ta-baselines/docs/superpowers/specs/2026-11-18-omni-ta-lora.md"
+    },
+    {
+      "path": "examples/aishell/asr/README.md",
+      "kind": "file",
+      "bytes": 1828,
+      "sha256": "b8aea2bf057d0920b56ae3cefaea29ad8c109adecb6578ae4f4e7c2d92251965",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/README.md"
+    },
+    {
+      "path": "examples/aishell/asr/conf/accelerator_config.json",
+      "kind": "file",
+      "bytes": 34,
+      "sha256": "8cb53169c81dd5f696698c28473683288bb9d80ed618645d1b327d1c3944a417",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/accelerator_config.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/ds_config_zero2.json",
+      "kind": "file",
+      "bytes": 1253,
+      "sha256": "c77519f301eca1125cc81b28e865d5402bfccdace9aeae5c3779979e8184274c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/ds_config_zero2.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/fireredasr-llm-l.json",
+      "kind": "file",
+      "bytes": 902,
+      "sha256": "62212bbe2eedcfdfe3ba8a0654f4223fb31320bb40b20edf0733f7c4485e8d9a",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/fireredasr-llm-l.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/fun_asr_nano.json",
+      "kind": "file",
+      "bytes": 519,
+      "sha256": "1b87d31b4ab42a0e9b2345060f3141d70e306dbea9c707a97ffeb7b8227f66f8",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/fun_asr_nano.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/generation_config.json",
+      "kind": "file",
+      "bytes": 137,
+      "sha256": "e71a801bcddb3409ccd372d7d0c03e9b27d5305279b6d57035349a304390c9a8",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/generation_config.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/kimi_audio_config.json",
+      "kind": "file",
+      "bytes": 164,
+      "sha256": "1df9b8dc58021fad5297fbde3eed22d02934245db14b9847adbf7383f6bd82ad",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/kimi_audio_config.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/osum_echat.json",
+      "kind": "file",
+      "bytes": 251,
+      "sha256": "0465a459b88c8df6a75eb48c4721ef7a8b4a3d120b159bd008eb8d181a6ff9e8",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/osum_echat.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/qwen2-1.5b-lora_whisper-large-v3-turbo.json",
+      "kind": "file",
+      "bytes": 563,
+      "sha256": "f901bd7cf922035747463efa5fff932da0a38c3c56489306061cb51d0b35c075",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/qwen2-1.5b-lora_whisper-large-v3-turbo.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/qwen2-7b-lora_paraformer.json",
+      "kind": "file",
+      "bytes": 549,
+      "sha256": "9853502848c6f35ad5c29e3ed04c3b077626eca5055b8fb1295ff8372640cb91",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/qwen2-7b-lora_paraformer.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/qwen2-7b_firered.json",
+      "kind": "file",
+      "bytes": 277,
+      "sha256": "148c4bbc696bcd0d8da93877460e6b6be52f46fcb8a26a62dca9fde81def8a63",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/qwen2-7b_firered.json"
+    },
+    {
+      "path": "examples/aishell/asr/conf/qwen3-1.7b-lora_firered.json",
+      "kind": "file",
+      "bytes": 688,
+      "sha256": "bd4cabd63a47542aa56537f7c22a8ab8e89f3be9ede0d9bf7770588f998a6998",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/conf/qwen3-1.7b-lora_firered.json"
+    },
+    {
+      "path": "examples/aishell/asr/run.sh",
+      "kind": "file",
+      "bytes": 2078,
+      "sha256": "97ef0f6a96ab90c910c5722938eddc1fea0f61b08eebfa0ab3935aa847da0799",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell/asr/run.sh"
+    },
+    {
+      "path": "examples/aishell/asr/tools",
+      "kind": "symlink",
+      "target": "../../../tools"
+    },
+    {
+      "path": "examples/aishell/asr/west",
+      "kind": "symlink",
+      "target": "../../../west"
+    },
+    {
+      "path": "examples/aishell2/asr/README.md",
+      "kind": "file",
+      "bytes": 1626,
+      "sha256": "abefe1507ad01457f2830f71c249f4a3127f0c3fe072cf66f0900e1d5a635c87",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/README.md"
+    },
+    {
+      "path": "examples/aishell2/asr/conf/accelerator_config.json",
+      "kind": "file",
+      "bytes": 34,
+      "sha256": "8cb53169c81dd5f696698c28473683288bb9d80ed618645d1b327d1c3944a417",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/conf/accelerator_config.json"
+    },
+    {
+      "path": "examples/aishell2/asr/conf/ds_config_zero2.json",
+      "kind": "file",
+      "bytes": 1253,
+      "sha256": "c77519f301eca1125cc81b28e865d5402bfccdace9aeae5c3779979e8184274c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/conf/ds_config_zero2.json"
+    },
+    {
+      "path": "examples/aishell2/asr/conf/generation_config.json",
+      "kind": "file",
+      "bytes": 137,
+      "sha256": "e71a801bcddb3409ccd372d7d0c03e9b27d5305279b6d57035349a304390c9a8",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/conf/generation_config.json"
+    },
+    {
+      "path": "examples/aishell2/asr/conf/qwen3-1.7b_firered.json",
+      "kind": "file",
+      "bytes": 419,
+      "sha256": "cb0d4558d6bcee06a9b19528e782901f21d26f4358970db0aea25074a3aad765",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/conf/qwen3-1.7b_firered.json"
+    },
+    {
+      "path": "examples/aishell2/asr/run.sh",
+      "kind": "file",
+      "bytes": 1881,
+      "sha256": "b71324d2b28f98d1d38eee9adf67b1020461be6b95432d69926294de59d59964",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/aishell2/asr/run.sh"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/README.md",
+      "kind": "file",
+      "bytes": 3475,
+      "sha256": "baa5ad084cfb8c2c981582d8774e7655f9cbcc51c0d7d70cf844b85f2703cc61",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/README.md"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/conf/accelerator_config.json",
+      "kind": "file",
+      "bytes": 34,
+      "sha256": "8cb53169c81dd5f696698c28473683288bb9d80ed618645d1b327d1c3944a417",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/conf/accelerator_config.json"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/conf/ds_config_zero2.json",
+      "kind": "file",
+      "bytes": 1253,
+      "sha256": "c77519f301eca1125cc81b28e865d5402bfccdace9aeae5c3779979e8184274c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/conf/ds_config_zero2.json"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/conf/generation_config.json",
+      "kind": "file",
+      "bytes": 217,
+      "sha256": "aab5efaeebe072c8324f528b24ea6440efd22c512657313731275a59b72ac3c9",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/conf/generation_config.json"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/conf/touch_asu_config.json",
+      "kind": "file",
+      "bytes": 270,
+      "sha256": "3c15344993218b0661bf147b47341558dde5991c70616a1cde6a6e5bdfe6cddd",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/conf/touch_asu_config.json"
+    },
+    {
+      "path": "examples/belle_1.4M_qa/run.sh",
+      "kind": "file",
+      "bytes": 2398,
+      "sha256": "943c3730ead0041d6e2ab83e9ff76efc6691f3111a56c6524032dfcbe6e1aa60",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/belle_1.4M_qa/run.sh"
+    },
+    {
+      "path": "examples/common/touch_asu_asr.sh",
+      "kind": "file",
+      "bytes": 1208,
+      "sha256": "670a35dd68985ec84a9bd542b52a8c7aaf73b8feddc2425eeedc98fd11414651",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/common/touch_asu_asr.sh"
+    },
+    {
+      "path": "examples/conf/adapters/README.md",
+      "kind": "file",
+      "bytes": 5016,
+      "sha256": "a00b68e757880862eb56560523de701ad6286b638116aa6d149c2fa16155281c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/README.md"
+    },
+    {
+      "path": "examples/conf/adapters/bora.json",
+      "kind": "file",
+      "bytes": 128,
+      "sha256": "934ee504686764880b894389a353fa098917dd5e1b865076b7253dbfa2324348",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/bora.json"
+    },
+    {
+      "path": "examples/conf/adapters/dora.json",
+      "kind": "file",
+      "bytes": 108,
+      "sha256": "b63591e6a3a4db967d4eb4e830d10585ab709a9022f845445fc6aec8af1c8f63",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/dora.json"
+    },
+    {
+      "path": "examples/conf/adapters/eva.json",
+      "kind": "file",
+      "bytes": 195,
+      "sha256": "52639706abf4b36928beeefae5afab14a3f35bf4194a807766d9c20fb58db2c3",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/eva.json"
+    },
+    {
+      "path": "examples/conf/adapters/o-lora.json",
+      "kind": "file",
+      "bytes": 110,
+      "sha256": "ab41c28d2cb555c4c2a8431e1624906547bb2b9574efbd69d9193c2c9bb599ae",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/o-lora.json"
+    },
+    {
+      "path": "examples/conf/adapters/qv-lora.json",
+      "kind": "file",
+      "bytes": 152,
+      "sha256": "0acd2b52fd84bb5f76be5a82c52b9d09a2c2ef6fb5241f95fd964073c0227f11",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/qv-lora.json"
+    },
+    {
+      "path": "examples/conf/adapters/ta-lora.json",
+      "kind": "file",
+      "bytes": 111,
+      "sha256": "cf0ef956a4a99e1405df988fe738608ee6f038db3024c652e51dfbe8af911f8b",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/ta-lora.json"
+    },
+    {
+      "path": "examples/conf/adapters/toplora.json",
+      "kind": "file",
+      "bytes": 111,
+      "sha256": "73cbd9c7b29e0f53383afdd3c8800d779ca3fe4f1b2933751b41c72d65489a44",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/adapters/toplora.json"
+    },
+    {
+      "path": "examples/conf/training/touch_asu_adapters.json",
+      "kind": "file",
+      "bytes": 617,
+      "sha256": "0ff12ec6098e3730e48207de4c6a7679f07aebfce0d1757705809b60796e8b70",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/training/touch_asu_adapters.json"
+    },
+    {
+      "path": "examples/conf/training/touch_asu_asr.json",
+      "kind": "file",
+      "bytes": 654,
+      "sha256": "edc2c057b15c4c250bf65b8f33bf6a2c17433488a3ab3e705f80237aa158e165",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/conf/training/touch_asu_asr.json"
+    },
+    {
+      "path": "examples/grpo/README.md",
+      "kind": "file",
+      "bytes": 3433,
+      "sha256": "be7921fb1c0ffe3459b4839bbea36035c8ebab133527d7678ae66ac051ec3a36",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/README.md"
+    },
+    {
+      "path": "examples/grpo/conf/ds_zero1.json",
+      "kind": "file",
+      "bytes": 730,
+      "sha256": "e5d8f756daebdf756630689c735c4570dbd5b06414d52b955a0b237a508ec0ff",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/conf/ds_zero1.json"
+    },
+    {
+      "path": "examples/grpo/conf/ds_zero3.json",
+      "kind": "file",
+      "bytes": 1101,
+      "sha256": "696471e9964aeae5014b5d90b0f057f0606cc82a9ad1504d8b3805d36f885976",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/conf/ds_zero3.json"
+    },
+    {
+      "path": "examples/grpo/conf/ds_zero3_omni.json",
+      "kind": "file",
+      "bytes": 1136,
+      "sha256": "3e0efb6b040ea07a37a63775f8b6a3831c823f406d188ae358ea7b6efc8178ca",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/conf/ds_zero3_omni.json"
+    },
+    {
+      "path": "examples/grpo/requirements.txt",
+      "kind": "file",
+      "bytes": 94,
+      "sha256": "e4098f828d443ef1f59ea5c95249d6f4ff8153a0df63eea0aede469ed0cac160",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/requirements.txt"
+    },
+    {
+      "path": "examples/grpo/run.sh",
+      "kind": "file",
+      "bytes": 3427,
+      "sha256": "13dce718c30ab8ee64a46c57e20b3f9e7c7babf2fc76a2c8a6166245687a14ca",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/run.sh"
+    },
+    {
+      "path": "examples/grpo/scripts/download_mmau_test.sh",
+      "kind": "file",
+      "bytes": 1192,
+      "sha256": "e2f5191e1910abb026e2d525da418964181fa41f26fd975f02edb4055872ab33",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/grpo/scripts/download_mmau_test.sh"
+    },
+    {
+      "path": "examples/librispeech/asr/README.md",
+      "kind": "file",
+      "bytes": 6782,
+      "sha256": "4fa85612d04f20a03130021e67d6b57299618f51dfde47c651b27b9c299dde89",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/README.md"
+    },
+    {
+      "path": "examples/librispeech/asr/common.py",
+      "kind": "file",
+      "bytes": 1608,
+      "sha256": "452fe1bc4e88c928c829ca44d053ed121323ed584118fc92bcd6daf3a1e12382",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/common.py"
+    },
+    {
+      "path": "examples/librispeech/asr/conf/comparison.json",
+      "kind": "file",
+      "bytes": 351,
+      "sha256": "986b6039914cb37025a9a1248d049568261c76ed0d31e2db66e05c86b784d723",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/conf/comparison.json"
+    },
+    {
+      "path": "examples/librispeech/asr/conf/generation_config.json",
+      "kind": "file",
+      "bytes": 68,
+      "sha256": "fbddd4a967fb8a108127362bf986030a7b5b26c1fcb34f927a1a51327793780c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/conf/generation_config.json"
+    },
+    {
+      "path": "examples/librispeech/asr/conf/qwen2.5-omni-7b.json",
+      "kind": "file",
+      "bytes": 303,
+      "sha256": "53933652580309891d40922a3f66c73f98f85049fa15d66d24c2d09eca5ea5d6",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/conf/qwen2.5-omni-7b.json"
+    },
+    {
+      "path": "examples/librispeech/asr/conf/touchasu_comparison.json",
+      "kind": "file",
+      "bytes": 541,
+      "sha256": "958cc3f84fd50b0464582c72930653b1f3f4e515996ea9552b1a461aa10d7812",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/conf/touchasu_comparison.json"
+    },
+    {
+      "path": "examples/librispeech/asr/conf/training.json",
+      "kind": "file",
+      "bytes": 525,
+      "sha256": "f70a1e15af22b24e0c2079f49ac9f4bb9dc227b0a7537b772449cff7726b3ad6",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/conf/training.json"
+    },
+    {
+      "path": "examples/librispeech/asr/local/prepare_data.py",
+      "kind": "file",
+      "bytes": 4834,
+      "sha256": "2c1ae041694d53c7626eb65de4285e2203834c85014c25e13d13f93d6de33255",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/local/prepare_data.py"
+    },
+    {
+      "path": "examples/librispeech/asr/local/protocol.py",
+      "kind": "file",
+      "bytes": 17365,
+      "sha256": "7d83df6ad5aba475c1f2a70d9f33a4bf77d78a7fa72bf8c508f3642dcf65f83e",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/local/protocol.py"
+    },
+    {
+      "path": "examples/librispeech/asr/local/touchasu_compare.py",
+      "kind": "file",
+      "bytes": 11152,
+      "sha256": "e2294f329a8dc8d06931e0fa7dc4eb67be7e78d093c0dbda65d111aed21b27d6",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/local/touchasu_compare.py"
+    },
+    {
+      "path": "examples/librispeech/asr/local/touchasu_wer.py",
+      "kind": "file",
+      "bytes": 12513,
+      "sha256": "40d657a840a89ef6ecdb55e85b1b55e110be97a4657c620541837c002011e5ec",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/local/touchasu_wer.py"
+    },
+    {
+      "path": "examples/librispeech/asr/pilot_3b.py",
+      "kind": "file",
+      "bytes": 5508,
+      "sha256": "14788ea5630a40c52b02707ac40acbe7414e5cd4a291ec921917f05dfbbb5811",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/pilot_3b.py"
+    },
+    {
+      "path": "examples/librispeech/asr/recipe.py",
+      "kind": "file",
+      "bytes": 421,
+      "sha256": "93a220ec9a45b6d21802d4bd11e620a8feed27dbed5c4b67a7e62f2390480d97",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/recipe.py"
+    },
+    {
+      "path": "examples/librispeech/asr/run.sh",
+      "kind": "file",
+      "bytes": 4811,
+      "sha256": "82053f9d26a3415f15fd2c3091190675216e61ef20875af416bb05662f20fd41",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/librispeech/asr/run.sh"
+    },
+    {
+      "path": "examples/libritts/tts/README.md",
+      "kind": "file",
+      "bytes": 6395,
+      "sha256": "afc4f3dd92a0b4c6e0192aa28c1acbcda4ecd40105748c94cae0000235033a9f",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/README.md"
+    },
+    {
+      "path": "examples/libritts/tts/conf/accelerator_config.json",
+      "kind": "file",
+      "bytes": 34,
+      "sha256": "8cb53169c81dd5f696698c28473683288bb9d80ed618645d1b327d1c3944a417",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/accelerator_config.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/ds_config_zero1.json",
+      "kind": "file",
+      "bytes": 1670,
+      "sha256": "873f986ad036a7af4989614799e3e25dd574ee592f47b58477413df58a2ac1f1",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/ds_config_zero1.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/ds_config_zero2.json",
+      "kind": "file",
+      "bytes": 1253,
+      "sha256": "c77519f301eca1125cc81b28e865d5402bfccdace9aeae5c3779979e8184274c",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/ds_config_zero2.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/generation_config.json",
+      "kind": "file",
+      "bytes": 243,
+      "sha256": "c6f648a3ea4478cded7ef46873dd4351a16ba0d7ad200d5c63c1e41e55603a11",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/generation_config.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/spk_prompt_wav_map.example.json",
+      "kind": "file",
+      "bytes": 119,
+      "sha256": "0af31761d1ad65f49105f8f26ebe711da100f4768b63de0b43d886a91af50b31",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/spk_prompt_wav_map.example.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/touch_flow_config.json",
+      "kind": "file",
+      "bytes": 419,
+      "sha256": "27580f9d3ef2bc748628bd9424a398c524faa2f9cd2f257f5d51c804d3ea4e92",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/touch_flow_config.json"
+    },
+    {
+      "path": "examples/libritts/tts/conf/touch_tts_config.json",
+      "kind": "file",
+      "bytes": 257,
+      "sha256": "f7d86c38b7326c3d108b80dc044c4e60c41c18b6a7e87acec6e58e72a91b76bc",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/conf/touch_tts_config.json"
+    },
+    {
+      "path": "examples/libritts/tts/run_flow.sh",
+      "kind": "file",
+      "bytes": 2927,
+      "sha256": "39fc4c0cafae6d154cb1f97b59225427081df8646bfce4739d0b96099363ccf3",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/run_flow.sh"
+    },
+    {
+      "path": "examples/libritts/tts/run_llm.sh",
+      "kind": "file",
+      "bytes": 3874,
+      "sha256": "584cc54247419737b2a0d47274cb6c7e0e7152cbd16d60efe2ade5e27e96f38e",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/libritts/tts/run_llm.sh"
+    },
+    {
+      "path": "examples/omni_talora/README.md",
+      "kind": "file",
+      "bytes": 13567,
+      "sha256": "d59cd9beef8791d95d76fad480d7f5be081694ebb736f630cfe28ea8bba18dd5",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/README.md"
+    },
+    {
+      "path": "examples/omni_talora/__init__.py",
+      "kind": "file",
+      "bytes": 92,
+      "sha256": "c93c5bf042e825cf563fe199eb7c27bad6af658f5a71487f91a5a06698dbd4af",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/__init__.py"
+    },
+    {
+      "path": "examples/omni_talora/adapters.py",
+      "kind": "file",
+      "bytes": 645,
+      "sha256": "3b2de20367ac2c0010894b16da22aca7cd1beffc288d7e90638348287d96c7c9",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/adapters.py"
+    },
+    {
+      "path": "examples/omni_talora/attention.py",
+      "kind": "file",
+      "bytes": 5493,
+      "sha256": "1acbecc28600c9f22bc42fd7651a3b86f522765750ff9ac1ed0874a423be71cb",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/attention.py"
+    },
+    {
+      "path": "examples/omni_talora/budget.py",
+      "kind": "file",
+      "bytes": 1829,
+      "sha256": "ad1296ee4ba155c106d85138a7a90f2e7e5141c14622d77446c5448269a39834",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/budget.py"
+    },
+    {
+      "path": "examples/omni_talora/checkpoint.py",
+      "kind": "file",
+      "bytes": 6166,
+      "sha256": "4ff5a2eaf7f02b93b278fb6be1cdde4975be67cae1f603a24375a6cc26e3069b",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/checkpoint.py"
+    },
+    {
+      "path": "examples/omni_talora/data.py",
+      "kind": "file",
+      "bytes": 11418,
+      "sha256": "f9410fbdda62addfd1202bf361c125e33cef8597670d9f2865fa73f353ec8319",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/data.py"
+    },
+    {
+      "path": "examples/omni_talora/diagnostics.py",
+      "kind": "file",
+      "bytes": 2413,
+      "sha256": "4f92521c0776b9e0eb0e064cb0b4e28e6aceeae13cd24fa10ceaff0154a88135",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/diagnostics.py"
+    },
+    {
+      "path": "examples/omni_talora/eva.py",
+      "kind": "file",
+      "bytes": 134,
+      "sha256": "40ee6fd1d7458b0d7a1ca28464f9a774f55c0c280d7bd5385feb8631eeb54006",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/eva.py"
+    },
+    {
+      "path": "examples/omni_talora/evaluate.py",
+      "kind": "file",
+      "bytes": 10831,
+      "sha256": "2494db5b42c322790dfc67a490bdc4271c86cf7e33ed73cc507125c4d7a74892",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/evaluate.py"
+    },
+    {
+      "path": "examples/omni_talora/preflight.py",
+      "kind": "file",
+      "bytes": 8722,
+      "sha256": "b7fd3da84a03757100877aa0cf3e414ee1b63fbb70a28a790d97eadbf78419e3",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/preflight.py"
+    },
+    {
+      "path": "examples/omni_talora/prepare_manifest.py",
+      "kind": "file",
+      "bytes": 6221,
+      "sha256": "58e87deee705fae705d3b3514f6ab4f1853c8201b7b51359181c79c3e4508114",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/prepare_manifest.py"
+    },
+    {
+      "path": "examples/omni_talora/projection.py",
+      "kind": "file",
+      "bytes": 887,
+      "sha256": "80d145035876584c7311dac2e2b33128c410b4e792044c879e9135589f206186",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/projection.py"
+    },
+    {
+      "path": "examples/omni_talora/requirements.txt",
+      "kind": "file",
+      "bytes": 231,
+      "sha256": "27eb49ba3f1e07cadb8e2f493ea9ac118001efe8ea83d32294eb1352f95f41ce",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/requirements.txt"
+    },
+    {
+      "path": "examples/omni_talora/runtime.py",
+      "kind": "file",
+      "bytes": 3801,
+      "sha256": "fd4a38bde9a7142b42ef464f6dd64e1203c7c3fdee2228910ccd99ec9500311b",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/runtime.py"
+    },
+    {
+      "path": "examples/omni_talora/train.py",
+      "kind": "file",
+      "bytes": 13281,
+      "sha256": "8467ba98889fa9e22229c6bf3991de20ba88d35c50b1bcc1f57bb8e914c123c2",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/train.py"
+    },
+    {
+      "path": "examples/omni_talora/west_decode.py",
+      "kind": "file",
+      "bytes": 4204,
+      "sha256": "2992d09292886c1bf0509aba056cf6feb86bf96fb656a0a698a135abdace7662",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/west_decode.py"
+    },
+    {
+      "path": "examples/omni_talora/west_trainer.py",
+      "kind": "file",
+      "bytes": 9495,
+      "sha256": "11b8ec9ca021df14880c549a4468c36429c3ebf93698d22c9be9d6e118daea85",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/omni_talora/west_trainer.py"
+    },
+    {
+      "path": "examples/on_policy_distillation/README.md",
+      "kind": "file",
+      "bytes": 6886,
+      "sha256": "7c462f207ffa0341c4e8c529675d037badac685e4b25f8092429e0d7ecfc0159",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/on_policy_distillation/README.md"
+    },
+    {
+      "path": "examples/on_policy_distillation/cascaded_audio_caption_llm_eval.py",
+      "kind": "file",
+      "bytes": 7437,
+      "sha256": "a9b2b1dae757dea3cfc331d6adaa2b208c856494166e936ca5ae9490ee2334a0",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/on_policy_distillation/cascaded_audio_caption_llm_eval.py"
+    },
+    {
+      "path": "examples/on_policy_distillation/requirements.txt",
+      "kind": "file",
+      "bytes": 94,
+      "sha256": "e4098f828d443ef1f59ea5c95249d6f4ff8153a0df63eea0aede469ed0cac160",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/on_policy_distillation/requirements.txt"
+    },
+    {
+      "path": "examples/on_policy_distillation/run.sh",
+      "kind": "file",
+      "bytes": 3515,
+      "sha256": "9689bab94b79686ca3c1b9b834c3d80d14296e4cf9127cb5b3e8804f4b379f4f",
+      "source": "/autodl-fs/data/west-ta-baselines/examples/on_policy_distillation/run.sh"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/REPORT.md",
+      "kind": "file",
+      "bytes": 2608,
+      "sha256": "91f44015ea9a8ac239bc65b90480592e21da9ab87f2198e1348d7f8705359799",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/REPORT.md"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/bora-before.log",
+      "kind": "file",
+      "bytes": 1647,
+      "sha256": "b84c1d2c2c0e1c6963816edc6f37164be864bda90cb1d31b8c3dd9e08beb18de",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/bora-before.log"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/cpu-tests.log",
+      "kind": "file",
+      "bytes": 791,
+      "sha256": "4abadcc2bb25af693ec7203a310a8e53217988d2ccb4e87978a88a3d60b49912",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/cpu-tests.log"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/driver.log",
+      "kind": "file",
+      "bytes": 41,
+      "sha256": "dabf8b760f50e6139f629f6aac0be4ab0d8811f7c7ba35f5bbcf7c5719839b37",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/driver.log"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/results.py",
+      "kind": "file",
+      "bytes": 1479,
+      "sha256": "12eb7e1bf17555d7c040ce3e34b130bb1dd38b71a03f2f16868c695495c0e1c3",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/results.py"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/run.py",
+      "kind": "file",
+      "bytes": 274,
+      "sha256": "10fa6c29ac5b2af7fa42fb45f13183edb25e425daf3445c9669af6fd5054a4d1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/run.py"
+    },
+    {
+      "path": "experiments/librispeech-asr-pilot/run_7b.py",
+      "kind": "file",
+      "bytes": 14157,
+      "sha256": "9a760489c29017388a273955380a31d04fe5cb775612fac9ee1318eef310b3e4",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/librispeech-asr-pilot/run_7b.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/README.md",
+      "kind": "file",
+      "bytes": 12724,
+      "sha256": "9a9927b4c333ecc693913eb5694d09a3cfab43fcb15217d4b943bad697231e35",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/README.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/REPORT-omni3b-tuners.md",
+      "kind": "file",
+      "bytes": 8088,
+      "sha256": "991e83a216b14794c738dd9f9b0b3b41a50f65683c24bdc3a13edcace5f23d86",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/REPORT-omni3b-tuners.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/REPORT-omni3b.md",
+      "kind": "file",
+      "bytes": 4306,
+      "sha256": "68ec9f8bd47dcb79b87475ecfe938bed7b2242067355cd21755a7138ecdf5afb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/REPORT-omni3b.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/REPORT.md",
+      "kind": "file",
+      "bytes": 4259,
+      "sha256": "0761c623d6d9d9a9d4bfc0fdd61e3f1ab23f99e517c7eeefcb42afae6a330adf",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/REPORT.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/download_avqa_training.py",
+      "kind": "file",
+      "bytes": 12442,
+      "sha256": "1dd25a040d035ee83bbe920dd2d306a7c0e07f793d8e9a560779e3dbcbb80482",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/download_avqa_training.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/download_mmau.py",
+      "kind": "file",
+      "bytes": 5475,
+      "sha256": "1fd8af185116b3b4cacafc73726abf5d32b780ef7ed1666ecf031900d0c4f7ae",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/download_mmau.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/evaluate.py",
+      "kind": "file",
+      "bytes": 8710,
+      "sha256": "f5763c49930e590ff40532b12a0f2fe553feb756372480e8018eb05cfa7ae345",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/evaluate.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/evaluate_frozen.py",
+      "kind": "file",
+      "bytes": 3700,
+      "sha256": "76bec63bacd848de6deb81686a255c20421677eefad1011403105f9ff0c6ec86",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/evaluate_frozen.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/evaluate_mmar.py",
+      "kind": "file",
+      "bytes": 8645,
+      "sha256": "cacba09f5732bf9f93fec253ce5b43cfe23bf2b857610c4779cf3e8d780d77bf",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/evaluate_mmar.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/freeze_data.py",
+      "kind": "file",
+      "bytes": 4128,
+      "sha256": "9476f2e937edfc60c1dd6f64672290f69cbb10a1a94d4e63ed6bd2ba29718a50",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/freeze_data.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/full_suite.py",
+      "kind": "file",
+      "bytes": 5510,
+      "sha256": "b519ddbbec41104fd613cd8dc56761b532dadefe86a95aecc6b42187febc5613",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/full_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/omni3b-pilot.json",
+      "kind": "file",
+      "bytes": 1342,
+      "sha256": "2d8db620dd94318f6537fc8886a79e612e7e655bca6d882e49f2aed73877df7e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/omni3b-pilot.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/omni3b-tuners.json",
+      "kind": "file",
+      "bytes": 1951,
+      "sha256": "508c1f50c700e0bb334d0861d210f33bb028a8171547858acae790494b361f8a",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/omni3b-tuners.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/pair_eval.py",
+      "kind": "file",
+      "bytes": 9483,
+      "sha256": "327fa2f686a1c648e940d7a7036c2ef15d8900624f4e52d6f449b4c79eb46db7",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/pair_eval.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_early.py",
+      "kind": "file",
+      "bytes": 13545,
+      "sha256": "1d99ce6cf2df8a256c1b45f500efc6910fc01827ce3f49c7a9e0c8086926f907",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_early.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_early_ga.py",
+      "kind": "file",
+      "bytes": 4997,
+      "sha256": "b4e9a4f83a00a88e6e34313a506987f9fb9af8389b6798e394d45bc3454d5eee",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_early_ga.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_early_loram.py",
+      "kind": "file",
+      "bytes": 10206,
+      "sha256": "1a02afcf241a53e038220916b91460507f93a84c4e6935e496f6bd5f1b8aa250",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_early_loram.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_eva.py",
+      "kind": "file",
+      "bytes": 6210,
+      "sha256": "fd49f98dd0b1231aebb624f2fa8676f29ac4f4ffe858a883ea4e792dd7f23c40",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_eva.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_federated.py",
+      "kind": "file",
+      "bytes": 8788,
+      "sha256": "b1ec9d00f2199b8ed29c8882ce0b263e77b96e67d7218efb6e7189a35d691a85",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_federated.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late.py",
+      "kind": "file",
+      "bytes": 6044,
+      "sha256": "81cd47adf7e52af2867cb19f2a9646649e033c97108c5fed968aee0ec0b08691",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/LICENSE",
+      "kind": "file",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/LICENSE"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/__init__.py",
+      "kind": "file",
+      "bytes": 533,
+      "sha256": "de26711e4259ed8df0fb160bfa3fba6b1384b42d7a612e31aea194f93f49b295",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/__init__.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/autoencoder.py",
+      "kind": "file",
+      "bytes": 13395,
+      "sha256": "94c18859ab16d81dbf7e5242fa9762a25abfaa6c7598463a5d3bc0feab410278",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/autoencoder.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/diffusion.py",
+      "kind": "file",
+      "bytes": 15508,
+      "sha256": "f4e98e8d9cbf7bb3643e0d71146255d7bc10298547f37ef9d144ecba1f71f7b9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/diffusion.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/position.py",
+      "kind": "file",
+      "bytes": 765,
+      "sha256": "183f2c21a8dd3d48dd148bd2d1e8f192c63f18a3845c2e9cf87407e498e5caa6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/position.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_gen/transformer.py",
+      "kind": "file",
+      "bytes": 5318,
+      "sha256": "0d6140016cbc1e117c7a5b2bed08ede1334bb0f754bc717176da63069b626359",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_gen/transformer.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_igu.py",
+      "kind": "file",
+      "bytes": 7545,
+      "sha256": "5551eea00100fd27bcc866142be29a8928185b59dac54fef16f915cf5010f765",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_igu.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_loft/LICENSE",
+      "kind": "file",
+      "bytes": 1070,
+      "sha256": "60aac4ce5a131f7376e53b703df06f35622d04f6bb233d81b346120f85a2dfbb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_loft/LICENSE"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_loft/__init__.py",
+      "kind": "file",
+      "bytes": 3718,
+      "sha256": "e757e71d200846d0a322c401f7238fe537007230c1b410b63af22b158812b259",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_loft/__init__.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_loft/optim_helper.py",
+      "kind": "file",
+      "bytes": 7546,
+      "sha256": "529abac7de920c03d2db0b9610c3cf20581f92f7cec0dbeee93e3e0388828ed8",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_loft/optim_helper.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_loft/optimizer.py",
+      "kind": "file",
+      "bytes": 11846,
+      "sha256": "e033f2976000620300d6f5a5e72fa1cc807430e4c746667a483f83708ffe44e6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_loft/optimizer.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_loragen.py",
+      "kind": "file",
+      "bytes": 16340,
+      "sha256": "0ca641fa7c910158c415a4b68ef4876633ff4dfb7bf6d07a32ce59e3d33aef9c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_loragen.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_mixer.py",
+      "kind": "file",
+      "bytes": 9650,
+      "sha256": "d12363c054284f025062175d69b769112033922b93bca0e9b550b93791897185",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_mixer.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_ralora.py",
+      "kind": "file",
+      "bytes": 6167,
+      "sha256": "4a2230e3eca486b0974d0b52199ca23a964cee0804d5bba97730d73f93e90967",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_ralora.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_late_stages.py",
+      "kind": "file",
+      "bytes": 1807,
+      "sha256": "d95ef9240cd848672bf900491a83858d4305b54d61da296eb39dc11e85a4db8b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_late_stages.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_longlora.py",
+      "kind": "file",
+      "bytes": 6495,
+      "sha256": "202e6c0ac32861e448f822161825cd5bc5e39283f8a44d69be951af895a1a9b9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_longlora.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle.py",
+      "kind": "file",
+      "bytes": 15328,
+      "sha256": "d6150315d3bdb830502079a1baf4ceeee4f2ccb3c7806d6caaabddb5a5e49337",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_author_parity.py",
+      "kind": "file",
+      "bytes": 4275,
+      "sha256": "d09b4dbb209789820bc2ffeb34b36cf827ef82688c4726591fe9e70ec119006a",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_author_parity.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_lowra.py",
+      "kind": "file",
+      "bytes": 14037,
+      "sha256": "ffc4426fc56180cca36b3c9e99d7401e5cc6d280467316c181262e9d4e5dbe95",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_lowra.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_lowra_runtime.py",
+      "kind": "file",
+      "bytes": 6875,
+      "sha256": "a0bfa8275b494237f3c2a116ff6509eb495bf6bd8861704d97f3c6e1dc7ca2a4",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_lowra_runtime.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_lowra_triton.py",
+      "kind": "file",
+      "bytes": 1023,
+      "sha256": "5fa300da740f0c6b7bdf1a8686ab62ee5a95108b0fc64ece848ccf4174395ba0",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_lowra_triton.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_lowra_verify.py",
+      "kind": "file",
+      "bytes": 3736,
+      "sha256": "5bb7123b99269319854f1241f3221cf66097c298d28b2cb13f6065385b7fb3a9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_lowra_verify.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_middle_sources.md",
+      "kind": "file",
+      "bytes": 10345,
+      "sha256": "77e0d40054571a2c4b7eccad2941cd60f9ccf6c21e2f06c9fffa76787750d61f",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_sources.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/paper_plugin.py",
+      "kind": "file",
+      "bytes": 8616,
+      "sha256": "04475245c5ee43b30af4bde33ee4010d22c082a612f920abea141bf50e90bd5f",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_plugin.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/README.md",
+      "kind": "file",
+      "bytes": 5479,
+      "sha256": "9999f1727e9a43b04d3d24c944ffcd0d73d17eac991b513b85ffc1f365459134",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/README.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/catalog.json",
+      "kind": "file",
+      "bytes": 8531,
+      "sha256": "1a10e365fcbdaf43c5be1370816a6a5faf93d52c2a2288489b071ef3bd3476d2",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/catalog.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/alora.json",
+      "kind": "file",
+      "bytes": 124,
+      "sha256": "924edc37e1c125d23ec6b0abc24f431972cc74a98183ffaea667b8f5dcfbea23",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/alora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/aurora.json",
+      "kind": "file",
+      "bytes": 83,
+      "sha256": "b9ddec1e79d81f2854c683c2fabae97a4c85dcf4ab27c10a44f87d4c2853295e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/aurora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/bora.json",
+      "kind": "file",
+      "bytes": 47,
+      "sha256": "fd343c810c2eb64768569348d04565577c513134832022ca7f7999a606290482",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/bora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/dora.json",
+      "kind": "file",
+      "bytes": 63,
+      "sha256": "4e571d854ae9404304f2f9f8d76ed36bc0c877d506d843575b88f25f63db852d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/dora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/eva.json",
+      "kind": "file",
+      "bytes": 98,
+      "sha256": "715ece95c22c848d0a0d0041497075e49bd4272da76c91fbbb0f144cf7e14bba",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/eva.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/flylora.json",
+      "kind": "file",
+      "bytes": 145,
+      "sha256": "8574f0aaa68c1908f2c39d3e3e053c05e9bc2ed71937c7f2ce3bcaadff48df5b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/flylora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/fourierft.json",
+      "kind": "file",
+      "bytes": 117,
+      "sha256": "0a9e2a4b789e456a698378cdae7642212f70598f8d6131b28ad6d543b90bae57",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/fourierft.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/gralora.json",
+      "kind": "file",
+      "bytes": 45,
+      "sha256": "dfe0b99e1f85e554bb41941fd055b294049188bf608c71d3e7f2bbc4c222cbbb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/gralora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/igu-lora.json",
+      "kind": "file",
+      "bytes": 209,
+      "sha256": "db49ba8e14fd7a0d665f34db20bf30c2fe5626310654c064448e946af4753da3",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/igu-lora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/known-target-qo.json",
+      "kind": "file",
+      "bytes": 100,
+      "sha256": "a25ff5e083c14e2caa918ec86681a75ad896cf8a2b4b0d4a7e8017de153bbe54",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/known-target-qo.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/loft.json",
+      "kind": "file",
+      "bytes": 83,
+      "sha256": "6f864b55241af7a27945cbad4e0e1ed6724b83b3e60ef7409ca2e3a6a5a57f6c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/loft.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lokra.json",
+      "kind": "file",
+      "bytes": 52,
+      "sha256": "a49f73e31ffb98774f84267393c1a765ed8a3fb9d301d50f05aed37822554970",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lokra.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/longlora-omni.json",
+      "kind": "file",
+      "bytes": 51,
+      "sha256": "e57e9e17384ba2c91355f9b2e0331cb78e8942507a38160e414f7c340808c18b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/longlora-omni.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lora-ga.json",
+      "kind": "file",
+      "bytes": 141,
+      "sha256": "ddf0a4619559bcadf7217163de6be64dd31b746ac3e1c0aaa727a27cd6702a2d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lora-ga.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lora-mixer.json",
+      "kind": "file",
+      "bytes": 875,
+      "sha256": "f73ea4d715e5fb72ecb0e869181fa33c4e1fab6f5a68ab8b773714beb3bca906",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lora-mixer.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lora-plus.json",
+      "kind": "file",
+      "bytes": 56,
+      "sha256": "050fa7bdd43a0a1e4c97804c80a0088c3be09a0bac6948632c7618f07d5a26db",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lora-plus.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lora-recompute.json",
+      "kind": "file",
+      "bytes": 72,
+      "sha256": "8cbcbab7abbac0df0f8db27103213cf54f72fe477029c86b9e81ef462699faa1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lora-recompute.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lora.json",
+      "kind": "file",
+      "bytes": 63,
+      "sha256": "ae058adf2482179f27b653a3bb62a38c5d32f983e6a85dcca808e969d3b7c602",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/loragen.json",
+      "kind": "file",
+      "bytes": 632,
+      "sha256": "ae6216c91a249a5c966caa9b152d8f09d9c22f2234db84b5f2bda90508b1d7ee",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/loragen.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/loram-train-small.json",
+      "kind": "file",
+      "bytes": 132,
+      "sha256": "6a64dd8e3d8707253520151593ca0689e0ef7eda675f0caab2684385602df422",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/loram-train-small.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/lowra.json",
+      "kind": "file",
+      "bytes": 291,
+      "sha256": "206c7c350521d6abe37f4b77852e1ede496248f04d4dd04048ae3bfae1d60ac1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/lowra.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/magnitude-loram.json",
+      "kind": "file",
+      "bytes": 43,
+      "sha256": "1bca85195211e870389a5134bd7f2f00c83bd95c031233f6a4b3953e19861bb8",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/magnitude-loram.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/pissa.json",
+      "kind": "file",
+      "bytes": 64,
+      "sha256": "8523390be91fe7deab3525fb755e546637f81394cf724ae4ea183a8084c3e0ec",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/pissa.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/ralora.json",
+      "kind": "file",
+      "bytes": 103,
+      "sha256": "aca4af745e46f9f76bf69650cda937e7e51963061dc883c90715436522afa8ca",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/ralora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/randlora.json",
+      "kind": "file",
+      "bytes": 112,
+      "sha256": "9251c5a27a925848c72dfc9aa44f609f2c7f91398ad4f5b2eadb0c030f85ad7b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/randlora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/rolora-federated.json",
+      "kind": "file",
+      "bytes": 71,
+      "sha256": "2212f2e60a093ac9170b762176d686c82d964fc5bb0aae9b21d5fed78e604b72",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/rolora-federated.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/stable-lora.json",
+      "kind": "file",
+      "bytes": 59,
+      "sha256": "c470a04cf69e4779d58c2afaeaa9c416a5dd37ee77320c20bf06a2c116ad22c3",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/stable-lora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/toplora.json",
+      "kind": "file",
+      "bytes": 69,
+      "sha256": "22884ecf2b95697fa16c5df6a93ac75fce91c5efc7a6172524a91cd311fe83f5",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/toplora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/unilora.json",
+      "kind": "file",
+      "bytes": 93,
+      "sha256": "21cfbf1455f4f10171ec375e1cb0fa78beef8a958de16df196b60d9d6b3aad6c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/unilora.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/configs/vera.json",
+      "kind": "file",
+      "bytes": 147,
+      "sha256": "b7d076f6b6f6a43f583cd867321104144ad6b75fc24c01b25f074d92269728e8",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/configs/vera.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/data_audit.py",
+      "kind": "file",
+      "bytes": 2777,
+      "sha256": "f8a7ed20ea927ae60a7d854c8abfab4191d47e22006573a9853d30a72e20fc79",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/data_audit.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/expressive.py",
+      "kind": "file",
+      "bytes": 3997,
+      "sha256": "70559199ef8303df16a82d3196c14a51ea718407008589697bd60dbe058ea5b2",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/expressive.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/finish_queue.py",
+      "kind": "file",
+      "bytes": 8377,
+      "sha256": "768223e1b9ee13d2d44c7098db4d4dbf8cde11de3a4972ba94e0b064001c6a97",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/finish_queue.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/known_target.py",
+      "kind": "file",
+      "bytes": 10322,
+      "sha256": "fb3cf74f51d8d9e5bcac4c476a12d7065c7deca99418724d490c625e9203d96c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/known_target.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/paired.py",
+      "kind": "file",
+      "bytes": 12952,
+      "sha256": "154cdc6a151e93ae6c74abcb0afec0b22c0a96505c5ffc9e4f682324d8c61037",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/paired.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/protocol.json",
+      "kind": "file",
+      "bytes": 823,
+      "sha256": "272c4dd757e2da7294aaa0fc955083a1cafccf4026214e225f98642c2e560c62",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/protocol.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/provenance.py",
+      "kind": "file",
+      "bytes": 8948,
+      "sha256": "089b5de59eeb5f207f014dc16a498eb5921a4fc7257099bc4ce559639a03e193",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/provenance.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/report.py",
+      "kind": "file",
+      "bytes": 15123,
+      "sha256": "da742a6a09d08e174ece60afc86437e82a7b29534e41c4ef39f73541a9fa7149",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/report.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/run.py",
+      "kind": "file",
+      "bytes": 17006,
+      "sha256": "1bdc1fd92684e75ca11d05dcef48fed402a115d37e4bf4ab3a2640b60b3cb2a0",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/run.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/run.sh",
+      "kind": "file",
+      "bytes": 394,
+      "sha256": "35bd04a1e172d4db384d1f4d7ca35f7f534e2292e73ec25a114e8d60868071ba",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/run.sh"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/sources-01-10.md",
+      "kind": "file",
+      "bytes": 8272,
+      "sha256": "275fafd20334dd33cd5dcb2319594d9fb7448e909bed9fa42e406770475d9708",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/sources-01-10.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/sources-21-28.md",
+      "kind": "file",
+      "bytes": 8564,
+      "sha256": "16fd3145b2abafb0cb8eb69c2238dcd0648f15cd6972ed6b45241e1560336391",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/sources-21-28.md"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/papers28/special_costs.py",
+      "kind": "file",
+      "bytes": 4829,
+      "sha256": "607b83518f09bbf00db95d2f36ce56fff10290e1ea869a59d2246e9a6a9ea6da",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/special_costs.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/peft_suite.py",
+      "kind": "file",
+      "bytes": 22694,
+      "sha256": "96927b5d6e82cf67349c7f0cf08b3c466c5e1960a692f77689370837e2d85c2b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/peft_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/pilot.json",
+      "kind": "file",
+      "bytes": 1387,
+      "sha256": "1499a72612e4b5c75e6675fced72a875c26219dd3d0bf19021a5c4ce2f63c814",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/pilot.json"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/prepare_avqa.py",
+      "kind": "file",
+      "bytes": 12302,
+      "sha256": "3727079aa7648b56b75cd62c7e5dbc6a522e86489b845a432c67a45b3d5fe2eb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/prepare_avqa.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/prepare_mmau.py",
+      "kind": "file",
+      "bytes": 7181,
+      "sha256": "1abfb23f714876f35e9faf96a2b37086fe1fe51a933c78a78d176408aea52e35",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/prepare_mmau.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/prepare_pairs.py",
+      "kind": "file",
+      "bytes": 20073,
+      "sha256": "3ad3a447d036b085af477c1f71954e7f3b17a06937bf4b07b38b34d82a462315",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/prepare_pairs.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/prompt.py",
+      "kind": "file",
+      "bytes": 804,
+      "sha256": "585674a036f0a34d679181952cc40e7b4bb48410499d63c1ae5d6d1e536d9e93",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/prompt.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/run.py",
+      "kind": "file",
+      "bytes": 8698,
+      "sha256": "83584c0762d12d3bee15338a5f10a5ee597d8663c623adb4e16b185cc1b16ac4",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/run.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/run_mmar.sh",
+      "kind": "file",
+      "bytes": 1572,
+      "sha256": "35408950309cc7be1e0541fc1c514cefd1f7a2c9d056fb71ea693e8eab8345f1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/run_mmar.sh"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/run_pilot.sh",
+      "kind": "file",
+      "bytes": 1297,
+      "sha256": "092b7c12aa0ea0108ae73230e159610d83c7ebe3a067b0c67a3222a9f9a7106d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/run_pilot.sh"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/run_tuners.py",
+      "kind": "file",
+      "bytes": 16330,
+      "sha256": "30de4c252229f85a113961896ff423de7e1dc01539dc520c11d7847a1bb1b1a1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/run_tuners.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/run_tuners.sh",
+      "kind": "file",
+      "bytes": 468,
+      "sha256": "8b285282f9fc71b8678afae99a980a6bcf86e1dd63f6707c7ecd84d5384aa740",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/run_tuners.sh"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/shuffled_audio.py",
+      "kind": "file",
+      "bytes": 2853,
+      "sha256": "dad9a3bb78510c98588a62179dab39df07eb3f8f2d4022af891109aca4f66bbb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/shuffled_audio.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/structural_plugin.py",
+      "kind": "file",
+      "bytes": 5224,
+      "sha256": "e87bc026cfbe6af33383965cfd1def372892fb24be9b278336603f6dd0ab5d30",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/structural_plugin.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/structural_suite.py",
+      "kind": "file",
+      "bytes": 8251,
+      "sha256": "ad62f85ac1dfeb618ba0682c0f43f26d94ab36dd39e48d6536ba7b76092c3c7f",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/structural_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/summarize_backbones.py",
+      "kind": "file",
+      "bytes": 6967,
+      "sha256": "be6c3a03364ac24b5216683fe716bfa9baed8b77231a34478342a9dc8f1c5bdc",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/summarize_backbones.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/summarize_mmar.py",
+      "kind": "file",
+      "bytes": 12592,
+      "sha256": "53c81467d9429b8e2976f49b3de04639013b59262cf60561c07dd6cabcff65bd",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/summarize_mmar.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/summarize_pilot.py",
+      "kind": "file",
+      "bytes": 6334,
+      "sha256": "7e05f055a197cb1a90966fc93b02cd0075ab9d8d33857a65bc4781b29866d695",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/summarize_pilot.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/summarize_transfer.py",
+      "kind": "file",
+      "bytes": 17288,
+      "sha256": "3959b339f2c5dd193cc01f7e91632033e6f6fb553982387df97590611121542a",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/summarize_transfer.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_aqa.py",
+      "kind": "file",
+      "bytes": 4969,
+      "sha256": "24fd9d55a377350d04f6373d73d10e7db5a8ff2ddfaf2559183abece2c5a084e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_aqa.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_audio_pairs.py",
+      "kind": "file",
+      "bytes": 3296,
+      "sha256": "44e71c0fea69a875ef34cd92ebc5540bc633419fb5bc88477bebdad13bbb87e6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_audio_pairs.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_full_suite.py",
+      "kind": "file",
+      "bytes": 3736,
+      "sha256": "655c731df0d65dc645261af517524b37598a968e05b22e827390ab7c4e0e33a1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_full_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_pair_eval.py",
+      "kind": "file",
+      "bytes": 4948,
+      "sha256": "3df882e8d0d4113b10c7e06a4a658095c6df633bb4f1865098afa7789ad8a0fc",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_pair_eval.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_early.py",
+      "kind": "file",
+      "bytes": 7644,
+      "sha256": "a8ab511e2e0549dd99704a61a92a6ee02367d005f300b9341c880469dcbe286c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_early.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_early_loram.py",
+      "kind": "file",
+      "bytes": 2939,
+      "sha256": "d56bbea09462771897803fd29e9c033fb77afe31df02f73c01db91d27873065c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_early_loram.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_late.py",
+      "kind": "file",
+      "bytes": 19330,
+      "sha256": "401f77c0012b545c1d2ab11f84bfa499f42bdb8fb3bfc68ee5b87b4aa4eb4689",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_late.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_late_stages.py",
+      "kind": "file",
+      "bytes": 5953,
+      "sha256": "70e954449badfc1c385c43ef2dd0bf604fded909357bf8114cf1a170dd82f1d6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_late_stages.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_middle.py",
+      "kind": "file",
+      "bytes": 6354,
+      "sha256": "f84d4fdd46d871b6ae7d325a754407e235cc4456c663bd31b08e8bee8fa63f6c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_middle.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_middle_lowra.py",
+      "kind": "file",
+      "bytes": 3418,
+      "sha256": "60a7ddab3feeb53fb63f81e65c0dd1d16b1d4eb264a4f5b8e134ec9569aa6dac",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_middle_lowra.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_protocol.py",
+      "kind": "file",
+      "bytes": 4852,
+      "sha256": "c90cdabe700e6d92595780f125d63b785581706e6b0a3cc633e277de9fe20e80",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_protocol.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_paper_protocol_audit.py",
+      "kind": "file",
+      "bytes": 6619,
+      "sha256": "9ad1c4ec75f046662fbc4b1a73b53e3d0a21fb469f0e6214304f8086a746e383",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_paper_protocol_audit.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_papers28_completion.py",
+      "kind": "file",
+      "bytes": 7017,
+      "sha256": "866e8b49b34f350f64e7112fb27dbc445932a116681b8acd550df57a09ed75e1",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_papers28_completion.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_papers28_known_target.py",
+      "kind": "file",
+      "bytes": 4204,
+      "sha256": "df626ed73958f79a640d6d427454037c5195b7a73400a0e796f474d1c5dfae15",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_papers28_known_target.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_papers28_paired.py",
+      "kind": "file",
+      "bytes": 1548,
+      "sha256": "aa8dafda8452dab154dff10d3a2c17c60a1f3d3d9c9b5cedd471f6e504f92340",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_papers28_paired.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_papers28_provenance.py",
+      "kind": "file",
+      "bytes": 1261,
+      "sha256": "5b915d05e58c75b498a9398c63330621459f0779981332443697c0f05cd981ba",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_papers28_provenance.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_peft_suite.py",
+      "kind": "file",
+      "bytes": 12498,
+      "sha256": "389a6c10dd86562cfb9859f64288cbf7efe8271ffa8750389183e48233dd9c26",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_peft_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_structural_suite.py",
+      "kind": "file",
+      "bytes": 7511,
+      "sha256": "8d85f75648155623779bd4f91b264c5c89d8b2ac7a8fe8f368f5b06e5ec90b42",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_structural_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tests/test_tuner_suite.py",
+      "kind": "file",
+      "bytes": 4683,
+      "sha256": "4629f492e8732df52c2a48318d5b4706e3bedc5a3cf78a753997711ae17d2feb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tests/test_tuner_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/transfer_eval.py",
+      "kind": "file",
+      "bytes": 5074,
+      "sha256": "31356ea03038c09776e2d18196f587b0537ce6ca18f58183b05cd13485bd6bd9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/transfer_eval.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/tuner_suite.py",
+      "kind": "file",
+      "bytes": 3939,
+      "sha256": "b04ac0497435d3abfaa1514b73a62a2889556da8e615b63063fbd46cb70eab70",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/tuner_suite.py"
+    },
+    {
+      "path": "experiments/ms_swift_aqa/verify_archive.py",
+      "kind": "file",
+      "bytes": 9017,
+      "sha256": "f23246a8de073251f93187e9603e1ce6ea703d83f24bf96b2c46c3b938fe19c2",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/verify_archive.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/README.md",
+      "kind": "file",
+      "bytes": 2893,
+      "sha256": "477aed59d940707c716f5482ce92c94274431d6a61f77d2daf1a90f84fa9efc8",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/README.md"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/closed_set_loss.py",
+      "kind": "file",
+      "bytes": 2367,
+      "sha256": "348c72b3c850df49f61bf69b40a6d67de35228cfa4fbc6db19287c71249c4137",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/closed_set_loss.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/config-all36-qkvo.json",
+      "kind": "file",
+      "bytes": 1371,
+      "sha256": "dab0fec8df1bf3d5b74f303599d61baaa65bd597f78eafc13f6c801aef17b2b7",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/config-all36-qkvo.json"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/config.json",
+      "kind": "file",
+      "bytes": 1276,
+      "sha256": "d03700c6eb34b6db69a816b864cd6453be24d7cd73f2a7193fa165deb9b85a0e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/config.json"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/diagnostic.py",
+      "kind": "file",
+      "bytes": 1432,
+      "sha256": "d1ee2f59b015a6319dfb2eaa17e8ef13a5ad687aa28f86a8cfbf3997ae86afbe",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/diagnostic.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/evaluate.py",
+      "kind": "file",
+      "bytes": 2606,
+      "sha256": "97f90441d5ae2051ca7eac75e8a8e3ecb8af6ee9f0bede7ae617544757d5688d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/evaluate.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/prepare.py",
+      "kind": "file",
+      "bytes": 2628,
+      "sha256": "9f1391c47861571464a0954c19f13461716d40b87257f71085a11756b3ae05a9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/prepare.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/qwen3-asr-0.6b-lora-b32.json",
+      "kind": "file",
+      "bytes": 1707,
+      "sha256": "c5ed7cdca43529bee80a9afe9e3a5b9a8d6494007e82ef2b0d4fb70a2326ceeb",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/qwen3-asr-0.6b-lora-b32.json"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/qwen3-asr-0.6b-ta-all-valid-b32.json",
+      "kind": "file",
+      "bytes": 1769,
+      "sha256": "12b15497f37f290ae78edb5c03c123ba357e109d711c1535f57e989968737cf4",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/qwen3-asr-0.6b-ta-all-valid-b32.json"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/run.py",
+      "kind": "file",
+      "bytes": 4683,
+      "sha256": "d2930b467d1bb2485622bd301fef790d5d568ae9e33955efcce6c18be1a32f25",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/run.py"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/ta-query-study.md",
+      "kind": "file",
+      "bytes": 8263,
+      "sha256": "b5ff16e2d2f35d00f89f5ffd40ad59745d6382d0406614c673def0992c3d943b",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/ta-query-study.md"
+    },
+    {
+      "path": "experiments/ms_swift_iemocap/tests/test_closed_set_loss.py",
+      "kind": "file",
+      "bytes": 2597,
+      "sha256": "6421a190aa3d7c026b1560545398d70271aca764ee83fddd3dd5117f9bb6b143",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_iemocap/tests/test_closed_set_loss.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/README.md",
+      "kind": "file",
+      "bytes": 6164,
+      "sha256": "0c5ad19dceec32302df161517f0df7a4712263dc5d4a88048f0e5dc60ad7d1e6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/README.md"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/adapter_audit.py",
+      "kind": "file",
+      "bytes": 8002,
+      "sha256": "e899c6ddd40cc1255742a60203a685011347448e331e47baa5ce9cc68adeaea0",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/adapter_audit.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/compare.py",
+      "kind": "file",
+      "bytes": 7932,
+      "sha256": "dd9514302e4cbf2a4c28737b6046b032828ef8b3cc39b9560ebb9621ae8975f3",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/compare.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/config.json",
+      "kind": "file",
+      "bytes": 1026,
+      "sha256": "8214e342f9c5eb30d56b289093d92ca8397240f7b79e4d64257d39c200aed3c9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/config.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/README.md",
+      "kind": "file",
+      "bytes": 2212,
+      "sha256": "eeb1c2075eaeae7d93a599b247aa2e8efdd4933cd374659ac1a0f12c7be87ab2",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/README.md"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/constraints.txt",
+      "kind": "file",
+      "bytes": 265,
+      "sha256": "ae41b07156bfaf3a8888f66e87752a2c9e8c9d04b22b6ce18b05a709fca20def",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/constraints.txt"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/create.sh",
+      "kind": "file",
+      "bytes": 666,
+      "sha256": "b0ce1959d9b9745d8fb4f7b860210c8e09707f021af5a030619525c1240ae730",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/create.sh"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/resolved-constraints.txt",
+      "kind": "file",
+      "bytes": 2706,
+      "sha256": "dad51b9fc9c0c616fd75235d7af058eccd4e8493c7cc8918e081255cdf54fba2",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/resolved-constraints.txt"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/verify_inputs.py",
+      "kind": "file",
+      "bytes": 5253,
+      "sha256": "b15717dc61528103ce780aa4032b544dc8b975d0e75c8f19f2b0e9cc541d073d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/verify_inputs.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/environment/verify_snapshot.py",
+      "kind": "file",
+      "bytes": 1471,
+      "sha256": "7cfc56b3b001a36670cacd0e1cbd4a80b32c752fdfb06f05c0f6e1ef89b2a4a7",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/environment/verify_snapshot.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evaluate.py",
+      "kind": "file",
+      "bytes": 6684,
+      "sha256": "115de182c37f427e68816371c490c9b39ad57e53bef22e8729cb84e252452e2f",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evaluate.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/environment.json",
+      "kind": "file",
+      "bytes": 5053,
+      "sha256": "82fce6642437921b21469cca6ffa74e810f811d5f6991abb42a79517f47c1fea",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/environment.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/inputs.json",
+      "kind": "file",
+      "bytes": 2452,
+      "sha256": "891535762a36b9b06040cff890656c7e3ceb0a35bd9e85a0920823ef26dc789e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/inputs.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/real-3b-lora.json",
+      "kind": "file",
+      "bytes": 3645,
+      "sha256": "d19ba9e2d5fba0be86352af3803962e26104340a19d6804cc6ae02ff868a1952",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/real-3b-lora.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/real-3b-ta-lora.json",
+      "kind": "file",
+      "bytes": 3732,
+      "sha256": "58a0c1bcfe060b39db90a26a87dde976f651dac9c751d85ded59e65984b05668",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/real-3b-ta-lora.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/swift-trainer-smoke.json",
+      "kind": "file",
+      "bytes": 1652,
+      "sha256": "10dbfa4c8144f10e7276cf22637f0713dfeb627fbb6aab77cd4e3f5f58881004",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/swift-trainer-smoke.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/verified_snapshot.json",
+      "kind": "file",
+      "bytes": 2706,
+      "sha256": "85a188cbca105d2041c8adedf1c2d184082238202fdb08be8920428fca47b54e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/verified_snapshot.json"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/evidence/workflow-tests.log",
+      "kind": "file",
+      "bytes": 1606,
+      "sha256": "fea3587acbb662c5052fd877fcaee595aa804d0d8e208b012b44b07828f30201",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/evidence/workflow-tests.log"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/plugin.py",
+      "kind": "file",
+      "bytes": 9478,
+      "sha256": "19d52af2f56b571af971475dcdfcee92312e869e893b77841d9e50ba65980f1a",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/plugin.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/prepare.py",
+      "kind": "file",
+      "bytes": 3956,
+      "sha256": "7ab3bbf03152813001817220db0c923b10cadc7a34784e79a566b109186b5219",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/prepare.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/run.sh",
+      "kind": "file",
+      "bytes": 694,
+      "sha256": "7c9ae1707b21a502d5c2b9880f6c1b8c84a4e104d5100757929cafa6352ff81e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/run.sh"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/smoke.py",
+      "kind": "file",
+      "bytes": 2409,
+      "sha256": "a3ff9c82f9be91b2a9e81f308fe29043eaf7a030ca21ac4b8a2e67bd5c8216e6",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/smoke.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/swift_asr_ta_runtime.py",
+      "kind": "file",
+      "bytes": 26293,
+      "sha256": "3e2af6767e0fb0993cac0bd93763643ba12750a9d8b8864dc4342012d405ed80",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/swift_asr_ta_runtime.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/tests/test_adapter_pair.py",
+      "kind": "file",
+      "bytes": 22526,
+      "sha256": "1b9744d3385fe0320ad8f3d3479aa5526f28bf6c8a7549f4bcd4e65e99895852",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/tests/test_adapter_pair.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/tests/test_conditional_gate.py",
+      "kind": "file",
+      "bytes": 8278,
+      "sha256": "21398aa3e13ac76a4e8c10a29300c6b6b15725e5531e03d6c14decebcd284943",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/tests/test_conditional_gate.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/tests/test_dora_audit.py",
+      "kind": "file",
+      "bytes": 2215,
+      "sha256": "161dadc301ba5af484e5b9c75fed37fc4c28d4f70eeb51f64261d9f6e2cea23d",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/tests/test_dora_audit.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/tests/test_score.py",
+      "kind": "file",
+      "bytes": 832,
+      "sha256": "aaae2501803bb751844d47646280584278fc162accaea5930e636aceb3e47f1c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/tests/test_score.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/tests/test_training.py",
+      "kind": "file",
+      "bytes": 4842,
+      "sha256": "1b565d9aadd500546a2e81f4fea6551ad8bf3547c434e20ec67daed77732cd8e",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/tests/test_training.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/train.py",
+      "kind": "file",
+      "bytes": 32778,
+      "sha256": "c932d8d192c27b0ef2b814e17204438c4e71da6c288a5b111537e4e05af7d431",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/train.py"
+    },
+    {
+      "path": "experiments/ms_swift_librispeech/validate_gpu.py",
+      "kind": "file",
+      "bytes": 6404,
+      "sha256": "59c2559c692563fb287fcbcf355502370c122966471dee9bd091cb222377839c",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_librispeech/validate_gpu.py"
+    },
+    {
+      "path": "experiments/preflight/REPORT.md",
+      "kind": "file",
+      "bytes": 11222,
+      "sha256": "f4211421ace1de9041cb5f2b0a6d1953011a8cec40dbe59390800e1eb3aea9a9",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/preflight/REPORT.md"
+    },
+    {
+      "path": "experiments/preflight/asr-plan/summary.json",
+      "kind": "file",
+      "bytes": 2501,
+      "sha256": "4799cc9314837d3487de139e090963ccfaa5f911a2de65f19d8ecc1e7e6c32ba",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/preflight/asr-plan/summary.json"
+    },
+    {
+      "path": "experiments/preflight/asr-stats/summary.json",
+      "kind": "file",
+      "bytes": 2241,
+      "sha256": "c24bf4dc5291df940778c3cbd2145a4009fa95d2324bee461b861d69dc62e707",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/preflight/asr-stats/summary.json"
+    },
+    {
+      "path": "experiments/preflight/run_asr_smoke.py",
+      "kind": "file",
+      "bytes": 5872,
+      "sha256": "bd523005c5d61174997a8cfa854d12a16d8a1311d1657a6f1aee269a2a50c541",
+      "source": "/autodl-fs/data/west-ta-baselines/experiments/preflight/run_asr_smoke.py"
+    },
+    {
+      "path": "requirements.txt",
+      "kind": "file",
+      "bytes": 322,
+      "sha256": "542fb058d7390b198a33889ae902c81ac6e3bf0e9d73b96ca9af947b31490111",
+      "source": "/autodl-fs/data/west-ta-baselines/requirements.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 433,
+      "sha256": "fcfaa395ebe0f1e8d4cc8327a160a21bbc6fcc1bead33036b600d0f87d77ffca",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/CPPLINT.cfg",
+      "kind": "file",
+      "bytes": 29,
+      "sha256": "43b1599eb6df709e6056e8c019c7139abd0e38999e687c2bfa7e24a96ebf8ebb",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/CPPLINT.cfg"
+    },
+    {
+      "path": "runtime/nano_touch_asr/README.md",
+      "kind": "file",
+      "bytes": 2786,
+      "sha256": "419c0ff966030872a1da1c3099d93a9504d56872ed4d572a9e805f2b3dd8ece7",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/README.md"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/gflags.cmake",
+      "kind": "file",
+      "bytes": 261,
+      "sha256": "64fc141db81c9c2b1f125195173f0cdae352ff8759883ce5653fb708060e838e",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/gflags.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/glog.cmake",
+      "kind": "file",
+      "bytes": 674,
+      "sha256": "7e4e81ee63298ed7d6c690ad12687ad84ee88be71db39727ddc2aa73d7779a85",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/glog.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/gtest.cmake",
+      "kind": "file",
+      "bytes": 322,
+      "sha256": "3498277813e511266572ca901e14a39fd4b76ecf697ebe4a4f107125d50f43d3",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/gtest.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/llama.cpp.cmake",
+      "kind": "file",
+      "bytes": 149,
+      "sha256": "fc49b6e25d3b040ce7e190f9a329837ca5090c40b783b9faed1579ef176bfb58",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/llama.cpp.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/onnx.cmake",
+      "kind": "file",
+      "bytes": 3067,
+      "sha256": "9057d271e47a9ab315cadeab2b8c471fddb693bf6c7dc4b21c9af9f4ed3cea57",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/onnx.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/toolchain-aarch64-linux-macos.cmake",
+      "kind": "file",
+      "bytes": 1538,
+      "sha256": "92c9992ce1cb74ca1adb485427552cc5bfbef4516b96a4280935129e9802801a",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/toolchain-aarch64-linux-macos.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/cmake/toolchain-android-arm64.cmake",
+      "kind": "file",
+      "bytes": 1615,
+      "sha256": "d022e28030c02258b85fb544a004806c05c6d772cc39e38f0aef689488ef23d4",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/cmake/toolchain-android-arm64.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 147,
+      "sha256": "a9963ded1c070a12568e70fa5d85372743cc7ee16c8112e009c67ae6a9a1ac2a",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 564,
+      "sha256": "22cb07dacb8ffff944ab701b238f4a3e3eacec07b34a6555a2d638caf27d9fbd",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/compute_feature.cc",
+      "kind": "file",
+      "bytes": 2098,
+      "sha256": "b86f75d26fc34663d4ab13cda96057ab30ed20ed8e5c37f7a0cdcb56e497ab28",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/compute_feature.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/decode_ctc_main.cc",
+      "kind": "file",
+      "bytes": 4697,
+      "sha256": "66bbfadb1ac87ae010ecc6036e884984520f08e4ea6756b6a70958bbfc608787",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/decode_ctc_main.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/llm_main.cc",
+      "kind": "file",
+      "bytes": 1497,
+      "sha256": "533c3ea3b54c270ccc966c3f5d3535ddaaf5479c2bf83c976abff73e80a8d74c",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/llm_main.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/projector_main.cc",
+      "kind": "file",
+      "bytes": 2435,
+      "sha256": "2aadb5f1a5b4a684a0b0b4bfb762af13a54017ef1939d331ebef3a7649ffed81",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/projector_main.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/bin/touch_asr_main.cc",
+      "kind": "file",
+      "bytes": 6244,
+      "sha256": "1f9814d511a101b5973bab3709a92680c5779674bb64716495a178e06c360d5c",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/bin/touch_asr_main.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 64,
+      "sha256": "5c61fbf4de3f823860ca520069ac2358a93d074fb04a80bb2d0abe8e30badc83",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/fbank.h",
+      "kind": "file",
+      "bytes": 16161,
+      "sha256": "047b29101cef3f6df5f2d61e097d419b94220d876afe4135f2b2c7898a4cfcd5",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/fbank.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/feature_pipeline.cc",
+      "kind": "file",
+      "bytes": 4252,
+      "sha256": "37be4b3a8e8bf237fae7fff9eb43b121e394bcfbd6122190edee5d9cbbb47c00",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/feature_pipeline.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/feature_pipeline.h",
+      "kind": "file",
+      "bytes": 5538,
+      "sha256": "adc8b9a47a685f724360b3d7432f2165b9679648eb3b401d3decab67368b9075",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/feature_pipeline.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/fft.cc",
+      "kind": "file",
+      "bytes": 2800,
+      "sha256": "d219e283cee64f46e77f0ee83f92385db19cd2f3d3b96fe8ce761395a76e07ec",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/fft.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/fft.h",
+      "kind": "file",
+      "bytes": 1030,
+      "sha256": "083ca694f0b613adc9bb8fc76e2fcf54f2e950912bc12513db13cbeb29be62bc",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/fft.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/fft2.cc",
+      "kind": "file",
+      "bytes": 3733,
+      "sha256": "b7aec78fb25bb2d0eb735408b03420c934653113c1e5249e9030f5fad24b6e3d",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/fft2.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/fft2.h",
+      "kind": "file",
+      "bytes": 198,
+      "sha256": "21c335054895dd13ed120360aa6a00f085286f2711fad10da2b584b25ecfabdb",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/fft2.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/resample.h",
+      "kind": "file",
+      "bytes": 3863,
+      "sha256": "faed7d5aeeb9a9a9fa9d6381c67c4a75c7bb7bee502a9c14aba819d9cc8c0b6e",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/resample.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/frontend/wav.h",
+      "kind": "file",
+      "bytes": 7980,
+      "sha256": "0bbe5e20e3afb761cf23e0af9a1bf8cc71504828b79fde4492079f61b0307fa5",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/frontend/wav.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 167,
+      "sha256": "221e0296dda8f823cd8839e3e0890ef0391fe794890b74644c9a91f1690406ff",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/ctc_model.cc",
+      "kind": "file",
+      "bytes": 1777,
+      "sha256": "b84aaed43e9c45b99c193d6a42824e23c26675192a793ba6f06638d8787060a9",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/ctc_model.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/ctc_model.h",
+      "kind": "file",
+      "bytes": 585,
+      "sha256": "11043c1a6745e5801cfb2cf66ae915ffb3e5b8829744c9092379b33a09d466de",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/ctc_model.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/ctc_tokens.h",
+      "kind": "file",
+      "bytes": 1641,
+      "sha256": "274584bda374073ec33bdb72a73dca645bdca058749afa21f140a00a2b144a60",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/ctc_tokens.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/llm.cc",
+      "kind": "file",
+      "bytes": 7157,
+      "sha256": "4524a32e351e4bb4b2767987626b790dba863280d9bed190b2fd702c135969cd",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/llm.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/llm.h",
+      "kind": "file",
+      "bytes": 958,
+      "sha256": "8a1e1bbc06021afd74e19e2fb6e9fdcf881f1f09cbcb36fa181bdfa3e5d921c3",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/llm.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/onnx_model.cc",
+      "kind": "file",
+      "bytes": 3387,
+      "sha256": "0d5a9a18bc20b2d06f4b00df162290298c0efb5bfb2607d1242b733401c04dab",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/onnx_model.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/onnx_model.h",
+      "kind": "file",
+      "bytes": 1653,
+      "sha256": "5e2092ae954928e13aae1b2cc75e8f50883b47af023caf0ab311247ba81da07f",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/onnx_model.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/projector.cc",
+      "kind": "file",
+      "bytes": 1427,
+      "sha256": "b76ed77269cd3b3bb5852450decb458d1769b06f88475247019641d21dd9dda9",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/projector.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/projector.h",
+      "kind": "file",
+      "bytes": 475,
+      "sha256": "8bfd916c1068fcc2dcf5335bc52ca9f222e18a9ea88821ec66eec1fe65c742ef",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/projector.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/speech_encoder.cc",
+      "kind": "file",
+      "bytes": 7280,
+      "sha256": "9a8d5e5c4657091af8e1678196fb07d6e8a44215217aba70144196083e28ad71",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/speech_encoder.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/speech_encoder.h",
+      "kind": "file",
+      "bytes": 1728,
+      "sha256": "a7a3d65e38191e6c08c7dffcdd76232b6f7cae64baa07f6b1cce03b23ee29655",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/speech_encoder.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/touch_asr.cc",
+      "kind": "file",
+      "bytes": 3322,
+      "sha256": "97d8b109f8369e1cc14aa8605ffc7cf993e6dd09cd7fd482de32950a024329c3",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/touch_asr.cc"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/model/touch_asr.h",
+      "kind": "file",
+      "bytes": 1590,
+      "sha256": "4ed58d828115933f96630ee716ea8cd1965488b76041280de134d6c7270c531c",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/model/touch_asr.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/utils/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/utils/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/utils/blocking_queue.h",
+      "kind": "file",
+      "bytes": 3509,
+      "sha256": "c6e950a66f17fe2ca57edcf171f6e7921ae85faa0dc954c7b000effc3c8b19ba",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/utils/blocking_queue.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/utils/log.h",
+      "kind": "file",
+      "bytes": 699,
+      "sha256": "52f51f473d9cd7f44cdec440273c3f2bc26a1c34132de9c6d928ba0f16a3db96",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/utils/log.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/utils/timer.h",
+      "kind": "file",
+      "bytes": 1256,
+      "sha256": "aeba7071ca2381d26f78595b0e06cea0d2c6784ddd3caa30c0526cd8d89bd9ac",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/utils/timer.h"
+    },
+    {
+      "path": "runtime/nano_touch_asr/src/utils/utils.h",
+      "kind": "file",
+      "bytes": 912,
+      "sha256": "609e17dcb007b6bf2ba576483032262b9725a59248a26930b8958a470c16d49c",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_asr/src/utils/utils.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 433,
+      "sha256": "b5c8175ffe20eb5b4a33bcb43110418fd2096359e5335fbe0a53b3b2a2022b07",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_tts/CPPLINT.cfg",
+      "kind": "file",
+      "bytes": 29,
+      "sha256": "43b1599eb6df709e6056e8c019c7139abd0e38999e687c2bfa7e24a96ebf8ebb",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/CPPLINT.cfg"
+    },
+    {
+      "path": "runtime/nano_touch_tts/README.md",
+      "kind": "file",
+      "bytes": 759,
+      "sha256": "6402708b75379d5edf5c8c89d7fa4385ebcbc5272aabd3487aa3945a5c62c4b7",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/README.md"
+    },
+    {
+      "path": "runtime/nano_touch_tts/cmake/gflags.cmake",
+      "kind": "file",
+      "bytes": 261,
+      "sha256": "64fc141db81c9c2b1f125195173f0cdae352ff8759883ce5653fb708060e838e",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/cmake/gflags.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_tts/cmake/glog.cmake",
+      "kind": "file",
+      "bytes": 268,
+      "sha256": "84c29ce2a41b2d71b943c0e897a64f78cd47385066248b3057b91e034a3713e7",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/cmake/glog.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_tts/cmake/gtest.cmake",
+      "kind": "file",
+      "bytes": 322,
+      "sha256": "3498277813e511266572ca901e14a39fd4b76ecf697ebe4a4f107125d50f43d3",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/cmake/gtest.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_tts/cmake/llama.cpp.cmake",
+      "kind": "file",
+      "bytes": 149,
+      "sha256": "fc49b6e25d3b040ce7e190f9a329837ca5090c40b783b9faed1579ef176bfb58",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/cmake/llama.cpp.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_tts/cmake/onnx.cmake",
+      "kind": "file",
+      "bytes": 1988,
+      "sha256": "8f7e6a0565e4170168db078aff55b83658ccf82538193370f7c8a12a7e6fc5cb",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/cmake/onnx.cmake"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 147,
+      "sha256": "a9963ded1c070a12568e70fa5d85372743cc7ee16c8112e009c67ae6a9a1ac2a",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 898,
+      "sha256": "50231108d1b61b77972e4aae7aeddece361a7231df891ce4737567cc6bd4727a",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/compute_feature.cc",
+      "kind": "file",
+      "bytes": 2098,
+      "sha256": "b86f75d26fc34663d4ab13cda96057ab30ed20ed8e5c37f7a0cdcb56e497ab28",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/compute_feature.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/compute_speaker_embedding.cc",
+      "kind": "file",
+      "bytes": 656,
+      "sha256": "531c5050ff4d419249db779167196ba0911fa8a3f97e20e10d42a7ae7cee47ea",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/compute_speaker_embedding.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/compute_speech_token.cc",
+      "kind": "file",
+      "bytes": 656,
+      "sha256": "be0ac8ef69a4cc857ad85d209bb0f21938771b7bdf5cdfde80d16f63a5df9e62",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/compute_speech_token.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/mel2wav.cc",
+      "kind": "file",
+      "bytes": 3064,
+      "sha256": "f6bf76605fec8665221e1a138de0afd26bcfc082016d70f5de463d2942486d79",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/mel2wav.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/touch_tts_flow_gen.cc",
+      "kind": "file",
+      "bytes": 2471,
+      "sha256": "f12d5dbab9d69af53f960aa148df75833d678c1dfdc1c7800988acf47ebc0470",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/touch_tts_flow_gen.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/touch_tts_gen.cc",
+      "kind": "file",
+      "bytes": 8062,
+      "sha256": "2c60c45d864a8af24774d7ef034550730e7f3e3ed7d46a6f78acc3fcaa0e9528",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/touch_tts_gen.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/bin/touch_tts_llm_gen.cc",
+      "kind": "file",
+      "bytes": 1406,
+      "sha256": "22db621c57d8ffc62a957161bf32bd1406c1ca0c815972d434301bad7703ec33",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/bin/touch_tts_llm_gen.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/CMakeLists.txt",
+      "kind": "file",
+      "bytes": 185,
+      "sha256": "1b4799727539e69e07192bfb9722288fdb995e6e21fc280dba482834ac291cd8",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/CMakeLists.txt"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/hifi_gan.cc",
+      "kind": "file",
+      "bytes": 1721,
+      "sha256": "8842ee67fce1f671f3b862715ee3bbdff1b250c7c97c5627f4ddc4cbf0526d1a",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/hifi_gan.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/hifi_gan.h",
+      "kind": "file",
+      "bytes": 601,
+      "sha256": "6962cc83b2c2598da1b8ad50bc4ec1ba62768010a96dd23565de035986bad8f9",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/hifi_gan.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/onnx_model.cc",
+      "kind": "file",
+      "bytes": 3387,
+      "sha256": "0d5a9a18bc20b2d06f4b00df162290298c0efb5bfb2607d1242b733401c04dab",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/onnx_model.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/onnx_model.h",
+      "kind": "file",
+      "bytes": 1590,
+      "sha256": "d4a9eba9212cc997fee69edd0157a37fe0c24d87b692b64f59f2040cc030b6d9",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/onnx_model.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/s3tokenizer.cc",
+      "kind": "file",
+      "bytes": 2325,
+      "sha256": "adab1129e816a4ed75cb7078d9489368a146b4421bea28c867515d505a0b4d93",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/s3tokenizer.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/s3tokenizer.h",
+      "kind": "file",
+      "bytes": 667,
+      "sha256": "f13dc915e1166147da209bdddab0f84ef852ba0611949df33180250074a657ee",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/s3tokenizer.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/speaker_model.cc",
+      "kind": "file",
+      "bytes": 2652,
+      "sha256": "46ec3847a02691725248fe9a098478657e9c1e80b1e242c0d5ce526d3c6fb654",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/speaker_model.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/speaker_model.h",
+      "kind": "file",
+      "bytes": 795,
+      "sha256": "d5bd76fef7bdec76c54d661c0e83fccb5720939afafec38ed01214f0b506af60",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/speaker_model.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/touch_tts_flow.cc",
+      "kind": "file",
+      "bytes": 2881,
+      "sha256": "9f54987a597359f74dafc9d7516df78baecb43f73e9973f3f56947587555df64",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/touch_tts_flow.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/touch_tts_flow.h",
+      "kind": "file",
+      "bytes": 731,
+      "sha256": "583037100d5ed509483395ee073b566db498816156f2efee336cf23001658cb8",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/touch_tts_flow.h"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/touch_tts_llm.cc",
+      "kind": "file",
+      "bytes": 5258,
+      "sha256": "b130a5e3fd36e4d2432b5bc9019707567c04ddbf63c68ffb3407e6ad285aeed7",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/touch_tts_llm.cc"
+    },
+    {
+      "path": "runtime/nano_touch_tts/src/model/touch_tts_llm.h",
+      "kind": "file",
+      "bytes": 1009,
+      "sha256": "b922d04a16d575457dec43cff489d1460ec45d6672e31e07e917678eb80e2faf",
+      "source": "/autodl-fs/data/west-ta-baselines/runtime/nano_touch_tts/src/model/touch_tts_llm.h"
+    },
+    {
+      "path": "test/test_librispeech_touchasu_wer.py",
+      "kind": "file",
+      "bytes": 7213,
+      "sha256": "36b706826614f399618ef7c8c00a2d9b895f2c3c196133235bec4a089f1c706c",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_librispeech_touchasu_wer.py"
+    },
+    {
+      "path": "test/test_omni_ta_attention.py",
+      "kind": "file",
+      "bytes": 7944,
+      "sha256": "5f9f03f8e17c691c2a849ab91572c7cece5834e763b5fb850e021f3146873484",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_attention.py"
+    },
+    {
+      "path": "test/test_omni_ta_baseline_integration.py",
+      "kind": "file",
+      "bytes": 9356,
+      "sha256": "8aec214ec2d0a8d61e6fe733c7a19ec0bed9aa07030b9b11bd96785e1bd5f028",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_baseline_integration.py"
+    },
+    {
+      "path": "test/test_omni_ta_checkpoint.py",
+      "kind": "file",
+      "bytes": 12447,
+      "sha256": "d9cbc0f87080fa72c5d91459b3d410b131c3fe61db2b9e2a77cf28d6e3121125",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_checkpoint.py"
+    },
+    {
+      "path": "test/test_omni_ta_checkpoint_replay.py",
+      "kind": "file",
+      "bytes": 2712,
+      "sha256": "ace9ed1b6ce9be188a0331c9af983d359e8cd9592a283c5ce55a12cd2da33a03",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_checkpoint_replay.py"
+    },
+    {
+      "path": "test/test_omni_ta_data.py",
+      "kind": "file",
+      "bytes": 6874,
+      "sha256": "52c39025a98273ed1e86064043767c4ada5f2436ee76e70b21fffadfcd2705fd",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_data.py"
+    },
+    {
+      "path": "test/test_omni_ta_diagnostics.py",
+      "kind": "file",
+      "bytes": 1917,
+      "sha256": "f5110ab2a61fdb6e3552e2cd43ef1eed3fca3b8088f53528f7c029b2e752deb7",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_diagnostics.py"
+    },
+    {
+      "path": "test/test_omni_ta_eva.py",
+      "kind": "file",
+      "bytes": 6256,
+      "sha256": "75aa907bc52cad86932fcee827093aa87994e35ffa640b29402bc6a2655f9a1b",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_eva.py"
+    },
+    {
+      "path": "test/test_omni_ta_integration.py",
+      "kind": "file",
+      "bytes": 9128,
+      "sha256": "8a8ba44662ad89b500554f69f23b109545c630a2ab726c91bc3efefa53d12112",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_integration.py"
+    },
+    {
+      "path": "test/test_omni_ta_manifest.py",
+      "kind": "file",
+      "bytes": 3502,
+      "sha256": "169c55e4939456ae438133fa205e0fde4ee7330e2648a29be6f8170fe4e9190d",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_manifest.py"
+    },
+    {
+      "path": "test/test_omni_ta_preflight.py",
+      "kind": "file",
+      "bytes": 4309,
+      "sha256": "b34ef1bc4ee9e2271ed2438d3f1dbe94b95dec6dae3a87ea2f7ea9f2d2aa1771",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_preflight.py"
+    },
+    {
+      "path": "test/test_omni_ta_projection.py",
+      "kind": "file",
+      "bytes": 6121,
+      "sha256": "a975c5adb0c023d770671e5afaa50043840daf7157e635c432480720b8d30f08",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_projection.py"
+    },
+    {
+      "path": "test/test_omni_ta_registry.py",
+      "kind": "file",
+      "bytes": 6882,
+      "sha256": "1576dc4d24657e821626fac529463a6d6321b6d7d4a5f190c8c322fb7aedb878",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_registry.py"
+    },
+    {
+      "path": "test/test_omni_ta_residual_precision.py",
+      "kind": "file",
+      "bytes": 5757,
+      "sha256": "2a6cf0501ff7c2ae98e1eb542b2bee677bfab226757cfbb54dab979be2bcf424",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_residual_precision.py"
+    },
+    {
+      "path": "test/test_omni_ta_snapshot.py",
+      "kind": "file",
+      "bytes": 1267,
+      "sha256": "a82e35f29c7db01202dd886d8be5dfe401233005de0e0e7e86bb4265d0016253",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_snapshot.py"
+    },
+    {
+      "path": "test/test_omni_ta_train.py",
+      "kind": "file",
+      "bytes": 2881,
+      "sha256": "cc1288fc631ccad182e3c6589e93350485a23a851694628c05ff17424d835f51",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_train.py"
+    },
+    {
+      "path": "test/test_omni_ta_west_decode.py",
+      "kind": "file",
+      "bytes": 3588,
+      "sha256": "7b375c984db000599eee2b6d93c1025aeb05e508c30923ffd41bbb446f23e08c",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_west_decode.py"
+    },
+    {
+      "path": "test/test_omni_ta_west_protocol.py",
+      "kind": "file",
+      "bytes": 6163,
+      "sha256": "611ef0c0ce165f75fe557ad53be76359823b56fce31b2c3d6e22d7e11696cfe0",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_west_protocol.py"
+    },
+    {
+      "path": "test/test_omni_ta_west_train.py",
+      "kind": "file",
+      "bytes": 12981,
+      "sha256": "0894c095ec32958e35a3bcb2f51dbd98b67cd8e320579cc9c3926905e7ac89da",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_omni_ta_west_train.py"
+    },
+    {
+      "path": "test/test_sequence_pack.py",
+      "kind": "file",
+      "bytes": 2082,
+      "sha256": "0c5067a77e1feb3deec65a0f29f98695449bae5d708c209fc067c166008cf051",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_sequence_pack.py"
+    },
+    {
+      "path": "test/test_touch_asu_adapters.py",
+      "kind": "file",
+      "bytes": 19877,
+      "sha256": "b52e63a67165db04916945cb5316bd310407e10559bfecfd2cb941a152cd9b12",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_touch_asu_adapters.py"
+    },
+    {
+      "path": "test/test_touch_asu_packed_attention.py",
+      "kind": "file",
+      "bytes": 9169,
+      "sha256": "84f47682801ccf4de3a3ea0d7204c1a010fe969eb93322a562526238c940831c",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_touch_asu_packed_attention.py"
+    },
+    {
+      "path": "test/test_touchasu_comparison.py",
+      "kind": "file",
+      "bytes": 4443,
+      "sha256": "178522cf99cadbd74694f906f414d055aa467b98ec436e97c6e20f6822c16091",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_touchasu_comparison.py"
+    },
+    {
+      "path": "test/test_west_model_registry.py",
+      "kind": "file",
+      "bytes": 1286,
+      "sha256": "ad6ca60a15fe7e4be0f9a39f21e3935c2568f5ae1be6846b6c3dfe3cff9a00d7",
+      "source": "/autodl-fs/data/west-ta-baselines/test/test_west_model_registry.py"
+    },
+    {
+      "path": "tools/add_speech_tokens.py",
+      "kind": "file",
+      "bytes": 963,
+      "sha256": "fb8b3ceed3ab4f1893e607512ac6cdd4969203565ef9e971b0e11a41a57df79d",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/add_speech_tokens.py"
+    },
+    {
+      "path": "tools/compute_acc_of_contain.py",
+      "kind": "file",
+      "bytes": 2221,
+      "sha256": "dcfcf2bed5e8f80d6c6dde5ba388bd976d97df08e986e2a30c3678f0a0eae2e8",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/compute_acc_of_contain.py"
+    },
+    {
+      "path": "tools/compute_similarity.py",
+      "kind": "file",
+      "bytes": 1046,
+      "sha256": "22fe587fabf722f26dbc87bd53606c6ccb099deb56a9b0dab8dbe0fe363022fb",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/compute_similarity.py"
+    },
+    {
+      "path": "tools/compute_wer.py",
+      "kind": "file",
+      "bytes": 20639,
+      "sha256": "6cf1d9653cfcac7f9ae1be19d53e313d5f0902c24b7be64c707f71f2e1562041",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/compute_wer.py"
+    },
+    {
+      "path": "tools/gen_tts_wavscp_text.py",
+      "kind": "file",
+      "bytes": 1206,
+      "sha256": "ae75a2443582ea1e9c833907f723b346ff0556b05d65ca594a867a09bdd2ecf5",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/gen_tts_wavscp_text.py"
+    },
+    {
+      "path": "tools/get_qa_hyp_ref_text.py",
+      "kind": "file",
+      "bytes": 714,
+      "sha256": "b6c030c96bc55d61248c33b95d659a6b2745571cc1454ca7269b53b747c36716",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/get_qa_hyp_ref_text.py"
+    },
+    {
+      "path": "tools/parse_options.sh",
+      "kind": "file",
+      "bytes": 3648,
+      "sha256": "3c458b4b5fc85e13c2a2ea47dc1c6b7bf2154575a5479dba55f4fcbb72b0f9c8",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/parse_options.sh"
+    },
+    {
+      "path": "tools/prepare_codec.py",
+      "kind": "file",
+      "bytes": 1026,
+      "sha256": "737e311049969876b51eafe71423a15b70e0ab9751bff8160cc4abb4b0767a76",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/prepare_codec.py"
+    },
+    {
+      "path": "tools/tn_utils.py",
+      "kind": "file",
+      "bytes": 1149,
+      "sha256": "015080b7eda2040bb4d6a6495b04d5fc3ce9ad261791e862b67f227d6de9733a",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/tn_utils.py"
+    },
+    {
+      "path": "tools/vocoder.py",
+      "kind": "file",
+      "bytes": 3543,
+      "sha256": "612bdec5f9fcc492c21e53a3928f0b5a1a667ea74c79f8930c9cb39a78a71c37",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/vocoder.py"
+    },
+    {
+      "path": "tools/whisper_asr.py",
+      "kind": "file",
+      "bytes": 1694,
+      "sha256": "b836fd4e1776612f6726435ed074a57133ecf08c2e8dc3076021c701a8edd176",
+      "source": "/autodl-fs/data/west-ta-baselines/tools/whisper_asr.py"
+    },
+    {
+      "path": "west/__init__.py",
+      "kind": "file",
+      "bytes": 1538,
+      "sha256": "c37d9b406b5e055b3b3a260b4e5d7c362b5ef86b673f5ddac121fdf04f5f25e0",
+      "source": "/autodl-fs/data/west-ta-baselines/west/__init__.py"
+    },
+    {
+      "path": "west/bin/decode.py",
+      "kind": "file",
+      "bytes": 2900,
+      "sha256": "6fd7cb482f68e103d632c88a9dcca2ab40cac6ed72e015884faf7dc51fb07b73",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/decode.py"
+    },
+    {
+      "path": "west/bin/decode_mmau.py",
+      "kind": "file",
+      "bytes": 7015,
+      "sha256": "af34b548a332f464e61ff82a39396033dff23bf52e4a4eb9dbf589aacff24507",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/decode_mmau.py"
+    },
+    {
+      "path": "west/bin/decode_mmsu.py",
+      "kind": "file",
+      "bytes": 13091,
+      "sha256": "164f7e9a4b6e26a425ba90df4d2bea8754ca78c5ed4015651b21acef69be9573",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/decode_mmsu.py"
+    },
+    {
+      "path": "west/bin/llm_config_to_model.py",
+      "kind": "file",
+      "bytes": 1057,
+      "sha256": "789292dbe05380630b979480a662810bed1f21cb9257d7545b08508779cf4060",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/llm_config_to_model.py"
+    },
+    {
+      "path": "west/bin/train.py",
+      "kind": "file",
+      "bytes": 14124,
+      "sha256": "9e5bc40e4e69309edf5865b5e1bdfd7367608965f8b2377913b748788254a5cc",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/train.py"
+    },
+    {
+      "path": "west/bin/train_grpo.py",
+      "kind": "file",
+      "bytes": 6576,
+      "sha256": "ac583e0bb8391472bb61a5f99af9327a6b5d241e3fe44b660527b383753ed0a6",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/train_grpo.py"
+    },
+    {
+      "path": "west/bin/train_knowledge_distillation.py",
+      "kind": "file",
+      "bytes": 8464,
+      "sha256": "2e8ac1a2e335d6bc623843808516f00c1fb6e37a6014b1c28fe0e4a9b8e3765f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/train_knowledge_distillation.py"
+    },
+    {
+      "path": "west/bin/tts_flow_inference.py",
+      "kind": "file",
+      "bytes": 1801,
+      "sha256": "f16c6da9bb984cb8426964345f96e597953b791b2caadc3d9c67595a1178eb64",
+      "source": "/autodl-fs/data/west-ta-baselines/west/bin/tts_flow_inference.py"
+    },
+    {
+      "path": "west/dataset/__init__.py",
+      "kind": "file",
+      "bytes": 41,
+      "sha256": "77a144fba2bd94f7d43a7bd76e7d97b72c7ba8cd64aab49f521376788effa251",
+      "source": "/autodl-fs/data/west-ta-baselines/west/dataset/__init__.py"
+    },
+    {
+      "path": "west/dataset/dataset.py",
+      "kind": "file",
+      "bytes": 9587,
+      "sha256": "0dcaed4994d2cdebb5757da4f69936183bf2410117d4bc1761c1ca7bfa8f35c9",
+      "source": "/autodl-fs/data/west-ta-baselines/west/dataset/dataset.py"
+    },
+    {
+      "path": "west/dataset/extractor.py",
+      "kind": "file",
+      "bytes": 1068,
+      "sha256": "66d52f409d8003a42c06a15cfe0961b291c40c04e11e712cbdf92c66d788a94a",
+      "source": "/autodl-fs/data/west-ta-baselines/west/dataset/extractor.py"
+    },
+    {
+      "path": "west/dataset/hf_dataset.py",
+      "kind": "file",
+      "bytes": 10443,
+      "sha256": "a52d5fd11ce30978f6ac83931ae522e582f59d0878b98f8eb74911379bb16432",
+      "source": "/autodl-fs/data/west-ta-baselines/west/dataset/hf_dataset.py"
+    },
+    {
+      "path": "west/models/__init__.py",
+      "kind": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/__init__.py"
+    },
+    {
+      "path": "west/models/fireredasr_llm/__init__.py",
+      "kind": "file",
+      "bytes": 198,
+      "sha256": "f5b6b821ad57a415d287e24d47c8001830eb8c1784d67ba508d6c7096b882131",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fireredasr_llm/__init__.py"
+    },
+    {
+      "path": "west/models/fireredasr_llm/configuration_fireredasr_llm.py",
+      "kind": "file",
+      "bytes": 414,
+      "sha256": "7521b08cab7e144bc567efe55e56b70956cc5ff72af83eaa35d8901edcdaa77f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fireredasr_llm/configuration_fireredasr_llm.py"
+    },
+    {
+      "path": "west/models/fireredasr_llm/convert_fireredasr_llm_weights_to_west.py",
+      "kind": "file",
+      "bytes": 5508,
+      "sha256": "abfcfc3b4603d00cb57f0401eb77969a3e63b9f60c0d577e0ba3a20406d2bec6",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fireredasr_llm/convert_fireredasr_llm_weights_to_west.py"
+    },
+    {
+      "path": "west/models/fireredasr_llm/extractor_fireredasr_llm.py",
+      "kind": "file",
+      "bytes": 219,
+      "sha256": "4d2332651037ab12c5aebceca315ddca87a079b060f124fafbea4463a6abae09",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fireredasr_llm/extractor_fireredasr_llm.py"
+    },
+    {
+      "path": "west/models/fireredasr_llm/modeling_fireredasr_llm.py",
+      "kind": "file",
+      "bytes": 2088,
+      "sha256": "6b964a93671a2995182f168730f6097e49d4a4642c1d93f01c620367ffc51e21",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fireredasr_llm/modeling_fireredasr_llm.py"
+    },
+    {
+      "path": "west/models/fun_asr/__init__.py",
+      "kind": "file",
+      "bytes": 156,
+      "sha256": "ccd796d9497e4d496a358b47efb5b1637fc352d504824ad895ba79d0ee4e2646",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fun_asr/__init__.py"
+    },
+    {
+      "path": "west/models/fun_asr/configuration_fun_asr.py",
+      "kind": "file",
+      "bytes": 393,
+      "sha256": "14405d282304cf13357a25cb7267baf72557f82c5d74bddb376da5d7cfbbbb5f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fun_asr/configuration_fun_asr.py"
+    },
+    {
+      "path": "west/models/fun_asr/extractor_fun_asr.py",
+      "kind": "file",
+      "bytes": 1697,
+      "sha256": "b8de4cfe137dee8b07e7ad019609743fbff05513dc01281e115c234f596f2914",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fun_asr/extractor_fun_asr.py"
+    },
+    {
+      "path": "west/models/fun_asr/modeling_fun_asr.py",
+      "kind": "file",
+      "bytes": 3898,
+      "sha256": "168c7c0a52614ffc3c8971143f8d171d45d931617312f6893b651c6cce6a94dc",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/fun_asr/modeling_fun_asr.py"
+    },
+    {
+      "path": "west/models/goat_slm/__init__.py",
+      "kind": "file",
+      "bytes": 258,
+      "sha256": "1d484ea537669ff0d2552badf4f850432e868b8be9da385a420f94c3b4d36f30",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/__init__.py"
+    },
+    {
+      "path": "west/models/goat_slm/configuration_goat_slm.py",
+      "kind": "file",
+      "bytes": 1905,
+      "sha256": "05dc60da5c6486c2b889b6af479925ebe8f06de8445def6e4ebf915218436b92",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/configuration_goat_slm.py"
+    },
+    {
+      "path": "west/models/goat_slm/configuration_telechat3.py",
+      "kind": "file",
+      "bytes": 4305,
+      "sha256": "b3f3a33f0d1b97d28017f69dc30f02d4b13f6989b011d53f1f97135c9fb62517",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/configuration_telechat3.py"
+    },
+    {
+      "path": "west/models/goat_slm/configuration_transformer_adapter.py",
+      "kind": "file",
+      "bytes": 10994,
+      "sha256": "3a2ca2f7493ad67fb58d767cfd7efce513b186bf4a57d4974c709239b3a33fd0",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/configuration_transformer_adapter.py"
+    },
+    {
+      "path": "west/models/goat_slm/generation_utils.py",
+      "kind": "file",
+      "bytes": 59255,
+      "sha256": "39c4ee842c820fa0cf19aea88bea9a6a69751fb932b70975744bd51b4597733f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/generation_utils.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_goat_slm.py",
+      "kind": "file",
+      "bytes": 24715,
+      "sha256": "95dff2ef26d6691180af885ce4883a54db9418136293691f4792d8723555ffd4",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_goat_slm.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_qwen2.py",
+      "kind": "file",
+      "bytes": 58024,
+      "sha256": "cbc7223f3ed5f909c68f2d935646cc7564f1f7215f59352021fc92f6ad6ec962",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_qwen2.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_qwen3.py",
+      "kind": "file",
+      "bytes": 47586,
+      "sha256": "12bbd76663a3794435dc92e7042793ea26fb6f611837f1909741c54a8b0de100",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_qwen3.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_telechat3.py",
+      "kind": "file",
+      "bytes": 46130,
+      "sha256": "cb307d090ad4420915d633a1327742c9a8d06444c64e97dcee2ba146ac6cce51",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_telechat3.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_transformer_adapter.py",
+      "kind": "file",
+      "bytes": 25278,
+      "sha256": "87e949b94d9efe09e9503ec6355cdeae7af2d3f873d99384aaf65dd95f125906",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_transformer_adapter.py"
+    },
+    {
+      "path": "west/models/goat_slm/modeling_whisper_encoder.py",
+      "kind": "file",
+      "bytes": 2314,
+      "sha256": "a7d42796b992af4a79e03f2ea107ef97e1ab5f0b0c3a614d9df9798d98f490df",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/modeling_whisper_encoder.py"
+    },
+    {
+      "path": "west/models/goat_slm/sample_util.py",
+      "kind": "file",
+      "bytes": 3927,
+      "sha256": "0585626e62325dcfeb6f257135dddf848d4869b16af1b796d1d716ccd55df83e",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/goat_slm/sample_util.py"
+    },
+    {
+      "path": "west/models/kimi_audio/__init__.py",
+      "kind": "file",
+      "bytes": 174,
+      "sha256": "a523b0b37109d59d44ae9b4b2cc83d4cf777b9eb7a78cca88ef03debe7af67ee",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/kimi_audio/__init__.py"
+    },
+    {
+      "path": "west/models/kimi_audio/configuration_kimi_audio.py",
+      "kind": "file",
+      "bytes": 5018,
+      "sha256": "8a9ebd7a4d71e4829a568b8c64d9155bbfc3adbd66da7fe0c4cb7c2eac3b1992",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/kimi_audio/configuration_kimi_audio.py"
+    },
+    {
+      "path": "west/models/kimi_audio/extractor_kimi_audio.py",
+      "kind": "file",
+      "bytes": 4746,
+      "sha256": "73bdb2ec237fb0e1129f29c10ecbe24985769388d2b1ee74b93ba00c14087334",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/kimi_audio/extractor_kimi_audio.py"
+    },
+    {
+      "path": "west/models/kimi_audio/modeling_kimi_audio.py",
+      "kind": "file",
+      "bytes": 7229,
+      "sha256": "4aa6ca4a4caa07f5e9222b64edb57b4a6c44e6d45d981b9d45c00979cfc6c64a",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/kimi_audio/modeling_kimi_audio.py"
+    },
+    {
+      "path": "west/models/kimi_audio/modeling_moonshot_kimia.py",
+      "kind": "file",
+      "bytes": 49652,
+      "sha256": "520da7f8a4945fa0b61eaa0be6bc526041691a1e1158238814074fecde19773a",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/kimi_audio/modeling_moonshot_kimia.py"
+    },
+    {
+      "path": "west/models/osum_echat/__init__.py",
+      "kind": "file",
+      "bytes": 174,
+      "sha256": "0c1933bcc9b972fec23ac5cd7b3200de29f613e8c16b726f8c9a1dbd54f5ed82",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/__init__.py"
+    },
+    {
+      "path": "west/models/osum_echat/configuration_osum_echat.py",
+      "kind": "file",
+      "bytes": 843,
+      "sha256": "c761f8c247739a11712d9700079dd96ec9d1475b3b4fd683d57cc5f3790c9178",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/configuration_osum_echat.py"
+    },
+    {
+      "path": "west/models/osum_echat/cumstom_stop_criteria.py",
+      "kind": "file",
+      "bytes": 3244,
+      "sha256": "2d763120be0ade3cbaceedddb95a8c2d281f0c7f656fcca3fa3eb444be580c06",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/cumstom_stop_criteria.py"
+    },
+    {
+      "path": "west/models/osum_echat/extractor_osum_echat.py",
+      "kind": "file",
+      "bytes": 439,
+      "sha256": "32f953942d86da7120b8948d2da0f1eba5d694f170c8e401fab066580df4c549",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/extractor_osum_echat.py"
+    },
+    {
+      "path": "west/models/osum_echat/modeling_osum_echat.py",
+      "kind": "file",
+      "bytes": 13513,
+      "sha256": "c084db78266c4dbadd71d0e1cb8c5796d8066fa00f4765ba9c264b96dd78070e",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/modeling_osum_echat.py"
+    },
+    {
+      "path": "west/models/osum_echat/patch4generate.py",
+      "kind": "file",
+      "bytes": 19279,
+      "sha256": "1634f35eac4b4e8a050c77f1cd138e8feb99f498598088b21cb203074c1d1f71",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/osum_echat/patch4generate.py"
+    },
+    {
+      "path": "west/models/touch_asu/__init__.py",
+      "kind": "file",
+      "bytes": 168,
+      "sha256": "40f20967062419819a9fd174e6f285fc839ebed75983ba7f6bed3c8a1c085ce3",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_asu/__init__.py"
+    },
+    {
+      "path": "west/models/touch_asu/adapter_touch_asu.py",
+      "kind": "file",
+      "bytes": 9785,
+      "sha256": "c20803fb07ef3892f12d583ad01ab4706ce786117fc8951b2f81ac90b564d318",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_asu/adapter_touch_asu.py"
+    },
+    {
+      "path": "west/models/touch_asu/configuration_touch_asu.py",
+      "kind": "file",
+      "bytes": 1738,
+      "sha256": "eda47b83d11ade2d2f0778c9f6bd96f8626635ffeb6e3322bc574d0644920c34",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_asu/configuration_touch_asu.py"
+    },
+    {
+      "path": "west/models/touch_asu/extractor_touch_asu.py",
+      "kind": "file",
+      "bytes": 5333,
+      "sha256": "3c1c73450c028f42f948ed984f5c6142c80ae618a998140719e10a94e7fce0dd",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_asu/extractor_touch_asu.py"
+    },
+    {
+      "path": "west/models/touch_asu/modeling_touch_asu.py",
+      "kind": "file",
+      "bytes": 14295,
+      "sha256": "47ec7f9533dd1ff9f4b6c3711c162537096f0128505491c639b74a45eb561dc9",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_asu/modeling_touch_asu.py"
+    },
+    {
+      "path": "west/models/touch_chat/__init__.py",
+      "kind": "file",
+      "bytes": 174,
+      "sha256": "c4c090cc0270b84591c2275dcac086bd5e896f99c11f25b2eda7db3578fea189",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_chat/__init__.py"
+    },
+    {
+      "path": "west/models/touch_chat/configuration_touch_chat.py",
+      "kind": "file",
+      "bytes": 674,
+      "sha256": "191184678a8ebafc7cb13ae60e083d93c5129380709dc16e6f3fa361e892ff8a",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_chat/configuration_touch_chat.py"
+    },
+    {
+      "path": "west/models/touch_chat/extractor_touch_chat.py",
+      "kind": "file",
+      "bytes": 3329,
+      "sha256": "2a18f02ce29ae596d9544ac3c53e36b0019fc4649337bd7c7caee658c5ba1fd6",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_chat/extractor_touch_chat.py"
+    },
+    {
+      "path": "west/models/touch_chat/modeling_touch_chat.py",
+      "kind": "file",
+      "bytes": 5496,
+      "sha256": "297e387fed1028513e753bd71d7c928bb56aef02210e1b6643295fce43dd0ba5",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_chat/modeling_touch_chat.py"
+    },
+    {
+      "path": "west/models/touch_flow/__init__.py",
+      "kind": "file",
+      "bytes": 174,
+      "sha256": "34de19f227ad8cc1b1f80c1ead59076903ee2223bc094c9861aac01f605c9c84",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_flow/__init__.py"
+    },
+    {
+      "path": "west/models/touch_flow/configuration_touch_flow.py",
+      "kind": "file",
+      "bytes": 2264,
+      "sha256": "8753c019c994ded14c5bd32be859401b051f7046992ac346adbdee6111cd8938",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_flow/configuration_touch_flow.py"
+    },
+    {
+      "path": "west/models/touch_flow/extractor_touch_flow.py",
+      "kind": "file",
+      "bytes": 4769,
+      "sha256": "4e82db68980ab08ce373672ff5c745bb59aa7da6405cf356974f549220ae5e55",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_flow/extractor_touch_flow.py"
+    },
+    {
+      "path": "west/models/touch_flow/modeling_touch_flow.py",
+      "kind": "file",
+      "bytes": 12503,
+      "sha256": "d88e47b764bfd0af5b13fb279484df43290dc895165f20d21873e76b662b17c2",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_flow/modeling_touch_flow.py"
+    },
+    {
+      "path": "west/models/touch_tts/__init__.py",
+      "kind": "file",
+      "bytes": 168,
+      "sha256": "aab09d007c6fb5c208d5182a2db3cb8eb292fa41d3bbd517d98dffab8b0dc05f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_tts/__init__.py"
+    },
+    {
+      "path": "west/models/touch_tts/configuration_touch_tts.py",
+      "kind": "file",
+      "bytes": 968,
+      "sha256": "83f77a83d98bcce83a71e178f31b8f7bafc67ad6fa74f70862f8b7b073fa0974",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_tts/configuration_touch_tts.py"
+    },
+    {
+      "path": "west/models/touch_tts/extractor_touch_tts.py",
+      "kind": "file",
+      "bytes": 4130,
+      "sha256": "8439f018dbbc7404961a96bf21e37cb9373b2e79e0963a66be92c91e25896f2f",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_tts/extractor_touch_tts.py"
+    },
+    {
+      "path": "west/models/touch_tts/modeling_touch_tts.py",
+      "kind": "file",
+      "bytes": 5903,
+      "sha256": "7eb88cee07fddfa2e3269a2cce67da10e8bf6e55097f8ff132937179f93c17fd",
+      "source": "/autodl-fs/data/west-ta-baselines/west/models/touch_tts/modeling_touch_tts.py"
+    },
+    {
+      "path": "west/trainer/__init__.py",
+      "kind": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "/autodl-fs/data/west-ta-baselines/west/trainer/__init__.py"
+    },
+    {
+      "path": "west/trainer/grpo_trainer.py",
+      "kind": "file",
+      "bytes": 14369,
+      "sha256": "46dd89dfffe4a5ecd789b08eba7b6a8d0d354cc89808a347f14a994afcf753c9",
+      "source": "/autodl-fs/data/west-ta-baselines/west/trainer/grpo_trainer.py"
+    },
+    {
+      "path": "west/trainer/kd_trainer.py",
+      "kind": "file",
+      "bytes": 44240,
+      "sha256": "e3f4d51f4fd075f0267433589bf1861c6069238f37a5351fc898682400ce34cf",
+      "source": "/autodl-fs/data/west-ta-baselines/west/trainer/kd_trainer.py"
+    },
+    {
+      "path": "west/utils/audio.py",
+      "kind": "file",
+      "bytes": 2669,
+      "sha256": "01358cc257c04ead243491628f0913c9bd413915d7d22f9981b927cbb64ff411",
+      "source": "/autodl-fs/data/west-ta-baselines/west/utils/audio.py"
+    },
+    {
+      "path": "west/utils/constants.py",
+      "kind": "file",
+      "bytes": 682,
+      "sha256": "00eeb94b2c7689e613964cac2414f33c92cf0dd8c1068de07618b657c62f97f7",
+      "source": "/autodl-fs/data/west-ta-baselines/west/utils/constants.py"
+    },
+    {
+      "path": "west/utils/mask.py",
+      "kind": "file",
+      "bytes": 6745,
+      "sha256": "ff91fea7d8c7a942a4bb93c391153d0ee791b2634972ab9441627b283f6565f2",
+      "source": "/autodl-fs/data/west-ta-baselines/west/utils/mask.py"
+    },
+    {
+      "path": "west/utils/rewards.py",
+      "kind": "file",
+      "bytes": 3347,
+      "sha256": "d50aba15d29bf8346a28bf7c6a36d7a92939bd874c02ef05a483eb3bf17bd494",
+      "source": "/autodl-fs/data/west-ta-baselines/west/utils/rewards.py"
+    },
+    {
+      "path": "west/utils/utils.py",
+      "kind": "file",
+      "bytes": 160,
+      "sha256": "c2a06097b536492cf37d7f58c7b0d3a9b09e1d1885caa7ea92aaba7f4cdc517a",
+      "source": "/autodl-fs/data/west-ta-baselines/west/utils/utils.py"
+    },
+    {
+      "path": "west_adapters/__init__.py",
+      "kind": "file",
+      "bytes": 435,
+      "sha256": "af57e310924767e056ce81ff800bfc6d28c89a91b88eccd22e563f07fb398e0e",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/__init__.py"
+    },
+    {
+      "path": "west_adapters/base.py",
+      "kind": "file",
+      "bytes": 3260,
+      "sha256": "cd42f1f32833ecc4ae1bee9be2ea6aae21a685fa519a9152b6a473835b410c73",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/base.py"
+    },
+    {
+      "path": "west_adapters/bora.py",
+      "kind": "file",
+      "bytes": 2517,
+      "sha256": "d186b677058a7a243ac4e0103d68a9050dbea6dbdccc3179a533f1368f9feac2",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/bora.py"
+    },
+    {
+      "path": "west_adapters/context.py",
+      "kind": "file",
+      "bytes": 1664,
+      "sha256": "2964e564a3fd5085e33bcc3679a6d10444d2fe234de7df3607fa873e42973239",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/context.py"
+    },
+    {
+      "path": "west_adapters/dora.py",
+      "kind": "file",
+      "bytes": 1401,
+      "sha256": "ac50622e7a94a8da2abc7ed9c6a97463f84257c66b317e24764c1ba60d3ea658",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/dora.py"
+    },
+    {
+      "path": "west_adapters/eva.py",
+      "kind": "file",
+      "bytes": 2434,
+      "sha256": "5e6089258621b333e0e7c41b3827a00207efc339a17262fa726e221fb7861b68",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/eva.py"
+    },
+    {
+      "path": "west_adapters/eva_calibration.py",
+      "kind": "file",
+      "bytes": 7145,
+      "sha256": "82015baaf83cd3cfdba57d4ce10f445ded214d4acfc0c07c6af2927db08ae9d4",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/eva_calibration.py"
+    },
+    {
+      "path": "west_adapters/install.py",
+      "kind": "file",
+      "bytes": 4644,
+      "sha256": "93737f1b151c8f289b2c7681d94108ca5156d93efd4ba1c04feea4ed63e81581",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/install.py"
+    },
+    {
+      "path": "west_adapters/o_lora.py",
+      "kind": "file",
+      "bytes": 1363,
+      "sha256": "a29e316faad2fb4fa73ae876dc548f5a04d22d18b147c45a8d61ef7968dae53c",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/o_lora.py"
+    },
+    {
+      "path": "west_adapters/qv_lora.py",
+      "kind": "file",
+      "bytes": 1549,
+      "sha256": "fc663e272543609df7aa967e544f81244f0a34cbc5b650ef5d29cd74c0eb297a",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/qv_lora.py"
+    },
+    {
+      "path": "west_adapters/registry.py",
+      "kind": "file",
+      "bytes": 5271,
+      "sha256": "a5f8e7bcde8e51a3cc456c9718b387af7342075b6b7947b389c1b8b4705348d7",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/registry.py"
+    },
+    {
+      "path": "west_adapters/ta_lora.py",
+      "kind": "file",
+      "bytes": 3199,
+      "sha256": "33a75d47e28c316e6847ea68ded6f3d5000706745643d75718008da6af300859",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/ta_lora.py"
+    },
+    {
+      "path": "west_adapters/toplora.py",
+      "kind": "file",
+      "bytes": 955,
+      "sha256": "285cb63755453550b3d2fb8f143757690911e451562e0a3fd12dae537f0d9cb7",
+      "source": "/autodl-fs/data/west-ta-baselines/west_adapters/toplora.py"
+    }
+  ],
+  "excluded": [
+    {
+      "path": "experiments/ms_swift_librispeech/current-run",
+      "reason": "absolute machine-local symlink"
+    },
+    {
+      "path": "experiments/preflight/asr-plan/batch_violations.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-plan/dev.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-plan/samples.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-plan/train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-selection.json",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-stats/batch_violations.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/asr-stats/samples.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/commands.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/device.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-0-dev0.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-0-dev0.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-0-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-0-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-1-dev1.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-1-dev1.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-1-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/lora-1-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/saved-adapters.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/ta-0-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-01/ta-0-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/commands.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/device.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-dev0.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-dev0.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-dev1.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-dev1.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/eva-0-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-eva/saved-adapters.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/commands.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/device.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/saved-adapters.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-0-dev0.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-0-dev0.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-0-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-0-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-1-dev1.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-1-dev1.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-1-train.jsonl",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/asr-gpu-ta-replay/ta-1-train.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/assets.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/cpu-after-recompute.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/cpu-final.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/cpu-tests.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/environment.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/gpu.csv",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/iemocap-access.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/initial-tests.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/install.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/librispeech-download.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/librispeech-extra.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/model-download.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/pip-check.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/processor-sha256.txt",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/qv-budget.json",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    },
+    {
+      "path": "experiments/preflight/logs/qv-real-3b.log",
+      "reason": "historical manifests or machine logs; aggregate preflight summary retained"
+    }
+  ]
+}

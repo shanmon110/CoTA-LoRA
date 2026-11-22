@@ -1,0 +1,95 @@
+{
+  "fairness": {
+    "short": {
+      "arms": [
+        "lora",
+        "question",
+        "question_audio",
+        "question_audio-fastgate",
+        "static"
+      ],
+      "matching_first_eight_batches": true,
+      "matching_training_settings": true,
+      "same_rank_ta_ab_initialization": true
+    },
+    "long": {
+      "arms": [
+        "lora-long",
+        "question_audio-long"
+      ],
+      "matching_first_eight_batches": true,
+      "matching_training_settings": true,
+      "same_rank_ta_ab_initialization": false
+    },
+    "mixed": {
+      "arms": [
+        "lora-mixed",
+        "question_audio-mixed"
+      ],
+      "matching_first_eight_batches": true,
+      "matching_training_settings": true,
+      "same_rank_ta_ab_initialization": false
+    },
+    "fastgate": {
+      "reference": "question_audio",
+      "only_config_change": "adapter.transport_gate_lr_multiplier",
+      "multiplier": 16,
+      "base_learning_rate": 0.0002,
+      "gate_learning_rate": 0.0032,
+      "seed": 42,
+      "data_seed": 42,
+      "checkpoint_training_verified": true,
+      "reference_optimizer": {
+        "groups": [
+          {
+            "gate_tensors": 36,
+            "other_tensors": 144,
+            "learning_rate": 0.0002
+          },
+          {
+            "gate_tensors": 0,
+            "other_tensors": 0,
+            "learning_rate": 0.0002
+          }
+        ],
+        "optimizer_sha256": "8c1d07cb0e32f674006d7c7393943f30dab79761d4789519569d9a6ce5f1eb5e",
+        "scheduler_sha256": "c3672f482cc88e57818505ef6c24203d5d9d88e2a8d238045798ee5544a65f66"
+      },
+      "fastgate_optimizer": {
+        "groups": [
+          {
+            "gate_tensors": 0,
+            "other_tensors": 144,
+            "learning_rate": 0.0002
+          },
+          {
+            "gate_tensors": 36,
+            "other_tensors": 0,
+            "learning_rate": 0.0032
+          },
+          {
+            "gate_tensors": 0,
+            "other_tensors": 0,
+            "learning_rate": 0.0002
+          }
+        ],
+        "optimizer_sha256": "7b1eac80b33c74f10021876b69e781d9071b1a62a394c8b5881301935f81e86d",
+        "scheduler_sha256": "dab72829c94ea84a0ea263a36df2f5bcb9702c6654673964ef61e2373661b8e8"
+      }
+    },
+    "mixed_vs_short": {
+      "lora-mixed": {
+        "short_reference": "lora",
+        "matching_config": true,
+        "matching_initialization": true,
+        "steps": 168
+      },
+      "question_audio-mixed": {
+        "short_reference": "question_audio",
+        "matching_config": true,
+        "matching_initialization": true,
+        "steps": 168
+      }
+    }
+  }
+}

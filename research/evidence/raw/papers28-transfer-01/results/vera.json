@@ -1,0 +1,83 @@
+{
+  "method": "vera",
+  "archived_training": true,
+  "ser": {
+    "uar": 0.6072388210091729,
+    "accuracy": 0.5793714746172441,
+    "recalls": {
+      "A": 0.8941176470588236,
+      "B": 0.416289592760181,
+      "C": 0.3346938775510204,
+      "D": 0.7838541666666666
+    },
+    "confusion_matrix": [
+      [
+        152,
+        7,
+        1,
+        10
+      ],
+      [
+        103,
+        184,
+        5,
+        150
+      ],
+      [
+        53,
+        10,
+        82,
+        100
+      ],
+      [
+        71,
+        8,
+        4,
+        301
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.7421875,
+    "best_step": 224,
+    "updates": 256,
+    "trainable": 1096704,
+    "correct": 752,
+    "exact_accuracy": 0.752,
+    "official_text_accuracy": 0.753,
+    "by_domain": {
+      "music": {
+        "correct": 232,
+        "total": 334,
+        "accuracy": 0.6946107784431138
+      },
+      "sound": {
+        "correct": 276,
+        "total": 333,
+        "accuracy": 0.8288288288288288
+      },
+      "speech": {
+        "correct": 244,
+        "total": 333,
+        "accuracy": 0.7327327327327328
+      }
+    },
+    "train_seconds": 416.71025113700307,
+    "training_peak_allocated_gib": 20.609975337982178
+  },
+  "checkpoint": {
+    "method": "vera",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/vera/checkpoint-224",
+    "step": 224,
+    "dev_accuracy": 0.7421875,
+    "adapter_sha256": "1f2b74fbad2799d5ed5a179102a2fe0b7a06e6b76ade6c772f727479f1b88a2e",
+    "config_sha256": "f4406cd5e7be6e44bafca1405d96e323fe445af8f0503687a445d7c960ff8e6d",
+    "files": {
+      "adapter_model.safetensors": "1f2b74fbad2799d5ed5a179102a2fe0b7a06e6b76ade6c772f727479f1b88a2e",
+      "adapter_config.json": "f4406cd5e7be6e44bafca1405d96e323fe445af8f0503687a445d7c960ff8e6d"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/r1-aqa/runs/omni3b-tuners-01/vera",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/vera"
+}

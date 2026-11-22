@@ -1,0 +1,83 @@
+{
+  "method": "randlora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.24963985594237695,
+    "accuracy": 0.19500402900886382,
+    "recalls": {
+      "A": 0.03529411764705882,
+      "B": 0.0,
+      "C": 0.963265306122449,
+      "D": 0.0
+    },
+    "confusion_matrix": [
+      [
+        6,
+        0,
+        164,
+        0
+      ],
+      [
+        12,
+        0,
+        430,
+        0
+      ],
+      [
+        9,
+        0,
+        236,
+        0
+      ],
+      [
+        23,
+        0,
+        361,
+        0
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.2890625,
+    "best_step": 64,
+    "updates": 160,
+    "trainable": 24127488,
+    "correct": 228,
+    "exact_accuracy": 0.228,
+    "official_text_accuracy": 0.232,
+    "by_domain": {
+      "music": {
+        "correct": 73,
+        "total": 334,
+        "accuracy": 0.218562874251497
+      },
+      "sound": {
+        "correct": 84,
+        "total": 333,
+        "accuracy": 0.25225225225225223
+      },
+      "speech": {
+        "correct": 71,
+        "total": 333,
+        "accuracy": 0.2132132132132132
+      }
+    },
+    "train_seconds": 381.78653954999754,
+    "training_peak_allocated_gib": 12.199810028076172
+  },
+  "checkpoint": {
+    "method": "randlora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/randlora/checkpoint-64",
+    "step": 64,
+    "dev_accuracy": 0.2890625,
+    "adapter_sha256": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+    "config_sha256": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9",
+    "files": {
+      "adapter_model.safetensors": "05b0f5ecc9aec9e0d3f498d809553718f80fc83204a1c355119f076f598e2308",
+      "adapter_config.json": "6c8d7467065776b8bf315aecb4f107f3b307474d8bc96e5d0ff868354b02d9a9"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/randlora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/randlora"
+}

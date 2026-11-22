@@ -1,0 +1,83 @@
+{
+  "method": "rolora-federated",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6223648473812602,
+    "accuracy": 0.5914585012087027,
+    "recalls": {
+      "A": 0.9058823529411765,
+      "B": 0.4253393665158371,
+      "C": 0.3795918367346939,
+      "D": 0.7786458333333334
+    },
+    "confusion_matrix": [
+      [
+        154,
+        7,
+        2,
+        7
+      ],
+      [
+        94,
+        188,
+        8,
+        152
+      ],
+      [
+        45,
+        10,
+        93,
+        97
+      ],
+      [
+        66,
+        11,
+        8,
+        299
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.828125,
+    "best_step": 160,
+    "updates": 256,
+    "trainable": 14966784,
+    "correct": 735,
+    "exact_accuracy": 0.735,
+    "official_text_accuracy": 0.737,
+    "by_domain": {
+      "music": {
+        "correct": 223,
+        "total": 334,
+        "accuracy": 0.6676646706586826
+      },
+      "sound": {
+        "correct": 270,
+        "total": 333,
+        "accuracy": 0.8108108108108109
+      },
+      "speech": {
+        "correct": 242,
+        "total": 333,
+        "accuracy": 0.7267267267267268
+      }
+    },
+    "train_seconds": 479.791663179989,
+    "training_peak_allocated_gib": 11.63410758972168
+  },
+  "checkpoint": {
+    "method": "rolora-federated",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/rolora-federated/checkpoint-160",
+    "step": 160,
+    "dev_accuracy": 0.828125,
+    "adapter_sha256": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+    "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+    "files": {
+      "adapter_model.safetensors": "c63f3eaf85d3de74b18d8afc13261ebed8ac53a2cc0046806d8f59be2694f687",
+      "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/rolora-federated",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/rolora-federated"
+}

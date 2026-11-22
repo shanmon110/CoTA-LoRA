@@ -1,0 +1,12 @@
+{
+  "method": "lora",
+  "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/lora/checkpoint-96",
+  "step": 96,
+  "dev_accuracy": 0.8046875,
+  "adapter_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+  "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+  "files": {
+    "adapter_model.safetensors": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+    "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+  }
+}

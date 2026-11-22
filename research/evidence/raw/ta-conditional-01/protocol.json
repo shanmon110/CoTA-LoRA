@@ -1,0 +1,30 @@
+{
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "source": "/root/autodl-tmp/r1-aqa/data/pilot-01",
+  "external_dev": "/root/autodl-tmp/MMAR/runs/ta-diagnosis-01/multidomain/dev.jsonl",
+  "mmar_previous": "/root/autodl-tmp/MMAR/runs/omni3b-avqa-01",
+  "seed": 42,
+  "objective": "same exact question and choices with both labels verified, select on change pairs both correct",
+  "development": [
+    "frozen-base",
+    "lora",
+    "static",
+    "question",
+    "question_audio",
+    "question_audio_off"
+  ],
+  "budget": {
+    "ordinary_o_rank12": 1769472,
+    "static_rank8": 1769760,
+    "expected_dynamic_rank8": 1772064
+  },
+  "training": "original AVQA plus controlled derived pairs from original training recordings; no development/MMAR sources for training",
+  "phase1": "one complete pass, shared order and early selection; estimate transfer on independent development before final public benchmark",
+  "data_hashes": {
+    "/root/autodl-tmp/r1-aqa/data/pilot-01/train.jsonl": "7b1c681c208772ae071078b75dfedef55db3bf3893b35a5cf7fa8c8142a0d07d",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/pair-train.jsonl": "c962f89c2f8fc3c42f0bf426d2f1b3e4452f8de95b1c74c7c255f2b9a8bfe557",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/pair-dev.jsonl": "8109b6cabf48a23d2c329d4c5e2211428e33b2362c63735fa7e6efce98e2970d",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/train.jsonl": "aabb76719b47cc357991ea3187eb733636cd5c4a6107be4c6fc3362e6102c820",
+    "/root/autodl-tmp/MMAR/runs/ta-diagnosis-01/multidomain/dev.jsonl": "44d2cb45ae69a704362c9bb1db47921971c0f29a6487c299974128ca750d034a"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "method": "aurora",
+  "archived_training": false,
+  "ser": {
+    "uar": 0.6013561794910272,
+    "accuracy": 0.564867042707494,
+    "recalls": {
+      "A": 0.9176470588235294,
+      "B": 0.4072398190045249,
+      "C": 0.35918367346938773,
+      "D": 0.7213541666666666
+    },
+    "confusion_matrix": [
+      [
+        156,
+        6,
+        2,
+        6
+      ],
+      [
+        108,
+        180,
+        8,
+        146
+      ],
+      [
+        59,
+        13,
+        88,
+        85
+      ],
+      [
+        91,
+        10,
+        6,
+        277
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.8203125,
+    "best_step": 96,
+    "updates": 192,
+    "trainable": 3746736,
+    "correct": 727,
+    "exact_accuracy": 0.727,
+    "official_text_accuracy": 0.729,
+    "by_domain": {
+      "music": {
+        "correct": 215,
+        "total": 334,
+        "accuracy": 0.6437125748502994
+      },
+      "sound": {
+        "correct": 272,
+        "total": 333,
+        "accuracy": 0.8168168168168168
+      },
+      "speech": {
+        "correct": 240,
+        "total": 333,
+        "accuracy": 0.7207207207207207
+      }
+    },
+    "train_seconds": 590.3346913930145,
+    "training_peak_allocated_gib": 11.481380462646484
+  },
+  "checkpoint": {
+    "method": "aurora",
+    "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/aurora/checkpoint-96",
+    "step": 96,
+    "dev_accuracy": 0.8203125,
+    "adapter_sha256": "3f206a5e0ba00709d7a67468d0b8d29fd9a570b75b37a7959a1c0a216c874770",
+    "config_sha256": "5bdbb546bbb95905c5de07e7efd5a4db4dbd3dcbcf0624a4164b5882afaff423",
+    "files": {
+      "adapter_model.safetensors": "3f206a5e0ba00709d7a67468d0b8d29fd9a570b75b37a7959a1c0a216c874770",
+      "adapter_config.json": "5bdbb546bbb95905c5de07e7efd5a4db4dbd3dcbcf0624a4164b5882afaff423"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/aurora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/aurora"
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/REPORT.md",
+    "new": "../research/evidence/raw/ta-conditional-01/REPORT.md"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/analysis.json",
+    "new": "../research/evidence/raw/ta-conditional-01/analysis.json"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/ta-conditional-transfer-01/REPORT.md",
+    "new": "../research/evidence/raw/ta-conditional-transfer-01/REPORT.md"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/gate-probe.json",
+    "new": "plain original server path"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/ta-conditional-01/gate-probe-fastgate.json",
+    "new": "plain original server path"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/REPORT.md",
+    "new": "../research/evidence/raw/papers28-transfer-01/REPORT.md"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/results",
+    "new": "../research/evidence/README.md"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/paired-target-scores.json",
+    "new": "../research/evidence/raw/papers28-transfer-01/paired-target-scores.json"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/SPECIAL_PROTOCOLS.md",
+    "new": "../research/evidence/raw/papers28-transfer-01/SPECIAL_PROTOCOLS.md"
+  },
+  {
+    "old": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/sources-01-10.md",
+    "new": "../experiments/ms_swift_aqa/papers28/sources-01-10.md"
+  },
+  {
+    "old": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/paper_middle_sources.md",
+    "new": "../experiments/ms_swift_aqa/paper_middle_sources.md"
+  },
+  {
+    "old": "/autodl-fs/data/west-ta-baselines/experiments/ms_swift_aqa/papers28/sources-21-28.md",
+    "new": "../experiments/ms_swift_aqa/papers28/sources-21-28.md"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/split-audio-audit.json",
+    "new": "../research/evidence/raw/papers28-transfer-01/split-audio-audit.json"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/logs/final-replay-audit.log",
+    "new": "../research/evidence/raw/papers28-transfer-01/logs/final-replay-audit.log"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/logs/final-replay-regression.log",
+    "new": "../research/evidence/raw/papers28-transfer-01/logs/final-replay-regression.log"
+  },
+  {
+    "old": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/disposition.json",
+    "new": "../research/evidence/raw/papers28-transfer-01/disposition.json"
+  }
+]

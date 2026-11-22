@@ -1,0 +1,14 @@
+{
+  "reason": "Short-trained rank-12 LoRA scored 75/96 short and 14/96 long; long-trained counterpart scored 10/96 short and 90/96 long. Balance duration exposure within each task and pair kind as a targeted data-only intervention.",
+  "arms": [
+    "lora-mixed",
+    "question_audio-mixed"
+  ],
+  "select": "Earliest best on balanced mixed dev. Measure transfer with short and long held-out versions and the original natural external/MMAR evaluations.",
+  "matching": "Fixed 320 training pairs and 120 dev pairs. For each source pair, choose one entire existing duration realization, do not duplicate examples or use their answer to assign durations. Phase-1 baselines, rank, seed, max optimizer steps, and hardware unchanged.",
+  "data_hashes": {
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/pair-train.jsonl": "96e5d9edbda130557f5a31c7359cb1fa430318bbcc8c5f45b4fd1f998a6a5e4c",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/pair-dev.jsonl": "6bbf60069bd1af7bd8659751cad06f24b1ccbdcf54de2b664afc79d86f883695",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/data/mixed/train.jsonl": "5a0a094a44fb3063870e5f737b0e610ac5c7f349b8bb0b7cc072988ae21f3b39"
+  }
+}

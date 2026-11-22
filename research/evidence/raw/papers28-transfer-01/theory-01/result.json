@@ -1,0 +1,88 @@
+{
+  "author_revision": "eaeb7d3f265853343b234172ed44cd7623c5212a",
+  "source_hashes": {
+    "run_exp.py": "9d7db4f92b1f11744edd5109dc915ce5e7477185edca6bd8194e3753650aab6a",
+    "load_model.py": "5bb6d03cb8a7e27ebf26c55679e7dfcef929719df685eaed9d9de366ca16dc3a",
+    "helper.py": "788e3c40822977fa90974f14dfb83f0c83c75c8f0760f21414e7d6eaab530a04"
+  },
+  "runs": {
+    "fnn": {
+      "command": [
+        "/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python",
+        "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01/official/run_exp.py",
+        "--width",
+        "8",
+        "--target_depth",
+        "1",
+        "--frozen_depth",
+        "2",
+        "--rank",
+        "3",
+        "--use_bias",
+        "1",
+        "--activation",
+        "relu",
+        "--std",
+        "0.25",
+        "--method",
+        "ours",
+        "--batch_size",
+        "256",
+        "--n_epochs",
+        "5000",
+        "--lr",
+        "0.0001",
+        "--n_test",
+        "5000",
+        "--weight_decay",
+        "0.01",
+        "--init_mode",
+        "uniform_singular_values",
+        "--exp",
+        "fnn",
+        "--wandb",
+        "0"
+      ],
+      "reported_MSE": {
+        "normal": 0.0329,
+        "shifted": 3.0024
+      }
+    },
+    "tfn": {
+      "command": [
+        "/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python",
+        "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/theory-01/run_tfn.py",
+        "--exp",
+        "tfn",
+        "--width",
+        "8",
+        "--target_depth",
+        "1",
+        "--frozen_depth",
+        "1",
+        "--rank",
+        "4",
+        "--n_head",
+        "2",
+        "--batch_size",
+        "256",
+        "--seq_length",
+        "10",
+        "--method",
+        "ours",
+        "--seed",
+        "123",
+        "--std",
+        "0.25",
+        "--n_test",
+        "5000",
+        "--wandb",
+        "0"
+      ],
+      "reported_MSE": {
+        "normal": 0.0,
+        "shifted": 0.0
+      }
+    }
+  }
+}

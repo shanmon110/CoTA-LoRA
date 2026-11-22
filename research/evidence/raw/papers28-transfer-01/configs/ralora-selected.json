@@ -1,0 +1,12 @@
+{
+  "method": "ralora",
+  "checkpoint": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/train/ralora/checkpoint-256",
+  "step": 256,
+  "dev_accuracy": 0.83984375,
+  "adapter_sha256": "c06f5a08936ec3dc7a737e991b770998dafc9b183a045ba0515ec5548775f908",
+  "config_sha256": "8f4842ceeae04da28e5f1354be5d7f7059d0e21e524926ab09d9788423be7462",
+  "files": {
+    "adapter_model.safetensors": "c06f5a08936ec3dc7a737e991b770998dafc9b183a045ba0515ec5548775f908",
+    "adapter_config.json": "8f4842ceeae04da28e5f1354be5d7f7059d0e21e524926ab09d9788423be7462"
+  }
+}

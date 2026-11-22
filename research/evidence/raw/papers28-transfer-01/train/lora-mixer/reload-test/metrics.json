@@ -1,0 +1,74 @@
+{
+  "utterances": 1000,
+  "correct": 728,
+  "accuracy": 0.728,
+  "by_domain": {
+    "music": {
+      "correct": 214,
+      "total": 334,
+      "accuracy": 0.6407185628742516
+    },
+    "sound": {
+      "correct": 273,
+      "total": 333,
+      "accuracy": 0.8198198198198198
+    },
+    "speech": {
+      "correct": 241,
+      "total": 333,
+      "accuracy": 0.7237237237237237
+    }
+  },
+  "macro_domain_accuracy": 0.7280873688059316,
+  "by_category": {
+    "music/Information Extraction": {
+      "correct": 109,
+      "total": 181,
+      "accuracy": 0.6022099447513812
+    },
+    "music/Reasoning": {
+      "correct": 105,
+      "total": 153,
+      "accuracy": 0.6862745098039216
+    },
+    "sound/Information Extraction": {
+      "correct": 80,
+      "total": 93,
+      "accuracy": 0.8602150537634409
+    },
+    "sound/Reasoning": {
+      "correct": 182,
+      "total": 227,
+      "accuracy": 0.801762114537445
+    },
+    "sound/['Reasoning']": {
+      "correct": 11,
+      "total": 13,
+      "accuracy": 0.8461538461538461
+    },
+    "speech/Information Extraction": {
+      "correct": 39,
+      "total": 49,
+      "accuracy": 0.7959183673469388
+    },
+    "speech/Reasoning": {
+      "correct": 202,
+      "total": 284,
+      "accuracy": 0.7112676056338029
+    }
+  },
+  "macro_category_accuracy": 0.7576859202843966,
+  "by_question_relation": {},
+  "by_question_type": {},
+  "peak_allocated_bytes": 10631579136,
+  "peak_reserved_bytes": 11068768256,
+  "eval_seconds": 111.33552196301753,
+  "manifest_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "adapter_sha256": "3ee7c6e0e7b7f9820179f8d89b63bdaa6f20baaaff80c8cbd2245592b9ec5855",
+  "config_sha256": "7afb92b5a6a7d29f6927aad1d1143e94898d6957fddaafcdd4e4e1a95543086a",
+  "files": {
+    "adapter_model.safetensors": "3ee7c6e0e7b7f9820179f8d89b63bdaa6f20baaaff80c8cbd2245592b9ec5855",
+    "adapter_config.json": "7afb92b5a6a7d29f6927aad1d1143e94898d6957fddaafcdd4e4e1a95543086a"
+  },
+  "method": "lora-mixer"
+}

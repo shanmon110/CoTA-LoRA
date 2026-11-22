@@ -1,0 +1,9 @@
+{
+  "source_program_sha256": {
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/analyze.py": "4f2a7be48eaa97737bee57be63b23e4ae857f5f719798f5fc1644da8cfb31189",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/run.py": "117180ce75d2f2f9c4eb0349eb52375c188a351791290c97f8d3db025add6d13",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/protocol.json": "a208c616907a4f1f0d10158e13893cbc7592a72beeae0b3abb869334cf3461e1",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/phase-two.json": "a2c180a72bfc758574a2945e3cac2447400f7be0279bf95f0b3db9fed08443da",
+    "/root/autodl-tmp/MMAR/runs/ta-conditional-01/phase-three.json": "b5cbc77d517ddd6b7a1086571ce70ceab074334bccf00bda4251215c83b7f980"
+  }
+}

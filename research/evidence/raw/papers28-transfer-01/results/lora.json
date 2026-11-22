@@ -1,0 +1,83 @@
+{
+  "method": "lora",
+  "archived_training": true,
+  "ser": {
+    "uar": 0.6159076370932989,
+    "accuracy": 0.5914585012087027,
+    "recalls": {
+      "A": 0.9117647058823529,
+      "B": 0.46153846153846156,
+      "C": 0.3142857142857143,
+      "D": 0.7760416666666666
+    },
+    "confusion_matrix": [
+      [
+        155,
+        7,
+        1,
+        7
+      ],
+      [
+        87,
+        204,
+        3,
+        148
+      ],
+      [
+        46,
+        14,
+        77,
+        108
+      ],
+      [
+        67,
+        14,
+        5,
+        298
+      ]
+    ],
+    "utterances": 1241
+  },
+  "mmau": {
+    "dev_accuracy": 0.8046875,
+    "best_step": 96,
+    "updates": 192,
+    "trainable": 14966784,
+    "correct": 724,
+    "exact_accuracy": 0.724,
+    "official_text_accuracy": 0.726,
+    "by_domain": {
+      "music": {
+        "correct": 219,
+        "total": 334,
+        "accuracy": 0.655688622754491
+      },
+      "sound": {
+        "correct": 269,
+        "total": 333,
+        "accuracy": 0.8078078078078078
+      },
+      "speech": {
+        "correct": 236,
+        "total": 333,
+        "accuracy": 0.7087087087087087
+      }
+    },
+    "train_seconds": 288.4206535469857,
+    "training_peak_allocated_gib": 19.29525852203369
+  },
+  "checkpoint": {
+    "method": "lora",
+    "checkpoint": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/lora/checkpoint-96",
+    "step": 96,
+    "dev_accuracy": 0.8046875,
+    "adapter_sha256": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+    "config_sha256": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5",
+    "files": {
+      "adapter_model.safetensors": "af5bfabe22299fb66ff199cf9d5963d235566574455f751bccdd3856a6336b44",
+      "adapter_config.json": "0a6a9ba5725ccc23b131b13b180efa3c9c040a7b9d9fa27a821abfd7dc1364c5"
+    }
+  },
+  "train_dir": "/root/autodl-tmp/r1-aqa/runs/omni3b-pilot-01/lora",
+  "ser_dir": "/root/autodl-tmp/MMAR/runs/papers28-transfer-01/ser/lora"
+}
