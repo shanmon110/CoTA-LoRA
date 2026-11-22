@@ -2,9 +2,11 @@
 
 这是 TRR 方案动工前的第一项诊断。它只回答一个行为层面的问题：**同一句话，把音高和能量轮廓拉平之后，模型的答案变不变。** 不训练、不选模、不改任何已有 checkpoint 和日志。
 
+**2026-11-23 整合状态：** 已接入现有工程，50 个 CPU 测试通过，真实 WORLD 合成滑音自检通过；16 条 Session 4 真实音频的声学验收失败，尚未运行 3B 模型。当前不能据此判断模型是否使用韵律。实测、修复和日志见 [INTEGRATION.md](INTEGRATION.md)。
+
 ## 它能说明什么，不能说明什么
 
-- 能说明：冻结基座（或某个已训练的 adapter）在情绪四分类上，是否在用 F0/能量；录音相对转写文本多带来多少；声码器本身引入多少损伤。
+- 能说明：在声学验收及损伤控制通过的前提下，冻结基座（或某个已训练的 adapter）在情绪四分类上对这组 F0/能量干预的行为敏感性；录音相对转写文本的表现差异；声码器引入的表现变化。
 - 不能说明：信息是否"被编码"（那是 D1、D3 探针的事）；节奏、停顿、音质是否被使用（孪生只改 F0 和慢变能量）；任何方法是否有效。
 - 数据是 IEMOCAP Session 4（开发集，1031 条四分类）。Session 5 不参与。IEMOCAP 在本项目里已被多轮观察，本诊断同属探索性分析。
 
@@ -41,14 +43,17 @@
 | 录音是否超过转写 | `orig − text` 的 UAR | 区间下界 > 0 → `yes`；上界 ≤ 0 → `no`；其余 → `inconclusive` |
 | 孪生的声学验收 | 重新分析各孪生 | 拉平项的轮廓标准差降到原来的 20%（F0）/50%（能量）以内，未编辑项保持在 0.8–1.25 倍；孪生之间响度一致、无削波。能量在原录音的有声段上测量 |
 
-1031 条、约 30 段对话的规模下，配对差的区间半宽大致在 2 pp 上下，所以 3 pp 以下的效应本诊断分辨不了，会落到 `inconclusive`。
+另检查落盘音频无削波且 RMS 相对原音频的误差不超过 2%（`decision.qc.max_rms_relative_error` 可显式配置，默认 0.02）。当前清单 1031 条，删除无词转写后为 1026 条。区间宽度由实际配对预测及对话聚类结构决定，不能在模型评测前保证 2 pp 的精度。
 
 ## 结果怎么读
 
 前三项和声学验收不通过时，后面的结论都不成立，应先修音频干预，而不是解释掉分。其中 UAR 那一项需要全量才有分辨力；WER 两项和声学验收在 16 条冒烟上就能看出大问题。
 
+声学验收失败、声码器/可懂度控制缺失或失败、主对比未完成、以及任何 `--limit` 冒烟，均将 `verdicts.f0_energy_use` 标为 `not_interpretable`。`raw_verdicts` 仅保留阈值计算用于排查；不能把它当成有效结论。先定位干预与控制问题，再解释掉分。控制通过也不能排除全部合成伪影，见局限。
+
 | `f0_energy_use` | `audio_beyond_transcript` | 含义 | 下一步 |
 |---|---|---|---|
+| `not_interpretable` | 任意 | 验收或控制不满足，或仅为冒烟 | 按 `interpretation.reasons` 补齐检查；不能判断有无韵律贡献 |
 | `uses` | 任意 | 该模型在这个任务上已经在用 F0/能量 | 这个任务上不存在针对 F0/能量的 "Heard but Not Heeded"；TRR 的前提在此不成立，换任务或停止 |
 | `at_most_small` | `no` | 行为上接近只看文字 | 候选的 HbNH 情形；接着做 D1/D3，确认信息确实被编码而只是没被读出 |
 | `at_most_small` | `yes` | 录音有帮助，但不是靠 F0/能量轮廓 | TRR v1 的孪生对准了错误的因素；考虑其他孪生（节奏、音质）或重新定义范围 |
@@ -60,33 +65,47 @@
 
 ## 运行
 
-以下命令在服务器上执行。建议把分支克隆到新目录，不动现有工作区。
+代码已整合到现有工程，无需重新克隆。下面先做 CPU 检查；只有真实音频验收合格且 GPU 可用时才进入模型评测。本轮 16 条真实音频尚未合格，命令不是正式评测已获验收的声明。
 
 ```bash
-git clone --branch research/trr-diagnostics --depth 1 https://github.com/shanmon110/CoTA-LoRA.git /root/autodl-tmp/trr-diagnostics/src
-cd /root/autodl-tmp/trr-diagnostics/src
+cd /autodl-fs/data/west-ta-baselines
 PY=/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python
 
-# 唯一的新依赖。--no-deps 保证不改动现有 numpy 等版本。
-"$PY" -m pip install --no-deps praat-parselmouth
+# 唯一的新依赖，装到独立目录，不改动现有环境的 numpy 等版本。
+"$PY" -m pip install --no-deps --target /root/autodl-tmp/trr-diagnostics/deps \
+  -r experiments/trr_diagnostics/requirements.txt
+export PYTHONPATH="/root/autodl-tmp/trr-diagnostics/deps${PYTHONPATH:+:$PYTHONPATH}"
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 
-# 1. 单元测试（CPU，几秒）
+# 1. 单元测试（CPU）
 env CUDA_VISIBLE_DEVICES= "$PY" -m pytest -q experiments/trr_diagnostics/tests
 
 # 2. 在本机用合成滑音验证 Praat 重合成链路已装好、接对；全部 true 才继续
 "$PY" -m experiments.trr_diagnostics.twin --self-check
 
-# 3. 冒烟：16 条，确认 prepare / run / report 能跑通。数字无意义。
-export HF_HUB_OFFLINE=1 ENABLE_AUDIO_OUTPUT=0 OMP_NUM_THREADS=2
+# 3. 真实音频冒烟。每次 prepare 使用新目录，保持旧日志可追溯。
+export HF_HUB_OFFLINE=1 ENABLE_AUDIO_OUTPUT=0
 CFG=experiments/trr_diagnostics/d2-iemocap-session4.json
 SMOKE=/root/autodl-tmp/trr-diagnostics/d2-smoke-01
-"$PY" -m experiments.trr_diagnostics.d2 prepare --config "$CFG" --output "$SMOKE" --limit 16
+"$PY" -m experiments.trr_diagnostics.d2 prepare --config "$CFG" --output "$SMOKE" --limit 16 --workers 1
+"$PY" -c 'import json,sys; p=json.load(open(sys.argv[1])); sys.exit(0 if p["qc"]["passed"] else "STOP: acoustic QC failed")' "$SMOKE/prepare.json"
+```
+
+上一步通过后，在有 GPU 的环境中单独执行模型冒烟；仅证明调用链，指标不作研究结论：
+
+```bash
 "$PY" -m experiments.trr_diagnostics.d2 run --prepared "$SMOKE" \
   --model-config experiments/ms_swift_iemocap/config.json --method frozen-base --arm frozen-base
 
-# 4. 正式：全部 Session 4
+# 4. 全部 Session 4；先确认完整 prepared 的声学验收。
 OUT=/root/autodl-tmp/trr-diagnostics/d2-iemocap-s4-01
 "$PY" -m experiments.trr_diagnostics.d2 prepare --config "$CFG" --output "$OUT" --workers 8
+"$PY" -c 'import json,sys; p=json.load(open(sys.argv[1])); sys.exit(0 if p["qc"]["passed"] else "STOP: acoustic QC failed")' "$OUT/prepare.json"
+```
+
+完整 prepared 验收通过后：
+
+```bash
 "$PY" -m experiments.trr_diagnostics.d2 run --prepared "$OUT" \
   --model-config experiments/ms_swift_iemocap/config.json --method frozen-base --arm frozen-base \
   2>&1 | tee "$OUT/frozen-base.log"
@@ -101,13 +120,15 @@ OUT=/root/autodl-tmp/trr-diagnostics/d2-iemocap-s4-01
   --arm lora-mixed 2>&1 | tee "$OUT/lora-mixed.log"
 ```
 
-`run` 可以重复执行：已有 `metrics.json` 的条件不会重算，中断后直接重跑同一条命令即可。`text`、`question_only` 和 ASR 条件失败时会记录 `failure.json` 并继续，音频条件失败则立即停止。只重新生成报告用 `d2 report --prepared "$OUT" --arm frozen-base`。
+`run` 可以重复执行：完成条件在配置、音频、清单、预测文件及预测 ID/参考答案校验通过后才复用；模型配置、adapter 配置/权重、prepared 元数据或执行代码变化会拒绝混用同一臂。中断后重跑同一条命令即可，没有 `metrics.json` 完成标记的预测不会进入报告。`text`、`question_only` 和 ASR 条件失败时记录 `failure.json` 并继续，音频条件失败则立即停止；ASR 缺失时报告不可解释。只重新生成报告用 `d2 report --prepared "$OUT" --arm frozen-base`。
+
+新版 prepared 格式为 v2，包含原音频及孪生的 SHA-256。旧版目录不满足校验时，请在新目录重新 `prepare`，不要修改旧元数据冒充 v2。`prepare` 成功生成文件不等于声学验收通过，必须查看 `prepare.json` 的 `qc.passed`。
 
 ## 输出
 
 ```
 $OUT/config.json            配置快照
-$OUT/prepare.json           样本数、剔除原因、孪生参数、声学验收、各清单摘要、代码提交号
+$OUT/prepare.json           样本数、剔除原因、孪生参数、声学验收、清单/音频/代码摘要
 $OUT/qc.jsonl               逐条的 F0/能量轮廓统计
 $OUT/manifests/*.jsonl      各条件清单
 $OUT/audio/<条件>/*.wav      孪生音频
@@ -119,6 +140,8 @@ $OUT/runs/<臂>/report.md     汇总表与判据结论（report.json 为同内�
 
 ## 成本估计
 
+以下是上游方案按历史 GPU 评测推算的估计，**不是本轮 D2 的 GPU 实测**。本轮只有 CPU：新版 16 条 prepare 用时 45.14 秒（单 worker，与 CPU 测试并发），不能直接外推满负载 GPU 时间或显存。
+
 | 步骤 | 估计 | 依据 |
 |---|---|---|
 | `prepare`，8 进程 | 未知 | WORLD 后端实测 16 条（94 秒音频）用 45 秒；Praat 后端未实测，冒烟会给出本机速度 |
@@ -129,7 +152,9 @@ $OUT/runs/<臂>/report.md     汇总表与判据结论（report.json 为同内�
 
 ## 验证状态
 
-- 已在无 GPU 环境通过：37 个单元测试，覆盖拉平与增益的数值、孪生间响度一致、统计量、清单构造、`run` 的编排（用替身打分函数）、报告与判据。
+- 已在无 GPU 环境通过全部单元测试（含服务器侧整合时新增的回归用例），覆盖拉平与增益的数值、孪生间响度一致、统计量、清单构造、`run` 的编排（用替身打分函数）、报告与判据的门控。
+- WORLD 后端：真实 `pyworld==0.3.5` 的合成滑音自检通过；16 条真实音频的声学验收失败，见 [实测汇总](validation/real-audio-smoke.json)。
+- 已静态核对：ms-swift 快照中 Omni 模板的 `_encode` 与 collator 对没有音频的输入有分支处理。
 - 已在服务器上跑通（2026-11-23，WORLD 后端，16 条）：`prepare`、冻结基座与 LoRA 两臂的全部 10 个条件，含无音频输入和 ASR。
 - **未验证**：Praat 后端的真实调用（这里无法安装 `praat-parselmouth`）；它是否把重合成损伤降到阈值内。步骤 2 和步骤 3 用来在服务器上回答这两点。
 

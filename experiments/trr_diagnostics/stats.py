@@ -25,7 +25,9 @@ def mcnemar_exact(only_reference, only_candidate):
     if n == 0:
         return 1.0
     tail = sum(comb(n, k) for k in range(min(only_reference, only_candidate) + 1))
-    return min(1.0, 2.0 * tail / 2 ** n)
+    # Keep the numerator integral until division: float(tail) overflows at
+    # roughly 1024 discordant pairs, which a full Session 4 can contain.
+    return min(1.0, (2 * tail) / (2 ** n))
 
 
 def _cluster_counts(labels, correct, clusters, classes):

@@ -53,6 +53,48 @@ def write_jsonl(path, rows):
     Path(path).write_text(''.join(json.dumps(row, ensure_ascii=False) + '\n' for row in rows))
 
 
+def validate_prepared(prepared):
+    """Check the frozen protocol and all inputs, including on resumed/report-only runs."""
+    prepared = Path(prepared)
+    cfg, info = load(prepared / 'config.json'), load(prepared / 'prepare.json')
+    if digest(prepared / 'config.json') != info['config_sha256']:
+        raise ValueError('Diagnostic config changed after prepare')
+    for name, expected in info['manifests'].items():
+        if digest(prepared / 'manifests' / f'{name}.jsonl') != expected:
+            raise ValueError(f'{name}: manifest changed after prepare')
+    if info.get('format_version') != 2 or 'audio_files' not in info:
+        raise ValueError('Prepared inputs lack audio digests; prepare again in a new directory')
+    for name, expected in info['audio_files'].items():
+        if digest(name) != expected:
+            raise ValueError(f'Audio changed after prepare: {name}')
+    return cfg, info
+
+
+def completed_predictions(prepared, folder, name, info):
+    """A metrics marker commits a complete, hashed prediction file for one manifest."""
+    dest = folder / name
+    if not (dest / 'metrics.json').exists():
+        return None
+    metrics = load(dest / 'metrics.json')
+    path = dest / 'predictions.jsonl'
+    if (metrics.get('manifest_sha256') != info['manifests'][name] or not path.is_file()
+            or metrics.get('predictions_sha256') != digest(path)):
+        raise ValueError(f'{name}: completed predictions or manifest hash changed')
+    rows = read_jsonl(path)
+    manifest = read_jsonl(prepared / 'manifests' / f'{name}.jsonl')
+    if ([r['id'] for r in rows] != [r['id'] for r in manifest]
+            or any(r.get('reference') != m['messages'][1]['content'] for r, m in zip(rows, manifest))):
+        raise ValueError(f'{name}: predictions do not cover the manifest and references in order')
+    return rows
+
+
+def code_digests():
+    here = Path(__file__).parent
+    paths = [here / name for name in ('d2.py', 'stats.py', 'twin.py')]
+    paths += [here.parent / name / 'evaluate.py' for name in ('ms_swift_iemocap', 'ms_swift_librispeech')]
+    return {str(p.relative_to(here.parent)): digest(p) for p in paths}
+
+
 # ----------------------------------------------------------------------------- prepare
 
 def read_transcripts(archive, sessions):
@@ -139,7 +181,8 @@ def _transform(job):
                   stats={'orig': twin.contour_stats(samples, rate, backend, params, mask)})
     for name, path in targets.items():
         record['clipped_samples'][name] = twin.write_wav(path, twins[name], rate)
-        record['stats'][name] = twin.contour_stats(twins[name], rate, backend, params, mask)
+        saved, saved_rate = twin.read_wav(path)  # measure what the model will hear
+        record['stats'][name] = twin.contour_stats(saved, saved_rate, backend, params, mask)
     return record
 
 
@@ -166,12 +209,16 @@ def summarize_qc(records, conditions, limits):
                              utterances_without_voicing=sum(r['stats'][name]['f0_sd_semitones'] is None for r in records),
                              clipped_samples=sum(r['clipped_samples'].get(name, 0) for r in records),
                              max_rms_error_between_twins=max(abs(r['stats'][name]['rms'] / r['stats'][conditions[0]]['rms'] - 1.0)
-                                                             for r in records) if name != 'orig' else 0.0)
+                                                             for r in records) if name != 'orig' else 0.0,
+                             max_rms_relative_error=max((abs(r['stats'][name]['rms'] / r['stats']['orig']['rms'] - 1)
+                                                         for r in records if r['stats']['orig']['rms'] > 0), default=0.0))
     keep_lo, keep_hi = limits['kept_ratio']
     expectations = {'sham': ('keep', 'keep'), 'flat_f0': ('flat', 'keep'),
                     'flat_energy': ('keep', 'flat'), 'flat_both': ('flat', 'flat')}
     checks = {}
     for name in conditions:
+        # Twins must share one level. Their level relative to the original is reported, not checked:
+        # all twins of an utterance are lowered together when any of them would clip.
         checks[f'{name}:level_matches_other_twins'] = summary[name]['max_rms_error_between_twins'] < 0.01
         checks[f'{name}:no_clipping'] = summary[name]['clipped_samples'] == 0
         for key, mode, limit in (('median_f0_sd_ratio_to_orig', expectations[name][0], limits['flat_f0_max_ratio']),
@@ -193,7 +240,7 @@ def git_head():
 
 def prepare(config, output, *, workers=4, limit=None, backend=None):
     cfg = load(config)
-    output = Path(output)
+    output = Path(output).resolve()
     if output.exists():
         raise FileExistsError(f'{output} exists; diagnostics always go to a new directory')
     data, classes, question = cfg['data'], cfg['classes'], cfg['prompts']['question']
@@ -205,7 +252,13 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
     manifest_sha = digest(data['manifest'])
     if data.get('manifest_sha256') not in (None, manifest_sha):
         raise ValueError('The source manifest differs from the one pinned in the config')
-    items, excluded = select_items(read_jsonl(data['manifest']), read_transcripts(data['archive'], data['sessions']),
+    source_rows = read_jsonl(data['manifest'])
+    for row in source_rows:
+        session = re.match(r'^Ses(\d{2})[FM]_', row['id'])
+        if (session is None or int(session[1]) not in data['sessions']
+                or row.get('session', int(session[1])) != int(session[1])):
+            raise ValueError(f"{row['id']}: session differs from the declared development sessions")
+    items, excluded = select_items(source_rows, read_transcripts(data['archive'], data['sessions']),
                                    question, classes)
     full = len(items)
     if limit:
@@ -257,7 +310,8 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
         hashes[name] = digest(output / 'manifests' / f'{name}.jsonl')
 
     used = backend or _WORKER.get('backend') or twin.make_backend(params)
-    info = dict(name=cfg['name'], config_sha256=digest(output / 'config.json'), source_manifest_sha256=manifest_sha,
+    audio_files = sorted({path for content in manifests.values() for row in content for path in row['audios']})
+    info = dict(format_version=2, name=cfg['name'], config_sha256=digest(output / 'config.json'), source_manifest_sha256=manifest_sha,
                 utterances=len(items), utterances_before_limit=full, smoke_limit=limit, excluded=excluded,
                 class_counts=dict(Counter(item['reference'] for item in items)),
                 dialogues=len({item['dialogue'] for item in items}),
@@ -266,7 +320,8 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
                 audio_seconds=sum(r['seconds'] for r in records), twin=params,
                 vocoder=dict(name=used.name, version=getattr(used, 'version', None)),
                 qc=summarize_qc(records, twins, cfg['decision']['qc']), manifests=hashes,
-                code_commit=git_head(), prepare_seconds=time.monotonic() - start)
+                audio_files={path: digest(path) for path in audio_files},
+                code_commit=git_head(), code_sha256=code_digests(), prepare_seconds=time.monotonic() - start)
     write(output / 'prepare.json', info)
     return info
 
@@ -280,10 +335,12 @@ def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
     from experiments.ms_swift_librispeech.train import load_best
 
     prepared = Path(prepared)
-    cfg, info, model_cfg = load(prepared / 'config.json'), load(prepared / 'prepare.json'), load(model_config)
+    cfg, info = validate_prepared(prepared)
+    model_cfg = load(model_config)
     identity = dict(arm=arm, method=method, model_config=str(Path(model_config).resolve()),
                     model_config_sha256=digest(model_config), base_model=str(Path(model_cfg['model']).resolve()),
-                    model_revision=model_cfg['model_revision'], prepared_config_sha256=info['config_sha256'])
+                    model_revision=model_cfg['model_revision'], prepared_config_sha256=info['config_sha256'],
+                    prepared_sha256=digest(prepared / 'prepare.json'), code_sha256=code_digests())
     if method == 'frozen-base':
         if checkpoint:
             raise ValueError('The frozen base takes no checkpoint')
@@ -291,6 +348,7 @@ def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
         if not checkpoint:
             raise ValueError('An adapter arm needs --checkpoint')
         identity.update(checkpoint=str(Path(checkpoint).resolve()),
+                        adapter_config_sha256=digest(Path(checkpoint) / 'adapter_config.json'),
                         weights_sha256=digest(Path(checkpoint) / 'adapter_model.safetensors'))
     folder = prepared / 'runs' / arm
     folder.mkdir(parents=True, exist_ok=True)
@@ -300,24 +358,28 @@ def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
     else:
         write(folder / 'identity.json', identity)
 
+    # The audio conditions are the diagnostic itself; text-only and ASR inputs are extra context.
+    jobs = [(name, score_choice, cfg['generation'], True) for name in cfg['conditions']['audio']]
+    jobs += [(name, score_choice, cfg['generation'], False) for name in cfg['conditions']['text']]
+    if cfg.get('asr') and not skip_asr:
+        jobs += [('asr-' + name, score_asr, cfg['asr']['generation'], False) for name in cfg['asr']['conditions']]
+    pending = []
+    for job in jobs:
+        if completed_predictions(prepared, folder, job[0], info) is None:
+            pending.append(job)
+        else:
+            print(f'{job[0]}: already scored and verified, kept', flush=True)
+    if not pending:
+        return []
     if method == 'frozen-base':
         from experiments.ms_swift_aqa.evaluate_frozen import load_frozen
         model, template = load_frozen(model_cfg)
     else:
         model, template = load_best(model_cfg, method, Path(checkpoint))
         model.requires_grad_(False)
-
-    # The audio conditions are the diagnostic itself; text-only and ASR inputs are extra context.
-    jobs = [(name, score_choice, cfg['generation'], True) for name in cfg['conditions']['audio']]
-    jobs += [(name, score_choice, cfg['generation'], False) for name in cfg['conditions']['text']]
-    if cfg.get('asr') and not skip_asr:
-        jobs += [('asr-' + name, score_asr, cfg['asr']['generation'], False) for name in cfg['asr']['conditions']]
     failed = []
-    for name, scorer, generation, required in jobs:
+    for name, scorer, generation, required in pending:
         dest = folder / name
-        if (dest / 'metrics.json').exists():
-            print(f'{name}: already scored, kept', flush=True)
-            continue
         manifest = prepared / 'manifests' / f'{name}.jsonl'
         if digest(manifest) != info['manifests'][name]:
             raise ValueError(f'{name}: manifest changed after prepare')
@@ -330,7 +392,9 @@ def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
             metrics = scorer(model, template, manifest, generation, dest / 'predictions.jsonl')
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
-                metrics.update(peak_allocated_bytes=torch.cuda.max_memory_allocated())
+                metrics.update(peak_allocated_bytes=torch.cuda.max_memory_allocated(),
+                               peak_reserved_bytes=torch.cuda.max_memory_reserved(),
+                               gpu_name=torch.cuda.get_device_name())
             metrics.update(condition=name, eval_seconds=time.perf_counter() - start, manifest_sha256=info['manifests'][name],
                            predictions_sha256=digest(dest / 'predictions.jsonl'))
             write(dest / 'metrics.json', metrics)
@@ -385,13 +449,17 @@ def decide(decision, contrasts, wer):
 
 def report(prepared, arm):
     prepared = Path(prepared)
-    cfg, info = load(prepared / 'config.json'), load(prepared / 'prepare.json')
+    cfg, info = validate_prepared(prepared)
     folder = prepared / 'runs' / arm
+    identity = load(folder / 'identity.json')
+    if identity.get('prepared_sha256') != digest(prepared / 'prepare.json'):
+        raise ValueError('Prepared metadata changed since this arm was started')
     classes, boot = cfg['classes'], cfg['bootstrap']
     manifest = read_jsonl(prepared / 'manifests' / 'orig.jsonl')
     labels = [m['reference'] for m in manifest]
     clusters = [m[boot['cluster']] for m in manifest]
-    names = [n for n in [*cfg['conditions']['audio'], *cfg['conditions']['text']] if (folder / n / 'predictions.jsonl').exists()]
+    names = [n for n in [*cfg['conditions']['audio'], *cfg['conditions']['text']]
+             if completed_predictions(prepared, folder, n, info) is not None]
     preds = {n: _predictions(folder, n, manifest) for n in names}
     conditions = {n: stats.classification(zip(labels, preds[n]), classes) for n in names}
 
@@ -427,9 +495,9 @@ def report(prepared, arm):
 
     asr, wer = {}, {}
     for name in (cfg.get('asr') or {}).get('conditions', []):
-        path = folder / f'asr-{name}' / 'predictions.jsonl'
-        if path.exists():
-            asr[f'asr-{name}'] = {r['id']: (r['word_errors'], r['reference_words']) for r in read_jsonl(path)}
+        rows = completed_predictions(prepared, folder, f'asr-{name}', info)
+        if rows is not None:
+            asr[f'asr-{name}'] = {r['id']: (r['word_errors'], r['reference_words']) for r in rows}
     dialogue = {m['id']: m[boot['cluster']] for m in manifest}
     for candidate, reference in (cfg.get('asr') or {}).get('contrasts', []):
         if f'asr-{candidate}' in asr and f'asr-{reference}' in asr:
@@ -437,11 +505,27 @@ def report(prepared, arm):
                 asr[f'asr-{candidate}'], asr[f'asr-{reference}'], dialogue, resamples=boot['resamples'], seed=boot['seed'])
 
     failures = sorted(p.parent.name for p in folder.glob('*/failure.json'))
-    result = dict(arm=arm, identity=load(folder / 'identity.json'), smoke_limit=info['smoke_limit'],
+    raw_verdicts = decide(cfg['decision'], contrasts, wer)
+    reasons = []
+    if info['smoke_limit'] is not None:
+        reasons.append('smoke_run')
+    if not info['qc']['passed']:
+        reasons.append('acoustic_qc_failed')
+    for control in ('vocoder_artifacts', 'resynthesis_keeps_words', 'flattening_keeps_words'):
+        if raw_verdicts.get(control) != 'pass':
+            reasons.append(f"{control}:{raw_verdicts.get(control, 'missing')}")
+    if 'f0_energy_use' not in raw_verdicts:
+        reasons.append('primary_contrast_missing')
+    verdicts = dict(raw_verdicts)
+    if reasons:
+        verdicts['f0_energy_use'] = 'not_interpretable'
+    result = dict(arm=arm, identity=identity, smoke_limit=info['smoke_limit'],
                   utterances=len(labels), dialogues=len(set(clusters)), conditions=conditions, contrasts=contrasts,
                   strata=by_stratum, asr_wer={k: sum(e for e, _ in v.values()) / sum(w for _, w in v.values()) for k, v in asr.items()},
                   wer_contrasts=wer, qc=info['qc'], decision=cfg['decision'],
-                  verdicts=decide(cfg['decision'], contrasts, wer), skipped_contrasts=skipped, failed_conditions=failures)
+                  verdicts=verdicts, raw_verdicts=raw_verdicts,
+                  interpretation=dict(eligible=not reasons, reasons=reasons),
+                  skipped_contrasts=skipped, failed_conditions=failures)
     write(folder / 'report.json', result)
     text = render(result)
     (folder / 'report.md').write_text(text)
@@ -456,6 +540,9 @@ def render(result):
         return 'n/a' if pair is None else f'[{pair[0]:+.2f}, {pair[1]:+.2f}]'
 
     lines = [f"# D2 report: {result['arm']}", '']
+    if not result['interpretation']['eligible']:
+        lines += ['**F0/energy interpretation: NOT INTERPRETABLE.** ' + ', '.join(result['interpretation']['reasons']),
+                  'Point estimates below are descriptive; failed or missing controls do not support a prosody-use conclusion.', '']
     if result['smoke_limit']:
         lines += [f"**SMOKE RUN on {result['utterances']} utterances. Numbers are not results.**", '']
     lines += [f"{result['utterances']} utterances from {result['dialogues']} dialogues. Intervals are 95% cluster "

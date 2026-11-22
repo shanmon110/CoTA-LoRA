@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checks": {
+    "source_has_pitch_movement": true,
+    "source_has_energy_movement": true,
+    "lengths_equal": true,
+    "rms_matched": true,
+    "sham_keeps_pitch": true,
+    "sham_keeps_energy": true,
+    "flat_f0_removes_pitch": true,
+    "flat_f0_keeps_energy": true,
+    "flat_energy_removes_energy": true,
+    "flat_energy_keeps_pitch": true,
+    "flat_both_removes_pitch": true,
+    "flat_both_removes_energy": true
+  },
+  "stats": {
+    "orig": {
+      "voiced_fraction": 0.9975062344139651,
+      "f0_median_hz": 170.12442263919274,
+      "f0_sd_semitones": 2.9998543197429384,
+      "energy_sd_db": 4.648525839664215,
+      "speech_fraction": 1.0,
+      "rms": 0.12874473602474612
+    },
+    "sham": {
+      "voiced_fraction": 0.9925187032418953,
+      "f0_median_hz": 170.5295686092662,
+      "f0_sd_semitones": 2.9812606049551564,
+      "energy_sd_db": 4.665629365117079,
+      "speech_fraction": 1.0,
+      "rms": 0.12874473602474612
+    },
+    "flat_f0": {
+      "voiced_fraction": 0.9975062344139651,
+      "f0_median_hz": 170.16855826563432,
+      "f0_sd_semitones": 0.226959367458566,
+      "energy_sd_db": 4.94006756169622,
+      "speech_fraction": 1.0,
+      "rms": 0.12874473602474615
+    },
+    "flat_energy": {
+      "voiced_fraction": 0.9925187032418953,
+      "f0_median_hz": 170.52952942191487,
+      "f0_sd_semitones": 2.9813285234926137,
+      "energy_sd_db": 0.09696753579969959,
+      "speech_fraction": 1.0,
+      "rms": 0.12874473602474612
+    },
+    "flat_both": {
+      "voiced_fraction": 0.9975062344139651,
+      "f0_median_hz": 170.16878152604335,
+      "f0_sd_semitones": 0.22696784335611025,
+      "energy_sd_db": 0.1512795612178216,
+      "speech_fraction": 1.0,
+      "rms": 0.12874473602474615
+    }
+  },
+  "backend": "world",
+  "backend_version": "0.3.5",
+  "params": {
+    "backend": "world",
+    "frame_period_ms": 5.0,
+    "f0_floor_hz": 60.0,
+    "f0_ceil_hz": 600.0,
+    "energy_window_ms": 250.0,
+    "energy_floor_db": 30.0,
+    "max_gain_db": 12.0,
+    "gain_edge_ms": 50.0,
+    "strength": 1.0
+  }
+}

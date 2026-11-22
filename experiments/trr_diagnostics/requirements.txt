@@ -1,0 +1,7 @@
+# Install into a separate --target directory with --no-deps (see README).
+# Reuse the existing experiment environment's numpy/scipy; do not replace it.
+# Default backend (Praat overlap-add). Not pinned: no version has been validated yet;
+# prepare.json records the version that was actually used.
+praat-parselmouth
+# Optional WORLD backend, validated at this version on 2026-11-23.
+pyworld==0.3.5
