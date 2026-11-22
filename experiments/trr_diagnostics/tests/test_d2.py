@@ -38,7 +38,11 @@ def corpus(tmp_path):
         uid = 'Ses04F_' + suffix
         wav = tmp_path / 'wav' / f'{uid}.wav'
         wav.parent.mkdir(exist_ok=True)
-        twin.write_wav(wav, twin.synthetic_utterance(RATE, seconds=1.0 + 0.05 * index, harmonics=1), RATE)
+        # Utterances differ in pitch height and loudness, as a speaker's do across emotions.
+        height, loudness = 1.0 + 0.04 * index, 0.5 + 0.07 * index
+        twin.write_wav(wav, twin.synthetic_utterance(RATE, seconds=1.0 + 0.05 * index, harmonics=1,
+                                                     f0=(120.0 * height, 220.0 * height),
+                                                     amplitude=(0.05 * loudness, 0.4 * loudness)), RATE)
         rows.append(dict(id=uid, speaker='Ses04' + suffix.rsplit('_', 1)[1][0], session=4, audios=[str(wav)],
                          messages=[dict(role='user', content='<audio>' + QUESTION), dict(role='assistant', content=label)]))
         if text is not None:
@@ -67,7 +71,7 @@ def test_shipped_config_matches_the_supervised_iemocap_prompt_and_known_twins():
     assert CONFIG['classes'] == sorted(set(iemocap['labels'].values()))
     assert CONFIG['data']['sessions'] == iemocap['sessions']['dev']       # development session only
     assert CONFIG['conditions']['audio'][0] == 'orig'
-    assert set(CONFIG['conditions']['audio'][1:]) == set(twin.AUDIO_CONDITIONS)
+    assert set(CONFIG['conditions']['audio'][1:]) <= set(twin.AUDIO_CONDITIONS)
     assert set(CONFIG['twin']) == set(twin.DEFAULTS)
     named = {name for pair in CONFIG['contrasts'] + CONFIG['strata_contrasts'] for name in pair}
     assert named <= set(CONFIG['conditions']['audio']) | set(CONFIG['conditions']['text'])

@@ -16,6 +16,8 @@ import subprocess
 import sys
 import time
 import traceback
+
+import numpy as np
 from collections import Counter, defaultdict
 from multiprocessing import Pool
 from pathlib import Path
@@ -62,7 +64,7 @@ def validate_prepared(prepared):
     for name, expected in info['manifests'].items():
         if digest(prepared / 'manifests' / f'{name}.jsonl') != expected:
             raise ValueError(f'{name}: manifest changed after prepare')
-    if info.get('format_version') != 2 or 'audio_files' not in info:
+    if info.get('format_version') != 3 or 'audio_files' not in info:
         raise ValueError('Prepared inputs lack audio digests; prepare again in a new directory')
     for name, expected in info['audio_files'].items():
         if digest(name) != expected:
@@ -170,15 +172,36 @@ def _init_worker(params, backend=None):
     _WORKER.update(params=params, backend=backend or twin.make_backend(params))
 
 
+def _measure(job):
+    """Median F0 and RMS of one recording, for the speaker references of the level twins."""
+    uid, source = job
+    samples, rate = twin.read_wav(source)
+    f0 = _WORKER['backend'].f0(samples, rate)
+    voiced = f0[f0 > 0]
+    return uid, (float(np.median(voiced)) if voiced.size else None), twin.rms(samples)
+
+
+def speaker_references(items, measures):
+    """Per speaker: the median over utterances of median F0 and of RMS. No labels are used."""
+    by_speaker = defaultdict(lambda: ([], []))
+    for item in items:
+        f0, level = measures[item['id']]
+        if f0 is not None:
+            by_speaker[item['speaker']][0].append(f0)
+        by_speaker[item['speaker']][1].append(level)
+    return {speaker: dict(f0_hz=float(np.median(f0)), rms=float(np.median(level)), utterances=len(level))
+            for speaker, (f0, level) in by_speaker.items()}
+
+
 def _transform(job):
-    uid, source, targets = job
+    uid, source, targets, reference = job
     params, backend = _WORKER['params'], _WORKER['backend']
     samples, rate = twin.read_wav(source)
-    twins, scale = twin.make_twins(samples, rate, backend, params, list(targets))
+    twins, scale = twin.make_twins(samples, rate, backend, params, list(targets), reference)
     # Contour movement is measured over the original's speech samples and voiced frames for every condition.
     mask = twin.speech_mask(twin.slow_power(samples, rate, params['energy_window_ms']), params['energy_floor_db'])
     voiced = twin.voiced_frames(samples, rate, backend)
-    record = dict(id=uid, rate=rate, seconds=samples.size / rate, clipped_samples={}, peak_scale=scale,
+    record = dict(id=uid, rate=rate, seconds=samples.size / rate, clipped_samples={}, peak_scale=scale, reference=reference,
                   stats={'orig': twin.contour_stats(samples, rate, backend, params, mask, voiced)})
     for name, path in targets.items():
         record['clipped_samples'][name] = twin.write_wav(path, twins[name], rate)
@@ -198,6 +221,19 @@ def _median(values):
 def summarize_qc(records, conditions, limits):
     """Per-condition contour movement relative to the original, and the acoustic acceptance checks."""
     summary = {}
+    # Twins that keep the original level share it; twins set to the reference level share that.
+    first = {}
+    peer = {name: first.setdefault(twin.EDITS[name][2], name) for name in conditions}
+
+    def spread(name, key):
+        """Robust spread across utterances of log(value), after removing each speaker's median."""
+        groups = defaultdict(list)
+        for r in records:
+            if r['stats'][name].get(key):
+                groups[(r.get('reference') or {}).get('speaker')].append(math.log(r['stats'][name][key]))
+        residual = [v - _median(values) for values in groups.values() for v in values]
+        return 1.4826 * _median(abs(v) for v in residual) if len(residual) > 1 else None
+
     for name in ['orig', *conditions]:
         ratios = {}
         for key in ('f0_sd_semitones', 'energy_sd_db'):
@@ -209,19 +245,30 @@ def summarize_qc(records, conditions, limits):
                              median_energy_sd_ratio_to_orig=ratios['energy_sd_db'],
                              utterances_without_voicing=sum(r['stats'][name]['f0_sd_semitones'] is None for r in records),
                              clipped_samples=sum(r['clipped_samples'].get(name, 0) for r in records),
-                             max_rms_error_between_twins=max(abs(r['stats'][name]['rms'] / r['stats'][conditions[0]]['rms'] - 1.0)
+                             max_rms_error_between_twins=max(abs(r['stats'][name]['rms'] / r['stats'][peer[name]]['rms'] - 1.0)
                                                              for r in records) if name != 'orig' else 0.0,
                              max_rms_relative_error=max((abs(r['stats'][name]['rms'] / r['stats']['orig']['rms'] - 1)
                                                          for r in records if r['stats']['orig']['rms'] > 0), default=0.0))
     keep_lo, keep_hi = limits['kept_ratio']
-    expectations = {'sham': ('keep', 'keep'), 'flat_f0': ('flat', 'keep'),
-                    'flat_energy': ('keep', 'flat'), 'flat_both': ('flat', 'flat')}
+    expectations = {name: ('flat' if mode.startswith('flat') else 'keep', 'flat' if flat_energy else 'keep')
+                    for name, (mode, flat_energy, _) in twin.EDITS.items()}
+    base_spread = {key: spread('orig', key) for key in ('f0_median_hz', 'rms')}
+    for name in ['orig', *conditions]:
+        for key in ('f0_median_hz', 'rms'):
+            value = spread(name, key)
+            summary[name][f'{key}_spread_ratio_to_orig'] = (value / base_spread[key] if value is not None and base_spread[key] else None)
     checks = {}
     for name in conditions:
         # Twins must share one level. Their level relative to the original is reported, not checked:
         # all twins of an utterance are lowered together when any of them would clip.
         checks[f'{name}:level_matches_other_twins'] = summary[name]['max_rms_error_between_twins'] < 0.01
         checks[f'{name}:no_clipping'] = summary[name]['clipped_samples'] == 0
+        # Level twins must pull the utterances of one speaker to a common pitch height / loudness.
+        mode, _, set_level = twin.EDITS[name]
+        for key, levelled in (('f0_median_hz', 'shift' in mode), ('rms', set_level)):
+            value = summary[name][f'{key}_spread_ratio_to_orig']
+            if levelled:
+                checks[f'{name}:{key}_spread:levelled'] = value is not None and value <= limits.get('level_max_ratio', 0.25)
         for key, mode, limit in (('median_f0_sd_ratio_to_orig', expectations[name][0], limits['flat_f0_max_ratio']),
                                  ('median_energy_sd_ratio_to_orig', expectations[name][1], limits['flat_energy_max_ratio'])):
             value = summary[name][key]
@@ -247,7 +294,9 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
     data, classes, question = cfg['data'], cfg['classes'], cfg['prompts']['question']
     params = {**twin.DEFAULTS, **cfg['twin']}
     audio = cfg['conditions']['audio']
-    twins = [name for name in audio if name != 'orig']
+    # Twins are generated for every condition that is classified or transcribed.
+    wanted = [*audio, *(cfg.get('asr') or {}).get('conditions', [])]
+    twins = list(dict.fromkeys(name for name in wanted if name != 'orig'))
     if audio[0] != 'orig' or set(twins) - set(twin.AUDIO_CONDITIONS):
         raise ValueError('Audio conditions must start with orig and otherwise name known twins')
     manifest_sha = digest(data['manifest'])
@@ -269,41 +318,76 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
     write(output / 'config.json', cfg)
     for name in twins:
         (output / 'audio' / name).mkdir(parents=True)
-    jobs = [(item['id'], item['source_audio'], {name: str(output / 'audio' / name / f"{item['id']}.wav") for name in twins})
-            for item in items]
-    if backend is not None or workers <= 1:
+    need_reference = bool(set(twins) & set(twin.LEVEL_CONDITIONS))
+    serial = backend is not None or workers <= 1
+    if serial:
         _init_worker(params, backend)
-        records = [_transform(job) for job in jobs]
-    else:
-        with Pool(workers, initializer=_init_worker, initargs=(params,)) as pool:
-            records = list(pool.imap(_transform, jobs, chunksize=4))
+    pool = None if serial else Pool(workers, initializer=_init_worker, initargs=(params,))
+    try:
+        run_all = (lambda fn, jobs: [fn(job) for job in jobs]) if serial else (lambda fn, jobs: list(pool.imap(fn, jobs, chunksize=4)))
+        references = {}
+        if need_reference:
+            measures = {uid: (f0, level) for uid, f0, level in run_all(_measure, [(i['id'], i['source_audio']) for i in items])}
+            references = speaker_references(items, measures)
+        jobs = [(item['id'], item['source_audio'], {name: str(output / 'audio' / name / f"{item['id']}.wav") for name in twins},
+                 dict(references[item['speaker']], speaker=item['speaker']) if need_reference else None) for item in items]
+        records = run_all(_transform, jobs)
+    finally:
+        if pool is not None:
+            pool.close()
+            pool.join()
     write_jsonl(output / 'qc.jsonl', records)
 
     (output / 'manifests').mkdir()
     shared = [{k: v for k, v in item.items() if k != 'source_audio'} for item in items]
 
-    def rows(content, audio_of, answer=lambda item: item['reference']):
-        return [dict(meta, audios=audio_of(item),
-                     messages=[dict(role='user', content=content(item)), dict(role='assistant', content=answer(item))])
-                for meta, item in zip(shared, items, strict=True)]
+    rotations = cfg.get('rotations', [0])
+    k = len(classes)
+    if rotations != [0] and not ('question_template' in cfg['prompts'] and set(cfg['prompts'].get('options', {})) == set(classes)):
+        raise ValueError('Rotating the options needs prompts.question_template and one option text per class')
+    if 'question_template' in cfg['prompts'] and cfg['prompts']['question_template'].format(
+            *(cfg['prompts']['options'][c] for c in classes)) != question:
+        raise ValueError('question_template with the options in class order must reproduce prompts.question')
+
+    def rotated(shift):
+        """Classes shown under the option letters, in letter order, and the question that says so."""
+        order = [classes[(j + shift) % k] for j in range(k)]
+        text = question if shift == 0 else cfg['prompts']['question_template'].format(*(cfg['prompts']['options'][c] for c in order))
+        return order, text
+
+    def rows(content, audio_of, answer=None):
+        """One row per utterance and option order. `reference` is the letter to answer under that order;
+        `label` is the class it stands for, which is what the report scores."""
+        out = []
+        for meta, item in zip(shared, items, strict=True):
+            for shift in ([None] if answer else rotations):
+                if answer:
+                    out.append(dict(meta, audios=audio_of(item), messages=[
+                        dict(role='user', content=content(item, question)), dict(role='assistant', content=answer(item))]))
+                    continue
+                order, text = rotated(shift)
+                letter = classes[order.index(item['reference'])]
+                out.append(dict(meta, id=item['id'] if rotations == [0] else f"{item['id']}#r{shift}", utterance=item['id'],
+                                rotation=shift, option_order=order, label=item['reference'], reference=letter,
+                                audios=audio_of(item), messages=[dict(role='user', content=content(item, text)),
+                                                                 dict(role='assistant', content=letter)]))
+        return out
 
     def path_of(name):
         return lambda item: [item['source_audio'] if name == 'orig' else str(output / 'audio' / name / f"{item['id']}.wav")]
 
     manifests = {}
     for name in audio:
-        manifests[name] = rows(lambda item: '<audio>' + question, path_of(name))
+        manifests[name] = rows(lambda item, q: '<audio>' + q, path_of(name))
     for name, template in cfg['conditions']['text'].items():
-        manifests[name] = rows(lambda item, t=template: t.format(transcript=item['transcript'], question=question),
+        manifests[name] = rows(lambda item, q, t=template: t.format(transcript=item['transcript'], question=q),
                                lambda item: [])
     asr = cfg.get('asr')
     if asr:
         ids = sorted(item['id'] for item in items)
         subset = set(ids if not asr.get('subset') or asr['subset'] >= len(ids) else Random(asr['seed']).sample(ids, asr['subset']))
         for name in asr['conditions']:
-            if name not in audio:
-                raise ValueError(f'ASR condition {name} is not an audio condition')
-            manifests['asr-' + name] = [row for row in rows(lambda item: '<audio>' + cfg['prompts']['asr'], path_of(name),
+            manifests['asr-' + name] = [row for row in rows(lambda item, q: '<audio>' + cfg['prompts']['asr'], path_of(name),
                                                             answer=lambda item: item['transcript']) if row['id'] in subset]
     hashes = {}
     for name, content in manifests.items():
@@ -312,7 +396,7 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
 
     used = backend or _WORKER.get('backend') or twin.make_backend(params)
     audio_files = sorted({path for content in manifests.values() for row in content for path in row['audios']})
-    info = dict(format_version=2, name=cfg['name'], config_sha256=digest(output / 'config.json'), source_manifest_sha256=manifest_sha,
+    info = dict(format_version=3, rotations=rotations, speaker_reference=references, name=cfg['name'], config_sha256=digest(output / 'config.json'), source_manifest_sha256=manifest_sha,
                 utterances=len(items), utterances_before_limit=full, smoke_limit=limit, excluded=excluded,
                 class_counts=dict(Counter(item['reference'] for item in items)),
                 dialogues=len({item['dialogue'] for item in items}),
@@ -422,6 +506,15 @@ def _predictions(folder, name, manifest):
     return [r['prediction'] for r in rows]
 
 
+def to_classes(letters, manifest, classes):
+    """Answer letters -> the classes they stood for under each row's option order."""
+    return [m['option_order'][classes.index(letter)] for letter, m in zip(letters, manifest, strict=True)]
+
+
+USE_KEY = {'flat_both': 'f0_energy_use'}            # names kept from the first protocol
+WORDS_KEY = {'flat_both': 'flattening_keeps_words'}
+
+
 def decide(decision, contrasts, wer):
     """Apply the thresholds fixed in the config before any model was run."""
     verdicts = {}
@@ -432,19 +525,21 @@ def decide(decision, contrasts, wer):
 
     if (v := get('sham-vs-orig')):
         verdicts['vocoder_artifacts'] = 'pass' if abs(v[0]) <= decision['max_artifact_pp'] else 'fail'
-    if (v := get('flat_both-vs-sham')):
-        delta, low, high = v
-        band = decision['equivalence_pp']
-        # uses: a drop of at least min_use_pp whose interval excludes zero.
-        # at_most_small: the whole interval lies inside +-equivalence_pp.
-        verdicts['f0_energy_use'] = ('uses' if delta <= -decision['min_use_pp'] and high < 0 else
-                                     'at_most_small' if -band <= low and high <= band else 'inconclusive')
+    for name in decision.get('primary', ['flat_both']):
+        if (v := get(f'{name}-vs-sham')):
+            delta, low, high = v
+            band = decision['equivalence_pp']
+            # uses: a drop of at least min_use_pp whose interval excludes zero.
+            # at_most_small: the whole interval lies inside +-equivalence_pp.
+            verdicts[USE_KEY.get(name, f'{name}_use')] = ('uses' if delta <= -decision['min_use_pp'] and high < 0 else
+                                                          'at_most_small' if -band <= low and high <= band else 'inconclusive')
     if (v := get('orig-vs-text')):
         verdicts['audio_beyond_transcript'] = 'yes' if v[1] > 0 else 'no' if v[2] <= 0 else 'inconclusive'
     if (w := wer.get('asr-sham-vs-asr-orig')):
         verdicts['resynthesis_keeps_words'] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
-    if (w := wer.get('asr-flat_both-vs-asr-sham')):
-        verdicts['flattening_keeps_words'] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
+    for name in decision.get('primary', ['flat_both']):
+        if (w := wer.get(f'asr-{name}-vs-asr-sham')):
+            verdicts[WORDS_KEY.get(name, f'{name}_keeps_words')] = 'pass' if w['delta_wer_pp'] <= decision['max_wer_increase_pp'] else 'fail'
     return verdicts
 
 
@@ -457,11 +552,17 @@ def report(prepared, arm):
         raise ValueError('Prepared metadata changed since this arm was started')
     classes, boot = cfg['classes'], cfg['bootstrap']
     manifest = read_jsonl(prepared / 'manifests' / 'orig.jsonl')
-    labels = [m['reference'] for m in manifest]
+    labels = [m['label'] for m in manifest]          # classes; `reference` is the letter under that row's option order
     clusters = [m[boot['cluster']] for m in manifest]
     names = [n for n in [*cfg['conditions']['audio'], *cfg['conditions']['text']]
              if completed_predictions(prepared, folder, n, info) is not None]
-    preds = {n: _predictions(folder, n, manifest) for n in names}
+    letters = {n: _predictions(folder, n, manifest) for n in names}
+    preds = {n: to_classes(letters[n], manifest, classes) for n in names}
+    # How often each option letter is chosen, and UAR under each option order: position preference shows here.
+    positions = {n: {c: letters[n].count(c) / len(labels) for c in classes} for n in names}
+    by_rotation = {n: {str(shift): stats.classification(
+        [(y, p) for y, p, m in zip(labels, preds[n], manifest) if m['rotation'] == shift], classes)['uar']
+        for shift in info['rotations']} for n in names}
     conditions = {n: stats.classification(zip(labels, preds[n]), classes) for n in names}
 
     def contrast(candidate, reference, keep=None, uar=True):
@@ -506,7 +607,7 @@ def report(prepared, arm):
             asr[f'asr-{name}'] = {r['id']: (e, n) for r, (e, n, _) in zip(rows, scored)}
             asr_raw[f'asr-{name}'] = sum(r['word_errors'] for r in rows) / sum(r['reference_words'] for r in rows)
             lead_in[f'asr-{name}'] = sum(flag for *_, flag in scored) / len(rows)
-    dialogue = {m['id']: m[boot['cluster']] for m in manifest}
+    dialogue = {m['utterance']: m[boot['cluster']] for m in manifest}
     for candidate, reference in (cfg.get('asr') or {}).get('contrasts', []):
         if f'asr-{candidate}' in asr and f'asr-{reference}' in asr:
             wer[f'asr-{candidate}-vs-asr-{reference}'] = stats.wer_contrast(
@@ -519,16 +620,26 @@ def report(prepared, arm):
         reasons.append('smoke_run')
     if not info['qc']['passed']:
         reasons.append('acoustic_qc_failed')
-    for control in ('vocoder_artifacts', 'resynthesis_keeps_words', 'flattening_keeps_words'):
+    for control in ('vocoder_artifacts', 'resynthesis_keeps_words'):
         if raw_verdicts.get(control) != 'pass':
             reasons.append(f"{control}:{raw_verdicts.get(control, 'missing')}")
-    if 'f0_energy_use' not in raw_verdicts:
-        reasons.append('primary_contrast_missing')
-    verdicts = dict(raw_verdicts)
-    if reasons:
-        verdicts['f0_energy_use'] = 'not_interpretable'
+    verdicts, interpretations = dict(raw_verdicts), {}
+    for name in cfg['decision'].get('primary', ['flat_both']):
+        use, words = USE_KEY.get(name, f'{name}_use'), WORDS_KEY.get(name, f'{name}_keeps_words')
+        own = list(reasons)
+        if raw_verdicts.get(words) != 'pass':   # each edit is read only if that edit left the words intact
+            own.append(f"{words}:{raw_verdicts.get(words, 'missing')}")
+        if use not in raw_verdicts:
+            own.append('primary_contrast_missing')
+        if own:
+            verdicts[use] = 'not_interpretable'
+        interpretations[use] = dict(eligible=not own, reasons=own)
+    primary = cfg['decision'].get('primary', ['flat_both'])[0]
+    reasons = interpretations[USE_KEY.get(primary, f'{primary}_use')]['reasons']
     result = dict(arm=arm, identity=identity, smoke_limit=info['smoke_limit'],
-                  utterances=len(labels), dialogues=len(set(clusters)), conditions=conditions, contrasts=contrasts,
+                  utterances=len({m['utterance'] for m in manifest}), scored_rows=len(labels), rotations=info['rotations'],
+                  dialogues=len(set(clusters)), conditions=conditions, contrasts=contrasts,
+                  option_letter_share=positions, uar_by_rotation=by_rotation, interpretations=interpretations,
                   strata=by_stratum, asr_wer={k: sum(e for e, _ in v.values()) / sum(w for _, w in v.values()) for k, v in asr.items()},
                   asr_wer_as_scored=asr_raw, asr_lead_in_rate=lead_in,
                   wer_contrasts=wer, qc=info['qc'], decision=cfg['decision'],
@@ -549,15 +660,21 @@ def render(result):
         return 'n/a' if pair is None else f'[{pair[0]:+.2f}, {pair[1]:+.2f}]'
 
     lines = [f"# D2 report: {result['arm']}", '']
-    if not result['interpretation']['eligible']:
-        lines += ['**F0/energy interpretation: NOT INTERPRETABLE.** ' + ', '.join(result['interpretation']['reasons']),
-                  'Point estimates below are descriptive; failed or missing controls do not support a prosody-use conclusion.', '']
+    blocked = {name: v['reasons'] for name, v in result['interpretations'].items() if not v['eligible']}
+    if blocked:
+        lines += [f"**{name}: NOT INTERPRETABLE.** " + ', '.join(reasons) for name, reasons in blocked.items()]
+        lines += ['Point estimates below are descriptive; failed or missing controls do not support a prosody-use conclusion.', '']
     if result['smoke_limit']:
         lines += [f"**SMOKE RUN on {result['utterances']} utterances. Numbers are not results.**", '']
-    lines += [f"{result['utterances']} utterances from {result['dialogues']} dialogues. Intervals are 95% cluster "
-              'bootstrap over dialogues; they describe this one model, not training-seed variation.', '',
-              '| condition | UAR | accuracy |', '|---|---:|---:|']
-    lines += [f"| {name} | {100 * m['uar']:.2f} | {100 * m['accuracy']:.2f} |" for name, m in result['conditions'].items()]
+    orders = result['rotations']
+    lines += [f"{result['utterances']} utterances from {result['dialogues']} dialogues, each asked under {len(orders)} option "
+              f"order(s) ({result['scored_rows']} scored answers per condition; classes are scored, not letters). Intervals are 95% "
+              'cluster bootstrap over dialogues; they describe this one model, not training-seed variation.', '',
+              '| condition | UAR | accuracy | UAR by option order | share of answers per letter |', '|---|---:|---:|---|---|']
+    lines += [f"| {name} | {100 * m['uar']:.2f} | {100 * m['accuracy']:.2f} | "
+              + ' / '.join(f'{100 * v:.1f}' for v in result['uar_by_rotation'][name].values()) + ' | '
+              + ' '.join(f'{letter} {100 * v:.0f}%' for letter, v in result['option_letter_share'][name].items()) + ' |'
+              for name, m in result['conditions'].items()]
     lines += ['', '| contrast (candidate - reference) | dUAR pp | 95% CI | dAcc pp | only ref / only cand correct | McNemar p | answers changed |',
               '|---|---:|---|---:|---:|---:|---:|']
     for name, c in result['contrasts'].items():
@@ -576,12 +693,13 @@ def render(result):
                   f"{100 * result['asr_lead_in_rate'][name]:.0f}% |" for name, value in result['asr_wer'].items()]
         lines += [f"\n{name}: {pp(w['delta_wer_pp'])} pp, 95% CI {ci(w['interval_95_pp'])}" for name, w in result['wer_contrasts'].items()]
     lines += ['', f"Acoustic QC of the twins: {'pass' if result['qc']['passed'] else 'FAIL'}", '',
-              '| twin | F0 SD / original | energy SD / original |', '|---|---:|---:|']
+              'Within-utterance movement and across-utterance spread (within speaker), each relative to the original:', '',
+              '| twin | F0 movement | energy movement | spread of pitch height | spread of loudness |', '|---|---:|---:|---:|---:|']
     for name, q in result['qc']['conditions'].items():
         if name != 'orig':
-            f0_ratio, energy_ratio = q['median_f0_sd_ratio_to_orig'], q['median_energy_sd_ratio_to_orig']
-            lines.append(f"| {name} | {'n/a' if f0_ratio is None else format(f0_ratio, '.2f')} | "
-                         f"{'n/a' if energy_ratio is None else format(energy_ratio, '.2f')} |")
+            cells = [q.get(key) for key in ('median_f0_sd_ratio_to_orig', 'median_energy_sd_ratio_to_orig',
+                                            'f0_median_hz_spread_ratio_to_orig', 'rms_spread_ratio_to_orig')]
+            lines.append(f'| {name} | ' + ' | '.join('n/a' if v is None else format(v, '.2f') for v in cells) + ' |')
     lines += ['', 'Verdicts under the thresholds fixed in the config:', '']
     lines += [f'- {name}: **{value}**' for name, value in result['verdicts'].items()] or ['- none available']
     if result['failed_conditions']:

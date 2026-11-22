@@ -14,6 +14,16 @@ Every output is trimmed or padded to the input length and scaled to the input RM
 of an utterance would clip, all twins of that utterance are scaled down together, so the twins
 always share one level and differ only in the contour that was edited.
 
+Level twins change where a contour sits and leave its shape alone:
+
+level_f0      F0 shifted (in log frequency) so the utterance median equals a reference pitch
+level_energy  utterance RMS set to a reference level
+level_both    both
+neutral       F0 constant at the reference pitch, slow energy flat, RMS at the reference level
+
+The reference is the speaker's typical pitch and level, computed without labels. An utterance
+spoken higher or louder than that speaker usually speaks is moved back to the usual place.
+
 Scope: F0 and slow energy only. Rhythm, pausing and voice quality are not edited.
 """
 import argparse
@@ -24,7 +34,13 @@ import wave
 import numpy as np
 from scipy.signal import fftconvolve
 
-AUDIO_CONDITIONS = ('sham', 'flat_f0', 'flat_energy', 'flat_both')
+FLAT_CONDITIONS = ('sham', 'flat_f0', 'flat_energy', 'flat_both')
+LEVEL_CONDITIONS = ('level_f0', 'level_energy', 'level_both', 'neutral')
+AUDIO_CONDITIONS = FLAT_CONDITIONS + LEVEL_CONDITIONS
+# condition -> (F0 edit, flatten slow energy, set RMS to the reference level)
+EDITS = {'sham': ('keep', False, False), 'flat_f0': ('flat', False, False), 'flat_energy': ('keep', True, False),
+         'flat_both': ('flat', True, False), 'level_f0': ('shift', False, False), 'level_energy': ('keep', False, True),
+         'level_both': ('shift', False, True), 'neutral': ('flat_shift', True, True)}
 DEFAULTS = dict(backend='praat', frame_period_ms=10.0, f0_floor_hz=75.0, f0_ceil_hz=600.0,
                 energy_window_ms=250.0, energy_floor_db=30.0, max_gain_db=12.0, gain_edge_ms=50.0,
                 strength=1.0)
@@ -61,6 +77,16 @@ def flatten_f0(f0, strength=1.0):
     if voiced.any():
         centre = np.log(np.median(f0[voiced]))
         out[voiced] = np.exp(centre + (1.0 - strength) * (np.log(f0[voiced]) - centre))
+    return out
+
+
+def shift_f0(f0, reference_hz):
+    """Move the voiced contour in log frequency so its median equals reference_hz; shape is kept."""
+    f0 = np.asarray(f0, dtype=np.float64)
+    voiced = f0 > 0
+    out = f0.copy()
+    if voiced.any():
+        out[voiced] = f0[voiced] * (reference_hz / np.median(f0[voiced]))
     return out
 
 
@@ -207,28 +233,41 @@ def make_backend(params):
     return BACKENDS[params['backend']](params['frame_period_ms'], params['f0_floor_hz'], params['f0_ceil_hz'])
 
 
-def make_twins(samples, rate, backend, params, conditions=AUDIO_CONDITIONS):
-    """Return {condition: waveform} for the requested twins and the one gain applied to all of them."""
+def make_twins(samples, rate, backend, params, conditions=FLAT_CONDITIONS, reference=None):
+    """Return {condition: waveform} for the requested twins and the one gain applied to all of them.
+
+    reference: dict(f0_hz=..., rms=...) for the level twins.
+    """
     unknown = set(conditions) - set(AUDIO_CONDITIONS)
     if unknown:
         raise ValueError(f'Unknown twin conditions: {sorted(unknown)}')
+    if reference is None and set(conditions) & set(LEVEL_CONDITIONS):
+        raise ValueError('Level twins need a reference pitch and level')
     f0, state = backend.analyze(samples, rate)
     energy = dict(window_ms=params['energy_window_ms'], floor_db=params['energy_floor_db'],
                   max_gain_db=params['max_gain_db'], edge_ms=params['gain_edge_ms'], strength=params['strength'])
     resynth = {}
 
-    def carrier(flat):
-        if flat not in resynth:
-            contour = flatten_f0(f0, params['strength']) if flat else f0
-            resynth[flat] = fit_length(backend.synthesize(contour, state, rate), samples.size)
-        return resynth[flat]
+    def carrier(mode):
+        if mode not in resynth:
+            contour = f0
+            if mode in ('flat', 'flat_shift'):
+                contour = flatten_f0(contour, params['strength'])
+            if mode in ('shift', 'flat_shift'):
+                contour = shift_f0(contour, reference['f0_hz'])
+            resynth[mode] = fit_length(backend.synthesize(contour, state, rate), samples.size)
+        return resynth[mode]
 
     out = {}
     for name in conditions:
-        wave_ = carrier(name in ('flat_f0', 'flat_both'))
-        if name in ('flat_energy', 'flat_both'):
+        mode, flat_energy, set_level = EDITS[name]
+        wave_ = carrier(mode)
+        if flat_energy:
             wave_ = wave_ * energy_gain(wave_, rate, **energy)
-        out[name] = match_level(wave_, samples)
+        wave_ = match_level(wave_, samples)
+        if set_level and rms(wave_) > 0:
+            wave_ = wave_ * (reference['rms'] / rms(wave_))
+        out[name] = wave_
     scale = common_peak_scale(out.values())
     return {name: wave_ * scale for name, wave_ in out.items()}, scale
 
@@ -279,7 +318,8 @@ def self_check(backend, params, *, harmonics=8, rate=16000):
     damages real speech is decided by the sham-versus-original word error rate, not here.
     """
     source = synthetic_utterance(rate, harmonics=harmonics)
-    twins, scale = make_twins(source, rate, backend, params)
+    reference = dict(f0_hz=150.0, rms=0.1)
+    twins, scale = make_twins(source, rate, backend, params, AUDIO_CONDITIONS, reference)
     mask = speech_mask(slow_power(source, rate, params['energy_window_ms']), params['energy_floor_db'])
     voiced = voiced_frames(source, rate, backend)
     stats = {name: contour_stats(wave_, rate, backend, params, mask, voiced)
@@ -289,7 +329,8 @@ def self_check(backend, params, *, harmonics=8, rate=16000):
         'source_has_pitch_movement': base['f0_sd_semitones'] > 2.0,
         'source_has_energy_movement': base['energy_sd_db'] > 3.0,
         'lengths_equal': all(wave_.size == source.size for wave_ in twins.values()),
-        'rms_matched': all(abs(s['rms'] / (scale * base['rms']) - 1.0) < 0.02 for n, s in stats.items() if n != 'orig'),
+        'rms_matched': all(abs(s['rms'] / (scale * (reference['rms'] if EDITS[n][2] else base['rms'])) - 1.0) < 0.02
+                           for n, s in stats.items() if n != 'orig'),
         'sham_keeps_pitch': abs(stats['sham']['f0_sd_semitones'] / base['f0_sd_semitones'] - 1.0) < 0.2,
         'sham_keeps_energy': abs(stats['sham']['energy_sd_db'] / base['energy_sd_db'] - 1.0) < 0.2,
         'flat_f0_removes_pitch': stats['flat_f0']['f0_sd_semitones'] < 0.15 * base['f0_sd_semitones'],
@@ -298,6 +339,14 @@ def self_check(backend, params, *, harmonics=8, rate=16000):
         'flat_energy_keeps_pitch': abs(stats['flat_energy']['f0_sd_semitones'] / base['f0_sd_semitones'] - 1.0) < 0.2,
         'flat_both_removes_pitch': stats['flat_both']['f0_sd_semitones'] < 0.15 * base['f0_sd_semitones'],
         'flat_both_removes_energy': stats['flat_both']['energy_sd_db'] < 0.3 * base['energy_sd_db'],
+        'level_f0_moves_pitch_to_reference': abs(stats['level_f0']['f0_median_hz'] / reference['f0_hz'] - 1.0) < 0.03,
+        'level_f0_keeps_pitch_movement': abs(stats['level_f0']['f0_sd_semitones'] / base['f0_sd_semitones'] - 1.0) < 0.2,
+        'level_energy_keeps_both_contours': (abs(stats['level_energy']['f0_sd_semitones'] / base['f0_sd_semitones'] - 1.0) < 0.2
+                                             and abs(stats['level_energy']['energy_sd_db'] / base['energy_sd_db'] - 1.0) < 0.2),
+        'level_both_moves_pitch_to_reference': abs(stats['level_both']['f0_median_hz'] / reference['f0_hz'] - 1.0) < 0.03,
+        'neutral_is_flat_at_reference': (abs(stats['neutral']['f0_median_hz'] / reference['f0_hz'] - 1.0) < 0.03
+                                         and stats['neutral']['f0_sd_semitones'] < 0.15 * base['f0_sd_semitones']
+                                         and stats['neutral']['energy_sd_db'] < 0.3 * base['energy_sd_db']),
     }
     return dict(passed=all(checks.values()), checks={k: bool(v) for k, v in checks.items()}, stats=stats,
                 backend=backend.name, backend_version=getattr(backend, 'version', None), params=params)
@@ -308,7 +357,7 @@ if __name__ == '__main__':
     parser.add_argument('--self-check', action='store_true')
     parser.add_argument('--input')
     parser.add_argument('--output')
-    parser.add_argument('--condition', choices=AUDIO_CONDITIONS, default='flat_both')
+    parser.add_argument('--condition', choices=FLAT_CONDITIONS, default='flat_both')
     parser.add_argument('--backend', choices=sorted(BACKENDS), default=DEFAULTS['backend'])
     args = parser.parse_args()
     settings = dict(DEFAULTS, backend=args.backend)

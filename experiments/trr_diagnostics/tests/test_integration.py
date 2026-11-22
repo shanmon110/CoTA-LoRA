@@ -146,12 +146,12 @@ def test_acoustic_qc_cannot_pass_when_peak_guard_changes_global_loudness():
               'flat_both': dict(base, f0_sd_semitones=0.1, energy_sd_db=0.1, rms=0.05)}
     # One twin at half the level of the others: twins of an utterance must share one level.
     record = dict(stats={'orig': base, **edited}, clipped_samples={}, peak_scale=1.0)
-    result = d2.summarize_qc([record], list(twin.AUDIO_CONDITIONS), CONFIG['decision']['qc'])
+    result = d2.summarize_qc([record], list(twin.FLAT_CONDITIONS), CONFIG['decision']['qc'])
     assert not result['passed'] and not result['checks']['flat_both:level_matches_other_twins']
     # All twins lowered together (shared peak guard) is allowed and reported.
     together = {name: dict(stats, rms=0.05) for name, stats in edited.items()}
     record = dict(stats={'orig': base, **together}, clipped_samples={}, peak_scale=0.5)
-    result = d2.summarize_qc([record], list(twin.AUDIO_CONDITIONS), CONFIG['decision']['qc'])
+    result = d2.summarize_qc([record], list(twin.FLAT_CONDITIONS), CONFIG['decision']['qc'])
     assert result['passed'] and result['utterances_scaled_below_original_level'] == 1
 
 
