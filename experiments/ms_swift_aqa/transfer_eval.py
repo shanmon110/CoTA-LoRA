@@ -33,9 +33,47 @@ def disable_transport_for_eval(model):
                 tensors_zeroed=len(tensors), scalars_zeroed=sum(p.numel() for p in tensors))
 
 
-def evaluate(config, method, checkpoint, manifest, folder, mmar_run=None, no_transport=False):
-    if no_transport and method != 'ta-lora':
-        raise ValueError('--no-transport requires --method ta-lora')
+ABLATIONS = {
+    # name: (parameters set to zero, what remains)
+    'neutral_gate': (('gate_weight',), 'conditional multiplier forced to exactly 1; static transport kept'),
+    'no_shared': (('gate',), 'shared readout B*g removed; independent readout C kept'),
+    'no_independent': (('transport_up',), 'independent readout C removed; shared readout B*g kept'),
+}
+
+
+@torch.no_grad()
+def ablate_for_eval(model, mode):
+    """Zero one transport factor on a freshly loaded, frozen answer-query TA model.
+
+    Complements disable_transport_for_eval (which removes the whole transport term) so that the
+    conditional gate, the shared readout and the independent readout can be removed one at a time
+    from the same checkpoint. The checkpoint on disk is never modified.
+    """
+    if mode not in ABLATIONS:
+        raise ValueError(f'Unknown transport ablation {mode!r}')
+    cfg = getattr(model, '_ta_lora_config', {})
+    if model.training or cfg.get('tuner_type') != 'ta_lora' or cfg.get('transport_gate') is None:
+        raise ValueError('Transport ablations require an answer-query TA-LoRA model in evaluation mode')
+    names, meaning = ABLATIONS[mode]
+    branches = [layer.self_attn.ta_adapter for layer in model.thinker.model.layers
+                if hasattr(layer.self_attn, 'ta_adapter')]
+    tensors = [getattr(branch, name) for branch in branches for name in names]
+    if not tensors or any(p is None for p in tensors):
+        raise ValueError(f'Checkpoint has no {names[0]} to ablate')
+    if any(p.requires_grad for p in tensors):
+        raise ValueError('Transport ablation requires frozen TA parameters')
+    nonzero_before = sum(int(p.count_nonzero()) for p in tensors)
+    for p in tensors:
+        p.zero_()
+    return dict(mode=mode, meaning=meaning, tensors_zeroed=len(tensors),
+                scalars_zeroed=sum(p.numel() for p in tensors), nonzero_before=nonzero_before)
+
+
+def evaluate(config, method, checkpoint, manifest, folder, mmar_run=None, no_transport=False, ablation=None):
+    if (no_transport or ablation) and method != 'ta-lora':
+        raise ValueError('--no-transport and --ablation require --method ta-lora')
+    if no_transport and ablation:
+        raise ValueError('Use either --no-transport or --ablation')
     cfg = load(config)
     metrics_file = folder / 'metrics.json'
     if metrics_file.exists():
@@ -62,6 +100,8 @@ def evaluate(config, method, checkpoint, manifest, folder, mmar_run=None, no_tra
         model, template = load_best(cfg, method, checkpoint)
         if no_transport:
             identity['transport_ablation'] = disable_transport_for_eval(model)
+        if ablation:
+            identity['transport_ablation'] = ablate_for_eval(model, ablation)
     print(json.dumps(dict(method=method, no_transport=no_transport, identity=identity), sort_keys=True), flush=True)
     predictions = folder / 'predictions.jsonl'
     torch.cuda.synchronize()
@@ -90,4 +130,6 @@ if __name__ == '__main__':
     parser.add_argument('--method', required=True, choices=('frozen-base', 'ta-lora', 'lora', 'dora'))
     parser.add_argument('--no-transport', action='store_true',
                         help='Zero only TA transport gate and transport_up after loading the checkpoint')
+    parser.add_argument('--ablation', choices=sorted(ABLATIONS),
+                        help='Zero a single transport factor after loading the checkpoint')
     evaluate(**vars(parser.parse_args()))

@@ -8,12 +8,16 @@ from safetensors.torch import load_file, save_file
 from peft.tuners.lora.layer import Linear as LoraLinear
 if __package__:
     from .adapter_audit import MLP_PROJECTIONS, ordered_projections
-    from .swift_asr_ta_runtime import (TRANSPORT_GATES, attach, enable_transport_up, set_gate_multiplier,
-                                       set_transport_gate, set_transport_queries, set_transport_weighting)
+    from .swift_asr_ta_runtime import (TRANSPORT_GATES, TRANSPORT_PRECISIONS, TRANSPORT_SIGNALS, attach,
+                                       enable_transport_up, set_gate_multiplier, set_transport_gate,
+                                       set_transport_precision, set_transport_queries, set_transport_signal,
+                                       set_transport_weighting)
 else:
     from adapter_audit import MLP_PROJECTIONS, ordered_projections
-    from swift_asr_ta_runtime import (TRANSPORT_GATES, attach, enable_transport_up, set_gate_multiplier,
-                                      set_transport_gate, set_transport_queries, set_transport_weighting)
+    from swift_asr_ta_runtime import (TRANSPORT_GATES, TRANSPORT_PRECISIONS, TRANSPORT_SIGNALS, attach,
+                                      enable_transport_up, set_gate_multiplier, set_transport_gate,
+                                      set_transport_precision, set_transport_queries, set_transport_signal,
+                                      set_transport_weighting)
 
 from swift.tuner_plugin import Tuner, tuners_map
 
@@ -43,6 +47,9 @@ def _install(model, cfg, last_n, projections):
     set_transport_weighting(model, cfg.get('transport_weighting', 'uniform'))
     if cfg.get('transport_gate') is not None:
         set_transport_gate(model, cfg['transport_gate'])
+    if cfg['format_version'] >= 9:
+        set_transport_signal(model, cfg['transport_signal'])
+        set_transport_precision(model, cfg['transport_precision'])
     for layer in model.thinker.model.layers[-last_n:]:
         for name in projections:
             if name == 'o_proj':
@@ -131,7 +138,7 @@ class TALoRATuner(Tuner):
         cfg = json.loads((src / 'adapter_config.json').read_text())
         targets = cfg.get('targets')
         version = cfg.get('format_version')
-        if (cfg.get('model_type', 'qwen2_5_omni') != model.config.model_type or version not in (1, 2, 3, 4, 5, 6, 7, 8) or cfg.get('tuner_type') != cls.tuner_type
+        if (cfg.get('model_type', 'qwen2_5_omni') != model.config.model_type or version not in (1, 2, 3, 4, 5, 6, 7, 8, 9) or cfg.get('tuner_type') != cls.tuner_type
                 or (version >= 4 and ('gate_multiplier' not in cfg or cfg.get('residual_format_version') not in (1, 2)))
                 or (version < 4 and cfg.get('gate_multiplier', 1.) != 1.)
                 or (version >= 5 and cfg.get('transport_queries') not in ('text', 'all_valid'))
@@ -140,8 +147,12 @@ class TALoRATuner(Tuner):
                 or (version < 7 and cfg.get('transport_weighting', 'uniform') != 'uniform')
                 or (version >= 7 and (type(cfg.get('independent_transport_up')) is not bool
                                       or cfg.get('transport_weighting') not in ('uniform', 'attention_overlap')))
-                or (version == 8 and cfg.get('transport_gate') not in TRANSPORT_GATES)
+                or (version >= 8 and cfg.get('transport_gate') not in TRANSPORT_GATES)
                 or (version < 8 and 'transport_gate' in cfg)
+                or (version == 8 and cfg.get('independent_transport_up') is not True)
+                or (version >= 9 and (cfg.get('transport_signal') not in TRANSPORT_SIGNALS
+                                      or cfg.get('transport_precision') not in TRANSPORT_PRECISIONS))
+                or (version < 9 and ('transport_signal' in cfg or 'transport_precision' in cfg))
                 or not isinstance(targets, list) or not targets):
             raise ValueError('Invalid TA-LoRA checkpoint format')
         expected, last_n, projections = _target_layout(model, targets)
