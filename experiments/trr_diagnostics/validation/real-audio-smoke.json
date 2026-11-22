@@ -1,0 +1,121 @@
+{
+  "format_version": 2,
+  "name": "d2-iemocap-session4",
+  "config_sha256": "03b6cde8ddbf517d800bfe83a363c21f1cc8850f2a422d2568e5370cd87ca935",
+  "source_manifest_sha256": "423156b0b83cc0b060e3a7c5429ee0c908d295076021a0ea6f85a42002e50050",
+  "utterances": 16,
+  "utterances_before_limit": 1026,
+  "smoke_limit": 16,
+  "excluded": {
+    "no_lexical_content": 5
+  },
+  "class_counts": {
+    "A": 4,
+    "C": 4,
+    "D": 4,
+    "B": 4
+  },
+  "dialogues": 11,
+  "audio_seconds": 94.2426875,
+  "twin": {
+    "backend": "world",
+    "frame_period_ms": 5.0,
+    "f0_floor_hz": 60.0,
+    "f0_ceil_hz": 600.0,
+    "energy_window_ms": 250.0,
+    "energy_floor_db": 30.0,
+    "max_gain_db": 12.0,
+    "gain_edge_ms": 50.0,
+    "strength": 1.0
+  },
+  "vocoder": {
+    "name": "world",
+    "version": "0.3.5"
+  },
+  "qc": {
+    "conditions": {
+      "orig": {
+        "median_f0_sd_semitones": 4.586426982360648,
+        "median_energy_sd_db": 8.037264236726436,
+        "median_f0_sd_ratio_to_orig": 1.0,
+        "median_energy_sd_ratio_to_orig": 1.0,
+        "utterances_without_voicing": 0,
+        "clipped_samples": 0,
+        "peak_scaled_utterances": 0,
+        "max_rms_relative_error": 0.0
+      },
+      "sham": {
+        "median_f0_sd_semitones": 4.49444670875396,
+        "median_energy_sd_db": 7.945837737207864,
+        "median_f0_sd_ratio_to_orig": 0.9891385056342975,
+        "median_energy_sd_ratio_to_orig": 1.0093149678070246,
+        "utterances_without_voicing": 0,
+        "clipped_samples": 0,
+        "peak_scaled_utterances": 1,
+        "max_rms_relative_error": 0.25314361774870264
+      },
+      "flat_f0": {
+        "median_f0_sd_semitones": 1.875937553375428,
+        "median_energy_sd_db": 8.201420524238412,
+        "median_f0_sd_ratio_to_orig": 0.3422005902468438,
+        "median_energy_sd_ratio_to_orig": 1.0053915814276526,
+        "utterances_without_voicing": 0,
+        "clipped_samples": 0,
+        "peak_scaled_utterances": 2,
+        "max_rms_relative_error": 0.33322466369509784
+      },
+      "flat_energy": {
+        "median_f0_sd_semitones": 4.635972919448594,
+        "median_energy_sd_db": 6.461230966724941,
+        "median_f0_sd_ratio_to_orig": 0.9861604346674551,
+        "median_energy_sd_ratio_to_orig": 0.6958979248638559,
+        "utterances_without_voicing": 0,
+        "clipped_samples": 0,
+        "peak_scaled_utterances": 0,
+        "max_rms_relative_error": 5.036863607310593e-06
+      },
+      "flat_both": {
+        "median_f0_sd_semitones": 1.533728932728958,
+        "median_energy_sd_db": 6.508927354021921,
+        "median_f0_sd_ratio_to_orig": 0.3613502801466127,
+        "median_energy_sd_ratio_to_orig": 0.6869080570812334,
+        "utterances_without_voicing": 0,
+        "clipped_samples": 0,
+        "peak_scaled_utterances": 1,
+        "max_rms_relative_error": 0.01676323318166184
+      }
+    },
+    "checks": {
+      "sham:rms_matched": false,
+      "sham:no_clipping": true,
+      "sham:median_f0_sd_ratio_to_orig:keep": true,
+      "sham:median_energy_sd_ratio_to_orig:keep": true,
+      "flat_f0:rms_matched": false,
+      "flat_f0:no_clipping": true,
+      "flat_f0:median_f0_sd_ratio_to_orig:flat": false,
+      "flat_f0:median_energy_sd_ratio_to_orig:keep": true,
+      "flat_energy:rms_matched": true,
+      "flat_energy:no_clipping": true,
+      "flat_energy:median_f0_sd_ratio_to_orig:keep": true,
+      "flat_energy:median_energy_sd_ratio_to_orig:flat": false,
+      "flat_both:rms_matched": true,
+      "flat_both:no_clipping": true,
+      "flat_both:median_f0_sd_ratio_to_orig:flat": false,
+      "flat_both:median_energy_sd_ratio_to_orig:flat": false
+    },
+    "passed": false
+  },
+  "code_commit": "ee2e388429fbb80717f6fa06a07d14e3eba5a71f",
+  "code_sha256": {
+    "trr_diagnostics/d2.py": "82b43401b05b1efe8a5abbe7286aca725d7d1f4099d8481e6d1ac21c7aeeb2f7",
+    "trr_diagnostics/stats.py": "17265e1dfbfb4989041ad0f9937973d80b1d8989160e958ca9c8f94f7dc6edd2",
+    "trr_diagnostics/twin.py": "6bd09bc9ddcba0f6c6d3aa8671ece2a980fae6a925fcd1c87575c4cdc0f804b3",
+    "ms_swift_iemocap/evaluate.py": "97f90441d5ae2051ca7eac75e8a8e3ecb8af6ee9f0bede7ae617544757d5688d",
+    "ms_swift_librispeech/evaluate.py": "115de182c37f427e68816371c490c9b39ad57e53bef22e8729cb84e252452e2f"
+  },
+  "prepare_seconds": 45.13736513699405,
+  "source_commit_note": "code_commit is upstream HEAD before local fixes were committed; code_sha256 identifies the executed implementation.",
+  "model_inference": "not_run_no_gpu",
+  "scope": "Session 4 only; aggregate acoustic smoke, no model score",
+  "local_artifacts": "/root/autodl-tmp/trr-diagnostics/d2-smoke-integrated-20261123"
+}

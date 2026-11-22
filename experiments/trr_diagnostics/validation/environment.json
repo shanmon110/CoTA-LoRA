@@ -1,0 +1,18 @@
+{
+  "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+  "executable": "/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python",
+  "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.17.1",
+    "pytest": "9.2.0",
+    "torch": "2.12.1+cu130",
+    "transformers": "4.52.3",
+    "ms-swift": "4.7.0.dev0"
+  },
+  "nvidia_devices": [],
+  "nvidia_smi_exists": true,
+  "nvidia_smi_bytes": 0,
+  "nvidia_smi_executable": false,
+  "memory_max": "2147483648"
+}

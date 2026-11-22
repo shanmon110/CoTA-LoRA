@@ -1,0 +1,3 @@
+# Install into a separate --target directory with --no-deps (see README).
+# Reuse the existing experiment environment's numpy/scipy; do not replace it.
+pyworld==0.3.5

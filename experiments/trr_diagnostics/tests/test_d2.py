@@ -141,6 +141,14 @@ def _write_predictions(folder, name, manifest, predictions):
     (folder / name).mkdir(parents=True)
     d2.write_jsonl(folder / name / 'predictions.jsonl',
                    [dict(id=m['id'], reference=m['reference'], prediction=p) for m, p in zip(manifest, predictions, strict=True)])
+    _commit_predictions(folder, name)
+
+
+def _commit_predictions(folder, name):
+    prepared = folder.parent.parent
+    d2.write(folder / name / 'metrics.json',
+             dict(manifest_sha256=d2.digest(prepared / 'manifests' / f'{name}.jsonl'),
+                  predictions_sha256=d2.digest(folder / name / 'predictions.jsonl')))
 
 
 def test_report_contrasts_strata_and_verdicts(corpus):
@@ -152,7 +160,7 @@ def test_report_contrasts_strata_and_verdicts(corpus):
     wrong = lambda label: 'ABCD'[('ABCD'.index(label) + 1) % 4]
     folder = out / 'runs' / 'toy'
     folder.mkdir(parents=True)
-    d2.write(folder / 'identity.json', dict(arm='toy'))
+    d2.write(folder / 'identity.json', dict(arm='toy', prepared_sha256=d2.digest(out / 'prepare.json')))
     _write_predictions(folder, 'orig', manifest, gold)
     _write_predictions(folder, 'sham', manifest, gold)
     flat = [wrong(y) if i % 2 == 0 else y for i, y in enumerate(gold)]  # flattening breaks half
@@ -167,7 +175,9 @@ def test_report_contrasts_strata_and_verdicts(corpus):
         (folder / name).mkdir()
         rows = d2.read_jsonl(out / 'manifests' / f'{name}.jsonl')
         d2.write_jsonl(folder / name / 'predictions.jsonl',
-                       [dict(id=r['id'], word_errors=errors if i == 0 else 0, reference_words=4) for i, r in enumerate(rows)])
+                       [dict(id=r['id'], reference=r['transcript'], word_errors=errors if i == 0 else 0,
+                             reference_words=4) for i, r in enumerate(rows)])
+        _commit_predictions(folder, name)
 
     result, markdown = d2.report(out, 'toy')
     assert set(result['conditions']) == {'orig', 'sham', 'flat_both', 'text'}
@@ -186,13 +196,16 @@ def test_report_contrasts_strata_and_verdicts(corpus):
                                                           'speaker:Ses04F', 'speaker:Ses04M'}
     assert result['asr_wer'] == {'asr-sham': pytest.approx(1 / 20), 'asr-flat_both': pytest.approx(3 / 20)}
     assert result['wer_contrasts']['asr-flat_both-vs-asr-sham']['delta_wer_pp'] == pytest.approx(10)
-    assert result['verdicts'] == dict(vocoder_artifacts='pass', f0_energy_use='uses',
+    assert result['raw_verdicts'] == dict(vocoder_artifacts='pass', f0_energy_use='uses',
                                       audio_beyond_transcript='yes', intelligibility_kept='fail')
+    assert result['verdicts']['f0_energy_use'] == 'not_interpretable'
+    assert 'intelligibility_kept:fail' in result['interpretation']['reasons']
     assert '| flat_both-vs-sham |' in markdown and 'SMOKE' not in markdown and 'failed to run: question_only' in markdown
     assert json.loads((folder / 'report.json').read_text())['verdicts'] == result['verdicts']
 
     _write_predictions(out / 'runs' / 'short', 'orig', manifest[:-1], gold[:-1])
-    d2.write(out / 'runs' / 'short' / 'identity.json', dict(arm='short'))
+    d2.write(out / 'runs' / 'short' / 'identity.json',
+             dict(arm='short', prepared_sha256=d2.digest(out / 'prepare.json')))
     with pytest.raises(ValueError):
         d2.report(out, 'short')
 
@@ -237,7 +250,8 @@ def test_run_scores_conditions_once_and_survives_optional_failures(corpus, monke
         assert generation == CONFIG['asr']['generation']
         rows = d2.read_jsonl(manifest)
         predictions.parent.mkdir(parents=True, exist_ok=True)
-        d2.write_jsonl(predictions, [dict(id=r['id'], word_errors=0, reference_words=3) for r in rows])
+        d2.write_jsonl(predictions, [dict(id=r['id'], reference=r['transcript'], word_errors=0,
+                                        reference_words=3) for r in rows])
         return dict(wer=0.0)
 
     loaded = []
