@@ -1,0 +1,62 @@
+{
+  "config": {
+    "model": "/root/autodl-tmp/west-preflight/model",
+    "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+    "swift_source": "/root/autodl-fs/ms-swift",
+    "prompt": "Which emotion does the speaker express? A: angry; B: happy or excited; C: sad; D: neutral. Reply with exactly one letter: A, B, C, or D.",
+    "adapter": {
+      "rank": 8,
+      "alpha": 16,
+      "last_n": 36,
+      "gate_multiplier": 0.0,
+      "update_positions": "all"
+    },
+    "training": {
+      "seed": 43,
+      "data_seed": 43,
+      "per_device_train_batch_size": 2,
+      "per_device_eval_batch_size": 2,
+      "gradient_accumulation_steps": 4,
+      "num_train_epochs": 1,
+      "eval_steps": 88,
+      "save_steps": 88,
+      "learning_rate": 0.0002,
+      "lr_scheduler_type": "constant",
+      "warmup_ratio": 0,
+      "optim": "adamw_torch",
+      "weight_decay": 0.0,
+      "max_length": 2048,
+      "logging_steps": 1,
+      "dataloader_num_workers": 0
+    },
+    "patience": 3,
+    "task": "ser",
+    "archive": "/root/autodl-tmp/iemocap/iemocapfullrelease-v1.zip",
+    "sessions": {
+      "train": [
+        1,
+        2,
+        3
+      ],
+      "dev": [
+        4
+      ],
+      "test": [
+        5
+      ]
+    },
+    "labels": {
+      "angry": "A",
+      "happy": "B",
+      "excited": "B",
+      "sad": "C",
+      "neutral": "D"
+    },
+    "generation": {
+      "batch_size": 2
+    }
+  },
+  "method": "ta-lora",
+  "train_sha256": "4bc61b46bbe3394734ed2cd9e1d95d95664b2250e526f6616f569d5ff07fb263",
+  "dev_sha256": "2c67f3ad333c13ed0002f918436f972f934d1da713e9ab67a286023405aee8df"
+}

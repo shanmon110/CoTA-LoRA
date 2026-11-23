@@ -1,0 +1,5 @@
+python 3.12.3 torch 2.12.1+cu130 transformers 4.52.3 peft 0.15.2
+swift 4.7.0.dev0 /root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/__init__.py
+parselmouth 0.4.7 cuda devices 1 NVIDIA GeForce RTX 5090
+NVIDIA GeForce RTX 5090, 2 MiB, 32607 MiB
+/dev/md0        1.1T  265G  810G  25% /root/autodl-tmp

@@ -1,0 +1,72 @@
+{
+  "A-last4": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/A-last4.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-fixed.jsonl",
+    "like": "A-all",
+    "last_n": 4,
+    "seed": 42
+  },
+  "A-all-s43": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/A-all-s43.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-fixed.jsonl",
+    "like": "A-all",
+    "last_n": 36,
+    "seed": 43
+  },
+  "B-audio-s43": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/B-audio-s43.json",
+    "update_positions": "audio",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-fixed.jsonl",
+    "like": "B-audio",
+    "last_n": 36,
+    "seed": 43
+  },
+  "D-all-shuffled-s43": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/D-all-shuffled-s43.json",
+    "update_positions": "all",
+    "option_order": "shuffled",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-shuffled.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-shuffled.jsonl",
+    "like": "D-all-shuffled",
+    "last_n": 36,
+    "seed": 43
+  },
+  "A-all-s44": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/A-all-s44.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-fixed.jsonl",
+    "like": "A-all",
+    "last_n": 36,
+    "seed": 44
+  },
+  "B-audio-s44": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/B-audio-s44.json",
+    "update_positions": "audio",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-fixed.jsonl",
+    "like": "B-audio",
+    "last_n": 36,
+    "seed": 44
+  },
+  "D-all-shuffled-s44": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/configs/D-all-shuffled-s44.json",
+    "update_positions": "all",
+    "option_order": "shuffled",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/train-shuffled.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-followup-20261123-212622/data/dev-shuffled.jsonl",
+    "like": "D-all-shuffled",
+    "last_n": 36,
+    "seed": 44
+  }
+}

@@ -1,0 +1,105 @@
+[2026-11-23 21:26:22] run folder: /root/autodl-fs/CoTA-LoRA/hearside-followup-20261123-212622
+[2026-11-23 21:26:22] pilot folder (read only): /root/autodl-fs/CoTA-LoRA/hearside-pilot-20261123-160928
+[2026-11-23 21:26:22] source: /root/autodl-fs/CoTA-LoRA at 978e04421216a471a793223cb55606b041fca3e5 
+[2026-11-23 21:26:27] environment: python 3.12.3 torch 2.12.1+cu130 transformers 4.52.3 peft 0.15.2 swift 4.7.0.dev0 /root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/__init__.py parselmouth 0.4.7 cuda devices 1 NVIDIA GeForce RTX 5090 NVIDIA GeForce RTX 5090, 2 MiB, 32607 MiB /dev/md0        1.1T  265G  810G  25% /root/autodl-tmp 
+[2026-11-23 21:26:27] unit tests (gating)
+[2026-11-23 21:26:46] unit tests: 122 passed, 2 warnings in 17.92s
+[2026-11-23 21:27:29] inputs: identical to the pilot: training manifests and Session 4 inputs
+[2026-11-23 21:27:29] A-last4: training on train-fixed.jsonl
+[2026-11-23 21:43:06] A-last4 trained: best step 264, Session 3 UAR 0.6633855599659904, 368.82812713005114 s of training, peak 13405171712 bytes
+[2026-11-23 22:10:46] A-last4 evaluated in 27 min (exit 0): orig: UAR 0.5643 in 690s;orig_reworded: UAR 0.6079 in 738s;text: UAR 0.4988 in 49s;question_only: UAR 0.2948 in 50s;asr-orig: WER 0.1597 in 113s;
+[2026-11-23 22:10:49] A-all-s43: training on train-fixed.jsonl
+[2026-11-23 22:28:06] A-all-s43 trained: best step 264, Session 3 UAR 0.7446046311953074, 456.60442425101064 s of training, peak 22316024832 bytes
+[2026-11-23 22:52:58] A-all-s43 evaluated in 24 min (exit 0): orig: UAR 0.7461 in 607s;orig_reworded: UAR 0.7407 in 648s;text: UAR 0.5336 in 54s;question_only: UAR 0.2602 in 54s;asr-orig: WER 0.0741 in 110s;
+[2026-11-23 22:53:01] B-audio-s43: training on train-fixed.jsonl
+[2026-11-23 23:09:44] B-audio-s43 trained: best step 264, Session 3 UAR 0.7403880485975773, 422.3395759972045 s of training, peak 22316153856 bytes
+[2026-11-23 23:38:24] B-audio-s43 evaluated in 28 min (exit 0): orig: UAR 0.7649 in 692s;orig_reworded: UAR 0.7439 in 718s;text: UAR 0.5173 in 70s;question_only: UAR 0.3051 in 71s;asr-orig: WER 0.1562 in 150s;
+[2026-11-23 23:38:28] D-all-shuffled-s43: training on train-shuffled.jsonl
+[2026-11-23 23:55:38] D-all-shuffled-s43 trained: best step 264, Session 3 UAR 0.7428287117692606, 444.0673411031021 s of training, peak 22316024832 bytes
+[2026-11-24 00:22:37] D-all-shuffled-s43 evaluated in 26 min (exit 0): orig: UAR 0.7678 in 668s;orig_reworded: UAR 0.7629 in 691s;text: UAR 0.5370 in 57s;question_only: UAR 0.3051 in 58s;asr-orig: WER 0.1134 in 124s;
+[2026-11-24 00:22:40] A-all-s44: training on train-fixed.jsonl
+[2026-11-24 00:40:08] A-all-s44 trained: best step 176, Session 3 UAR 0.7134358938534143, 450.55035855516326 s of training, peak 22316563968 bytes
+[2026-11-24 01:06:36] A-all-s44 evaluated in 26 min (exit 0): orig: UAR 0.6886 in 673s;orig_reworded: UAR 0.7059 in 673s;text: UAR 0.5314 in 54s;question_only: UAR 0.2671 in 55s;asr-orig: WER 0.0800 in 112s;
+[2026-11-24 01:06:40] B-audio-s44: training on train-fixed.jsonl
+[2026-11-24 01:23:28] B-audio-s44 trained: best step 176, Session 3 UAR 0.7181973721292368, 440.53059359802864 s of training, peak 22315992576 bytes
+[2026-11-24 01:51:54] B-audio-s44 evaluated in 28 min (exit 0): orig: UAR 0.7088 in 680s;orig_reworded: UAR 0.7361 in 724s;text: UAR 0.5173 in 68s;question_only: UAR 0.3051 in 69s;asr-orig: WER 0.1565 in 144s;
+[2026-11-24 01:51:58] D-all-shuffled-s44: training on train-shuffled.jsonl
+[2026-11-24 02:07:53] D-all-shuffled-s44 trained: best step 264, Session 3 UAR 0.7150116144018583, 398.24473824887536 s of training, peak 22316563968 bytes
+[2026-11-24 02:32:08] D-all-shuffled-s44 evaluated in 24 min (exit 0): orig: UAR 0.7298 in 588s;orig_reworded: UAR 0.7361 in 632s;text: UAR 0.5356 in 54s;question_only: UAR 0.2982 in 54s;asr-orig: WER 0.0824 in 108s;
+# Hear-side follow-up: depth and seeds
+
+Session 4, 1026 utterances, 4104 rows over four option orders. UAR in %.
+The order gap is UAR in the training order minus UAR in the other three orders.
+
+| model | training order | other orders | all orders | order gap pp [95% CI] | reworded | transcript only | WER % |
+|---|---:|---:|---:|---|---:|---:|---:|
+| frozen-base | 52.1 | 57.4 | 56.1 | -5.3 [-6.75, -3.91] | 59.0 | 48.3 | 9.0 |
+| C-post-audio | 72.7 | 66.1 | 67.8 | +6.7 [+4.22, +9.51] | 66.2 | 48.6 | 8.8 |
+| A-last4 | 65.9 | 46.4 | 51.3 | +19.4 [+15.26, +22.79] | 55.2 | 46.8 | 12.5 |
+| A-all | 76.2 | 72.7 | 73.6 | +3.5 [+1.52, +6.06] | 74.5 | 49.8 | 7.9 |
+| A-all-s43 | 76.5 | 73.0 | 73.9 | +3.4 [+1.75, +5.48] | 74.2 | 49.8 | 7.2 |
+| A-all-s44 | 70.2 | 66.9 | 67.7 | +3.3 [+2.15, +4.27] | 70.0 | 50.2 | 7.8 |
+| B-audio | 75.4 | 74.4 | 74.6 | +1.1 [+0.06, +2.20] | 75.6 | 48.3 | 8.8 |
+| B-audio-s43 | 76.2 | 75.4 | 75.6 | +0.8 [-0.77, +2.44] | 74.4 | 48.3 | 12.3 |
+| B-audio-s44 | 69.0 | 69.2 | 69.1 | -0.2 [-1.79, +1.20] | 72.5 | 48.3 | 11.6 |
+| D-all-shuffled | 77.4 | 75.6 | 76.0 | +1.9 [+0.78, +3.01] | 76.4 | 50.0 | 7.3 |
+| D-all-shuffled-s43 | 75.8 | 75.6 | 75.6 | +0.2 [-0.99, +1.29] | 76.2 | 49.8 | 11.2 |
+| D-all-shuffled-s44 | 68.3 | 69.0 | 68.8 | -0.6 [-2.67, +0.79] | 71.3 | 49.5 | 8.0 |
+
+## Seeds 42, 43, 44
+
+| arm | measure | seed 42 | seed 43 | seed 44 | mean | SD |
+|---|---|---:|---:|---:|---:|---:|
+| A-all | uar_all_orders | 73.6 | 73.9 | 67.7 | 71.7 | 3.46 |
+| A-all | uar_other_orders | 72.7 | 73.0 | 66.9 | 70.9 | 3.43 |
+| A-all | order_gap | +3.5 | +3.4 | +3.3 | +3.4 | 0.12 |
+| A-all | uar_reworded | 74.5 | 74.2 | 70.0 | 72.9 | 2.50 |
+| A-all | wer | 7.9 | 7.2 | 7.8 | 7.7 | 0.38 |
+| B-audio | uar_all_orders | 74.6 | 75.6 | 69.1 | 73.1 | 3.47 |
+| B-audio | uar_other_orders | 74.4 | 75.4 | 69.2 | 73.0 | 3.31 |
+| B-audio | order_gap | +1.1 | +0.8 | -0.2 | +0.5 | 0.68 |
+| B-audio | uar_reworded | 75.6 | 74.4 | 72.5 | 74.1 | 1.56 |
+| B-audio | wer | 8.8 | 12.3 | 11.6 | 10.9 | 1.85 |
+| D-all-shuffled | uar_all_orders | 76.0 | 75.6 | 68.8 | 73.5 | 4.06 |
+| D-all-shuffled | uar_other_orders | 75.6 | 75.6 | 69.0 | 73.4 | 3.82 |
+| D-all-shuffled | order_gap | +1.9 | +0.2 | -0.6 | +0.5 | 1.28 |
+| D-all-shuffled | uar_reworded | 76.4 | 76.2 | 71.3 | 74.6 | 2.85 |
+| D-all-shuffled | wer | 7.3 | 11.2 | 8.0 | 8.8 | 2.10 |
+
+| difference | measure | seed 42 | seed 43 | seed 44 | mean pp | 95% CI (seeds and dialogues) |
+|---|---|---:|---:|---:|---:|---|
+| B-audio - A-all | uar_all_orders | +1.06 | +1.68 | +1.41 | +1.38 | [+0.32, +2.60] |
+| B-audio - A-all | uar_training_order | -0.78 | -0.30 | -1.22 | -0.76 | [-2.35, +0.67] |
+| B-audio - A-all | uar_other_orders | +1.68 | +2.34 | +2.28 | +2.10 | [+0.86, +3.45] |
+| B-audio - A-all | order_gap | -2.46 | -2.63 | -3.50 | -2.86 | [-4.58, -1.36] |
+| B-audio - A-all | uar_reworded | +1.10 | +0.19 | +2.45 | +1.25 | [-0.81, +3.89] |
+| D-all-shuffled - A-all | uar_all_orders | +2.46 | +1.74 | +1.07 | +1.76 | [+0.12, +3.46] |
+| D-all-shuffled - A-all | uar_training_order | +1.22 | -0.70 | -1.87 | -0.45 | [-2.60, +1.51] |
+| D-all-shuffled - A-all | uar_other_orders | +2.88 | +2.55 | +2.04 | +2.49 | [+0.77, +4.41] |
+| D-all-shuffled - A-all | order_gap | -1.66 | -3.25 | -3.92 | -2.94 | [-5.16, -1.05] |
+| D-all-shuffled - A-all | uar_reworded | +1.90 | +2.00 | +1.33 | +1.75 | [+0.26, +3.27] |
+| B-audio - D-all-shuffled | uar_all_orders | -1.40 | -0.06 | +0.34 | -0.37 | [-2.11, +1.35] |
+| B-audio - D-all-shuffled | uar_training_order | -2.00 | +0.40 | +0.66 | -0.31 | [-2.60, +2.05] |
+| B-audio - D-all-shuffled | uar_other_orders | -1.20 | -0.21 | +0.24 | -0.39 | [-2.12, +1.30] |
+| B-audio - D-all-shuffled | order_gap | -0.79 | +0.61 | +0.42 | +0.08 | [-1.48, +1.91] |
+| B-audio - D-all-shuffled | uar_reworded | -0.80 | -1.81 | +1.12 | -0.50 | [-2.40, +1.94] |
+
+## Last four layers against all 36 (one seed each)
+
+| measure | A-last4 | A-all | difference pp | 95% CI (dialogues) |
+|---|---:|---:|---:|---|
+| uar_all_orders | 51.3 | 73.6 | -22.28 | [-25.13, -19.57] |
+| uar_training_order | 65.9 | 76.2 | -10.34 | [-14.88, -6.70] |
+| uar_other_orders | 46.4 | 72.7 | -26.25 | [-29.29, -23.06] |
+| order_gap | 19.4 | 3.5 | +15.91 | [+10.80, +20.21] |
+| uar_reworded | 55.2 | 74.5 | -19.25 | [-21.53, -16.73] |
+| A-last4 minus frozen base, other orders | | | -11.00 | [-13.13, -8.55] |
+
+Claims declared before the follow-up:
+
+- audio_positions_match_all_positions: **supported**
+- audio_positions_less_bound_to_option_order: **supported**
+- shuffled_options_improve_all_positions: **supported**
+- last_layers_bind_to_option_order: **supported**
+[2026-11-24 02:32:16] done
+[2026-11-24 02:32:16] finished with exit code 0 after 305 min; packing the small result files
