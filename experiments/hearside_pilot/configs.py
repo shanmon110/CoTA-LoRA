@@ -22,7 +22,8 @@ PATIENCE = 3                                                       # never stops
 FOLLOWUP = {'A-last4': dict(like='A-all', last_n=4),               # the depth of the earlier pair-01 adapter, in this pipeline
             **{f'{arm}-s{seed}': dict(like=arm, seed=seed)         # the seed sets the adapter initialisation and the data order
                for seed in (43, 44) for arm in ('A-all', 'B-audio', 'D-all-shuffled')}}
-PLANS = {'pilot': {name: dict(like=name) for name in ARMS}, 'followup': FOLLOWUP}
+LAST4 = {name: dict(like='A-all', last_n=4, seed=seed) for name, seed in (('A-last4-s43', 43), ('A-last4-s44', 44))}
+PLANS = {'pilot': {name: dict(like=name) for name in ARMS}, 'followup': FOLLOWUP, 'last4-seeds': LAST4}
 
 
 def arm_config(base, positions, last_n=None, seed=None):

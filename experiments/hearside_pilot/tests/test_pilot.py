@@ -1,5 +1,6 @@
 """Hear-side pilot: protocol, training manifests, arm configs and the cross-arm summary (no torch)."""
 import json
+import re
 import sys
 import types
 from collections import Counter
@@ -325,7 +326,7 @@ def test_followup_arms_change_one_setting_of_a_pilot_arm(tmp_path):
     pilot = configs.build(base, tmp_path / 'data', tmp_path / 'pilot')
     arms = configs.build(base, tmp_path / 'data', tmp_path / 'followup', plan='followup')
     assert list(arms) == ['A-last4', 'A-all-s43', 'B-audio-s43', 'D-all-shuffled-s43', 'A-all-s44', 'B-audio-s44', 'D-all-shuffled-s44']
-    assert set(arms) == {m for members in followup.FAMILIES.values() for m in members[1:]} | {'A-last4'}
+    assert set(arms) == {m for n in followup.CORE for m in followup.FAMILIES[n][1:]} | {'A-last4'}
     read = lambda arm: json.loads(Path(arm['config']).read_text())
     for name, arm in arms.items():
         like, cfg = read(pilot[arm['like']]), read(arm)
@@ -387,7 +388,8 @@ def test_followup_reads_both_runs_and_judges_the_declared_claims(two_runs):
     place(later, 'A-last4', locked)
     result = followup.summarize([pilot, later], resamples=400)
     assert result['seeds'] == [42, 43, 44] and result['utterances'] == 12 and result['scored_rows'] == 48
-    assert list(result['models']) == ['frozen-base', 'C-post-audio', 'A-last4', *(m for f in followup.FAMILIES.values() for m in f)]
+    assert list(result['models']) == ['frozen-base', 'C-post-audio', 'A-last4', *(m for n in followup.CORE for m in followup.FAMILIES[n])]
+    assert 'A-last4' not in result['families'] and 'A-last4 - A-all' not in result['contrasts']   # one seed of that depth
 
     # The vectorised score agrees with the scorer used everywhere else.
     manifest = d2.read_jsonl(pilot / 'manifests' / 'orig.jsonl')
@@ -416,7 +418,7 @@ def test_followup_reads_both_runs_and_judges_the_declared_claims(two_runs):
     assert followup.summarize([pilot, later], resamples=400) == result                    # same seed, same resamples
     text = followup.render(result)
     assert '| A-last4 | 100.0 | 0.0 | 25.0 | +100.0 ' in text and '- last_layers_bind_to_option_order: **supported**' in text
-    assert '| B-audio - A-all | uar_all_orders | +8.33 | +16.67 | +0.00 | +8.33 |' in text
+    assert '| B-audio - A-all | 42, 43, 44 | uar_all_orders | +8.33 / +16.67 / +0.00 | +8.33 |' in text
 
 
 def test_followup_reports_missing_runs_and_refuses_mismatched_inputs(two_runs):
@@ -475,3 +477,196 @@ def test_followup_inputs_are_compared_with_the_pilot(corpus, tmp_path):  # noqa:
     d2.prepare(config, tmp_path / 'third' / 'eval', backend=SineVocoder())
     assert followup.same_inputs(tmp_path / 'first', tmp_path / 'third') == ['data/train-shuffled.jsonl', 'data/dev-shuffled.jsonl',
                                                                            'eval/manifests/asr-orig.jsonl']
+
+
+def test_seeds_of_the_last_four_layer_arm_are_compared_with_the_same_seeds_of_the_full_depth_arm(two_runs, tmp_path):
+    pilot, later, config = two_runs
+    d2.prepare(config, pilot.parent / 'third', backend=SineVocoder())
+    third = pilot.parent / 'third'
+    place(pilot, 'frozen-base', half)
+    for arm in ('A-all', 'B-audio', 'D-all-shuffled'):
+        place(pilot, arm, right)
+    place(later, 'A-last4', locked)
+    place(later, 'A-all-s43', right)                    # seed 43 of A only: the core families share seed 42 alone
+    place(third, 'A-last4-s43', locked)
+    place(third, 'A-last4-s44', locked)                 # no A-all-s44 to pair with
+    result = followup.summarize([pilot, later, third], resamples=200)
+    assert result['seeds'] == [42] and set(result['families']) == {'A-last4'}
+    assert result['families']['A-last4']['seeds'] == [42, 43, 44] and result['families']['A-last4']['mean']['order_gap'] == pytest.approx(1.0)
+    gap = result['contrasts']['A-last4 - A-all']['order_gap']
+    assert gap['seeds'] == [42, 43] and gap['per_seed_pp'] == pytest.approx([100, 100]) and gap['interval_95_pp'][0] > 0
+    assert result['claims']['last_layers_bind_to_option_order_across_seeds'] == 'supported'
+    assert result['claims']['audio_positions_match_all_positions'] is None
+    assert '| A-last4 - A-all | 42, 43 | order_gap | +100.00 / +100.00 | +100.00 |' in followup.render(result)
+    base = tmp_path / 'base.json'
+    base.write_text(json.dumps(BASE_CONFIG))
+    arms = configs.build(base, tmp_path / 'data', tmp_path / 'cfg', plan='last4-seeds')
+    assert {n: (a['last_n'], a['seed'], a['update_positions'], a['option_order']) for n, a in arms.items()} == {
+        'A-last4-s43': (4, 43, 'all', 'fixed'), 'A-last4-s44': (4, 44, 'all', 'fixed')}
+
+
+# ----------------------------------------------------------------------------- other answer formats
+from experiments.hearside_pilot import formats, headroom  # noqa: E402
+
+
+@pytest.mark.parametrize('text,expected', [('Yes.', 'yes'), ('no, the speaker is calm', 'no'), ('The speaker sounds angry', None), ('', None)])
+def test_yes_no_answers_are_read_from_the_first_word(text, expected):
+    assert formats.parse_yesno(text) == expected
+
+
+@pytest.mark.parametrize('text,expected', [('Angry.', 'A'), ('happy or excited', 'B'), ('The speaker sounds sad', 'C'), ('Neutral', 'D'),
+                                           ('unhappy', 'C'), ('frustrated', 'A'), ('happy and sad', None), ('confused', None), ('', None)])
+def test_emotion_words_map_to_one_class_or_are_invalid(text, expected):
+    assert formats.parse_emotion(text) == expected
+
+
+def format_answers(folder, arm, yes=lambda m: m['group'], word=lambda m: formats.EMOTIONS[m['group']], free=None):
+    for name, choose in (('yesno', yes), ('word', word), ('open', free or word)):
+        out = folder / 'runs' / arm / name
+        out.mkdir(parents=True)
+        d2.write_jsonl(out / 'predictions.jsonl', [dict(id=m['id'], reference=m['messages'][1]['content'], prediction=choose(m))
+                                                   for m in d2.read_jsonl(folder / f'{name}.jsonl')])
+        d2.write(out / 'metrics.json', dict(predictions_sha256=d2.digest(out / 'predictions.jsonl')))
+
+
+def test_format_manifests_and_the_declared_reading(prepared, tmp_path):
+    out, _ = prepared
+    folder = tmp_path / 'formats'
+    info = formats.build(out / 'manifests' / 'orig.jsonl', folder)
+    assert info['utterances'] == 12 and {n: m['rows'] for n, m in info['manifests'].items()} == dict(yesno=24, word=24, open=12)
+    yesno, word, free = (d2.read_jsonl(folder / f'{n}.jsonl') for n in formats.FORMATS)
+    for a, b in zip(yesno[::2], yesno[1::2]):
+        assert (a['group'], b['group']) == ('yes', 'no') and a['asked'] == a['label'] != b['asked'] and a['audios'] == b['audios']
+        assert a['messages'][0]['content'] == f"<audio>Does the speaker sound {formats.EMOTIONS[a['label']]}? Answer yes or no."
+    assert {r['asked'] for r in yesno[1::2]} == set(CLASSES)                      # wrong emotions are spread over the classes
+    assert word[0]['messages'][0]['content'].index('angry') < word[0]['messages'][0]['content'].index('sad')
+    assert word[1]['messages'][0]['content'].index('sad') < word[1]['messages'][0]['content'].index('angry')
+    assert all('angry' not in r['messages'][0]['content'] and r['messages'][1]['content'] == formats.EMOTIONS[r['label']] for r in free)
+    for rows in (yesno, word, free):                                              # nothing ms-swift would misread, no option letters
+        assert all(not re.search(r'\b[ABCD][:.]', r['messages'][0]['content']) for r in rows)
+
+    always_yes = lambda m: 'Yes'
+    format_answers(folder, 'frozen-base', yes=always_yes, word=lambda m: 'neutral', free=lambda m: 'I am not sure')
+    for seed, arm in enumerate(formats.FAMILIES['D-all-shuffled']):               # perfect on yes/no, never on the open question
+        format_answers(folder, arm, free=lambda m: 'The speaker sounds neutral.' if seed else 'hmm')
+    format_answers(folder, 'A-all', yes=always_yes, word=lambda m: 'B')           # a letter is not an emotion word
+    result = formats.summarize(folder, 17.4, resamples=200)
+    table = result['table']
+    assert table['frozen-base']['yesno']['mean'] == 0.5 and table['frozen-base']['word']['mean'] == 0.25
+    assert table['frozen-base']['open'] == dict(per_model={'frozen-base': 0.0}, mean=0.0, parseable=0.0)
+    assert table['D-all-shuffled']['yesno']['mean'] == 1.0 and len(table['D-all-shuffled']['open']['per_model']) == 3
+    assert table['D-all-shuffled']['open']['mean'] == pytest.approx((0 + .25 + .25) / 3) and table['A-all']['word']['parseable'] == 0
+    gain = result['contrasts']['D-all-shuffled - frozen-base']
+    assert gain['yesno']['delta_pp'] == pytest.approx(50) and gain['yesno']['interval_95_pp'] == [50, 50]
+    assert result['contrasts']['D-all-shuffled - A-all']['word']['delta_pp'] == pytest.approx(100)
+    assert result['readings'] == dict(yesno='transfers', word='transfers', open='transfers')            # +16.7 pp is over half of +17.4
+    assert formats.summarize(folder, 40.0, resamples=50)['readings']['open'] == 'gap'                   # but under half of +40
+    assert formats.summarize(folder, None, resamples=50)['readings'] == dict(yesno=None, word=None, open=None)
+    text = formats.render(result)
+    assert '| frozen-base (1) | 50.0 [100%] | 25.0 [100%] | 0.0 [0%] |' in text and '- open: **' in text
+    rows = d2.read_jsonl(folder / 'runs' / 'A-all' / 'open' / 'predictions.jsonl')
+    d2.write_jsonl(folder / 'runs' / 'A-all' / 'open' / 'predictions.jsonl', rows[::-1])
+    with pytest.raises(ValueError, match='changed after'):
+        formats.summarize(folder, 17.4, resamples=50)
+
+
+@pytest.mark.parametrize('base,gain,interval,expected', [(0.5, 9.0, [1, 17], 'transfers'), (0.5, 8.0, [1, 15], 'gap'), (0.5, -6.0, [-9, -1], 'harmed'),
+                                                         (0.9, 1.0, [-1, 3], 'base at ceiling'), (0.5, -1.0, [-4, 2], 'gap')])
+def test_transfer_reading_thresholds(base, gain, interval, expected):
+    table = {'frozen-base': {n: dict(mean=base) for n in formats.FORMATS}}
+    contrasts = {'D-all-shuffled - frozen-base': {n: dict(delta_pp=gain, interval_95_pp=interval) for n in formats.FORMATS}}
+    assert set(formats.judge(table, contrasts, 17.4).values()) == {expected}
+
+
+def test_mcq_gain_is_read_from_the_followup_summary(tmp_path):
+    path = tmp_path / 'followup.json'
+    d2.write(path, dict(models={'frozen-base': dict(uar_all_orders=0.561), 'D-all-shuffled': dict(uar_all_orders=0.760)},
+                        families={'D-all-shuffled': dict(mean=dict(uar_all_orders=0.735))}))
+    assert formats.mcq_gain(path) == pytest.approx(17.4)
+    d2.write(path, dict(models={'frozen-base': dict(uar_all_orders=0.561), 'D-all-shuffled': dict(uar_all_orders=0.760)}, families={}))
+    assert formats.mcq_gain(path) == pytest.approx(19.9)
+
+
+# ----------------------------------------------------------------------------- headroom for input-conditional adaptation
+def headroom_rows():
+    rows = []
+    for session in (1, 2, 3):
+        for index in range(24):
+            g, kind = 'FM'[index % 2], ('impro', 'script')[index // 2 % 2]
+            uid = f'Ses{session:02}{g}_{kind}{index // 8:02}_{g}{index:03}'
+            rows.append(dict(id=uid, speaker=f'Ses{session:02}{g}', session=session, audios=[f'/wav/{index % 9}/{uid}.wav'],
+                             messages=[dict(role='user', content='<audio>' + PILOT['prompts']['question']),
+                                       dict(role='assistant', content=CLASSES[(index * 7 + session) % 4])]))
+    return rows
+
+
+@pytest.fixture
+def specialists(prepared, tmp_path):
+    out, _ = prepared
+    source = tmp_path / 'train.jsonl'
+    data.write_jsonl(source, headroom_rows())
+    data.build(source, tmp_path / 'data', PILOT)
+    (tmp_path / 'base.json').write_text(json.dumps(dict(BASE_CONFIG, training=dict(BASE_CONFIG['training'], eval_steps=88, save_steps=88))))
+    length = lambda path: 1.0 + (int(Path(path).parent.name) if path.startswith('/wav/') else sum(map(ord, Path(path).stem)) % 9)
+    info = headroom.build(tmp_path / 'data', out / 'manifests' / 'orig.jsonl', tmp_path / 'base.json', tmp_path / 'headroom', duration=length)
+    return out, tmp_path / 'headroom', info
+
+
+def test_specialist_manifests_partition_every_split_by_one_property(specialists, tmp_path):
+    out, folder, info = specialists
+    assert len(info['specialists']) == 7 + 5 and len(info['duration_cuts_seconds']) == 2
+    full = {s: d2.read_jsonl(p) for s, p in (('train', tmp_path / 'data' / 'train-shuffled.jsonl'), ('dev', tmp_path / 'data' / 'dev-shuffled.jsonl'),
+                                              ('test', out / 'manifests' / 'orig.jsonl'))}
+    for grouping in (*headroom.GROUPINGS, 'random2', 'random3'):
+        keys = [k for k, v in info['specialists'].items() if v['grouping'] == grouping]
+        for split, rows in full.items():
+            parts = [d2.read_jsonl(folder / k / f'{split}.jsonl') for k in keys]
+            assert sorted(r['id'] for part in parts for r in part) == sorted(r['id'] for r in rows)     # a partition, nothing lost or doubled
+    for row in d2.read_jsonl(folder / 'gender-F' / 'train.jsonl'):
+        assert row['id'].split('_')[-1][0] == 'F'
+    assert all('_script' in r['id'] for r in d2.read_jsonl(folder / 'scripted-script' / 'dev.jsonl'))
+    test = d2.read_jsonl(folder / 'duration-short' / 'test.jsonl')
+    assert len(test) % 4 == 0 and len({r['utterance'] for r in test}) == len(test) // 4                 # all four option orders of an utterance
+    sizes = info['train_group_sizes']
+    assert [info['specialists'][f'random2-part{i}']['rows']['train'] for i in range(2)] == sizes['gender']
+    assert sum(sizes['duration']) == 48 and max(sizes['duration']) - min(sizes['duration']) <= 12
+    cfg = json.loads((folder / 'duration-long' / 'config.json').read_text())
+    steps = info['specialists']['duration-long']['steps']
+    assert steps == -(-info['specialists']['duration-long']['rows']['train'] // 8) and cfg['training']['eval_steps'] == cfg['training']['save_steps'] == -(-steps // 3)
+    assert {k: v for k, v in cfg.items() if k != 'training'} == {k: v for k, v in json.loads((tmp_path / 'base.json').read_text()).items() if k != 'training'}
+    with pytest.raises(FileExistsError):
+        headroom.build(tmp_path / 'data', out / 'manifests' / 'orig.jsonl', tmp_path / 'base.json', folder)
+
+
+def specialist_answers(folder, key, choose):
+    out = folder / key / 'eval'
+    out.mkdir()
+    d2.write_jsonl(out / 'predictions.jsonl', [dict(id=m['id'], reference=m['reference'], prediction=choose(m))
+                                               for m in d2.read_jsonl(folder / key / 'test.jsonl')])
+    d2.write(out / 'metrics.json', dict(predictions_sha256=d2.digest(out / 'predictions.jsonl')))
+
+
+def test_headroom_needs_a_gain_over_the_shared_adapter_the_random_split_and_the_seed_spread(specialists):
+    out, folder, info = specialists
+    place(out, 'frozen-base', half)
+    place(out, 'D-all-shuffled', half)                                       # the shared adapter is right on a third of the utterances
+    before = headroom.summarize(folder, [out], seed_sd_pp=4.0, resamples=200)
+    assert before['outcome'] == 'undecided' and set(before['groupings'].values()) == {None} and before['shared_seeds'] == ['D-all-shuffled']
+    assert sum(g['utterances'] for g in before['groups']['gender'].values()) == 12
+    assert all(len(g['shared_uar_per_seed']) == 1 for by in before['groups'].values() for g in by.values())
+    for key, spec in info['specialists'].items():
+        specialist_answers(folder, key, right if spec['grouping'] == 'gender' else half)
+    result = headroom.summarize(folder, [out], seed_sd_pp=4.0, resamples=200)
+    gender, duration = result['groupings']['gender'], result['groupings']['duration']
+    assert gender['uar'] == 100 and gender['gain_over_shared_pp'] == pytest.approx(100 - gender['shared_uar']) and gender['headroom'] is True
+    assert gender['gain_over_random_pp'] == pytest.approx(gender['gain_over_shared_pp']) and gender['random_minus_shared_pp'] == 0
+    assert duration['gain_over_shared_pp'] == 0 and duration['answers_changed'] == 0 and duration['headroom'] is False
+    assert result['outcome'] == 'headroom found'
+    assert headroom.summarize(folder, [out], seed_sd_pp=60.0, resamples=200)['outcome'] == 'closed'       # inside the seed spread
+    assert headroom.summarize(folder, [out], resamples=200)['outcome'] == 'undecided'                     # seed spread unknown
+    text = headroom.render(result)
+    assert '| gender | 100.0 |' in text and 'Outcome under the declared rule: **headroom found**' in text
+    entry = dict(gain_over_shared_pp=9.0, gain_over_shared_interval_95_pp=[1, 17], gain_over_random_pp=3.0, gain_over_random_interval_95_pp=[-0.1, 6])
+    assert headroom.judge(entry, 4.0) is False                                                            # not better than a random split
+    assert headroom.judge(dict(entry, gain_over_random_interval_95_pp=[0.1, 6]), 4.0) is True
+    assert headroom.judge(dict(entry, gain_over_random_interval_95_pp=[0.1, 6]), 4.6) is False

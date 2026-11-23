@@ -22,8 +22,10 @@ from experiments.trr_diagnostics import d2, stats
 
 SEEDS = (42, 43, 44)
 FAMILIES = {arm: [arm, f'{arm}-s43', f'{arm}-s44'] for arm in ('A-all', 'B-audio', 'D-all-shuffled')}
-OTHERS = ['frozen-base', 'C-post-audio', 'A-last4']
-PAIRS = [('B-audio', 'A-all'), ('D-all-shuffled', 'A-all'), ('B-audio', 'D-all-shuffled')]
+CORE = list(FAMILIES)                                   # the three arms whose common seeds the first follow-up declared
+FAMILIES = {'A-last4': ['A-last4', 'A-last4-s43', 'A-last4-s44'], **FAMILIES}      # its seeds were added on 2026-11-24
+OTHERS = ['frozen-base', 'C-post-audio']
+PAIRS = [('B-audio', 'A-all'), ('D-all-shuffled', 'A-all'), ('B-audio', 'D-all-shuffled'), ('A-last4', 'A-all')]
 SCORED = ('orig', 'orig_reworded', 'text', 'question_only', 'asr-orig')
 METRICS = ('uar_all_orders', 'uar_training_order', 'uar_other_orders', 'order_gap', 'uar_reworded')
 # Written down before any follow-up arm was trained.
@@ -131,28 +133,40 @@ def summarize(folders, *, resamples=10000, seed=42):
             models[arm]['uar_all_orders_interval_95_pp'] = interval(boot[arm]['uar_all_orders'])
 
     # Seeds that every family has, so that the family means are over the same runs.
-    seeds = [s for i, s in enumerate(SEEDS) if all(members[i] in value for members in FAMILIES.values())]
-    index = [SEEDS.index(s) for s in seeds]
+    def have(names):
+        """Positions of the seeds that every named family was trained with."""
+        return [i for i in range(len(SEEDS)) if all(FAMILIES[n][i] in value for n in names)]
+
+    seeds = [SEEDS[i] for i in have(CORE)]
+    draws = {}
+
+    def family_boot(name, metric, index):
+        if len(index) not in draws:                     # seeds are resampled jointly for the arms being compared
+            draws[len(index)] = scorer.rng.integers(0, len(index), size=(resamples, len(index)))
+        stacked = np.stack([boot[FAMILIES[name][i]][metric] for i in index])           # [seeds, resamples]
+        return stacked[draws[len(index)].T, np.arange(resamples)].mean(axis=0)
+
     families, contrasts = {}, {}
-    if len(seeds) >= CRITERIA['min_seeds']:
-        draws = scorer.rng.integers(0, len(seeds), size=(resamples, len(seeds)))      # seeds, shared by all families
-
-        def family_boot(name, metric):
-            stacked = np.stack([boot[FAMILIES[name][i]][metric] for i in index])       # [seeds, resamples]
-            return stacked[draws.T, np.arange(resamples)].mean(axis=0)
-
-        for name, members in FAMILIES.items():
-            per_seed = {m: [value[members[i]][m] for i in index] for m in (*METRICS, 'wer')
-                        if all(m in value[members[i]] for i in index)}
-            families[name] = dict(seeds=seeds, per_seed=per_seed, mean={m: float(np.mean(v)) for m, v in per_seed.items()},
-                                  sd={m: float(np.std(v, ddof=1)) for m, v in per_seed.items()})
-        for a, b in PAIRS:
-            out = {}
-            for metric in METRICS:
-                per_seed = [value[FAMILIES[a][i]][metric] - value[FAMILIES[b][i]][metric] for i in index]
-                out[metric] = dict(per_seed_pp=[100 * v for v in per_seed], mean_pp=100 * float(np.mean(per_seed)),
-                                   interval_95_pp=interval(family_boot(a, metric) - family_boot(b, metric)))
-            contrasts[f'{a} - {b}'] = out
+    for name, members in FAMILIES.items():
+        index = have(CORE) if name in CORE else have([name])
+        if len(index) < CRITERIA['min_seeds']:
+            continue
+        per_seed = {m: [value[members[i]][m] for i in index] for m in (*METRICS, 'wer')
+                    if all(m in value[members[i]] for i in index)}
+        families[name] = dict(seeds=[SEEDS[i] for i in index], per_seed=per_seed,
+                              mean={m: float(np.mean(v)) for m, v in per_seed.items()},
+                              sd={m: float(np.std(v, ddof=1)) for m, v in per_seed.items()})
+    for a, b in PAIRS:
+        index = have(CORE) if a in CORE and b in CORE else have([a, b])
+        if len(index) < CRITERIA['min_seeds']:
+            continue
+        out = {}
+        for metric in METRICS:
+            per_seed = [value[FAMILIES[a][i]][metric] - value[FAMILIES[b][i]][metric] for i in index]
+            out[metric] = dict(seeds=[SEEDS[i] for i in index], per_seed_pp=[100 * v for v in per_seed],
+                               mean_pp=100 * float(np.mean(per_seed)),
+                               interval_95_pp=interval(family_boot(a, metric, index) - family_boot(b, metric, index)))
+        contrasts[f'{a} - {b}'] = out
 
     depth = None
     if 'A-last4' in value and 'A-all' in value:
@@ -198,6 +212,10 @@ def judge(contrasts, depth):
         gap = depth['order_gap']
         claims['last_layers_bind_to_option_order'] = ('supported' if gap['delta_pp'] >= CRITERIA['min_depth_gap_pp']
                                                       and gap['interval_95_pp'][0] > 0 else 'not supported')
+    if 'A-last4 - A-all' in contrasts:                  # the same reading over the seeds both depths were trained with
+        gap = contrasts['A-last4 - A-all']['order_gap']
+        claims['last_layers_bind_to_option_order_across_seeds'] = (
+            'supported' if gap['mean_pp'] >= CRITERIA['min_depth_gap_pp'] and gap['interval_95_pp'][0] > 0 else 'not supported')
     return claims
 
 
@@ -218,21 +236,18 @@ def render(result):
                      f"{pct(m['order_gap'], True)} {ci(m['order_gap_interval_95_pp'])} | {pct(m.get('uar_reworded'))} | "
                      f"{pct(m.get('uar_text'))} | {pct(m.get('wer'))} |")
     if result['families']:
-        seeds = result['seeds']
-        lines += ['', f"## Seeds {', '.join(map(str, seeds))}", '',
-                  '| arm | measure | ' + ' | '.join(f'seed {s}' for s in seeds) + ' | mean | SD |',
-                  '|---|---|' + '---:|' * (len(seeds) + 2)]
+        lines += ['', '## Training seeds', '', '| arm | seeds | measure | per seed | mean | SD |', '|---|---|---|---|---:|---:|']
         for name, family in result['families'].items():
             for metric in ('uar_all_orders', 'uar_other_orders', 'order_gap', 'uar_reworded', 'wer'):
                 if metric in family['per_seed']:
-                    lines.append(f"| {name} | {metric} | " + ' | '.join(pct(v, metric == 'order_gap') for v in family['per_seed'][metric])
+                    lines.append(f"| {name} | {', '.join(map(str, family['seeds']))} | {metric} | "
+                                 + ' / '.join(pct(v, metric == 'order_gap') for v in family['per_seed'][metric])
                                  + f" | {pct(family['mean'][metric], metric == 'order_gap')} | {100 * family['sd'][metric]:.2f} |")
-        lines += ['', '| difference | measure | ' + ' | '.join(f'seed {s}' for s in seeds) + ' | mean pp | 95% CI (seeds and dialogues) |',
-                  '|---|---|' + '---:|' * (len(seeds) + 1) + '---|']
+        lines += ['', '| difference | seeds | measure | per seed pp | mean pp | 95% CI (seeds and dialogues) |', '|---|---|---|---|---:|---|']
         for pair, by in result['contrasts'].items():
             for metric, c in by.items():
-                lines.append(f'| {pair} | {metric} | ' + ' | '.join(f'{v:+.2f}' for v in c['per_seed_pp'])
-                             + f" | {c['mean_pp']:+.2f} | {ci(c['interval_95_pp'])} |")
+                lines.append(f"| {pair} | {', '.join(map(str, c['seeds']))} | {metric} | "
+                             + ' / '.join(f'{v:+.2f}' for v in c['per_seed_pp']) + f" | {c['mean_pp']:+.2f} | {ci(c['interval_95_pp'])} |")
     if result['depth']:
         lines += ['', '## Last four layers against all 36 (one seed each)', '',
                   '| measure | A-last4 | A-all | difference pp | 95% CI (dialogues) |', '|---|---:|---:|---:|---|']
@@ -265,7 +280,7 @@ if __name__ == '__main__':
     check.add_argument('--run', type=Path, required=True)
     table = commands.add_parser('summarize')
     table.add_argument('--pilot', type=Path, required=True, help='eval folder of the pilot run (frozen base and seed-42 arms)')
-    table.add_argument('--prepared', type=Path, required=True, help='eval folder of the follow-up run')
+    table.add_argument('--prepared', type=Path, nargs='+', required=True, help='eval folders of the later runs')
     table.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'check':
@@ -273,7 +288,7 @@ if __name__ == '__main__':
         print('identical to the pilot: training manifests and Session 4 inputs' if not different else
               'DIFFERENT from the pilot: ' + ', '.join(different))
         raise SystemExit(1 if different else 0)
-    summary = summarize([args.pilot, args.prepared])
+    summary = summarize([args.pilot, *args.prepared])
     args.output.mkdir(parents=True, exist_ok=True)
     (args.output / 'followup.json').write_text(json.dumps(summary, indent=2) + '\n')
     text = render(summary)

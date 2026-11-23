@@ -1,6 +1,6 @@
 # 听侧适配小实验（hear-side pilot）
 
-**状态（2026-11-23）：已在服务器上完整运行一次，每臂一个种子。按预先声明的判据，结论是 `stop`，见“结果”一节。后续实验（层数与种子）已运行，四项判读均为 `supported`，见 `results/followup-20261123-212622/NOTES.md`。**
+**状态（2026-11-23）：已在服务器上完整运行一次，每臂一个种子。按预先声明的判据，结论是 `stop`，见“结果”一节。后续实验（层数与种子）已运行，四项判读均为 `supported`，见 `results/followup-20261123-212622/NOTES.md`。第三轮（补种子、跨格式评测、余量检验）已声明，尚未运行。**
 
 ## 要回答的问题
 
@@ -129,6 +129,48 @@ D2/D2b 诊断在 IEMOCAP Session 4 上得到两件事：
 - 层数一项 `supported`：可以在同一流程内说“只改最后几层的适配更依赖选项顺序”，仍限于单种子、单语料。`not supported`：pair-01 的格式绑定来自别的差异（训练数据、步数、用 Session 4 选模、实现），不能归因于层数，需要逐项复现 pair-01 的条件。
 - 种子三项若为 `inconclusive`：不能说 A、B、D 之间有差别，能报告的只有 `C-post-audio` 明显更差这一条单种子结果。
 
+## 第三轮：补种子、跨格式评测、余量检验（2026-11-24 声明，尚未运行）
+
+`run_next.sh` 依次做三件事，都写进新的输出目录，只读取前两轮的目录。
+
+### 1. `A-last4` 再加 seed 43、44
+
+“最后 4 层绑定选项顺序”是目前幅度最大的发现，却只有一次训练。判读与此前相同，改为跨种子：`A-last4` 与 `A-all` 在共有种子上的顺序差之差 ≥ 10 pp 且区间下界 > 0，记为 `last_layers_bind_to_option_order_across_seeds: supported`。
+
+### 2. 跨格式评测（`formats.py`）
+
+问题：在四选一字母题上训练得到的增益，换一种问法还剩多少。这是为“找方法缺口”做的：只有当简单做法（36 层 LoRA + 打乱选项，即 `D-all-shuffled`）在某种问法上明显不行，才有理由设计新方法。
+
+三种所有臂都没见过的问法，同样的 Session 4 录音，自由生成（贪心，最多 16 个 token）：
+
+| 格式 | 问法 | 行数 | 计分 |
+|---|---|---:|---|
+| `yesno` | “Does the speaker sound <情感>? Answer yes or no.” 每句问两次：真实情感、一个错误情感 | 2052 | yes、no 两类召回率的平均 |
+| `word` | 四个情感以词给出（两种顺序），要求用词回答 | 2052 | 四类 UAR |
+| `open` | 不给选项，用一两个词描述 | 1026 | 四类 UAR |
+
+解析规则和词表写在 `formats.py`（`parse_yesno`、`LEXICON`）：是非题取第一个词；情感词按整词匹配，恰好命中一类才算有效，无法解析的回答记为错。词表里 frustrated 归入 angry，这是事先定下的近似（IEMOCAP 的 frustrated 是另一类，四分类里没有它）。
+
+预先声明的判读，对每种格式看 `D-all-shuffled`（三个种子平均）减冻结基座：
+
+| 判读 | 条件 |
+|---|---|
+| `base at ceiling` | 冻结基座在该格式上 ≥ 85%，没有可比的余地 |
+| `harmed` | 增益的区间上界 < 0 |
+| `gap` | 增益小于它在训练问法上增益的一半（训练问法上约 +17.4 pp，即门槛约 8.7 pp） |
+| `transfers` | 其余情况 |
+
+出现 `gap` 或 `harmed` 才算找到了一个值得为之设计方法的场景，而且还需要在第二个语料上复现。三种格式都是 `transfers`，就说明普通做法已经把“听”的能力带到了别的问法上，这条找缺口的路没有结果。汇总里同时列出 A、B、`A-last4`、C 各自相对基座的增益，以及 B − A、D − A、`A-last4` − `A-all`，这些只作描述，不设判据。
+
+### 3. 输入条件化的余量检验（`headroom.py`）
+
+判据见 `research/headroom-test-input-conditional-20261124.md`，这里不重复。实现上的细节：
+
+- 共用适配器是 `D-all-shuffled`，专用适配器沿用它的配置，只把评估间隔改成各自总步数的三分之一。
+- 时长按训练集的三分位点分三档；随机对照 `random2` 的两份与性别两组等大，`random3` 的三份与时长三组等大。即兴/剧本两组不等大，用 `random2` 近似。
+- 专用适配器只训练了 seed 42，与共用适配器的 seed 42 配对比较。
+- 种子标准差取自后续实验：4.06 pp，所以“超过两倍标准差”这一条的门槛约为 8.1 pp。按这个门槛，很可能三种分组都不通过。
+
 ## 运行
 
 服务器上一条命令（克隆 `main` 的当前版本并在后台运行）：
@@ -143,6 +185,8 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 
 后续实验把上面命令里的 `run_pilot.sh` 换成 `run_followup.sh`（输出目录 `hearside-followup-<时间>`），七个臂预计约 5 小时，依据是小实验的实测：每臂训练加选模约 16 分钟、评测 25–28 分钟。
 
+第三轮用 `run_next.sh`（输出目录 `hearside-next-<时间>`），估计 8–10 小时：补种子约 1.5 小时；跨格式评测 14 个模型，每个约 5100 次短生成，速度没有实测，按 3–5 小时估；余量检验 12 次小训练加评测约 3 小时。`STAGES="2"` 之类可以只跑其中一部分。
+
 看进度：`tail -f /root/autodl-fs/CoTA-LoRA/hearside-pilot.out`。中断后续跑：`RUN=<同一个输出目录> bash experiments/hearside_pilot/run_pilot.sh`，已完成的步骤不会重做，被打断的训练目录改名保留后重新训练。
 
 2026-11-23 的实测：全程 201 分钟。每臂训练 400–455 秒，训练中三次 Session 3 评估另需 515–564 秒，训练峰值显存 22.3 GB（已分配）；每个模型的 Session 4 评测 25–28 分钟。
@@ -155,7 +199,9 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 | 同一环境下 `ms_swift_librispeech/tests` 65 项、`ms_swift_iemocap/tests` 10 项、`research/claude-review/checks` 7 项 | 通过 |
 | 故意改坏掩码的 5 种写法 | 全部被上述测试发现 |
 | 服务器上的全部项目测试（含 `experiments/ms_swift_aqa/tests`） | 222 项通过，4 项跳过（RandLoRA 需 PEFT 0.17.1 的单独套件、LowRA 需 CUDA、两项缺 `pyreft`） |
-| 不依赖 torch 的测试（`trr_diagnostics` 57 项、本目录 23 项） | 通过 |
+| 不依赖 torch 的测试（`trr_diagnostics` 57 项、本目录 46 项） | 通过 |
+| 重构后的 `followup.py` | 用前两轮的真实预测复算，各臂数值和区间与服务器汇总完全相同 |
+| `run_next.sh`、`formats.py`、`headroom.py` | 只用替身解释器和玩具语料走过（三轮脚本依次运行、单个专用适配器失败、续跑）；真实模型上未运行，自由生成的速度和回答的可解析比例都未知 |
 | `run_pilot.sh` 的流程 | 正常流程在服务器上完整跑通一次；单元测试失败、单臂训练失败、续跑三条分支只用替身解释器走过 |
 | `followup.py` 的计分 | 用小实验的真实预测核对：各臂 UAR 与服务器汇总逐项相同，顺序差的区间与此前独立计算一致 |
 | `run_followup.sh` 的流程（正常、缺小实验目录、输入不一致、单臂失败、续跑） | 只用替身解释器和玩具语料走过；真实训练和评测未运行 |
