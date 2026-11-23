@@ -467,6 +467,10 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
                             from experiments.ms_swift_librispeech import swift_asr_ta_runtime as runtime
                             getattr(runtime, 'set_' + key)(trainer.model, adapter[key])
                             initial[key] = adapter[key]
+                    if 'update_positions' in adapter:
+                        from experiments.ms_swift_librispeech.swift_asr_ta_runtime import set_update_positions
+                        set_update_positions(trainer.model, adapter['update_positions'])
+                        initial['update_positions'] = adapter['update_positions']
                     if adapter.get('independent_transport_up', False) or 'transport_gate' in adapter:
                         # Recount after C and/or the conditional gate were added to the trainable set.
                         initial.update(audit_adapter(trainer.model, native_method, n, projections))

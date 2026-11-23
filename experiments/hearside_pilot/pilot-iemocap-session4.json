@@ -1,0 +1,146 @@
+{
+  "name": "hearside-pilot-iemocap-session4",
+  "purpose": "Evaluation protocol of the hear-side pilot, declared before any pilot adapter was trained. Session 4 is never used for training or checkpoint selection here. Every arm is scored on the original recordings under four option orders, on a reworded question, on the transcript alone and on transcription; the resynthesis twins are available for a later mechanism check.",
+  "data": {
+    "manifest": "/root/autodl-tmp/iemocap/swift-ser/data/dev.jsonl",
+    "manifest_sha256": null,
+    "archive": "/root/autodl-tmp/iemocap/iemocapfullrelease-v1.zip",
+    "sessions": [
+      4
+    ]
+  },
+  "classes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "prompts": {
+    "question": "Which emotion does the speaker express? A: angry; B: happy or excited; C: sad; D: neutral. Reply with exactly one letter: A, B, C, or D.",
+    "asr": "Transcribe the speech verbatim in its original language. Reply with the transcript only.",
+    "question_template": "Which emotion does the speaker express? A: {0}; B: {1}; C: {2}; D: {3}. Reply with exactly one letter: A, B, C, or D.",
+    "options": {
+      "A": "angry",
+      "B": "happy or excited",
+      "C": "sad",
+      "D": "neutral"
+    }
+  },
+  "rotations": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "conditions": {
+    "audio": [
+      "orig",
+      "sham",
+      "neutral"
+    ],
+    "reworded": {
+      "orig_reworded": {
+        "audio": "orig",
+        "question_template": "Listen to the speaker and decide how they sound.\nA. {0}\nB. {1}\nC. {2}\nD. {3}\nAnswer with one letter only."
+      }
+    },
+    "text": {
+      "text": "The speaker said: \"{transcript}\"\n{question}",
+      "question_only": "{question}"
+    }
+  },
+  "twin": {
+    "backend": "praat",
+    "frame_period_ms": 10.0,
+    "f0_floor_hz": 75.0,
+    "f0_ceil_hz": 600.0,
+    "energy_window_ms": 250.0,
+    "energy_floor_db": 30.0,
+    "max_gain_db": 12.0,
+    "gain_edge_ms": 50.0,
+    "strength": 1.0
+  },
+  "generation": {
+    "batch_size": 2
+  },
+  "asr": {
+    "conditions": [
+      "orig",
+      "sham",
+      "neutral"
+    ],
+    "contrasts": [
+      [
+        "sham",
+        "orig"
+      ],
+      [
+        "neutral",
+        "sham"
+      ]
+    ],
+    "subset": 300,
+    "seed": 42,
+    "generation": {
+      "do_sample": false,
+      "num_beams": 1,
+      "batch_size": 2,
+      "max_new_tokens": 128
+    }
+  },
+  "contrasts": [
+    [
+      "sham",
+      "orig"
+    ],
+    [
+      "neutral",
+      "sham"
+    ],
+    [
+      "orig_reworded",
+      "orig"
+    ],
+    [
+      "orig",
+      "text"
+    ],
+    [
+      "text",
+      "question_only"
+    ]
+  ],
+  "strata_contrasts": [
+    [
+      "neutral",
+      "sham"
+    ],
+    [
+      "orig",
+      "text"
+    ]
+  ],
+  "bootstrap": {
+    "cluster": "dialogue",
+    "resamples": 10000,
+    "seed": 42
+  },
+  "decision": {
+    "max_artifact_pp": 2.0,
+    "min_use_pp": 3.0,
+    "equivalence_pp": 3.0,
+    "max_wer_increase_pp": 2.0,
+    "qc": {
+      "flat_f0_max_ratio": 0.2,
+      "flat_energy_max_ratio": 0.5,
+      "kept_ratio": [
+        0.8,
+        1.25
+      ],
+      "level_max_ratio": 0.25
+    },
+    "primary": [
+      "neutral"
+    ]
+  }
+}

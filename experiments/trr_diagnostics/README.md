@@ -192,6 +192,11 @@ $OUT/runs/<臂>/report.md     汇总表与判据结论（report.json 为同内�
 
 运行方式与第一版相同，只把 `--config` 换成 `experiments/trr_diagnostics/d2b-iemocap-session4.json`。分类条件的耗时约为第一版的 4 倍：按第一次全量的实测（每个音频条件 155 秒、每个 ASR 条件 105 秒），每臂约 1.5 小时。
 
+## 两个后加的选项（2026-11-23，为 `experiments/hearside_pilot` 添加）
+
+- `run --only orig text asr-orig`：这次只评这些条件；其余条件以后不带 `--only` 再运行同一条命令即可补上，已完成的不会重评。
+- 配置里的 `conditions.reworded`：`{"名字": {"audio": "orig", "question_template": "…{0}…{1}…{2}…{3}…"}}`，用同一批录音和选项顺序换一种问法生成一个新的分类条件。前两版协议没有这一项，行为不变。
+
 ## 局限
 
 - 孪生只改 F0 和慢变能量（起伏与高度），时长、停顿、音质不变；结论只对这两个因素成立。

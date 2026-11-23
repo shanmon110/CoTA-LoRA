@@ -349,13 +349,14 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
             *(cfg['prompts']['options'][c] for c in classes)) != question:
         raise ValueError('question_template with the options in class order must reproduce prompts.question')
 
-    def rotated(shift):
+    def rotated(shift, template=None):
         """Classes shown under the option letters, in letter order, and the question that says so."""
         order = [classes[(j + shift) % k] for j in range(k)]
-        text = question if shift == 0 else cfg['prompts']['question_template'].format(*(cfg['prompts']['options'][c] for c in order))
-        return order, text
+        if template is None and shift == 0:
+            return order, question
+        return order, (template or cfg['prompts']['question_template']).format(*(cfg['prompts']['options'][c] for c in order))
 
-    def rows(content, audio_of, answer=None):
+    def rows(content, audio_of, answer=None, template=None):
         """One row per utterance and option order. `reference` is the letter to answer under that order;
         `label` is the class it stands for, which is what the report scores."""
         out = []
@@ -365,7 +366,7 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
                     out.append(dict(meta, audios=audio_of(item), messages=[
                         dict(role='user', content=content(item, question)), dict(role='assistant', content=answer(item))]))
                     continue
-                order, text = rotated(shift)
+                order, text = rotated(shift, template)
                 letter = classes[order.index(item['reference'])]
                 out.append(dict(meta, id=item['id'] if rotations == [0] else f"{item['id']}#r{shift}", utterance=item['id'],
                                 rotation=shift, option_order=order, label=item['reference'], reference=letter,
@@ -382,6 +383,11 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
     for name, template in cfg['conditions']['text'].items():
         manifests[name] = rows(lambda item, q, t=template: t.format(transcript=item['transcript'], question=q),
                                lambda item: [])
+    # The same recordings asked with different wording: a prompt format no adapter was trained on.
+    for name, spec in cfg['conditions'].get('reworded', {}).items():
+        if name in manifests or spec['audio'] not in audio or 'options' not in cfg['prompts']:
+            raise ValueError(f'Reworded condition {name} needs a new name, a classified audio condition and option texts')
+        manifests[name] = rows(lambda item, q: '<audio>' + q, path_of(spec['audio']), template=spec['question_template'])
     asr = cfg.get('asr')
     if asr:
         ids = sorted(item['id'] for item in items)
@@ -413,7 +419,11 @@ def prepare(config, output, *, workers=4, limit=None, backend=None):
 
 # ----------------------------------------------------------------------------- run
 
-def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
+def condition_names(cfg):
+    return [*cfg['conditions']['audio'], *cfg['conditions'].get('reworded', {}), *cfg['conditions']['text']]
+
+
+def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False, only=None):
     import torch
     from experiments.ms_swift_iemocap.evaluate import score as score_choice
     from experiments.ms_swift_librispeech.evaluate import score as score_asr
@@ -445,9 +455,15 @@ def run(prepared, model_config, method, checkpoint, arm, *, skip_asr=False):
 
     # The audio conditions are the diagnostic itself; text-only and ASR inputs are extra context.
     jobs = [(name, score_choice, cfg['generation'], True) for name in cfg['conditions']['audio']]
-    jobs += [(name, score_choice, cfg['generation'], False) for name in cfg['conditions']['text']]
+    jobs += [(name, score_choice, cfg['generation'], False)
+             for name in [*cfg['conditions'].get('reworded', {}), *cfg['conditions']['text']]]
     if cfg.get('asr') and not skip_asr:
         jobs += [('asr-' + name, score_asr, cfg['asr']['generation'], False) for name in cfg['asr']['conditions']]
+    if only is not None:
+        unknown = set(only) - {job[0] for job in jobs}
+        if unknown:
+            raise ValueError(f'Unknown conditions for --only: {sorted(unknown)}')
+        jobs = [job for job in jobs if job[0] in only]   # the rest can be added later by running again
     pending = []
     for job in jobs:
         if completed_predictions(prepared, folder, job[0], info) is None:
@@ -554,8 +570,7 @@ def report(prepared, arm):
     manifest = read_jsonl(prepared / 'manifests' / 'orig.jsonl')
     labels = [m['label'] for m in manifest]          # classes; `reference` is the letter under that row's option order
     clusters = [m[boot['cluster']] for m in manifest]
-    names = [n for n in [*cfg['conditions']['audio'], *cfg['conditions']['text']]
-             if completed_predictions(prepared, folder, n, info) is not None]
+    names = [n for n in condition_names(cfg) if completed_predictions(prepared, folder, n, info) is not None]
     letters = {n: _predictions(folder, n, manifest) for n in names}
     preds = {n: to_classes(letters[n], manifest, classes) for n in names}
     # How often each option letter is chosen, and UAR under each option order: position preference shows here.
@@ -724,6 +739,7 @@ if __name__ == '__main__':
     r.add_argument('--checkpoint', type=Path)
     r.add_argument('--arm', required=True, help='Name of this model in the output, e.g. frozen-base')
     r.add_argument('--skip-asr', action='store_true')
+    r.add_argument('--only', nargs='+', help='Score only these conditions now (e.g. orig text asr-orig)')
     s = commands.add_parser('report')
     s.add_argument('--prepared', type=Path, required=True)
     s.add_argument('--arm', required=True)
@@ -734,7 +750,8 @@ if __name__ == '__main__':
                                                    'same_text_different_label', 'audio_seconds', 'prepare_seconds')}, indent=2))
         print('acoustic QC:', 'pass' if summary['qc']['passed'] else 'FAIL', json.dumps(summary['qc']['checks'], indent=2))
     elif args.command == 'run':
-        failures = run(args.prepared, args.model_config, args.method, args.checkpoint, args.arm, skip_asr=args.skip_asr)
+        failures = run(args.prepared, args.model_config, args.method, args.checkpoint, args.arm, skip_asr=args.skip_asr,
+                       only=args.only)
         print(report(args.prepared, args.arm)[1])
         sys.exit(1 if failures else 0)
     else:

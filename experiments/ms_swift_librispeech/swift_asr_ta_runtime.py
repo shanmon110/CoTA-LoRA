@@ -26,6 +26,12 @@ TRANSPORT_SIGNALS = ('contrast', 'audio_mean', 'ordinary', 'ordinary_matched')
 # 'autocast' rounds the gated rank coefficients to the autocast dtype before the readouts (format 8).
 # 'fp32' keeps the whole transport term in FP32 until it is added to the ordinary update.
 TRANSPORT_PRECISIONS = ('autocast', 'fp32')
+# Where the whole adapter update is added (checkpoint format 10). 'all' is every earlier format.
+#   audio       only at audio-token positions: the adapter can change what the audio positions expose,
+#               but text and answer positions are computed by the frozen base
+#   post_audio  only at positions after the row's last audio token (question, answer and generated
+#               tokens): audio positions and everything before them are exactly the frozen base
+UPDATE_POSITIONS = ('all', 'audio', 'post_audio')
 
 
 class _SharedAtoms(nn.Module):
@@ -42,6 +48,7 @@ class _SharedAtoms(nn.Module):
         self.transport_gate = None
         self.transport_signal = 'contrast'
         self.transport_precision = 'autocast'
+        self.update_positions = 'all'
         self.register_parameter('transport_up', None)
         self.register_parameter('gate_weight', None)
         nn.init.kaiming_uniform_(self.down, a=math.sqrt(5))
@@ -49,6 +56,12 @@ class _SharedAtoms(nn.Module):
         self.format_version = format_version
 
     def forward(self, ordinary, contrast):
+        if contrast is None:
+            # The transport term is exactly zero (zero multiplier, no independent C): a plain low-rank update.
+            if self.format_version == 2:
+                return F.linear(F.linear(ordinary.to(self.down.dtype), self.down), self.up) * self.scale
+            with torch.autocast(device_type=ordinary.device.type, enabled=False):
+                return self.scale * F.linear(F.linear(ordinary.float(), self.down), self.up)
         gate = self.gate if self.gate_multiplier == 1. else self.gate * self.gate_multiplier
         if self.format_version == 2:
             # Follow PEFT Linear.forward: feed A in its parameter dtype, honor
@@ -180,6 +193,7 @@ def set_transport_gate(outer, mode):
     if (mode not in TRANSPORT_GATES or cfg['tuner_type'] != 'ta_lora'
             or outer.config.model_type != 'qwen2_5_omni'
             or cfg.get('transport_queries', 'text') != 'text' or residual != 2
+            or cfg.get('update_positions', 'all') != 'all'
             or any(not name.endswith('.self_attn.o_proj') for name in cfg['targets'])):
         raise ValueError('Answer-query transport requires Qwen2.5-Omni O-only TA with text queries')
     if cfg.get('transport_gate', mode) != mode:
@@ -204,6 +218,35 @@ def set_transport_gate(outer, mode):
                 rank = branch.down.shape[0]
                 branch.gate_weight = nn.Parameter(branch.down.new_zeros(rank, rank),
                                                   requires_grad=branch.up.requires_grad)
+
+
+def set_update_positions(outer, scope):
+    """Restrict the whole low-rank update to audio-token positions or to the positions after them."""
+    if scope not in UPDATE_POSITIONS:
+        raise ValueError(f'update_positions must be one of {UPDATE_POSITIONS}')
+    cfg = outer._ta_lora_config
+    if scope == 'all':
+        if cfg['format_version'] == 10:
+            raise ValueError('A position-restricted adapter cannot be changed to update all positions')
+    else:
+        if (cfg['tuner_type'] not in ('ta_lora', 'ta_gate_off') or outer.config.model_type != 'qwen2_5_omni'
+                or cfg.get('transport_gate') is not None
+                or any(not name.endswith('.self_attn.o_proj') for name in cfg['targets'])):
+            raise ValueError('Position-restricted updates require Qwen2.5-Omni O-only TA without answer-query transport')
+        if cfg.get('update_positions', scope) != scope:
+            raise ValueError('Cannot change the update positions after configuration')
+        # Earlier readers ignore unknown metadata and would apply the update everywhere, so the
+        # restriction gets its own format. Format 10 carries every key of the static formats.
+        cfg.setdefault('residual_format_version', min(cfg['format_version'], 2))
+        cfg.setdefault('gate_multiplier', 1.)
+        cfg.setdefault('transport_queries', 'text')
+        cfg.setdefault('independent_transport_up', False)
+        cfg.setdefault('transport_weighting', 'uniform')
+        cfg.update(format_version=10, update_positions=scope)
+    for layer in outer.thinker.model.layers:
+        branch = getattr(layer.self_attn, 'ta_adapter', None)
+        if branch is not None:
+            branch.update_positions = scope
 
 
 def _set_answer_option(outer, key, value, choices):
@@ -266,6 +309,29 @@ def _answer_query(input_ids, valid, labels, audio_token_id, embed=None):
             total = embeddings.masked_fill(~question_mask[..., None], 0).sum(dim=1)
             question = total / question_mask.sum(dim=1, keepdim=True).clamp_min(1)
     return _AnswerFrame(audio, valid, positions, question)
+
+
+def _update_mask(audio, cache_position, queries, keys, scope):
+    """[batch, queries, 1] mask of the query positions at which the adapter update is added.
+
+    audio is the prompt layout [batch, prompt]; slots beyond it are generated text.
+    """
+    pos = (torch.arange(keys - queries, keys, device=audio.device) if cache_position is None
+           else cache_position.to(audio.device))
+    if pos.ndim != 1 or pos.numel() != queries:
+        raise ValueError('expected one absolute cache position per query')
+    prompt = audio.shape[1]
+    if scope == 'audio':
+        inside = pos < prompt
+        mask = torch.zeros(audio.shape[0], queries, dtype=torch.bool, device=audio.device)
+        mask[:, inside] = audio[:, pos[inside]]
+    elif scope == 'post_audio':
+        # Strictly after the row's last audio token. A row without audio has nothing before it.
+        last = torch.arange(prompt, device=audio.device).masked_fill(~audio, -1).amax(dim=1)
+        mask = pos[None, :] > last[:, None]
+    else:
+        raise ValueError(f'unknown update position scope {scope!r}')
+    return mask[..., None]
 
 
 def _conditional_probs(logits, members):
@@ -399,8 +465,17 @@ def _attention(self,
                                              self.ta_adapter.transport_signal, ordinary)
         update = self.ta_adapter.answer_update(ordinary, contrast, indices, frames[-1].question)
     else:
-        contrast = _transport(logits, value, mask, cache_position, frames[-1], self.ta_adapter.transport_queries, joint)
+        # With a zero multiplier and no independent C the contrast is multiplied by zero. Skipping it leaves
+        # the update unchanged and saves two FP32 attention maps per layer, which backward would also keep.
+        unused = self.ta_adapter.gate_multiplier == 0. and self.ta_adapter.transport_up is None
+        contrast = None if unused else _transport(logits, value, mask, cache_position, frames[-1],
+                                                  self.ta_adapter.transport_queries, joint)
         update = self.ta_adapter(ordinary, contrast)
+    if self.ta_adapter.update_positions != 'all':
+        if frames[-1][0].shape[0] != b:
+            raise ValueError('TA-LoRA does not support batch expansion or beam search')
+        where = _update_mask(frames[-1][0], cache_position, q, key.shape[2], self.ta_adapter.update_positions)
+        update = update * where.to(device=update.device, dtype=update.dtype)
     if self.ta_adapter.format_version == 2:
         output = (base + update).to(base.dtype)  # Same addition and final cast as PEFT LoRA.
     else:
