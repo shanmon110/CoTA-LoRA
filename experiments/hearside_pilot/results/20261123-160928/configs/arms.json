@@ -1,0 +1,30 @@
+{
+  "A-all": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/configs/A-all.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/dev-fixed.jsonl"
+  },
+  "B-audio": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/configs/B-audio.json",
+    "update_positions": "audio",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/dev-fixed.jsonl"
+  },
+  "C-post-audio": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/configs/C-post-audio.json",
+    "update_positions": "post_audio",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/dev-fixed.jsonl"
+  },
+  "D-all-shuffled": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/configs/D-all-shuffled.json",
+    "update_positions": "all",
+    "option_order": "shuffled",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/train-shuffled.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/data/dev-shuffled.jsonl"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "arm": "D-all-shuffled",
+  "method": "ta-lora",
+  "model_config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/configs/D-all-shuffled.json",
+  "model_config_sha256": "ebddc84c6bfcf7c5cd3cee4fca552d83d5ee56fdbdcc391f3fe86b9f6b76325a",
+  "base_model": "/root/autodl-tmp/west-preflight/model",
+  "model_revision": "f75b40e3da2003cdd6e1829b1f420ca70797c34e",
+  "prepared_config_sha256": "2721e33ecd7980e64245ac9b9bb93da8eb1b3e3654e574470d4e26d31da67a11",
+  "prepared_sha256": "d975937f509e00ae0515614a16fee48476d2edf8f27a0fc9af8bd3677cfccfe9",
+  "code_sha256": {
+    "trr_diagnostics/d2.py": "df7dc8d5dceb71e3fbb7eb37cfbbabd12b19cbe6ed48a8e3136a19b62e8440d4",
+    "trr_diagnostics/stats.py": "4b57c09379544733d24ff7b6dfea6b0fde90d6fd0db016f58d755f9673deac2e",
+    "trr_diagnostics/twin.py": "5c54c833ad55ee114ad949a4fc30178c27ecb78d540c8d3874bc52400215b0f5",
+    "ms_swift_iemocap/evaluate.py": "97f90441d5ae2051ca7eac75e8a8e3ecb8af6ee9f0bede7ae617544757d5688d",
+    "ms_swift_librispeech/evaluate.py": "115de182c37f427e68816371c490c9b39ad57e53bef22e8729cb84e252452e2f"
+  },
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/train/D-all-shuffled/checkpoint-264",
+  "adapter_config_sha256": "14d1c4f7e0a46f3cbdca527d1ccf3105cb587d10437d054e2df9fe10a0f9e8ff",
+  "weights_sha256": "aba1e1890b10c8706ecf0cbd594fa0ca76e8b1f33194c376abaf243a63c417eb"
+}

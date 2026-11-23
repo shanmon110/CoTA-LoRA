@@ -1,0 +1,1634 @@
+{
+  "prepared": "/root/autodl-fs/CoTA-LoRA/hearside-pilot-20261123-160928/eval",
+  "arms": [
+    "frozen-base",
+    "A-all",
+    "B-audio",
+    "C-post-audio",
+    "D-all-shuffled"
+  ],
+  "criteria": {
+    "max_drop_in_training_format_pp": 3.0,
+    "min_gain_in_other_orders_pp": 10.0
+  },
+  "utterances": 1026,
+  "scored_rows": 4104,
+  "dialogues": 30,
+  "results": {
+    "frozen-base": {
+      "orig": {
+        "uar": {
+          "training_order": 0.5211089031978091,
+          "other_orders": 0.5742159431634349,
+          "all_orders": 0.5609391831720285
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.9480122324159022,
+            "B": 0.43478260869565216,
+            "C": 0.1958041958041958,
+            "D": 0.5058365758754864
+          },
+          "other_orders": {
+            "A": 0.8970438328236493,
+            "B": 0.45707915273132665,
+            "C": 0.289044289044289,
+            "D": 0.6536964980544747
+          },
+          "all_orders": {
+            "A": 0.9097859327217125,
+            "B": 0.451505016722408,
+            "C": 0.26573426573426573,
+            "D": 0.6167315175097277
+          }
+        },
+        "letter_share": {
+          "A": 0.2962962962962963,
+          "B": 0.24074074074074073,
+          "C": 0.25560428849902533,
+          "D": 0.20735867446393763
+        }
+      },
+      "orig_reworded": {
+        "uar": {
+          "training_order": 0.5815194494588689,
+          "other_orders": 0.5933597211552013,
+          "all_orders": 0.5903996532311181
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8746177370030581,
+            "B": 0.6688963210702341,
+            "C": 0.20279720279720279,
+            "D": 0.5797665369649806
+          },
+          "other_orders": {
+            "A": 0.8572884811416922,
+            "B": 0.600891861761427,
+            "C": 0.27972027972027974,
+            "D": 0.6355382619974059
+          },
+          "all_orders": {
+            "A": 0.8616207951070336,
+            "B": 0.6178929765886287,
+            "C": 0.26048951048951047,
+            "D": 0.6215953307392996
+          }
+        },
+        "letter_share": {
+          "A": 0.25389863547758285,
+          "B": 0.2802144249512671,
+          "C": 0.23976608187134502,
+          "D": 0.22612085769980506
+        }
+      },
+      "text": {
+        "uar": {
+          "training_order": 0.48095347267625976,
+          "other_orders": 0.4834147772026769,
+          "all_orders": 0.4827994510710727
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.6391437308868502,
+            "B": 0.5418060200668896,
+            "C": 0.2097902097902098,
+            "D": 0.5330739299610895
+          },
+          "other_orders": {
+            "A": 0.5983690112130479,
+            "B": 0.46488294314381273,
+            "C": 0.2634032634032634,
+            "D": 0.6070038910505836
+          },
+          "all_orders": {
+            "A": 0.6085626911314985,
+            "B": 0.48411371237458195,
+            "C": 0.25,
+            "D": 0.5885214007782101
+          }
+        },
+        "letter_share": {
+          "A": 0.25584795321637427,
+          "B": 0.2797270955165692,
+          "C": 0.23806042884990253,
+          "D": 0.226364522417154
+        }
+      },
+      "question_only": {
+        "uar": {
+          "training_order": 0.25,
+          "other_orders": 0.25,
+          "all_orders": 0.25
+        },
+        "recalls": {
+          "training_order": {
+            "A": 1.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "other_orders": {
+            "A": 0.3333333333333333,
+            "B": 0.6666666666666666,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "all_orders": {
+            "A": 0.5,
+            "B": 0.5,
+            "C": 0.0,
+            "D": 0.0
+          }
+        },
+        "letter_share": {
+          "A": 0.5,
+          "B": 0.25,
+          "C": 0.0,
+          "D": 0.25
+        }
+      },
+      "asr_wer": 0.0897549453793918
+    },
+    "A-all": {
+      "orig": {
+        "uar": {
+          "training_order": 0.7619752102166324,
+          "other_orders": 0.7267342849778179,
+          "all_orders": 0.7355445162875215
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8960244648318043,
+            "B": 0.5919732441471572,
+            "C": 0.7622377622377622,
+            "D": 0.7976653696498055
+          },
+          "other_orders": {
+            "A": 0.9480122324159022,
+            "B": 0.5596432552954292,
+            "C": 0.7948717948717948,
+            "D": 0.6044098573281452
+          },
+          "all_orders": {
+            "A": 0.9350152905198776,
+            "B": 0.5677257525083612,
+            "C": 0.7867132867132867,
+            "D": 0.6527237354085603
+          }
+        },
+        "letter_share": {
+          "A": 0.20053606237816765,
+          "B": 0.24537037037037038,
+          "C": 0.26096491228070173,
+          "D": 0.29312865497076024
+        }
+      },
+      "orig_reworded": {
+        "uar": {
+          "training_order": 0.7545631277528269,
+          "other_orders": 0.7412384424889489,
+          "all_orders": 0.7445696138049184
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8929663608562691,
+            "B": 0.7157190635451505,
+            "C": 0.8531468531468531,
+            "D": 0.556420233463035
+          },
+          "other_orders": {
+            "A": 0.9378185524974516,
+            "B": 0.6700111482720178,
+            "C": 0.8811188811188811,
+            "D": 0.47600518806744485
+          },
+          "all_orders": {
+            "A": 0.926605504587156,
+            "B": 0.681438127090301,
+            "C": 0.8741258741258742,
+            "D": 0.4961089494163424
+          }
+        },
+        "letter_share": {
+          "A": 0.20662768031189083,
+          "B": 0.26072124756335285,
+          "C": 0.2655945419103314,
+          "D": 0.26705653021442494
+        }
+      },
+      "text": {
+        "uar": {
+          "training_order": 0.5075771025260315,
+          "other_orders": 0.49530915081265153,
+          "all_orders": 0.4983761387409965
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.5963302752293578,
+            "B": 0.4180602006688963,
+            "C": 0.2727272727272727,
+            "D": 0.7431906614785992
+          },
+          "other_orders": {
+            "A": 0.6299694189602446,
+            "B": 0.38127090301003347,
+            "C": 0.2773892773892774,
+            "D": 0.6926070038910506
+          },
+          "all_orders": {
+            "A": 0.6215596330275229,
+            "B": 0.3904682274247492,
+            "C": 0.2762237762237762,
+            "D": 0.7052529182879378
+          }
+        },
+        "letter_share": {
+          "A": 0.22173489278752437,
+          "B": 0.26705653021442494,
+          "C": 0.25389863547758285,
+          "D": 0.2573099415204678
+        }
+      },
+      "question_only": {
+        "uar": {
+          "training_order": 0.25,
+          "other_orders": 0.25,
+          "all_orders": 0.25
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 1.0
+          },
+          "other_orders": {
+            "A": 0.3333333333333333,
+            "B": 0.3333333333333333,
+            "C": 0.3333333333333333,
+            "D": 0.0
+          },
+          "all_orders": {
+            "A": 0.25,
+            "B": 0.25,
+            "C": 0.25,
+            "D": 0.25
+          }
+        },
+        "letter_share": {
+          "A": 0.0,
+          "B": 0.5,
+          "C": 0.0,
+          "D": 0.5
+        }
+      },
+      "asr_wer": 0.0794213167995276
+    },
+    "B-audio": {
+      "orig": {
+        "uar": {
+          "training_order": 0.7542052922908705,
+          "other_orders": 0.743520401318256,
+          "all_orders": 0.7461916240614096
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.9327217125382263,
+            "B": 0.6254180602006689,
+            "C": 0.7972027972027972,
+            "D": 0.6614785992217899
+          },
+          "other_orders": {
+            "A": 0.9296636085626911,
+            "B": 0.5997770345596433,
+            "C": 0.8181818181818182,
+            "D": 0.6264591439688716
+          },
+          "all_orders": {
+            "A": 0.9304281345565749,
+            "B": 0.6061872909698997,
+            "C": 0.8129370629370629,
+            "D": 0.6352140077821011
+          }
+        },
+        "letter_share": {
+          "A": 0.24098440545808966,
+          "B": 0.25,
+          "C": 0.25828460038986356,
+          "D": 0.2507309941520468
+        }
+      },
+      "orig_reworded": {
+        "uar": {
+          "training_order": 0.7677005025367354,
+          "other_orders": 0.7515566959769109,
+          "all_orders": 0.755592647616867
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8623853211009175,
+            "B": 0.8260869565217391,
+            "C": 0.8531468531468531,
+            "D": 0.5291828793774319
+          },
+          "other_orders": {
+            "A": 0.8939857288481141,
+            "B": 0.7447045707915273,
+            "C": 0.8578088578088578,
+            "D": 0.5097276264591439
+          },
+          "all_orders": {
+            "A": 0.886085626911315,
+            "B": 0.7650501672240803,
+            "C": 0.8566433566433567,
+            "D": 0.5145914396887159
+          }
+        },
+        "letter_share": {
+          "A": 0.21978557504873295,
+          "B": 0.27558479532163743,
+          "C": 0.2580409356725146,
+          "D": 0.246588693957115
+        }
+      },
+      "text": {
+        "uar": {
+          "training_order": 0.48095347267625976,
+          "other_orders": 0.4834147772026769,
+          "all_orders": 0.4827994510710727
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.6391437308868502,
+            "B": 0.5418060200668896,
+            "C": 0.2097902097902098,
+            "D": 0.5330739299610895
+          },
+          "other_orders": {
+            "A": 0.5983690112130479,
+            "B": 0.46488294314381273,
+            "C": 0.2634032634032634,
+            "D": 0.6070038910505836
+          },
+          "all_orders": {
+            "A": 0.6085626911314985,
+            "B": 0.48411371237458195,
+            "C": 0.25,
+            "D": 0.5885214007782101
+          }
+        },
+        "letter_share": {
+          "A": 0.25584795321637427,
+          "B": 0.2797270955165692,
+          "C": 0.23806042884990253,
+          "D": 0.226364522417154
+        }
+      },
+      "question_only": {
+        "uar": {
+          "training_order": 0.25,
+          "other_orders": 0.25,
+          "all_orders": 0.25
+        },
+        "recalls": {
+          "training_order": {
+            "A": 1.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "other_orders": {
+            "A": 0.3333333333333333,
+            "B": 0.6666666666666666,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "all_orders": {
+            "A": 0.5,
+            "B": 0.5,
+            "C": 0.0,
+            "D": 0.0
+          }
+        },
+        "letter_share": {
+          "A": 0.5,
+          "B": 0.25,
+          "C": 0.0,
+          "D": 0.25
+        }
+      },
+      "asr_wer": 0.08768821966341896
+    },
+    "C-post-audio": {
+      "orig": {
+        "uar": {
+          "training_order": 0.7274486172827626,
+          "other_orders": 0.6609203824495172,
+          "all_orders": 0.6775524411578286
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8318042813455657,
+            "B": 0.568561872909699,
+            "C": 0.6923076923076923,
+            "D": 0.8171206225680934
+          },
+          "other_orders": {
+            "A": 0.9113149847094801,
+            "B": 0.5050167224080268,
+            "C": 0.5944055944055944,
+            "D": 0.6329442282749675
+          },
+          "all_orders": {
+            "A": 0.8914373088685015,
+            "B": 0.5209030100334449,
+            "C": 0.6188811188811189,
+            "D": 0.6789883268482491
+          }
+        },
+        "letter_share": {
+          "A": 0.1678849902534113,
+          "B": 0.24585769980506822,
+          "C": 0.2843567251461988,
+          "D": 0.3019005847953216
+        }
+      },
+      "orig_reworded": {
+        "uar": {
+          "training_order": 0.6954543766800187,
+          "other_orders": 0.6507345744547727,
+          "all_orders": 0.6619145250110842
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.8532110091743119,
+            "B": 0.6454849498327759,
+            "C": 0.5944055944055944,
+            "D": 0.688715953307393
+          },
+          "other_orders": {
+            "A": 0.9031600407747197,
+            "B": 0.568561872909699,
+            "C": 0.5268065268065268,
+            "D": 0.6044098573281452
+          },
+          "all_orders": {
+            "A": 0.8906727828746177,
+            "B": 0.5877926421404682,
+            "C": 0.5437062937062938,
+            "D": 0.6254863813229572
+          }
+        },
+        "letter_share": {
+          "A": 0.1844541910331384,
+          "B": 0.27071150097465885,
+          "C": 0.27997076023391815,
+          "D": 0.2648635477582846
+        }
+      },
+      "text": {
+        "uar": {
+          "training_order": 0.5015162220485371,
+          "other_orders": 0.48036436214595735,
+          "all_orders": 0.4856523271216022
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.5688073394495413,
+            "B": 0.3979933110367893,
+            "C": 0.2727272727272727,
+            "D": 0.7665369649805448
+          },
+          "other_orders": {
+            "A": 0.601427115188583,
+            "B": 0.34225195094760313,
+            "C": 0.2773892773892774,
+            "D": 0.7003891050583657
+          },
+          "all_orders": {
+            "A": 0.5932721712538226,
+            "B": 0.35618729096989965,
+            "C": 0.2762237762237762,
+            "D": 0.7169260700389105
+          }
+        },
+        "letter_share": {
+          "A": 0.21369395711500974,
+          "B": 0.27266081871345027,
+          "C": 0.2570662768031189,
+          "D": 0.2565789473684211
+        }
+      },
+      "question_only": {
+        "uar": {
+          "training_order": 0.25,
+          "other_orders": 0.25,
+          "all_orders": 0.25
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 1.0
+          },
+          "other_orders": {
+            "A": 0.3333333333333333,
+            "B": 0.0,
+            "C": 0.3333333333333333,
+            "D": 0.3333333333333333
+          },
+          "all_orders": {
+            "A": 0.25,
+            "B": 0.0,
+            "C": 0.25,
+            "D": 0.5
+          }
+        },
+        "letter_share": {
+          "A": 0.0,
+          "B": 0.75,
+          "C": 0.0,
+          "D": 0.25
+        }
+      },
+      "asr_wer": 0.08798346619427222
+    },
+    "D-all-shuffled": {
+      "orig": {
+        "uar": {
+          "training_order": 0.7741682526316679,
+          "other_orders": 0.7555365018219997,
+          "all_orders": 0.7601944395244167
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.9051987767584098,
+            "B": 0.6588628762541806,
+            "C": 0.7972027972027972,
+            "D": 0.7354085603112841
+          },
+          "other_orders": {
+            "A": 0.8899082568807339,
+            "B": 0.633221850613155,
+            "C": 0.7156177156177156,
+            "D": 0.7833981841763943
+          },
+          "all_orders": {
+            "A": 0.8937308868501529,
+            "B": 0.6396321070234113,
+            "C": 0.736013986013986,
+            "D": 0.7714007782101168
+          }
+        },
+        "letter_share": {
+          "A": 0.26413255360623783,
+          "B": 0.2512183235867446,
+          "C": 0.2519493177387914,
+          "D": 0.23269980506822613
+        }
+      },
+      "orig_reworded": {
+        "uar": {
+          "training_order": 0.7547109094779509,
+          "other_orders": 0.7665423794530777,
+          "all_orders": 0.763584511959296
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.908256880733945,
+            "B": 0.7625418060200669,
+            "C": 0.8811188811188811,
+            "D": 0.4669260700389105
+          },
+          "other_orders": {
+            "A": 0.910295616717635,
+            "B": 0.7491638795986622,
+            "C": 0.8554778554778555,
+            "D": 0.5512321660181583
+          },
+          "all_orders": {
+            "A": 0.9097859327217125,
+            "B": 0.7525083612040134,
+            "C": 0.8618881118881119,
+            "D": 0.5301556420233463
+          }
+        },
+        "letter_share": {
+          "A": 0.24293372319688109,
+          "B": 0.2648635477582846,
+          "C": 0.2614522417153996,
+          "D": 0.2307504873294347
+        }
+      },
+      "text": {
+        "uar": {
+          "training_order": 0.510341904232008,
+          "other_orders": 0.4970121650785442,
+          "all_orders": 0.5003445998669102
+        },
+        "recalls": {
+          "training_order": {
+            "A": 0.6850152905198776,
+            "B": 0.4882943143812709,
+            "C": 0.2727272727272727,
+            "D": 0.5953307392996109
+          },
+          "other_orders": {
+            "A": 0.6126401630988787,
+            "B": 0.411371237458194,
+            "C": 0.2727272727272727,
+            "D": 0.6913099870298314
+          },
+          "all_orders": {
+            "A": 0.6307339449541285,
+            "B": 0.4306020066889632,
+            "C": 0.2727272727272727,
+            "D": 0.6673151750972762
+          }
+        },
+        "letter_share": {
+          "A": 0.2651072124756335,
+          "B": 0.2719298245614035,
+          "C": 0.2475633528265107,
+          "D": 0.21539961013645223
+        }
+      },
+      "question_only": {
+        "uar": {
+          "training_order": 0.25,
+          "other_orders": 0.25,
+          "all_orders": 0.25
+        },
+        "recalls": {
+          "training_order": {
+            "A": 1.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0
+          },
+          "other_orders": {
+            "A": 0.3333333333333333,
+            "B": 0.3333333333333333,
+            "C": 0.0,
+            "D": 0.3333333333333333
+          },
+          "all_orders": {
+            "A": 0.5,
+            "B": 0.25,
+            "C": 0.0,
+            "D": 0.25
+          }
+        },
+        "letter_share": {
+          "A": 0.5,
+          "B": 0.5,
+          "C": 0.0,
+          "D": 0.0
+        }
+      },
+      "asr_wer": 0.07322113965160909
+    }
+  },
+  "contrasts": {
+    "B-audio - A-all | orig | training_order": {
+      "delta_uar_pp": -0.7769917925761711,
+      "interval_95_pp": [
+        -2.8927435069909095,
+        0.9942263314819528
+      ],
+      "answers_changed": 0.10038986354775828
+    },
+    "B-audio - A-all | orig | other_orders": {
+      "delta_uar_pp": 1.678611634043817,
+      "interval_95_pp": [
+        0.5549369177401106,
+        2.87449170685725
+      ],
+      "answers_changed": 0.07439896036387264
+    },
+    "B-audio - A-all | orig | all_orders": {
+      "delta_uar_pp": 1.0647107773888198,
+      "interval_95_pp": [
+        0.15804913295785386,
+        2.080433121731421
+      ],
+      "answers_changed": 0.08089668615984405
+    },
+    "B-audio - A-all | orig_reworded | training_order": {
+      "delta_uar_pp": 1.3137374783908455,
+      "interval_95_pp": [
+        -0.4472388296715664,
+        3.725359412941313
+      ],
+      "answers_changed": 0.0847953216374269
+    },
+    "B-audio - A-all | orig_reworded | other_orders": {
+      "delta_uar_pp": 1.031825348796196,
+      "interval_95_pp": [
+        -0.5768883844543816,
+        3.2011664272353655
+      ],
+      "answers_changed": 0.08122157244964262
+    },
+    "B-audio - A-all | orig_reworded | all_orders": {
+      "delta_uar_pp": 1.1023033811948586,
+      "interval_95_pp": [
+        -0.37266247049487844,
+        3.1584727634558045
+      ],
+      "answers_changed": 0.0821150097465887
+    },
+    "B-audio - A-all | text | training_order": {
+      "delta_uar_pp": -2.662362984977175,
+      "interval_95_pp": [
+        -5.725081728484118,
+        0.3991811996536148
+      ],
+      "answers_changed": 0.16764132553606237
+    },
+    "B-audio - A-all | text | other_orders": {
+      "delta_uar_pp": -1.1894373609974596,
+      "interval_95_pp": [
+        -2.5479915765705687,
+        0.37861273902469045
+      ],
+      "answers_changed": 0.10656270305393112
+    },
+    "B-audio - A-all | text | all_orders": {
+      "delta_uar_pp": -1.5576687669923885,
+      "interval_95_pp": [
+        -3.254317769926628,
+        0.2650755063118032
+      ],
+      "answers_changed": 0.12183235867446393
+    },
+    "B-audio - A-all | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 1.0
+    },
+    "B-audio - A-all | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.3333333333333333
+    },
+    "B-audio - A-all | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.5
+    },
+    "C-post-audio - A-all | orig | training_order": {
+      "delta_uar_pp": -3.4526592933869686,
+      "interval_95_pp": [
+        -5.193115704778892,
+        -1.756969011159671
+      ],
+      "answers_changed": 0.08089668615984405
+    },
+    "C-post-audio - A-all | orig | other_orders": {
+      "delta_uar_pp": -6.581390252830066,
+      "interval_95_pp": [
+        -8.6167936995336,
+        -4.725459334165845
+      ],
+      "answers_changed": 0.11468486029889538
+    },
+    "C-post-audio - A-all | orig | all_orders": {
+      "delta_uar_pp": -5.799207512969292,
+      "interval_95_pp": [
+        -7.630595096908206,
+        -4.127921355368375
+      ],
+      "answers_changed": 0.10623781676413255
+    },
+    "C-post-audio - A-all | orig_reworded | training_order": {
+      "delta_uar_pp": -5.910875107280813,
+      "interval_95_pp": [
+        -7.834879562509073,
+        -3.585211372665277
+      ],
+      "answers_changed": 0.1442495126705653
+    },
+    "C-post-audio - A-all | orig_reworded | other_orders": {
+      "delta_uar_pp": -9.050386803417618,
+      "interval_95_pp": [
+        -11.01940543887741,
+        -6.8340235038269235
+      ],
+      "answers_changed": 0.16244314489928524
+    },
+    "C-post-audio - A-all | orig_reworded | all_orders": {
+      "delta_uar_pp": -8.265508879383415,
+      "interval_95_pp": [
+        -10.054046414690893,
+        -6.2248536912926005
+      ],
+      "answers_changed": 0.15789473684210525
+    },
+    "C-post-audio - A-all | text | training_order": {
+      "delta_uar_pp": -0.6060880477494504,
+      "interval_95_pp": [
+        -1.8747145686528985,
+        0.7605978125513734
+      ],
+      "answers_changed": 0.06432748538011696
+    },
+    "C-post-audio - A-all | text | other_orders": {
+      "delta_uar_pp": -1.494478866669418,
+      "interval_95_pp": [
+        -2.4217367453936545,
+        -0.4218802815292245
+      ],
+      "answers_changed": 0.05588044184535412
+    },
+    "C-post-audio - A-all | text | all_orders": {
+      "delta_uar_pp": -1.272381161939426,
+      "interval_95_pp": [
+        -2.093750257903774,
+        -0.2506639462285466
+      ],
+      "answers_changed": 0.05799220272904483
+    },
+    "C-post-audio - A-all | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "C-post-audio - A-all | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.3333333333333333
+    },
+    "C-post-audio - A-all | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.25
+    },
+    "D-all-shuffled - A-all | orig | training_order": {
+      "delta_uar_pp": 1.2193042415035618,
+      "interval_95_pp": [
+        -0.09598851371266356,
+        2.5587914908341833
+      ],
+      "answers_changed": 0.06627680311890838
+    },
+    "D-all-shuffled - A-all | orig | other_orders": {
+      "delta_uar_pp": 2.8802216844181836,
+      "interval_95_pp": [
+        0.9309229841059866,
+        5.071065960872531
+      ],
+      "answers_changed": 0.1562703053931124
+    },
+    "D-all-shuffled - A-all | orig | all_orders": {
+      "delta_uar_pp": 2.4649923236895277,
+      "interval_95_pp": [
+        0.8274937193817791,
+        4.245336006209509
+      ],
+      "answers_changed": 0.1337719298245614
+    },
+    "D-all-shuffled - A-all | orig_reworded | training_order": {
+      "delta_uar_pp": 0.014778172512391885,
+      "interval_95_pp": [
+        -1.2617118285894564,
+        1.2817050994407653
+      ],
+      "answers_changed": 0.06140350877192982
+    },
+    "D-all-shuffled - A-all | orig_reworded | other_orders": {
+      "delta_uar_pp": 2.5303936964128892,
+      "interval_95_pp": [
+        0.9371535741133268,
+        4.500528376249521
+      ],
+      "answers_changed": 0.09714100064977257
+    },
+    "D-all-shuffled - A-all | orig_reworded | all_orders": {
+      "delta_uar_pp": 1.9014898154377649,
+      "interval_95_pp": [
+        0.6663334628030068,
+        3.3969502611122193
+      ],
+      "answers_changed": 0.08820662768031189
+    },
+    "D-all-shuffled - A-all | text | training_order": {
+      "delta_uar_pp": 0.2764801705976532,
+      "interval_95_pp": [
+        -1.6812858539339937,
+        2.1051887146089703
+      ],
+      "answers_changed": 0.12378167641325535
+    },
+    "D-all-shuffled - A-all | text | other_orders": {
+      "delta_uar_pp": 0.17030142658926814,
+      "interval_95_pp": [
+        -0.5980774290570028,
+        0.9366638717538375
+      ],
+      "answers_changed": 0.07179987004548408
+    },
+    "D-all-shuffled - A-all | text | all_orders": {
+      "delta_uar_pp": 0.19684611259136453,
+      "interval_95_pp": [
+        -0.5362236010758317,
+        0.9222571475851371
+      ],
+      "answers_changed": 0.0847953216374269
+    },
+    "D-all-shuffled - A-all | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 1.0
+    },
+    "D-all-shuffled - A-all | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.6666666666666666
+    },
+    "D-all-shuffled - A-all | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.75
+    },
+    "B-audio - D-all-shuffled | orig | training_order": {
+      "delta_uar_pp": -1.9962960340797338,
+      "interval_95_pp": [
+        -4.003201731819284,
+        -0.22087462737210517
+      ],
+      "answers_changed": 0.08674463937621832
+    },
+    "B-audio - D-all-shuffled | orig | other_orders": {
+      "delta_uar_pp": -1.2016100503743663,
+      "interval_95_pp": [
+        -2.9742282925565418,
+        0.283909876118425
+      ],
+      "answers_changed": 0.1341780376868096
+    },
+    "B-audio - D-all-shuffled | orig | all_orders": {
+      "delta_uar_pp": -1.400281546300708,
+      "interval_95_pp": [
+        -3.077029727964534,
+        0.03681922432807647
+      ],
+      "answers_changed": 0.12231968810916179
+    },
+    "B-audio - D-all-shuffled | orig_reworded | training_order": {
+      "delta_uar_pp": 1.2989593058784537,
+      "interval_95_pp": [
+        -0.6185970403128592,
+        3.5962595923083325
+      ],
+      "answers_changed": 0.07992202729044834
+    },
+    "B-audio - D-all-shuffled | orig_reworded | other_orders": {
+      "delta_uar_pp": -1.498568347616693,
+      "interval_95_pp": [
+        -2.59708121533792,
+        -0.22420192806875838
+      ],
+      "answers_changed": 0.0649772579597141
+    },
+    "B-audio - D-all-shuffled | orig_reworded | all_orders": {
+      "delta_uar_pp": -0.7991864342429066,
+      "interval_95_pp": [
+        -1.9152624262292866,
+        0.5096754630972763
+      ],
+      "answers_changed": 0.06871345029239766
+    },
+    "B-audio - D-all-shuffled | text | training_order": {
+      "delta_uar_pp": -2.938843155574829,
+      "interval_95_pp": [
+        -4.920395408260831,
+        -0.9834501168162736
+      ],
+      "answers_changed": 0.1111111111111111
+    },
+    "B-audio - D-all-shuffled | text | other_orders": {
+      "delta_uar_pp": -1.359738787586728,
+      "interval_95_pp": [
+        -2.8283535055618017,
+        0.2034443957282704
+      ],
+      "answers_changed": 0.10623781676413255
+    },
+    "B-audio - D-all-shuffled | text | all_orders": {
+      "delta_uar_pp": -1.754514879583753,
+      "interval_95_pp": [
+        -3.1973294768635094,
+        -0.20941831732935562
+      ],
+      "answers_changed": 0.1074561403508772
+    },
+    "B-audio - D-all-shuffled | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - D-all-shuffled | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.3333333333333333
+    },
+    "B-audio - D-all-shuffled | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.25
+    },
+    "B-audio - C-post-audio | orig | training_order": {
+      "delta_uar_pp": 2.6756675008107966,
+      "interval_95_pp": [
+        -0.2813302868926075,
+        5.494893014469573
+      ],
+      "answers_changed": 0.16569200779727095
+    },
+    "B-audio - C-post-audio | orig | other_orders": {
+      "delta_uar_pp": 8.260001886873884,
+      "interval_95_pp": [
+        6.568841139853572,
+        10.214766299077759
+      ],
+      "answers_changed": 0.15367121507472384
+    },
+    "B-audio - C-post-audio | orig | all_orders": {
+      "delta_uar_pp": 6.863918290358111,
+      "interval_95_pp": [
+        5.190973855042669,
+        8.727938086684658
+      ],
+      "answers_changed": 0.15667641325536064
+    },
+    "B-audio - C-post-audio | orig_reworded | training_order": {
+      "delta_uar_pp": 7.224612585671659,
+      "interval_95_pp": [
+        4.510403105191176,
+        10.119037651303428
+      ],
+      "answers_changed": 0.18518518518518517
+    },
+    "B-audio - C-post-audio | orig_reworded | other_orders": {
+      "delta_uar_pp": 10.082212152213813,
+      "interval_95_pp": [
+        7.54124925654459,
+        13.285798915531602
+      ],
+      "answers_changed": 0.19168291098115658
+    },
+    "B-audio - C-post-audio | orig_reworded | all_orders": {
+      "delta_uar_pp": 9.367812260578274,
+      "interval_95_pp": [
+        6.996586057814545,
+        12.26911876350536
+      ],
+      "answers_changed": 0.19005847953216373
+    },
+    "B-audio - C-post-audio | text | training_order": {
+      "delta_uar_pp": -2.056274937227725,
+      "interval_95_pp": [
+        -4.978267883471823,
+        0.7290908319607488
+      ],
+      "answers_changed": 0.20175438596491227
+    },
+    "B-audio - C-post-audio | text | other_orders": {
+      "delta_uar_pp": 0.3050415056719581,
+      "interval_95_pp": [
+        -1.5202659831438352,
+        2.1155575130990996
+      ],
+      "answers_changed": 0.1299545159194282
+    },
+    "B-audio - C-post-audio | text | all_orders": {
+      "delta_uar_pp": -0.2852876050529619,
+      "interval_95_pp": [
+        -2.2676340904091234,
+        1.6635845015636745
+      ],
+      "answers_changed": 0.14790448343079923
+    },
+    "B-audio - C-post-audio | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 1.0
+    },
+    "B-audio - C-post-audio | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.6666666666666666
+    },
+    "B-audio - C-post-audio | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.75
+    },
+    "A-all - frozen-base | orig | training_order": {
+      "delta_uar_pp": 24.086630701882317,
+      "interval_95_pp": [
+        20.706624559276353,
+        28.322611771518353
+      ],
+      "answers_changed": 0.31189083820662766
+    },
+    "A-all - frozen-base | orig | other_orders": {
+      "delta_uar_pp": 15.251834181438293,
+      "interval_95_pp": [
+        12.385392032353144,
+        18.30148614394755
+      ],
+      "answers_changed": 0.2553606237816764
+    },
+    "A-all - frozen-base | orig | all_orders": {
+      "delta_uar_pp": 17.460533311549298,
+      "interval_95_pp": [
+        14.697615808446345,
+        20.62831409549905
+      ],
+      "answers_changed": 0.26949317738791423
+    },
+    "A-all - frozen-base | orig_reworded | training_order": {
+      "delta_uar_pp": 17.304367829395805,
+      "interval_95_pp": [
+        14.053066293595313,
+        20.627759009687157
+      ],
+      "answers_changed": 0.25048732943469787
+    },
+    "A-all - frozen-base | orig_reworded | other_orders": {
+      "delta_uar_pp": 14.787872133374766,
+      "interval_95_pp": [
+        12.49635095750264,
+        17.113759191339327
+      ],
+      "answers_changed": 0.2605588044184535
+    },
+    "A-all - frozen-base | orig_reworded | all_orders": {
+      "delta_uar_pp": 15.416996057380025,
+      "interval_95_pp": [
+        13.05409247788443,
+        17.75367256688272
+      ],
+      "answers_changed": 0.2580409356725146
+    },
+    "A-all - frozen-base | text | training_order": {
+      "delta_uar_pp": 2.662362984977175,
+      "interval_95_pp": [
+        -0.39918119965361554,
+        5.725081728484118
+      ],
+      "answers_changed": 0.16764132553606237
+    },
+    "A-all - frozen-base | text | other_orders": {
+      "delta_uar_pp": 1.1894373609974596,
+      "interval_95_pp": [
+        -0.37861273902469056,
+        2.5479915765705687
+      ],
+      "answers_changed": 0.10656270305393112
+    },
+    "A-all - frozen-base | text | all_orders": {
+      "delta_uar_pp": 1.5576687669923885,
+      "interval_95_pp": [
+        -0.26507550631180365,
+        3.254317769926628
+      ],
+      "answers_changed": 0.12183235867446393
+    },
+    "A-all - frozen-base | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 1.0
+    },
+    "A-all - frozen-base | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.3333333333333333
+    },
+    "A-all - frozen-base | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.5
+    },
+    "B-audio - frozen-base | orig | training_order": {
+      "delta_uar_pp": 23.309638909306145,
+      "interval_95_pp": [
+        20.051928645521382,
+        27.11627659627033
+      ],
+      "answers_changed": 0.2797270955165692
+    },
+    "B-audio - frozen-base | orig | other_orders": {
+      "delta_uar_pp": 16.93044581548211,
+      "interval_95_pp": [
+        13.910893098171947,
+        20.28952791671156
+      ],
+      "answers_changed": 0.25633528265107214
+    },
+    "B-audio - frozen-base | orig | all_orders": {
+      "delta_uar_pp": 18.52524408893812,
+      "interval_95_pp": [
+        15.524755688397265,
+        21.860027147623633
+      ],
+      "answers_changed": 0.2621832358674464
+    },
+    "B-audio - frozen-base | orig_reworded | training_order": {
+      "delta_uar_pp": 18.61810530778665,
+      "interval_95_pp": [
+        14.835250550079557,
+        23.03267087155307
+      ],
+      "answers_changed": 0.26900584795321636
+    },
+    "B-audio - frozen-base | orig_reworded | other_orders": {
+      "delta_uar_pp": 15.81969748217096,
+      "interval_95_pp": [
+        13.104239849566357,
+        19.217861159795333
+      ],
+      "answers_changed": 0.2667316439246264
+    },
+    "B-audio - frozen-base | orig_reworded | all_orders": {
+      "delta_uar_pp": 16.519299438574887,
+      "interval_95_pp": [
+        13.628693623292218,
+        20.072919305135088
+      ],
+      "answers_changed": 0.26730019493177387
+    },
+    "B-audio - frozen-base | text | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - frozen-base | text | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - frozen-base | text | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - frozen-base | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - frozen-base | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "B-audio - frozen-base | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "C-post-audio - frozen-base | orig | training_order": {
+      "delta_uar_pp": 20.63397140849535,
+      "interval_95_pp": [
+        16.81196661281145,
+        25.38351784711438
+      ],
+      "answers_changed": 0.3382066276803119
+    },
+    "C-post-audio - frozen-base | orig | other_orders": {
+      "delta_uar_pp": 8.670443928608227,
+      "interval_95_pp": [
+        6.403040583313484,
+        11.118563653965982
+      ],
+      "answers_changed": 0.2387914230019493
+    },
+    "C-post-audio - frozen-base | orig | all_orders": {
+      "delta_uar_pp": 11.661325798580007,
+      "interval_95_pp": [
+        9.265393305961044,
+        14.455508419996088
+      ],
+      "answers_changed": 0.26364522417153996
+    },
+    "C-post-audio - frozen-base | orig_reworded | training_order": {
+      "delta_uar_pp": 11.393492722114992,
+      "interval_95_pp": [
+        8.267938255535501,
+        15.028850782483236
+      ],
+      "answers_changed": 0.19298245614035087
+    },
+    "C-post-audio - frozen-base | orig_reworded | other_orders": {
+      "delta_uar_pp": 5.737485329957148,
+      "interval_95_pp": [
+        3.806216613305856,
+        7.958606538524399
+      ],
+      "answers_changed": 0.16666666666666666
+    },
+    "C-post-audio - frozen-base | orig_reworded | all_orders": {
+      "delta_uar_pp": 7.151487177996609,
+      "interval_95_pp": [
+        5.2375920886364025,
+        9.406792845950356
+      ],
+      "answers_changed": 0.17324561403508773
+    },
+    "C-post-audio - frozen-base | text | training_order": {
+      "delta_uar_pp": 2.056274937227725,
+      "interval_95_pp": [
+        -0.7290908319607499,
+        4.978267883471823
+      ],
+      "answers_changed": 0.20175438596491227
+    },
+    "C-post-audio - frozen-base | text | other_orders": {
+      "delta_uar_pp": -0.3050415056719581,
+      "interval_95_pp": [
+        -2.1155575130991,
+        1.5202659831438345
+      ],
+      "answers_changed": 0.1299545159194282
+    },
+    "C-post-audio - frozen-base | text | all_orders": {
+      "delta_uar_pp": 0.2852876050529619,
+      "interval_95_pp": [
+        -1.6635845015636748,
+        2.267634090409123
+      ],
+      "answers_changed": 0.14790448343079923
+    },
+    "C-post-audio - frozen-base | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 1.0
+    },
+    "C-post-audio - frozen-base | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.6666666666666666
+    },
+    "C-post-audio - frozen-base | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.75
+    },
+    "D-all-shuffled - frozen-base | orig | training_order": {
+      "delta_uar_pp": 25.30593494338588,
+      "interval_95_pp": [
+        21.95457207046278,
+        29.315483419274347
+      ],
+      "answers_changed": 0.31871345029239767
+    },
+    "D-all-shuffled - frozen-base | orig | other_orders": {
+      "delta_uar_pp": 18.13205586585648,
+      "interval_95_pp": [
+        15.121562640024319,
+        21.93268414055188
+      ],
+      "answers_changed": 0.25308641975308643
+    },
+    "D-all-shuffled - frozen-base | orig | all_orders": {
+      "delta_uar_pp": 19.925525635238827,
+      "interval_95_pp": [
+        16.913742859299326,
+        23.697704065715985
+      ],
+      "answers_changed": 0.26949317738791423
+    },
+    "D-all-shuffled - frozen-base | orig_reworded | training_order": {
+      "delta_uar_pp": 17.319146001908198,
+      "interval_95_pp": [
+        13.88477625497511,
+        20.72540272848591
+      ],
+      "answers_changed": 0.26120857699805067
+    },
+    "D-all-shuffled - frozen-base | orig_reworded | other_orders": {
+      "delta_uar_pp": 17.318265829787656,
+      "interval_95_pp": [
+        14.838539338348758,
+        20.341877343470845
+      ],
+      "answers_changed": 0.24951267056530213
+    },
+    "D-all-shuffled - frozen-base | orig_reworded | all_orders": {
+      "delta_uar_pp": 17.31848587281779,
+      "interval_95_pp": [
+        14.76868822012974,
+        20.3264941621182
+      ],
+      "answers_changed": 0.2524366471734893
+    },
+    "D-all-shuffled - frozen-base | text | training_order": {
+      "delta_uar_pp": 2.938843155574829,
+      "interval_95_pp": [
+        0.9834501168162735,
+        4.920395408260831
+      ],
+      "answers_changed": 0.1111111111111111
+    },
+    "D-all-shuffled - frozen-base | text | other_orders": {
+      "delta_uar_pp": 1.359738787586728,
+      "interval_95_pp": [
+        -0.20344439572827153,
+        2.8283535055618017
+      ],
+      "answers_changed": 0.10623781676413255
+    },
+    "D-all-shuffled - frozen-base | text | all_orders": {
+      "delta_uar_pp": 1.754514879583753,
+      "interval_95_pp": [
+        0.20941831732935423,
+        3.1973294768635094
+      ],
+      "answers_changed": 0.1074561403508772
+    },
+    "D-all-shuffled - frozen-base | question_only | training_order": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.0
+    },
+    "D-all-shuffled - frozen-base | question_only | other_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.3333333333333333
+    },
+    "D-all-shuffled - frozen-base | question_only | all_orders": {
+      "delta_uar_pp": 0.0,
+      "interval_95_pp": [
+        0.0,
+        0.0
+      ],
+      "answers_changed": 0.25
+    }
+  },
+  "wer_contrasts": {
+    "B-audio - A-all": {
+      "delta_wer_pp": 0.8266902863891349,
+      "interval_95_pp": [
+        0.15037367991665368,
+        1.6415116648169938
+      ]
+    },
+    "C-post-audio - A-all": {
+      "delta_wer_pp": 0.8562149394744611,
+      "interval_95_pp": [
+        0.14585657952810352,
+        1.619351821696687
+      ]
+    },
+    "D-all-shuffled - A-all": {
+      "delta_wer_pp": -0.6200177147918512,
+      "interval_95_pp": [
+        -1.8532560477753854,
+        0.3769192150973723
+      ]
+    },
+    "B-audio - D-all-shuffled": {
+      "delta_wer_pp": 1.446708001180986,
+      "interval_95_pp": [
+        0.4396110252903779,
+        2.7121490699036133
+      ]
+    },
+    "B-audio - C-post-audio": {
+      "delta_wer_pp": -0.029524653085326247,
+      "interval_95_pp": [
+        -0.6467574891339171,
+        0.5526782881207323
+      ]
+    },
+    "A-all - frozen-base": {
+      "delta_wer_pp": -1.0333628579864187,
+      "interval_95_pp": [
+        -2.0191744309707107,
+        -0.1747691648457132
+      ]
+    },
+    "B-audio - frozen-base": {
+      "delta_wer_pp": -0.20667257159728372,
+      "interval_95_pp": [
+        -0.7124496642745652,
+        0.30798133918093407
+      ]
+    },
+    "C-post-audio - frozen-base": {
+      "delta_wer_pp": -0.1771479185119575,
+      "interval_95_pp": [
+        -0.5524904286051122,
+        0.13572919424025365
+      ]
+    },
+    "D-all-shuffled - frozen-base": {
+      "delta_wer_pp": -1.6533805727782698,
+      "interval_95_pp": [
+        -2.8667494242826796,
+        -0.6194258794004105
+      ]
+    }
+  },
+  "verdict": {
+    "checks": {
+      "hear_side_learns_the_task": true,
+      "hear_side_not_below_base_in_other_orders": true,
+      "hear_side_beats_plain_in_other_orders": false,
+      "hear_side_beats_shuffling_somewhere": false
+    },
+    "outcome": "stop"
+  }
+}

@@ -43,7 +43,7 @@ field() { "$PY" -c 'import json, sys; print(json.load(open(sys.argv[1]))[sys.arg
 
 # ------------------------------------------------------------------ 0. what is being run, and on what
 log "run folder: $RUN"
-log "source: $SRC at $(git -C "$SRC" rev-parse HEAD 2>/dev/null || echo 'unknown commit') $(git -C "$SRC" status --porcelain 2>/dev/null | head -1 | sed 's/.*/(with local changes)/')"
+log "source: $SRC at $(git -C "$SRC" rev-parse HEAD 2>/dev/null || echo 'unknown commit') $(git -C "$SRC" status --porcelain --untracked-files=no 2>/dev/null | head -1 | sed 's/.*/(tracked files modified)/')"
 for path in "$PY" "$BASE_CONFIG" "$IEMOCAP/data/train.jsonl" "$PROTOCOL"; do
     [ -e "$path" ] || stop "missing $path"
 done

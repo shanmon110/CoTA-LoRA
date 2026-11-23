@@ -1,0 +1,44 @@
+{
+  "uar": 0.3050682261208577,
+  "accuracy": 0.3050682261208577,
+  "recalls": {
+    "A": 0.6101364522417154,
+    "B": 0.31871345029239767,
+    "C": 0.0,
+    "D": 0.29142300194931775
+  },
+  "confusion_matrix": [
+    [
+      626,
+      257,
+      0,
+      143
+    ],
+    [
+      442,
+      327,
+      0,
+      257
+    ],
+    [
+      400,
+      299,
+      0,
+      327
+    ],
+    [
+      584,
+      143,
+      0,
+      299
+    ]
+  ],
+  "utterances": 4104,
+  "peak_allocated_bytes": 9496803840,
+  "peak_reserved_bytes": 11974737920,
+  "gpu_name": "NVIDIA GeForce RTX 5090",
+  "condition": "question_only",
+  "eval_seconds": 74.33751614799257,
+  "manifest_sha256": "a85a75174fb7eaa3f1aa6d706959b86eef92113e35844eddb9709e1d4f1ea88b",
+  "predictions_sha256": "f80f1cd171996af9607071dcc9b011180d40e4bce6d7c99e9e2e3d80e61fba55"
+}

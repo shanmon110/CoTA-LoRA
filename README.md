@@ -25,7 +25,7 @@ experiments/ms_swift_aqa/          AQA 数据处理、评估、28 篇方法适�
 experiments/ms_swift_iemocap/      情感评估与数据处理
 experiments/cota_review/           CoTA 对照臂的配置生成与预先声明的矩阵
 experiments/trr_diagnostics/       D2 诊断：回答是否依赖 F0/能量轮廓
-experiments/hearside_pilot/        听侧适配小实验：更新位置 × 选项顺序的四臂对照（尚无结果）
+experiments/hearside_pilot/        听侧适配小实验：更新位置 × 选项顺序的四臂对照（单种子，按预设判据停止）
 research/claude-review/          独立审查：诊断、协议、ACL 判断
 docs/                            交接与历史研究计划
 research/papers/                 28 篇论文索引与 BibTeX

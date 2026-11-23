@@ -1,0 +1,26 @@
+{
+  "method": "ta-lora",
+  "best_checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-pilot-20261123-160928/train/C-post-audio/checkpoint-264",
+  "best_uar": 0.6862949721043984,
+  "best_step": 264,
+  "global_step": 264,
+  "early_stopped": false,
+  "trainable_parameters": 1179936,
+  "input_trajectory": [
+    "e54fbf143af773438f15e95dfd7c4e1c8d237c9b00fdeeebcedcccd7b2d1560c",
+    "41188e3209537643f0f6d075ad8b64811bfeac6c2eff2cb8549c2cae3685aab0",
+    "3d086caaea808c528e88f1b6a5362a04664b9ee6330dbaea4eda7327bb0f72d3",
+    "b87b0b7eb6c6219373abca9d60ebe9d0de85dee36e6165cd972716b60d6ab03c",
+    "e3772b5f8a930619a75415e77cb10a4a51229334cb86dd1d01d2c0ba33d1d3a8",
+    "946da50c8ccb1a73d07f55df61e6f9e204d9371d11f7239c8389ed9a31b17c74",
+    "0098076b389cf41ff4892b7bbb6843f3fc94e49897b126945291993e7472a188",
+    "57a92cd502b76cbca48a4ac2301970ec12731ba0806df1aaaa9505abd021a06b"
+  ],
+  "init_sha256": "877006183379c3d5fad8b73446b87d5929a6d4fc180ba1a6f2aae10e22cdf3ab",
+  "last_ab_sha256": "b65de3f062cf499ba62d705655a574ec40d02ed2c62f2ea0e40b74d9eee90b4a",
+  "gpu": "NVIDIA GeForce RTX 5090",
+  "training_seconds": 426.52055635186844,
+  "dev_seconds": 560.9450238230638,
+  "peak_allocated_bytes": 22311028736,
+  "peak_reserved_bytes": 24542969856
+}
