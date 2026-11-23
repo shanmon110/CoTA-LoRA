@@ -1,6 +1,6 @@
 # 听侧适配小实验（hear-side pilot）
 
-**状态（2026-11-23）：已在服务器上完整运行一次，每臂一个种子。按预先声明的判据，结论是 `stop`，见“结果”一节。**
+**状态（2026-11-23）：已在服务器上完整运行一次，每臂一个种子。按预先声明的判据，结论是 `stop`，见“结果”一节。后续实验（层数与种子）已声明，尚未运行。**
 
 ## 要回答的问题
 
@@ -95,6 +95,40 @@ D2/D2b 诊断在 IEMOCAP Session 4 上得到两件事：
 - 打乱选项（D）在准确率上不低于 B，成本更低。位置限制不能作为一个更好的方法来主张。
 - B 与 A 的准确率相当，说明这项任务上的增益只靠改音频位置就能拿到；只改音频之后的位置（C）增益更小，也更依赖选项顺序。这些是事后观察，见 `results/20261123-160928/supplementary.md`，需要更多种子和同一流程下的层数对照才能下结论。
 
+## 后续：层数与种子（2026-11-23 声明，尚未运行）
+
+方法主张已按判据停止。这一步服务于分析路线，只确认两件事后观察，不为位置限制翻案。
+
+1. **层数。** pair-01（最后 4 层）换选项顺序掉 24.6 pp，`A-all`（36 层）只掉 3.5 pp，但两者不是同一条流程。`A-last4` 在本实验的流程里只改一处：把 `A-all` 的 36 层换成最后 4 层（r=8，seed 42，全部位置）。
+2. **种子。** A、B、D 之间的差别只有 1–2 pp。给这三个臂各加 seed 43、44。种子同时决定适配器初始化和数据顺序；D 的选项移位不变。
+
+| 臂 | 相对小实验的唯一改动 |
+|---|---|
+| `A-last4` | `A-all` 的层数 36 → 最后 4 |
+| `A-all-s43`、`A-all-s44` | `A-all` 的种子 |
+| `B-audio-s43`、`B-audio-s44` | `B-audio` 的种子 |
+| `D-all-shuffled-s43`、`D-all-shuffled-s44` | `D-all-shuffled` 的种子 |
+
+训练清单、Session 4 输入、配方和评测条件与小实验相同。`run_followup.sh` 重新生成它们并与小实验的哈希逐项比对，不一致就停止。冻结基座和 seed 42 的四个臂直接读取小实验的输出目录，不重跑，也不改动那个目录。
+
+### 预先声明的判读
+
+写在 `followup.py` 的 `CRITERIA` 和 `judge` 里。“顺序差”指训练顺序的 UAR 减去其他三种顺序的 UAR。
+
+| 说法 | 量 | `supported` 的条件 |
+|---|---|---|
+| `last_layers_bind_to_option_order` | `A-last4` 的顺序差 − `A-all`（seed 42）的顺序差 | ≥ 10 pp，且对话 bootstrap 的区间下界 > 0；否则 `not supported` |
+| `audio_positions_match_all_positions` | 三个种子平均的 `B − A`，四种顺序合计的 UAR | 区间完全落在 ±3 pp 之内；完全落在之外为 `contradicted`，其余 `inconclusive` |
+| `audio_positions_less_bound_to_option_order` | 三个种子平均的 `B` 的顺序差 − `A` 的顺序差 | 区间上界 < 0；下界 > 0 为 `contradicted`，其余 `inconclusive` |
+| `shuffled_options_improve_all_positions` | 三个种子平均的 `D − A`，四种顺序合计的 UAR | 区间下界 > 0；上界 < 0 为 `contradicted`，其余 `inconclusive` |
+
+三个种子的平均值，其区间同时重采样种子和对话（比较的两个臂共用同一组种子抽样）。三个种子的重采样很粗，汇总里同时列出每个种子的数值、均值和标准差。某个种子的臂训练失败时，用各臂共有的种子计算，少于两个则不判读。
+
+各结果的含义也在这里先写下：
+
+- 层数一项 `supported`：可以在同一流程内说“只改最后几层的适配更依赖选项顺序”，仍限于单种子、单语料。`not supported`：pair-01 的格式绑定来自别的差异（训练数据、步数、用 Session 4 选模、实现），不能归因于层数，需要逐项复现 pair-01 的条件。
+- 种子三项若为 `inconclusive`：不能说 A、B、D 之间有差别，能报告的只有 `C-post-audio` 明显更差这一条单种子结果。
+
 ## 运行
 
 服务器上一条命令（克隆 `main` 的当前版本并在后台运行）：
@@ -106,6 +140,8 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 ```
 
 `run_pilot.sh` 依次做：环境检查 → 单元测试（不通过就停，不训练）→ 生成清单和配置 → 评测冻结基座 → 每个臂训练后立刻评测 → 汇总 → 打包。所有输出在 `$R/hearside-pilot-<时间>/`，结束时（包括中途失败）生成 `$R/hearside-pilot-<时间>-for-claude.tar.gz`，只含日志、清单、预测和汇总，不含权重和音频。
+
+后续实验把上面命令里的 `run_pilot.sh` 换成 `run_followup.sh`（输出目录 `hearside-followup-<时间>`），七个臂预计约 5 小时，依据是小实验的实测：每臂训练加选模约 16 分钟、评测 25–28 分钟。
 
 看进度：`tail -f /root/autodl-fs/CoTA-LoRA/hearside-pilot.out`。中断后续跑：`RUN=<同一个输出目录> bash experiments/hearside_pilot/run_pilot.sh`，已完成的步骤不会重做，被打断的训练目录改名保留后重新训练。
 
@@ -119,8 +155,10 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 | 同一环境下 `ms_swift_librispeech/tests` 65 项、`ms_swift_iemocap/tests` 10 项、`research/claude-review/checks` 7 项 | 通过 |
 | 故意改坏掩码的 5 种写法 | 全部被上述测试发现 |
 | 服务器上的全部项目测试（含 `experiments/ms_swift_aqa/tests`） | 222 项通过，4 项跳过（RandLoRA 需 PEFT 0.17.1 的单独套件、LowRA 需 CUDA、两项缺 `pyreft`） |
-| 不依赖 torch 的测试（`trr_diagnostics` 57 项、本目录 14 项） | 通过 |
+| 不依赖 torch 的测试（`trr_diagnostics` 57 项、本目录 23 项） | 通过 |
 | `run_pilot.sh` 的流程 | 正常流程在服务器上完整跑通一次；单元测试失败、单臂训练失败、续跑三条分支只用替身解释器走过 |
+| `followup.py` 的计分 | 用小实验的真实预测核对：各臂 UAR 与服务器汇总逐项相同，顺序差的区间与此前独立计算一致 |
+| `run_followup.sh` 的流程（正常、缺小实验目录、输入不一致、单臂失败、续跑） | 只用替身解释器和玩具语料走过；真实训练和评测未运行 |
 | 服务器环境（torch 2.12.1、ms-swift 4.7.0.dev0、RTX 5090）下的单元测试、训练、评测 | 把关测试 113 项通过；四个臂的训练和五个模型的评测完成。评测代码的哈希与提交 `501409e` 一致；训练所用 runtime 文件没有记录哈希，运行日志标注工作区“有本地改动”（仓库根目录下有未跟踪的输出目录） |
 | 汇总结果的独立复算 | 由逐题预测重新计算各臂、各顺序的 UAR，与服务器的 `summary.json` 一致 |
 

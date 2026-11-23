@@ -310,3 +310,168 @@ def test_thresholds_of_the_declared_rule(same_format, other_base, other_plain, e
     assert summarize.decide(contrasts, {})['outcome'] == expected
     contrasts['B-audio - D-all-shuffled | orig_reworded | all_orders'] = dict(delta_uar_pp=4.0, interval_95_pp=[-0.5, 8.0])
     assert summarize.decide(contrasts, {})['outcome'] == 'stop'                 # an interval that includes 0 is not a win
+
+
+# ----------------------------------------------------------------------------- follow-up: depth and seeds
+from experiments.hearside_pilot import followup  # noqa: E402
+from experiments.trr_diagnostics import stats  # noqa: E402
+
+RESULTS = HERE / 'results' / '20261123-160928'
+
+
+def test_followup_arms_change_one_setting_of_a_pilot_arm(tmp_path):
+    base = tmp_path / 'base.json'
+    base.write_text(json.dumps(BASE_CONFIG))
+    pilot = configs.build(base, tmp_path / 'data', tmp_path / 'pilot')
+    arms = configs.build(base, tmp_path / 'data', tmp_path / 'followup', plan='followup')
+    assert list(arms) == ['A-last4', 'A-all-s43', 'B-audio-s43', 'D-all-shuffled-s43', 'A-all-s44', 'B-audio-s44', 'D-all-shuffled-s44']
+    assert set(arms) == {m for members in followup.FAMILIES.values() for m in members[1:]} | {'A-last4'}
+    read = lambda arm: json.loads(Path(arm['config']).read_text())
+    for name, arm in arms.items():
+        like, cfg = read(pilot[arm['like']]), read(arm)
+        assert (arm['train'], arm['dev'], arm['update_positions']) == tuple(pilot[arm['like']][k] for k in ('train', 'dev', 'update_positions'))
+        if name == 'A-last4':
+            assert cfg['adapter'].pop('last_n') == 4 and like['adapter'].pop('last_n') == 36 and cfg == like
+            assert (arm['last_n'], arm['seed']) == (4, 42)
+        else:
+            seed = int(name[-2:])
+            assert (cfg['training'].pop('seed'), cfg['training'].pop('data_seed', seed)) == (seed, seed)
+            like['training'].pop('seed'), like['training'].pop('data_seed', None)
+            assert cfg == like and (arm['last_n'], arm['seed']) == (36, seed)
+
+
+def test_the_builder_still_writes_the_configs_the_pilot_ran_with(tmp_path):
+    recorded = {name: json.loads((RESULTS / 'configs' / f'{name}.json').read_text()) for name in configs.ARMS}
+    (tmp_path / 'base.json').write_text(json.dumps(recorded['A-all']))
+    arms = configs.build(tmp_path / 'base.json', tmp_path / 'data', tmp_path / 'again')
+    assert {name: json.loads(Path(arm['config']).read_text()) for name, arm in arms.items()} == recorded
+    follow = configs.build(tmp_path / 'base.json', tmp_path / 'data', tmp_path / 'next', plan='followup')
+    s43 = json.loads(Path(follow['B-audio-s43']['config']).read_text())
+    assert (s43['training']['seed'], s43['training']['data_seed']) == (43, 43)
+    assert s43['adapter'] == recorded['B-audio']['adapter']
+
+
+@pytest.fixture
+def two_runs(corpus):  # noqa: F811
+    config, tmp = corpus
+    cfg = json.loads(config.read_text())
+    config.write_text(json.dumps(dict(PILOT, data=cfg['data'], bootstrap=cfg['bootstrap'], asr=dict(PILOT['asr'], subset=5))))
+    for name in ('pilot', 'next'):
+        d2.prepare(config, tmp / name, backend=SineVocoder())
+    return tmp / 'pilot', tmp / 'next', config
+
+
+wrong_on = lambda *suffixes: (lambda m: m['reference'] if not m['utterance'].endswith(suffixes) else 'ABCD'[('ABCD'.index(m['reference']) + 1) % 4])
+
+
+def place(folder, arm, on_orig, on_reworded=None, extra_words=0):
+    answers(folder, arm, 'orig', on_orig)
+    answers(folder, arm, 'orig_reworded', on_reworded or on_orig)
+    answers(folder, arm, 'text', half)
+    transcripts(folder, arm, extra_words)
+
+
+def test_followup_reads_both_runs_and_judges_the_declared_claims(two_runs):
+    pilot, later, _ = two_runs
+    place(pilot, 'frozen-base', half)
+    place(pilot, 'C-post-audio', locked)
+    # A: one, two and no utterances wrong; B: always right; D: as A. The last-four-layer arm answers the trained letter.
+    place(pilot, 'A-all', wrong_on('impro01_F000'), extra_words=1)
+    place(pilot, 'B-audio', right)
+    place(pilot, 'D-all-shuffled', wrong_on('impro01_F000'))
+    place(later, 'A-all-s43', wrong_on('impro01_F000', 'impro02_M000'), extra_words=1)
+    place(later, 'A-all-s44', right)
+    for seed in (43, 44):
+        place(later, f'B-audio-s{seed}', right)
+        place(later, f'D-all-shuffled-s{seed}', wrong_on('impro01_F000', 'impro02_M000') if seed == 43 else right)
+    place(later, 'A-last4', locked)
+    result = followup.summarize([pilot, later], resamples=400)
+    assert result['seeds'] == [42, 43, 44] and result['utterances'] == 12 and result['scored_rows'] == 48
+    assert list(result['models']) == ['frozen-base', 'C-post-audio', 'A-last4', *(m for f in followup.FAMILIES.values() for m in f)]
+
+    # The vectorised score agrees with the scorer used everywhere else.
+    manifest = d2.read_jsonl(pilot / 'manifests' / 'orig.jsonl')
+    rows = [(m['label'], m['option_order'][CLASSES.index(wrong_on('impro01_F000')(m))]) for m in manifest]
+    assert result['models']['A-all']['uar_all_orders'] == pytest.approx(stats.classification(rows, CLASSES)['uar'])
+    assert result['models']['A-all']['uar_all_orders'] == pytest.approx(1 - 1 / 12)      # one of three angry utterances
+    assert result['models']['A-last4']['order_gap'] == pytest.approx(1.0)
+    assert result['models']['B-audio']['order_gap'] == 0 and result['models']['B-audio']['wer'] == 0
+    assert result['models']['A-all']['wer'] > 0 and result['models']['A-all']['uar_text'] == result['models']['B-audio']['uar_text']
+
+    family = result['families']['A-all']
+    assert family['per_seed']['uar_all_orders'] == pytest.approx([1 - 1 / 12, 1 - 2 / 12, 1.0])
+    assert family['mean']['uar_all_orders'] == pytest.approx(1 - 1 / 12) and family['sd']['uar_all_orders'] == pytest.approx(1 / 12)
+    gain = result['contrasts']['B-audio - A-all']['uar_all_orders']
+    assert gain['per_seed_pp'] == pytest.approx([100 / 12, 200 / 12, 0]) and gain['mean_pp'] == pytest.approx(100 / 12)
+    assert 0 <= gain['interval_95_pp'][0] <= gain['mean_pp'] <= gain['interval_95_pp'][1] <= 100   # B is never worse than A
+    same = result['contrasts']['D-all-shuffled - A-all']['uar_all_orders']
+    assert same['per_seed_pp'] == [0, 0, 0] and same['interval_95_pp'] == [0, 0]
+    depth = result['depth']
+    assert depth['order_gap']['delta_pp'] == pytest.approx(100) and depth['order_gap']['interval_95_pp'][0] > 0
+    assert depth['last4_minus_base_other_orders']['delta_pp'] < 0
+    assert result['claims'] == dict(audio_positions_match_all_positions='inconclusive',     # +8.3 pp with a wide interval
+                                    audio_positions_less_bound_to_option_order='inconclusive',
+                                    shuffled_options_improve_all_positions='inconclusive',
+                                    last_layers_bind_to_option_order='supported')
+    assert followup.summarize([pilot, later], resamples=400) == result                    # same seed, same resamples
+    text = followup.render(result)
+    assert '| A-last4 | 100.0 | 0.0 | 25.0 | +100.0 ' in text and '- last_layers_bind_to_option_order: **supported**' in text
+    assert '| B-audio - A-all | uar_all_orders | +8.33 | +16.67 | +0.00 | +8.33 |' in text
+
+
+def test_followup_reports_missing_runs_and_refuses_mismatched_inputs(two_runs):
+    pilot, later, config = two_runs
+    place(pilot, 'frozen-base', half)
+    for arm in ('A-all', 'B-audio', 'D-all-shuffled'):
+        place(pilot, arm, right)
+    alone = followup.summarize([pilot, later], resamples=100)                              # nothing trained yet
+    assert alone['seeds'] == [42] and alone['families'] == {} and alone['depth'] is None
+    assert set(alone['claims'].values()) == {None} and 'not available' in followup.render(alone)
+    for arm in ('A-all', 'B-audio', 'D-all-shuffled'):
+        place(later, f'{arm}-s43', right)
+    two = followup.summarize([pilot, later], resamples=100)                                # the third seed failed
+    assert two['seeds'] == [42, 43] and two['claims']['audio_positions_match_all_positions'] == 'supported'
+    assert two['claims']['last_layers_bind_to_option_order'] is None
+    place(later, 'A-last4', right)
+    assert followup.summarize([pilot, later], resamples=100)['claims']['last_layers_bind_to_option_order'] == 'not supported'
+    place(later, 'B-audio', right)
+    with pytest.raises(ValueError, match='more than one folder'):
+        followup.summarize([pilot, later], resamples=100)
+    other = json.loads(config.read_text())
+    other['conditions']['reworded']['orig_reworded']['question_template'] += ' Thanks.'
+    config.write_text(json.dumps(other))
+    d2.prepare(config, pilot.parent / 'different', backend=SineVocoder())
+    with pytest.raises(ValueError, match='not scored on the same manifest'):
+        followup.summarize([pilot, pilot.parent / 'different'], resamples=100)
+
+
+@pytest.mark.parametrize('interval,expected', [([-2.9, 2.9], 'supported'), ([-3.1, 1.0], 'inconclusive'), ([3.2, 5.0], 'contradicted'),
+                                               ([-6.0, -3.5], 'contradicted')])
+def test_equivalence_reading_uses_the_declared_margin(interval, expected):
+    entry = lambda low, high: dict(interval_95_pp=[low, high])
+    contrasts = {'B-audio - A-all': dict(uar_all_orders=entry(*interval), order_gap=entry(-4.0, -0.5)),
+                 'D-all-shuffled - A-all': dict(uar_all_orders=entry(-1.0, 2.0))}
+    claims = followup.judge(contrasts, dict(order_gap=dict(delta_pp=9.9, interval_95_pp=[5.0, 14.0])))
+    assert claims == dict(audio_positions_match_all_positions=expected, audio_positions_less_bound_to_option_order='supported',
+                          shuffled_options_improve_all_positions='inconclusive', last_layers_bind_to_option_order='not supported')
+    assert followup.judge(contrasts, dict(order_gap=dict(delta_pp=10.0, interval_95_pp=[0.1, 20.0])))['last_layers_bind_to_option_order'] == 'supported'
+    assert followup.judge(contrasts, dict(order_gap=dict(delta_pp=15.0, interval_95_pp=[-0.1, 30.0])))['last_layers_bind_to_option_order'] == 'not supported'
+
+
+def test_followup_inputs_are_compared_with_the_pilot(corpus, tmp_path):  # noqa: F811
+    config, tmp = corpus
+    cfg = json.loads(config.read_text())
+    config.write_text(json.dumps(dict(PILOT, data=cfg['data'], bootstrap=cfg['bootstrap'], asr=dict(PILOT['asr'], subset=5))))
+    source = tmp_path / 'train.jsonl'
+    data.write_jsonl(source, source_rows())
+    for run in ('first', 'second'):
+        data.build(source, tmp_path / run / 'data', PILOT)
+        d2.prepare(config, tmp_path / run / 'eval', backend=SineVocoder())
+    assert followup.same_inputs(tmp_path / 'first', tmp_path / 'second') == []      # both steps are deterministic
+    data.build(source, tmp_path / 'third' / 'data', PILOT, seed=7)                  # other option shifts
+    other = json.loads(config.read_text())
+    other['asr']['subset'] = 4
+    config.write_text(json.dumps(other))
+    d2.prepare(config, tmp_path / 'third' / 'eval', backend=SineVocoder())
+    assert followup.same_inputs(tmp_path / 'first', tmp_path / 'third') == ['data/train-shuffled.jsonl', 'data/dev-shuffled.jsonl',
+                                                                           'eval/manifests/asr-orig.jsonl']
