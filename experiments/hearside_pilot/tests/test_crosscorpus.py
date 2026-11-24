@@ -123,3 +123,24 @@ def test_changed_predictions_are_refused(tmp_path):
     path.write_text(path.read_text().replace('"A"', '"B"', 1))
     with pytest.raises(ValueError, match='predictions changed'):
         crosscorpus.summarize(folder, resamples=50)
+
+
+def test_models_scored_with_different_batch_sizes_are_not_compared(tmp_path):
+    folder = tmp_path / 'out'
+    crosscorpus.build(corpus(tmp_path), PROTOCOL, folder)
+    for arm, size in (('frozen-base', 2), ('A-all', 4)):
+        answers(folder, arm, lambda row, task: 0.5)
+        path = folder / 'runs' / arm / 'mcq' / 'metrics.json'
+        d2.write(path, dict(d2.load(path), generation=dict(batch_size=size)))
+    with pytest.raises(ValueError, match='different generation settings'):
+        crosscorpus.summarize(folder, resamples=50)
+
+
+def test_the_batch_size_is_fixed_at_build_time_and_changes_nothing_else(tmp_path):
+    audio = corpus(tmp_path)
+    usual = crosscorpus.build(audio, PROTOCOL, tmp_path / 'a')
+    larger = crosscorpus.build(audio, PROTOCOL, tmp_path / 'b', batch_size=6)
+    assert usual['mcq_generation'] == dict(batch_size=2) and usual['text_generation'] == formats.GENERATION
+    assert larger['mcq_generation'] == dict(batch_size=6)
+    assert larger['text_generation'] == dict(formats.GENERATION, batch_size=6) and formats.GENERATION['batch_size'] == 4
+    assert larger['manifests'] == usual['manifests']

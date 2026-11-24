@@ -20,7 +20,9 @@ CREMAD="${CREMAD:-/root/autodl-tmp/crema-d/AudioWAV}"
 RUN="${RUN:-$ROOT/hearside-cross-$(date +%Y%m%d-%H%M%S)}"
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 PROTOCOL="$SRC/experiments/hearside_pilot/pilot-iemocap-session4.json"
+BATCH="${BATCH:-}"          # empty: 2 for the letter question and 4 for free text, as on Session 4
 ARMS="${ARMS:-D-all-shuffled D-all-shuffled-s43 D-all-shuffled-s44 A-all A-all-s43 A-all-s44 A-last4 A-last4-s43 A-last4-s44 B-audio B-audio-s43 B-audio-s44 C-post-audio}"
+MCQ_BATCH="${MCQ_BATCH:-}"       # empty: the batch size of the Session 4 protocol (2)
 ARCHIVE="${RUN%/}-for-claude.tar.gz"
 
 export PYTHONPATH="$SRC:$DEPS${PYTHONPATH:+:$PYTHONPATH}"
@@ -65,6 +67,7 @@ small=$(find "$CREMAD" -maxdepth 1 -name '*.wav' -size -2k | wc -l)
 [ "$small" -eq 0 ] || stop "$small wav files in $CREMAD are under 2 KB; these are Git LFS pointers, not audio. Use experiments/hearside_pilot/get_cremad.sh"
 log "CREMA-D: $clips wav files"
 [ -f "$BASE_CONFIG" ] || stop "base config not found: $BASE_CONFIG"
+log "letter question batch size: ${MCQ_BATCH:-2 (protocol)}"
 
 if [ ! -f "$RUN/logs/tests-gating.ok" ]; then
     env CUDA_VISIBLE_DEVICES= "$PY" -m pytest -q -p no:cacheprovider \
@@ -78,9 +81,11 @@ fi
 CROSS="$RUN/cremad"
 if [ ! -f "$CROSS/crosscorpus.json" ]; then
     rm -rf "$CROSS"
-    "$PY" -m experiments.hearside_pilot.crosscorpus build --audio "$CREMAD" --protocol "$PROTOCOL" --output "$CROSS" \
+    "$PY" -m experiments.hearside_pilot.crosscorpus build --audio "$CREMAD" --protocol "$PROTOCOL" --output "$CROSS" ${BATCH:+--batch-size "$BATCH"} \
         > "$RUN/logs/build.log" 2>&1 || stop "building the CREMA-D manifests failed; see logs/build.log: $(tail -1 "$RUN/logs/build.log")"
 fi
+[ -z "$BATCH" ] || [ "$(field "$CROSS/crosscorpus.json" mcq_generation)" = "{'batch_size': $BATCH}" ] \
+    || stop "this run folder was built with another batch size; start a new folder instead of mixing them"
 log "manifests: $(tr -d '\n ' < "$RUN/logs/build.log" | cut -c1-300)"
 
 summary() {
@@ -90,14 +95,14 @@ summary() {
 
 started=$SECONDS
 "$PY" -m experiments.hearside_pilot.crosscorpus run --folder "$CROSS" --model-config "$BASE_CONFIG" --method frozen-base \
-    --arm frozen-base > "$RUN/logs/run-frozen-base.log" 2>&1
+    --arm frozen-base ${MCQ_BATCH:+--mcq-batch-size "$MCQ_BATCH"} > "$RUN/logs/run-frozen-base.log" 2>&1
 log "frozen-base (exit $?, $(((SECONDS - started) / 60)) min)"
 [ -f "$CROSS/runs/frozen-base/open/metrics.json" ] || stop "the frozen base could not be scored; see logs/run-frozen-base.log: $(tail -1 "$RUN/logs/run-frozen-base.log")"
 for arm in $ARMS; do
     root=$(home "$arm") || { log "$arm has no trained checkpoint, skipped"; continue; }
     started=$SECONDS
     "$PY" -m experiments.hearside_pilot.crosscorpus run --folder "$CROSS" --model-config "$root/configs/$arm.json" --method ta-lora \
-        --checkpoint "$(field "$root/train/$arm/result.json" best_checkpoint)" --arm "$arm" > "$RUN/logs/run-$arm.log" 2>&1
+        --checkpoint "$(field "$root/train/$arm/result.json" best_checkpoint)" --arm "$arm" ${MCQ_BATCH:+--mcq-batch-size "$MCQ_BATCH"} > "$RUN/logs/run-$arm.log" 2>&1
     log "$arm (exit $?, $(((SECONDS - started) / 60)) min)"
     summary
 done

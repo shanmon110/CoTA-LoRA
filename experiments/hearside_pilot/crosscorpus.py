@@ -50,7 +50,7 @@ def select(audio, *, seed=42):
     return chosen
 
 
-def build(audio, protocol, output, *, seed=42):
+def build(audio, protocol, output, *, seed=42, batch_size=None):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     protocol = d2.load(protocol)
@@ -74,7 +74,10 @@ def build(audio, protocol, output, *, seed=42):
     counts = {c: sum(label == c for _, label, _ in clips) for c in CLASSES}
     info = dict(corpus='CREMA-D', audio=str(Path(audio).resolve()), seed=seed, per_actor_and_class=PER_ACTOR_AND_CLASS,
                 utterances=len(clips), actors=len({a for a, _, _ in clips}), clips_per_class=counts, question_template=prompts['question_template'],
-                mcq_generation=protocol['generation'],          # as on Session 4, whatever the model config says
+                # Decoding as on Session 4 (greedy, one letter; 16 new tokens for free text). The batch size may be raised
+                # for speed; it is fixed here for the whole run so that every model is scored the same way.
+                mcq_generation=dict(protocol['generation'], **({'batch_size': batch_size} if batch_size else {})),
+                text_generation=dict(formats.GENERATION, **({'batch_size': batch_size} if batch_size else {})),
                 manifests=dict({'mcq': dict(sha256=d2.digest(output / 'mcq.jsonl'), rows=len(rows))},
                                **{n: v for n, v in info['manifests'].items()}))
     d2.write(output / 'crosscorpus.json', info)
@@ -85,8 +88,8 @@ def manifest_path(folder, task):
     return Path(folder) / ('mcq.jsonl' if task == 'mcq' else f'formats/{task}.jsonl')
 
 
-def run(folder, model_config, method, checkpoint, arm):
-    """All four tasks for one model; finished tasks are kept."""
+def run(folder, model_config, method, checkpoint, arm, *, mcq_batch_size=None):
+    """All four tasks for one model; finished tasks are kept. `mcq_batch_size` replaces the protocol's batch size for the letter question."""
     from experiments.ms_swift_iemocap.evaluate import score as score_choice
     from experiments.ms_swift_librispeech.evaluate import score as score_text
 
@@ -109,10 +112,12 @@ def run(folder, model_config, method, checkpoint, arm):
         if d2.digest(manifest) != info['manifests'][task]['sha256']:
             raise ValueError(f'{task}: manifest changed after it was built')
         if task == 'mcq':
-            score_choice(model, template, manifest, info['mcq_generation'], out / task / 'predictions.jsonl')
+            generation = dict(info['mcq_generation'], **(dict(batch_size=mcq_batch_size) if mcq_batch_size else {}))
+            score_choice(model, template, manifest, generation, out / task / 'predictions.jsonl')
         else:
-            score_text(model, template, manifest, formats.GENERATION, out / task / 'predictions.jsonl')
+            score_text(model, template, manifest, info['text_generation'], out / task / 'predictions.jsonl')
         d2.write(out / task / 'metrics.json', dict(task=task, arm=arm, checkpoint=str(checkpoint) if checkpoint else None,
+                                                   generation=generation if task == 'mcq' else formats.GENERATION,
                                                    manifest_sha256=info['manifests'][task]['sha256'],
                                                    predictions_sha256=d2.digest(out / task / 'predictions.jsonl')))
         print(f'{task}: done', flush=True)
@@ -139,6 +144,9 @@ def summarize(folder, *, resamples=10000, seed=42):
             if d2.digest(path / 'predictions.jsonl') != d2.load(path / 'metrics.json')['predictions_sha256']:
                 raise ValueError(f'{arm}/{task}: predictions changed after they were written')
             predictions[arm, task] = d2.read_jsonl(path / 'predictions.jsonl')
+    batches = {json.dumps(d2.load(folder / 'runs' / arm / 'mcq' / 'metrics.json').get('generation'), sort_keys=True) for arm in arms}
+    if len(batches) > 1:
+        raise ValueError(f'The letter question was scored with different generation settings across models: {sorted(batches)}')
     value, boot, parseable = ({a: {} for a in arms} for _ in range(3))
     mcq = d2.read_jsonl(folder / 'mcq.jsonl')
     parts = dict(mcq_training_order=[r['rotation'] == 0 for r in mcq], mcq_other_orders=[r['rotation'] != 0 for r in mcq],
@@ -188,6 +196,7 @@ def summarize(folder, *, resamples=10000, seed=42):
                 n: dict(delta_pp=100 * float(np.mean([value[x][n] - value[y][n] for x, y in zip(first, second)])),
                         interval_95_pp=interval(mean_boot(first, n) - mean_boot(second, n))) for n in MEASURES}
     return dict(folder=str(folder), corpus=info['corpus'], utterances=info['utterances'], actors=info['actors'], arms=arms,
+                mcq_generation=json.loads(next(iter(batches))) if batches else None,
                 criteria=CRITERIA, table=table, contrasts=contrasts, readings=judge(table, contrasts))
 
 
@@ -255,20 +264,22 @@ if __name__ == '__main__':
     p.add_argument('--audio', type=Path, required=True, help='the AudioWAV folder of CREMA-D')
     p.add_argument('--protocol', type=Path, required=True, help='pilot-iemocap-session4.json, for the trained question')
     p.add_argument('--output', type=Path, required=True)
+    p.add_argument('--batch-size', type=int, help='for both kinds of question; default: 2 for letters, 4 for free text, as on Session 4')
     p = commands.add_parser('run')
     p.add_argument('--folder', type=Path, required=True)
     p.add_argument('--model-config', type=Path, required=True)
     p.add_argument('--method', choices=['frozen-base', 'ta-lora'], required=True)
     p.add_argument('--checkpoint', type=Path)
     p.add_argument('--arm', required=True)
+    p.add_argument('--mcq-batch-size', type=int)
     p = commands.add_parser('summarize')
     p.add_argument('--folder', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     if args.command == 'build':
-        print(json.dumps({k: v for k, v in build(args.audio, args.protocol, args.output).items() if k != 'question_template'}, indent=2))
+        print(json.dumps({k: v for k, v in build(args.audio, args.protocol, args.output, batch_size=args.batch_size).items() if k != 'question_template'}, indent=2))
     elif args.command == 'run':
-        run(args.folder, args.model_config, args.method, args.checkpoint, args.arm)
+        run(args.folder, args.model_config, args.method, args.checkpoint, args.arm, mcq_batch_size=args.mcq_batch_size)
     else:
         summary = summarize(args.folder)
         args.output.mkdir(parents=True, exist_ok=True)
