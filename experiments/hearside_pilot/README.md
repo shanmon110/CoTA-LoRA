@@ -185,6 +185,16 @@ D2/D2b 诊断在 IEMOCAP Session 4 上得到两件事：
 
 按运行前的声明，两条找方法缺口的路（跨格式、输入条件化）在这个语料上都没有找到缺口。
 
+## 第四轮：跨语料（CREMA-D）（2026-11-24 声明，尚未运行）
+
+声明和判读见 `research/cross-corpus-cremad-20261124.md`。不训练：冻结基座和前三轮的 13 个适配器在 CREMA-D 的 1,092 段录音上回答训练时的字母题（四种选项顺序）和三种没训练过的问法。实现在 `crosscorpus.py`，运行用 `run_cross.sh`：
+
+```
+CREMAD=/path/to/CREMA-D/AudioWAV nohup bash experiments/hearside_pilot/run_cross.sh > /root/autodl-fs/CoTA-LoRA/hearside-cross.out 2>&1 &
+```
+
+脚本只读前三轮的目录和 CREMA-D 的音频目录；音频目录不存在或 wav 文件不足 7000 个时不运行。
+
 ## 运行
 
 服务器上一条命令（克隆 `main` 的当前版本并在后台运行）：
@@ -216,6 +226,7 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 | 不依赖 torch 的测试（`trr_diagnostics` 57 项、本目录 46 项） | 通过 |
 | 重构后的 `followup.py` | 用前两轮的真实预测复算，各臂数值和区间与服务器汇总完全相同 |
 | `run_next.sh`、`formats.py`、`headroom.py` | 正常流程在服务器上完整跑通一次（提交 `70c0dfb`，145 项把关测试通过，423 分钟）；失败和续跑分支只用替身解释器走过。跨格式汇总在本地用逐题预测重跑，与服务器逐字相同，并用独立脚本复算；余量检验的点估计独立复算一致，区间未独立复算 |
+| `crosscorpus.py`、`run_cross.sh` | 不依赖 torch 的测试 7 项通过（选取、清单、三条判读的正反例、预测被改动时拒绝）；整个脚本只用替身解释器和空文件组成的玩具语料走过（正常、单臂失败、续跑、缺语料）。真实模型和真实 CREMA-D 上未运行 |
 | `run_pilot.sh` 的流程 | 正常流程在服务器上完整跑通一次；单元测试失败、单臂训练失败、续跑三条分支只用替身解释器走过 |
 | `followup.py` 的计分 | 用小实验的真实预测核对：各臂 UAR 与服务器汇总逐项相同，顺序差的区间与此前独立计算一致 |
 | `run_followup.sh` 的流程（正常、缺小实验目录、输入不一致、单臂失败、续跑） | 只用替身解释器和玩具语料走过；真实训练和评测未运行 |

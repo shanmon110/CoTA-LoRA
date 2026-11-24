@@ -118,8 +118,9 @@ def run(folder, model_config, method, checkpoint, arm):
 class Scores:
     """Mean per-group recall of one format (groups: yes/no, or the four classes), with shared dialogue resamples."""
 
-    def __init__(self, manifest, name, resamples, rng):
+    def __init__(self, manifest, name, resamples, rng, judge=None):
         self.manifest, self.name = manifest, name
+        self.judge = judge or (lambda row, text: correct(name, row, text))
         groups = sorted({r['group'] for r in manifest})
         names = sorted({r['dialogue'] for r in manifest})
         self.group = np.array([groups.index(r['group']) for r in manifest])
@@ -138,7 +139,7 @@ class Scores:
     def measure(self, rows):
         if [r['id'] for r in rows] != [m['id'] for m in self.manifest]:
             raise ValueError(f'{self.name}: predictions do not cover the manifest in order')
-        judged = [correct(self.name, m, r['prediction']) for m, r in zip(self.manifest, rows)]
+        judged = [self.judge(m, r['prediction']) for m, r in zip(self.manifest, rows)]
         hits = self.count(np.array([j[0] for j in judged], float))
         with np.errstate(divide='ignore', invalid='ignore'):
             boot = ((self.weights @ hits) / (self.weights @ self.total)).mean(axis=1)
