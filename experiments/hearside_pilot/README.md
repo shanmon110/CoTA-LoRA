@@ -199,6 +199,16 @@ CREMAD=/path/to/CREMA-D/AudioWAV nohup bash experiments/hearside_pilot/run_cross
 
 `get_cremad.sh` 从官方仓库（固定提交 `1658cd3`）下载 7,442 个 wav 到 `/root/autodl-tmp/crema-d/AudioWAV`，并逐个核对仓库记录的 SHA-256；可重复运行以续传。它在本工作区用前 24 个文件测试过（下载、重跑、损坏与缺失文件的修复），完整下载未测试。
 
+## 第五轮：层段对照（2026-11-25 声明，尚未运行）
+
+声明和判读见 `research/layer-bands-20261125.md`。新训练 6 个适配器：只改第 0–3 层（`A-first4`）和第 16–19 层（`A-mid4`），各三个种子，其余与 `A-last4` 相同；在 Session 4 和 CREMA-D 上按此前各臂的方式评测。实现在 `bands.py`，运行用 `run_bands.sh`：
+
+```
+nohup bash experiments/hearside_pilot/run_bands.sh > /root/autodl-fs/CoTA-LoRA/hearside-bands.out 2>&1 &
+```
+
+为此运行时新增了可选的 `adapter.first_layer`（不写时仍是最后 `last_n` 层，旧配置和旧 checkpoint 不受影响）。
+
 ## 运行
 
 服务器上一条命令（克隆 `main` 的当前版本并在后台运行）：
@@ -231,6 +241,7 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 | 重构后的 `followup.py` | 用前两轮的真实预测复算，各臂数值和区间与服务器汇总完全相同 |
 | `run_next.sh`、`formats.py`、`headroom.py` | 正常流程在服务器上完整跑通一次（提交 `70c0dfb`，145 项把关测试通过，423 分钟）；失败和续跑分支只用替身解释器走过。跨格式汇总在本地用逐题预测重跑，与服务器逐字相同，并用独立脚本复算；余量检验的点估计独立复算一致，区间未独立复算 |
 | `crosscorpus.py`、`run_cross.sh` | 不依赖 torch 的测试 7 项通过（选取、清单、三条判读的正反例、预测被改动时拒绝）；整个脚本只用替身解释器和空文件组成的玩具语料走过（正常、单臂失败、续跑、缺语料）。正常流程在服务器上完整跑通一次（提交 `cc8aea5`，308 分钟）；字母题结果用独立脚本复算一致，三种问法的分数未独立复算 |
+| `adapter.first_layer`、`bands.py`、`run_bands.sh` | 玩具模型上的 torch 测试 10 项通过（层段选择、只有所选层可训练、不连续的层被拒绝、保存再加载后输出一致），原有适配器测试 41 项仍通过；`bands.py` 的测试 6 项通过。用前四轮的真实逐题预测验证：汇集后的 Session 4 汇总重现此前各轮的数字，修改后的汇总代码逐字重现服务器的 CREMA-D 汇总。脚本只用替身训练和替身打分走过（正常、单臂训练失败、续跑）。真实 36 层模型上的中间层训练未运行 |
 | `run_pilot.sh` 的流程 | 正常流程在服务器上完整跑通一次；单元测试失败、单臂训练失败、续跑三条分支只用替身解释器走过 |
 | `followup.py` 的计分 | 用小实验的真实预测核对：各臂 UAR 与服务器汇总逐项相同，顺序差的区间与此前独立计算一致 |
 | `run_followup.sh` 的流程（正常、缺小实验目录、输入不一致、单臂失败、续跑） | 只用替身解释器和玩具语料走过；真实训练和评测未运行 |

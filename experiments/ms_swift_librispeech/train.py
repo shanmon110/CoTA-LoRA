@@ -11,7 +11,7 @@ import time
 import torch
 from transformers import TrainerCallback, set_seed
 
-from experiments.ms_swift_librispeech.adapter_audit import MLP_PROJECTIONS, audit_adapter, initialize_pair, ordered_projections
+from experiments.ms_swift_librispeech.adapter_audit import MLP_PROJECTIONS, audit_adapter, band, initialize_pair, ordered_projections
 
 HERE = Path(__file__).resolve().parent
 
@@ -190,9 +190,10 @@ def model_options(config, method):
             raise ValueError(f'Changed model or processor input: {path}')
     layers = json.loads((model_dir / 'config.json').read_text())['thinker_config']['text_config']['num_hidden_layers']
     last_n = config['adapter']['last_n']
-    if method not in ('ta-lora', 'lora', 'dora', 'rslora') or not 1 <= last_n <= layers:
+    if method not in ('ta-lora', 'lora', 'dora', 'rslora') or type(last_n) is not int or not 1 <= last_n <= layers:
         raise ValueError('Invalid method or target layer count')
-    indices = '|'.join(map(str, range(layers - last_n, layers)))
+    # Optional: the first of the last_n targeted layers. Without it they are the last ones.
+    indices = '|'.join(map(str, band(layers, last_n, config['adapter'].get('first_layer'))))
     names = ordered_projections(config['adapter'].get('target_modules', ('o_proj',)), require_o=method == 'ta-lora')
     model_type = config.get('model_type', 'qwen2_5_omni')
     if method == 'ta-lora' and model_type not in ('qwen2_5_omni', 'qwen3_asr'):
@@ -411,6 +412,7 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
             trainer.paper_train_manifest = train
             native_method = method if method in ('dora', 'rslora') else args.tuner_type
             n = config['adapter']['last_n']
+            first = config['adapter'].get('first_layer')
             projections = config['adapter'].get('target_modules', ('o_proj',))
             objective = config.get('objective', 'sft')
             if objective == 'closed_set_4way' and config.get('task') == 'ser':
@@ -430,17 +432,18 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
                     initial['initial_param_sha256'] = initial['param_sha256']
             elif resume:
                 initial = json.loads((output / 'initialization.json').read_text())
-                audit_adapter(trainer.model, native_method, n, projections)
+                audit_adapter(trainer.model, native_method, n, projections, first)
             else:
-                initial = initialize_pair(trainer.model, native_method, args.seed, n, projections)
+                initial = initialize_pair(trainer.model, native_method, args.seed, n, projections, first)
                 if method == 'ta-lora':
                     adapter = config['adapter']
                     gate_init = adapter.get('gate_init', 0.)
                     if not math.isfinite(gate_init):
                         raise ValueError('gate_init must be finite')
                     with torch.no_grad():
-                        for layer in trainer.model.thinker.model.layers[-n:]:
-                            layer.self_attn.ta_adapter.gate.fill_(gate_init)
+                        layers = trainer.model.thinker.model.layers
+                        for i in band(len(layers), n, first):
+                            layers[i].self_attn.ta_adapter.gate.fill_(gate_init)
                     initial['gate_init'] = gate_init
                     if 'gate_multiplier' in adapter:
                         from experiments.ms_swift_librispeech.swift_asr_ta_runtime import set_gate_multiplier
@@ -473,7 +476,7 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
                         initial['update_positions'] = adapter['update_positions']
                     if adapter.get('independent_transport_up', False) or 'transport_gate' in adapter:
                         # Recount after C and/or the conditional gate were added to the trainable set.
-                        initial.update(audit_adapter(trainer.model, native_method, n, projections))
+                        initial.update(audit_adapter(trainer.model, native_method, n, projections, first))
             if gate_lr_multiplier is not None:
                 trainer.optimizer_callback = TransportGateOptimizer(trainer.args, trainer)
                 initial['transport_gate_lr_multiplier'] = gate_lr_multiplier
@@ -507,7 +510,7 @@ def fit(config, method, train, dev, output, resume=None, stop_after=None):
             checkpoint_files(best, method)
             if Path(trainer.state.best_model_checkpoint).resolve() != best or trainer.state.best_metric != wer:
                 raise ValueError('Swift best checkpoint and independent development selection disagree')
-            final = impl.audit(trainer.model, method, config) if impl else audit_adapter(trainer.model, native_method, n, projections)
+            final = impl.audit(trainer.model, method, config) if impl else audit_adapter(trainer.model, native_method, n, projections, first)
             before = initial['initial_param_sha256'] if impl else initial['ab_init_sha256']
             after = final['param_sha256'] if impl else final['ab_sha256']
             if before == after:

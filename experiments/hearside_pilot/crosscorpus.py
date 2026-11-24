@@ -26,7 +26,10 @@ FILE = re.compile(r'^(\d{4})_([A-Z]{3})_([A-Z]{3})_([A-Z]{2})\.wav$')
 PER_ACTOR_AND_CLASS = 3
 ROTATIONS = (0, 1, 2, 3)
 TASKS = ('mcq',) + formats.FORMATS
-FAMILIES = formats.FAMILIES
+BANDS = ('A-first4', 'A-mid4')                            # added on 2026-11-25: four layers elsewhere in the stack
+FAMILIES = dict({arm: [arm, f'{arm}-s43', f'{arm}-s44'] for arm in BANDS}, **formats.FAMILIES)
+PAIRS = (('A-last4', 'A-all'), ('D-all-shuffled', 'A-all'), ('B-audio', 'A-all'),
+         ('A-first4', 'A-all'), ('A-mid4', 'A-all'), ('A-last4', 'A-first4'), ('A-last4', 'A-mid4'))
 SINGLE = formats.SINGLE
 REFERENCE = formats.REFERENCE
 # Written down before any model was scored on CREMA-D.
@@ -117,7 +120,7 @@ def run(folder, model_config, method, checkpoint, arm, *, mcq_batch_size=None):
         else:
             score_text(model, template, manifest, info['text_generation'], out / task / 'predictions.jsonl')
         d2.write(out / task / 'metrics.json', dict(task=task, arm=arm, checkpoint=str(checkpoint) if checkpoint else None,
-                                                   generation=generation if task == 'mcq' else formats.GENERATION,
+                                                   generation=generation if task == 'mcq' else info['text_generation'],
                                                    manifest_sha256=info['manifests'][task]['sha256'],
                                                    predictions_sha256=d2.digest(out / task / 'predictions.jsonl')))
         print(f'{task}: done', flush=True)
@@ -125,7 +128,7 @@ def run(folder, model_config, method, checkpoint, arm, *, mcq_batch_size=None):
 
 def letter(row, text):
     answer = text.strip()
-    return answer == row['reference'], answer in CLASSES
+    return answer == row['messages'][1]['content'], answer in CLASSES
 
 
 def interval(boot):
@@ -188,7 +191,7 @@ def summarize(folder, *, resamples=10000, seed=42):
                 contrasts[f'{g} - frozen-base'] = {
                     n: dict(delta_pp=100 * (table[g][n]['mean'] - table['frozen-base'][n]['mean']),
                             interval_95_pp=interval(mean_boot(members, n) - boot['frozen-base'][n])) for n in MEASURES}
-    for a, b in (('A-last4', 'A-all'), ('D-all-shuffled', 'A-all'), ('B-audio', 'A-all')):
+    for a, b in PAIRS:
         common = [i for i in range(3) if FAMILIES[a][i] in arms and FAMILIES[b][i] in arms]
         if common:
             first, second = [FAMILIES[a][i] for i in common], [FAMILIES[b][i] for i in common]
@@ -196,6 +199,7 @@ def summarize(folder, *, resamples=10000, seed=42):
                 n: dict(delta_pp=100 * float(np.mean([value[x][n] - value[y][n] for x, y in zip(first, second)])),
                         interval_95_pp=interval(mean_boot(first, n) - mean_boot(second, n))) for n in MEASURES}
     return dict(folder=str(folder), corpus=info['corpus'], utterances=info['utterances'], actors=info['actors'], arms=arms,
+                clusters=info.get('clusters', 'actors'), trained_here=info.get('trained_here', False),
                 mcq_generation=json.loads(next(iter(batches))) if batches else None,
                 criteria=CRITERIA, table=table, contrasts=contrasts, readings=judge(table, contrasts))
 
@@ -237,8 +241,10 @@ def judge(table, contrasts):
 
 def render(result):
     names = dict(mcq_training_order='training order', mcq_other_orders='other orders', mcq_all_orders='all orders', order_gap='order gap')
+    clusters = result.get('clusters', 'actors')
     lines = [f"# Adapters trained on IEMOCAP, scored on {result['corpus']}", '',
-             f"{result['utterances']} clips of {result['actors']} actors; nothing was trained on this corpus. Mean per-class recall in %; "
+             f"{result['utterances']} clips of {result['actors']} {clusters}; "
+             + ('' if result.get('trained_here') else 'nothing was trained on this corpus. ') + 'Mean per-class recall in %; '
              'the order gap is in pp. In brackets: share of parseable free-text answers.', '',
              '| model (mean over its seeds) | ' + ' | '.join(names.get(n, n) for n in MEASURES) + ' |', '|---|' + '---:|' * len(MEASURES)]
     for g, row in result['table'].items():
@@ -247,7 +253,7 @@ def render(result):
             cell = f"{100 * row[n]['mean']:+.1f}" if n == 'order_gap' else f"{100 * row[n]['mean']:.1f}"
             cells.append(cell + (f" [{100 * row[n]['parseable']:.0f}%]" if 'parseable' in row[n] else ''))
         lines.append(f"| {g} ({len(row['mcq_all_orders']['per_model'])}) | " + ' | '.join(cells) + ' |')
-    lines += ['', '| difference pp [95% CI over actors and seeds] | ' + ' | '.join(names.get(n, n) for n in MEASURES) + ' |',
+    lines += ['', f'| difference pp [95% CI over {clusters} and seeds] | ' + ' | '.join(names.get(n, n) for n in MEASURES) + ' |',
               '|---|' + '---|' * len(MEASURES)]
     for key, by in result['contrasts'].items():
         lines.append(f'| {key} | ' + ' | '.join(

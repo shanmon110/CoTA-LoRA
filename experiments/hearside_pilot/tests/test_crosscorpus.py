@@ -42,6 +42,7 @@ def answers(folder, arm, rule, seed=0):
         path.mkdir(parents=True)
         d2.write_jsonl(path / 'predictions.jsonl', out)
         d2.write(path / 'metrics.json', dict(predictions_sha256=d2.digest(path / 'predictions.jsonl'),
+                                             generation=info['mcq_generation'] if task == 'mcq' else info['text_generation'],
                                              manifest_sha256=info['manifests'][task]['sha256']))
 
 

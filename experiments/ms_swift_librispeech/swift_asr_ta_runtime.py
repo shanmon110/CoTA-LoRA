@@ -528,8 +528,10 @@ def _layout(input_ids, kwargs, token_id):
     return input_ids.eq(token_id) & valid, valid
 
 
-def attach(outer, *, last_n=4, rank=8, alpha=16., format_version=2):
-    """Freeze outer; add FP32 atoms to its last N eager language attentions; return outer."""
+def attach(outer, *, last_n=4, rank=8, alpha=16., format_version=2, first_layer=None):
+    """Freeze outer; add FP32 atoms to N eager language attentions; return outer.
+
+    The N layers are the last ones, or those starting at `first_layer`."""
     if format_version not in (1, 2):
         raise ValueError('unknown TA checkpoint format')
     qwen3 = outer.config.model_type == 'qwen3_asr'
@@ -546,7 +548,10 @@ def attach(outer, *, last_n=4, rank=8, alpha=16., format_version=2):
         raise ValueError('rank and alpha must be positive and finite')
     if any(hasattr(layer.self_attn, 'ta_adapter') for layer in layers):
         raise ValueError('TA-LoRA is already attached')
-    targets = [layer.self_attn for layer in layers[-last_n:]]
+    first = len(layers) - last_n if first_layer is None else first_layer
+    if type(first) is not int or not 0 <= first <= len(layers) - last_n:
+        raise ValueError('first_layer must leave room for last_n layers')
+    targets = [layer.self_attn for layer in layers[first:first + last_n]]
     expected_attention = Qwen2_5OmniAttention
     if qwen3:
         from qwen_asr.core.transformers_backend.modeling_qwen3_asr import Qwen3ASRTextAttention

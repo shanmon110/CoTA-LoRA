@@ -7,13 +7,13 @@ from pathlib import Path
 from safetensors.torch import load_file, save_file
 from peft.tuners.lora.layer import Linear as LoraLinear
 if __package__:
-    from .adapter_audit import MLP_PROJECTIONS, ordered_projections
+    from .adapter_audit import MLP_PROJECTIONS, band, ordered_projections
     from .swift_asr_ta_runtime import (TRANSPORT_GATES, TRANSPORT_PRECISIONS, TRANSPORT_SIGNALS, UPDATE_POSITIONS,
                                        attach, enable_transport_up, set_gate_multiplier, set_transport_gate,
                                        set_transport_precision, set_transport_queries, set_transport_signal,
                                        set_transport_weighting, set_update_positions)
 else:
-    from adapter_audit import MLP_PROJECTIONS, ordered_projections
+    from adapter_audit import MLP_PROJECTIONS, band, ordered_projections
     from swift_asr_ta_runtime import (TRANSPORT_GATES, TRANSPORT_PRECISIONS, TRANSPORT_SIGNALS, UPDATE_POSITIONS,
                                       attach, enable_transport_up, set_gate_multiplier, set_transport_gate,
                                       set_transport_precision, set_transport_queries, set_transport_signal,
@@ -23,22 +23,27 @@ from swift.tuner_plugin import Tuner, tuners_map
 
 
 def _target_layout(model, names):
+    """The targets as one run of consecutive decoder layers: (ordered targets, layer count, projections, first layer)."""
     layers = model.thinker.model.layers
-    last_n = len({target.rsplit('.', 2)[0] for target in names})
-    if not 1 <= last_n <= len(layers):
-        raise ValueError('Expected a nonempty suffix of Thinker decoder layers')
+    found = {re.fullmatch(r'thinker\.model\.layers\.(\d+)\.(?:mlp|self_attn)\.\w+', target) for target in names}
+    if not names or None in found:
+        raise ValueError('Expected projections of Thinker decoder layers')
+    indices = sorted({int(match[1]) for match in found})
+    last_n, first = len(indices), indices[0]
+    if indices != list(range(first, first + last_n)) or indices[-1] >= len(layers):
+        raise ValueError('Expected consecutive Thinker decoder layers')
     projections = ordered_projections({target.rsplit('.', 1)[-1] for target in names}, require_o=True)
     targets = [f'thinker.model.layers.{i}.{"mlp" if p in MLP_PROJECTIONS else "self_attn"}.{p}'
-               for i in range(len(layers) - last_n, len(layers)) for p in projections]
+               for i in band(len(layers), last_n, first) for p in projections]
     if set(targets) != set(names):
         raise ValueError('Select the same projections in every targeted Thinker decoder layer')
-    return targets, last_n, projections
+    return targets, last_n, projections, first
 
 
-def _install(model, cfg, last_n, projections):
+def _install(model, cfg, last_n, projections, first):
     # Formats 2 and 3 both follow native PEFT rounding. Format 3 also stores Q/K/V.
     residual_version = cfg['residual_format_version'] if cfg['format_version'] >= 4 else min(cfg['format_version'], 2)
-    attach(model, last_n=last_n, rank=cfg['rank'], alpha=cfg['alpha'], format_version=residual_version)
+    attach(model, last_n=last_n, rank=cfg['rank'], alpha=cfg['alpha'], format_version=residual_version, first_layer=first)
     model._ta_lora_config = cfg
     set_gate_multiplier(model, cfg.get('gate_multiplier', 1.))
     set_transport_queries(model, cfg.get('transport_queries', 'text'))
@@ -52,7 +57,7 @@ def _install(model, cfg, last_n, projections):
         set_transport_precision(model, cfg['transport_precision'])
     if cfg['format_version'] == 10:
         set_update_positions(model, cfg['update_positions'])
-    for layer in model.thinker.model.layers[-last_n:]:
+    for layer in model.thinker.model.layers[first:first + last_n]:
         for name in projections:
             if name == 'o_proj':
                 continue
@@ -100,11 +105,11 @@ class TALoRATuner(Tuner):
                 raise ValueError('TA checkpointing requires Qwen3-ASR and non-reentrant replay')
         spec = getattr(args, 'target_modules', None)
         matched = {n for n, _ in model.named_modules() if isinstance(spec, str) and re.fullmatch(spec, n)}
-        targets, last_n, projections = _target_layout(model, matched)
+        targets, last_n, projections, first = _target_layout(model, matched)
         cfg = dict(format_version=2 if len(projections) == 1 else 3, tuner_type=cls.tuner_type,
                    rank=args.lora_rank, alpha=args.lora_alpha, targets=targets)
         cfg['model_type'] = model.config.model_type
-        _install(model, cfg, last_n, projections)
+        _install(model, cfg, last_n, projections, first)
         # Store the initialized factors; paired fresh runs replace them with the shared draw.
         initial = hashlib.sha256()
         for name, p in _params(model, targets).items():
@@ -160,15 +165,15 @@ class TALoRATuner(Tuner):
                 or (version != 10 and 'update_positions' in cfg)
                 or not isinstance(targets, list) or not targets):
             raise ValueError('Invalid TA-LoRA checkpoint format')
-        expected, last_n, projections = _target_layout(model, targets)
+        expected, last_n, projections, first = _target_layout(model, targets)
         if (targets != expected or (version < 3 and len(projections) != 1)
-                or (version == 1 and last_n != 4)):
+                or (version == 1 and (last_n != 4 or first != len(model.thinker.model.layers) - 4))):
             raise ValueError('TA-LoRA checkpoint format or Thinker target layers do not match')
         tensors = load_file(str(src / 'adapter_model.safetensors'))
         fixed_gate = cls.tuner_type == 'ta_gate_off'
         if fixed_gate and any(v.count_nonzero() for k, v in tensors.items() if k.endswith('.gate')):
             raise ValueError('ta_gate_off checkpoint contains a nonzero gate')
-        _install(model, cfg, last_n, projections)
+        _install(model, cfg, last_n, projections, first)
         params = _params(model, targets)
         if tensors.keys() != params.keys() or any(tensors[k].shape != p.shape for k, p in params.items()):
             raise ValueError('TA-LoRA checkpoint keys or tensor shapes do not match')

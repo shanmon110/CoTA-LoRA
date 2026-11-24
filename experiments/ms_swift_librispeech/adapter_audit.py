@@ -18,7 +18,17 @@ def ordered_projections(names, *, require_o=False):
     return ordered
 
 
-def _factors(model, method, last_n, projections):
+def band(count, last_n, first_layer=None):
+    """Indices of the targeted decoder layers: the last `last_n`, or `last_n` layers starting at `first_layer`."""
+    if type(last_n) is not int or not 1 <= last_n <= count:
+        raise ValueError('invalid last_n')
+    first = count - last_n if first_layer is None else first_layer
+    if type(first) is not int or not 0 <= first <= count - last_n:
+        raise ValueError('first_layer must leave room for last_n layers')
+    return range(first, first + last_n)
+
+
+def _factors(model, method, last_n, projections, first_layer=None):
     from peft import PeftModel
 
     if method in ('lora', 'rslora', 'dora') and isinstance(model, PeftModel):
@@ -28,11 +38,9 @@ def _factors(model, method, last_n, projections):
     else:
         raise ValueError(f'Expected Swift native PEFT LoRA or installed TA plugin, got {method}')
     layers = outer.thinker.model.layers
-    if not 1 <= last_n <= len(layers):
-        raise ValueError('invalid last_n')
     projections = ordered_projections(projections, require_o=method == 'ta_lora')
     factors = []
-    for i in range(len(layers) - last_n, len(layers)):
+    for i in band(len(layers), last_n, first_layer):
         attn = layers[i].self_attn
         for name in projections:
             if method == 'ta_lora' and name == 'o_proj':
@@ -58,15 +66,16 @@ def _factors(model, method, last_n, projections):
     return factors
 
 
-def audit_adapter(model, method, last_n=4, projections=('o_proj',)):
+def audit_adapter(model, method, last_n=4, projections=('o_proj',), first_layer=None):
     """Reject a frozen factor, unintended trainable tower, or misplaced projection."""
-    factors = _factors(model, method, last_n, projections)
+    factors = _factors(model, method, last_n, projections, first_layer)
     expected = {id(t) for _, *tensors in factors for t in tensors if t is not None}
     gate_weights = []
     if method == 'ta_lora':
         has_context = model._ta_lora_config.get('transport_gate') in ('question', 'question_audio')
-        for layer in model.thinker.model.layers[-last_n:]:
-            branch = layer.self_attn.ta_adapter
+        layers = model.thinker.model.layers
+        for i in band(len(layers), last_n, first_layer):
+            branch = layers[i].self_attn.ta_adapter
             param = branch.gate_weight
             if (param is not None) != has_context:
                 raise ValueError('Conditional gate weights and adapter mode disagree')
@@ -122,10 +131,10 @@ def audit_adapter(model, method, last_n=4, projections=('o_proj',)):
 
 
 @torch.no_grad()
-def initialize_pair(model, method, seed, last_n=4, projections=('o_proj',)):
+def initialize_pair(model, method, seed, last_n=4, projections=('o_proj',), first_layer=None):
     """Fresh adapters only. Draw A from PEFT's Kaiming distribution on an isolated CPU RNG."""
-    before = audit_adapter(model, method, last_n, projections)
-    factors = _factors(model, method, last_n, projections)
+    before = audit_adapter(model, method, last_n, projections, first_layer)
+    factors = _factors(model, method, last_n, projections, first_layer)
     if any(t.count_nonzero().item() for _, _, up, gate, _, transport_up in factors
            for t in (up, gate, transport_up) if t is not None):
         raise ValueError('Refusing to reinitialize trained adapter weights')
@@ -134,7 +143,7 @@ def initialize_pair(model, method, seed, last_n=4, projections=('o_proj',)):
         initial = torch.empty(down.shape, device='cpu', dtype=torch.float32)
         torch.nn.init.kaiming_uniform_(initial, a=math.sqrt(5), generator=rng)
         down.copy_(initial)
-    result = audit_adapter(model, method, last_n, projections)
+    result = audit_adapter(model, method, last_n, projections, first_layer)
     result['ab_init_sha256'] = result['ab_sha256']
     if method == 'dora' and result['magnitude_sha256'] != before['magnitude_sha256']:
         raise ValueError('Shared initialization modified native DoRA magnitudes')
