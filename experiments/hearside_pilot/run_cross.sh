@@ -67,7 +67,6 @@ small=$(find "$CREMAD" -maxdepth 1 -name '*.wav' -size -2k | wc -l)
 [ "$small" -eq 0 ] || stop "$small wav files in $CREMAD are under 2 KB; these are Git LFS pointers, not audio. Use experiments/hearside_pilot/get_cremad.sh"
 log "CREMA-D: $clips wav files"
 [ -f "$BASE_CONFIG" ] || stop "base config not found: $BASE_CONFIG"
-log "letter question batch size: ${MCQ_BATCH:-2 (protocol)}"
 
 if [ ! -f "$RUN/logs/tests-gating.ok" ]; then
     env CUDA_VISIBLE_DEVICES= "$PY" -m pytest -q -p no:cacheprovider \
@@ -86,6 +85,7 @@ if [ ! -f "$CROSS/crosscorpus.json" ]; then
 fi
 [ -z "$BATCH" ] || [ "$(field "$CROSS/crosscorpus.json" mcq_generation)" = "{'batch_size': $BATCH}" ] \
     || stop "this run folder was built with another batch size; start a new folder instead of mixing them"
+log "batch size: letter question $(field "$CROSS/crosscorpus.json" mcq_generation), free text $(field "$CROSS/crosscorpus.json" text_generation)"
 log "manifests: $(tr -d '\n ' < "$RUN/logs/build.log" | cut -c1-300)"
 
 summary() {

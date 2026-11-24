@@ -1,0 +1,41 @@
+{
+  "corpus": "CREMA-D",
+  "audio": "/root/autodl-tmp/crema-d/AudioWAV",
+  "seed": 42,
+  "per_actor_and_class": 3,
+  "utterances": 1092,
+  "actors": 91,
+  "clips_per_class": {
+    "A": 273,
+    "B": 273,
+    "C": 273,
+    "D": 273
+  },
+  "mcq_generation": {
+    "batch_size": 6
+  },
+  "text_generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 6,
+    "max_new_tokens": 16
+  },
+  "manifests": {
+    "mcq": {
+      "sha256": "ffa29a71b5e8d733fda9b6bfa0290691888e3f32104892122b4bced9dab6d654",
+      "rows": 4368
+    },
+    "yesno": {
+      "sha256": "e4c3be7f09d06d983533bf40594e8686debf3b6146b8366f15af00dea58fb159",
+      "rows": 2184
+    },
+    "word": {
+      "sha256": "729b1ee465ef67f4db3c37705599ac336885e46ef4d5c17a7affadf8a92d9ceb",
+      "rows": 2184
+    },
+    "open": {
+      "sha256": "0cf8d73a682ca920aa9259210443b60c4292e975d430b472aa1a6b53e18372e7",
+      "rows": 1092
+    }
+  }
+}
