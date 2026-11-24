@@ -61,6 +61,8 @@ log "source: $SRC at $(git -C "$SRC" rev-parse HEAD 2>/dev/null) $(git -C "$SRC"
 [ -d "$CREMAD" ] || stop "CREMA-D audio folder not found: $CREMAD. Set CREMAD=/path/to/AudioWAV (the folder holding 1001_DFA_ANG_XX.wav and the other 7441 clips)"
 clips=$(find "$CREMAD" -maxdepth 1 -name '*.wav' | wc -l)
 [ "$clips" -ge 7000 ] || stop "$CREMAD holds $clips wav files; the full CREMA-D release has 7442. A partial copy would change the selected clips"
+small=$(find "$CREMAD" -maxdepth 1 -name '*.wav' -size -2k | wc -l)
+[ "$small" -eq 0 ] || stop "$small wav files in $CREMAD are under 2 KB; these are Git LFS pointers, not audio. Use experiments/hearside_pilot/get_cremad.sh"
 log "CREMA-D: $clips wav files"
 [ -f "$BASE_CONFIG" ] || stop "base config not found: $BASE_CONFIG"
 

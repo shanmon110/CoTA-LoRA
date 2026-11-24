@@ -193,7 +193,9 @@ D2/D2b 诊断在 IEMOCAP Session 4 上得到两件事：
 CREMAD=/path/to/CREMA-D/AudioWAV nohup bash experiments/hearside_pilot/run_cross.sh > /root/autodl-fs/CoTA-LoRA/hearside-cross.out 2>&1 &
 ```
 
-脚本只读前三轮的目录和 CREMA-D 的音频目录；音频目录不存在或 wav 文件不足 7000 个时不运行。
+脚本只读前三轮的目录和 CREMA-D 的音频目录；音频目录不存在、wav 文件不足 7000 个或其中有 Git LFS 指针文件时不运行。
+
+`get_cremad.sh` 从官方仓库（固定提交 `1658cd3`）下载 7,442 个 wav 到 `/root/autodl-tmp/crema-d/AudioWAV`，并逐个核对仓库记录的 SHA-256；可重复运行以续传。它在本工作区用前 24 个文件测试过（下载、重跑、损坏与缺失文件的修复），完整下载未测试。
 
 ## 运行
 
