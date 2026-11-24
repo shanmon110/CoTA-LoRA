@@ -1,0 +1,7342 @@
+{
+  "seed": 42,
+  "duration_cuts_seconds": [
+    2.7524375,
+    5.0241875
+  ],
+  "test_manifest_sha256": "821c5d6eac678f15aff13ed46047cc1a152b55bc9d62e4ee633b88e9ab4ce243",
+  "base_config_sha256": "ebddc84c6bfcf7c5cd3cee4fca552d83d5ee56fdbdcc391f3fe86b9f6b76325a",
+  "train_group_sizes": {
+    "gender": [
+      1009,
+      1099
+    ],
+    "duration": [
+      703,
+      703,
+      702
+    ],
+    "scripted": [
+      1051,
+      1057
+    ]
+  },
+  "specialists": {
+    "gender-F": {
+      "grouping": "gender",
+      "group": "F",
+      "rows": {
+        "train": 1009,
+        "dev": 522,
+        "test": 2092
+      },
+      "steps": 127,
+      "test_sha256": "7886d2733860bd863a75a10cdecb8e7fc844e7b3abcf0a017ed785f3666101be"
+    },
+    "gender-M": {
+      "grouping": "gender",
+      "group": "M",
+      "rows": {
+        "train": 1099,
+        "dev": 629,
+        "test": 2012
+      },
+      "steps": 138,
+      "test_sha256": "896c8507b41e8ada9c07ea4394ea093fb3b361854b0adffa97d1052f5ef8f75b"
+    },
+    "duration-short": {
+      "grouping": "duration",
+      "group": "short",
+      "rows": {
+        "train": 703,
+        "dev": 335,
+        "test": 1416
+      },
+      "steps": 88,
+      "test_sha256": "343450360307cdbba05dd95e3bd5b61162b5d6868c32f317bcbdd217ee999530"
+    },
+    "duration-medium": {
+      "grouping": "duration",
+      "group": "medium",
+      "rows": {
+        "train": 703,
+        "dev": 468,
+        "test": 1432
+      },
+      "steps": 88,
+      "test_sha256": "9d09f1023ab3e894e5bba82ac362ee1524f2b7d1dc593c89a10abbfc0eb09d4f"
+    },
+    "duration-long": {
+      "grouping": "duration",
+      "group": "long",
+      "rows": {
+        "train": 702,
+        "dev": 348,
+        "test": 1256
+      },
+      "steps": 88,
+      "test_sha256": "67fcae9ba2a88b4b146496e95e2b5f3df8f67b6c5462b357164ac3ecd793d5f8"
+    },
+    "scripted-impro": {
+      "grouping": "scripted",
+      "group": "impro",
+      "rows": {
+        "train": 1051,
+        "dev": 627,
+        "test": 2116
+      },
+      "steps": 132,
+      "test_sha256": "322887b135988a64e1f1650326e801117314638c3ddaf29f37812cd89f1b5f64"
+    },
+    "scripted-script": {
+      "grouping": "scripted",
+      "group": "script",
+      "rows": {
+        "train": 1057,
+        "dev": 524,
+        "test": 1988
+      },
+      "steps": 133,
+      "test_sha256": "70e38c0ed83c4b9a28dff148cc6141802821ba1bfebb5c035bd3ed02d8d9db93"
+    },
+    "random2-part0": {
+      "grouping": "random2",
+      "group": "part0",
+      "rows": {
+        "train": 1009,
+        "dev": 551,
+        "test": 1964
+      },
+      "steps": 127,
+      "test_sha256": "2c649da6d01077d8589dff3ee2d4851070ff4a28964672e2a59b35171e95f368"
+    },
+    "random2-part1": {
+      "grouping": "random2",
+      "group": "part1",
+      "rows": {
+        "train": 1099,
+        "dev": 600,
+        "test": 2140
+      },
+      "steps": 138,
+      "test_sha256": "604bc6a66c44e10e19f616930765f33b0628a1c5382f66115ca76389b2e96907"
+    },
+    "random3-part0": {
+      "grouping": "random3",
+      "group": "part0",
+      "rows": {
+        "train": 703,
+        "dev": 384,
+        "test": 1368
+      },
+      "steps": 88,
+      "test_sha256": "acdf7c999ded4e02b7cafe4ba6aa8b62909252371b4d3eb4e958df2211bcc052"
+    },
+    "random3-part1": {
+      "grouping": "random3",
+      "group": "part1",
+      "rows": {
+        "train": 703,
+        "dev": 384,
+        "test": 1368
+      },
+      "steps": 88,
+      "test_sha256": "b0d5eb377b9325c117c6994f8e8f6ebfd1d25a6b3c0ed81c5e9b648d4dc565d0"
+    },
+    "random3-part2": {
+      "grouping": "random3",
+      "group": "part2",
+      "rows": {
+        "train": 702,
+        "dev": 383,
+        "test": 1368
+      },
+      "steps": 88,
+      "test_sha256": "11888f152a272ae79451aad1980b68aa94b32454f75c72a1abcf01c20a21b18b"
+    }
+  },
+  "test_groups": {
+    "Ses04F_impro01_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro01_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_F021": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro01_F022": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro01_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro01_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro01_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro01_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro02_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro02_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro02_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_F022": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_F023": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro02_F024": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro02_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro02_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_M025": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro02_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F034": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F036": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F038": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F040": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F041": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F042": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F043": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_F044": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F045": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_F047": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F048": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F050": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_F051": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M027": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M028": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M029": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M030": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M031": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M032": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M033": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M034": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M035": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M036": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro03_M037": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M038": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M039": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M040": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M041": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M042": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro03_M043": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro03_M047": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F025": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_F030": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_F031": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M002": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M007": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M016": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro04_M028": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M030": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro04_M031": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro04_M033": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro05_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro05_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro05_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro05_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro05_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro05_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro05_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro05_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro05_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro05_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M002": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M007": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro06_M010": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro06_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro06_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F021": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F022": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F024": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F027": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F028": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F029": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F030": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F031": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F032": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F033": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F035": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F038": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F039": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F040": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F041": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F042": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F044": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F047": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F048": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F049": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F050": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F051": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F052": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F058": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F059": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F060": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F061": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F062": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_F063": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F066": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F070": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_F074": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F078": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_F079": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M016": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M028": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M031": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M032": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M033": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M034": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M035": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M036": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M037": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M038": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M039": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M040": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M041": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M042": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M043": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M044": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M045": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M046": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M049": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M050": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M051": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M057": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M058": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M059": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M060": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M061": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M062": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M063": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M064": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M066": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M067": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M070": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M071": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M072": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M073": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro07_M076": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M077": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M079": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro07_M080": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro07_M082": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_F023": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro08_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro08_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_M016": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_impro08_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_impro08_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_impro08_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F004": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F011": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F015": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_F025": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_F032": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_F035": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F036": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F037": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_F040": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F041": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F042": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_F044": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M004": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M005": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M012": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M013": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M016": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M017": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M022": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_M025": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_1_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_1_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_1_M038": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_2_F001": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_2_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_2_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_2_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_2_F016": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_2_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_M004": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_2_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_2_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_2_M017": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_F015": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M004": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M011": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M014": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M018": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M019": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M023": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M024": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M027": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script01_3_M035": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M036": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M039": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M043": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M044": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script01_3_M045": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script01_3_M047": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_F016": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M002": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M011": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M017": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_M023": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_1_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M035": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M036": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_M037": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M038": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_1_M039": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_1_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F002": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F011": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F020": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F025": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F031": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F033": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_F034": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_F037": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F041": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F043": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F044": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F045": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_F046": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_M019": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_M023": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_M043": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script02_2_M044": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script02_2_M046": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script02_2_M047": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F011": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_M006": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_M017": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_M027": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_1_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_1_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_1_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F020": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F025": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F027": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F031": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F034": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F035": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F036": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F037": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F038": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F039": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F040": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F041": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_F042": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_F043": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_F044": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M003": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M005": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M006": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M014": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M015": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M016": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M024": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M027": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M035": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M037": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M039": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04F_script03_2_M042": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M043": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04F_script03_2_M044": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04F_script03_2_M045": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro01_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro01_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro01_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro01_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro01_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro01_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro01_F021": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro01_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro01_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro01_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro01_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro02_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro02_F020": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro02_F021": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro02_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro02_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_F024": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_F025": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M002": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_M007": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro03_M025": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro03_M028": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M029": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M030": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro03_M031": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro04_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro04_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro04_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_F020": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_F036": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_F037": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_M010": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_M016": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_M038": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro05_M039": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro05_M044": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro05_M045": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F000": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F001": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F005": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_F019": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_M002": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M007": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_M010": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro06_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M016": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_M018": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro06_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro06_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F002": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F003": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F004": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F006": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F007": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F008": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F009": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F010": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F011": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F012": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F013": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F014": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F015": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F016": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F017": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_F018": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F022": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F023": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F026": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F027": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_F036": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_F037": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M000": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M002": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M003": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M007": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M009": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M010": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M014": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M015": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M025": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro07_M029": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M030": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M032": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M035": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M036": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M037": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro07_M040": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M041": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M042": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro07_M043": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_F020": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_F022": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_F023": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_F024": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_F027": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_F028": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_F030": {
+      "gender": "F",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M001": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M004": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_M005": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M006": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_M008": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M010": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M011": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_M012": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M013": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M017": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M019": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M020": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M021": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M022": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M023": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_M024": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_impro08_M025": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M026": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_impro08_M027": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_impro08_M028": {
+      "gender": "M",
+      "scripted": "impro",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_F011": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F015": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F027": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_F032": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_F033": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F034": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F035": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F036": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_F037": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F039": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_F040": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_F041": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_M013": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_M014": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M018": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_1_M022": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M037": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_M038": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_1_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_1_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F001": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_F002": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_F003": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F004": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_F011": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F015": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_F016": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_F020": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_M005": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_2_M006": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_2_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_2_M019": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_3_F027": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M022": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M023": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M024": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_M025": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_3_M027": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_3_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script01_3_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script01_3_M035": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script01_3_M037": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_F002": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_F003": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_F004": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M002": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M003": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M005": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M012": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M014": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M015": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M018": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M022": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M023": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_1_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_1_M032": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_1_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F016": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F020": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F025": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_F027": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_F032": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F035": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_F036": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_M000": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M006": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script02_2_M037": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M039": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script02_2_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script02_2_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_F005": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F007": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F012": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F013": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F015": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F018": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F021": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_F025": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F027": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_M003": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M004": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M006": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M007": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_M012": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M013": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_M016": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_1_M025": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_1_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_1_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F000": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F001": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F002": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F003": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F006": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F008": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F009": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F010": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F014": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F017": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F019": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F022": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F023": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F024": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F026": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F028": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F029": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F030": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F031": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F032": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F033": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F034": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F035": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F036": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F037": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F039": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F040": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F041": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F042": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F043": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F044": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_F045": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F046": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F047": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F048": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F049": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F050": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_F051": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_F052": {
+      "gender": "F",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M001": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M008": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M009": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M010": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M011": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M012": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M013": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M014": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M020": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M021": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M022": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M024": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M025": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M026": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M027": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M028": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M029": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M030": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M031": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M033": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M034": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M035": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M036": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M038": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M040": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M041": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M043": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M046": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M047": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M048": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M049": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M050": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "long",
+      "random2": "part0",
+      "random3": "part0"
+    },
+    "Ses04M_script03_2_M051": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M052": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part1"
+    },
+    "Ses04M_script03_2_M053": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M054": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M055": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "medium",
+      "random2": "part1",
+      "random3": "part2"
+    },
+    "Ses04M_script03_2_M056": {
+      "gender": "M",
+      "scripted": "script",
+      "duration": "short",
+      "random2": "part1",
+      "random3": "part2"
+    }
+  }
+}

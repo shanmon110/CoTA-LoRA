@@ -1,0 +1,122 @@
+[2026-11-24 03:19:13] run folder: /root/autodl-fs/CoTA-LoRA/hearside-next-20261124-031913; stages: 1 2 3
+[2026-11-24 03:19:13] read only: /root/autodl-fs/CoTA-LoRA/hearside-pilot-20261123-160928 and /root/autodl-fs/CoTA-LoRA/hearside-followup-20261123-212622
+[2026-11-24 03:19:13] source: /root/autodl-fs/CoTA-LoRA at 70c0dfbbfdb1a5a8041118919495a8a1b1cc7d82 
+[2026-11-24 03:19:18] environment: python 3.12.3 torch 2.12.1+cu130 transformers 4.52.3 peft 0.15.2 swift 4.7.0.dev0 /root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/__init__.py parselmouth 0.4.7 cuda devices 1 NVIDIA GeForce RTX 5090 NVIDIA GeForce RTX 5090, 2 MiB, 32607 MiB /dev/md0        1.1T  265G  810G  25% /root/autodl-tmp 
+[2026-11-24 03:19:39] unit tests: 145 passed, 2 warnings in 19.52s
+[2026-11-24 03:20:20] inputs: identical to the pilot: training manifests and Session 4 inputs
+[2026-11-24 03:20:20] A-last4-s43: training on train-fixed.jsonl
+[2026-11-24 03:35:18] A-last4-s43 trained: best step 264, Session 3 UAR 0.6543783018552486, 361.0614063850371 s
+[2026-11-24 04:01:36] A-last4-s43 evaluated (exit 0): orig: UAR 0.5780 in 669s;orig_reworded: UAR 0.6196 in 680s;
+[2026-11-24 04:01:36] A-last4-s44: training on train-fixed.jsonl
+[2026-11-24 04:17:09] A-last4-s44 trained: best step 88, Session 3 UAR 0.6451399138771066, 367.58060054993257 s
+[2026-11-24 04:43:31] A-last4-s44 evaluated (exit 0): orig: UAR 0.5826 in 669s;orig_reworded: UAR 0.6238 in 678s;
+[2026-11-24 04:43:35] follow-up summary written
+[2026-11-24 04:57:43] formats: frozen-base (exit 0, 14 min)
+[2026-11-24 05:10:00] formats: D-all-shuffled (exit 0, 12 min)
+[2026-11-24 05:22:04] formats: D-all-shuffled-s43 (exit 0, 12 min)
+[2026-11-24 05:36:52] formats: D-all-shuffled-s44 (exit 0, 14 min)
+[2026-11-24 05:51:50] formats: A-all (exit 0, 14 min)
+[2026-11-24 06:04:57] formats: A-all-s43 (exit 0, 13 min)
+[2026-11-24 06:18:35] formats: A-all-s44 (exit 0, 13 min)
+[2026-11-24 06:33:00] formats: B-audio (exit 0, 14 min)
+[2026-11-24 06:47:33] formats: B-audio-s43 (exit 0, 14 min)
+[2026-11-24 07:02:14] formats: B-audio-s44 (exit 0, 14 min)
+[2026-11-24 07:15:19] formats: A-last4 (exit 0, 13 min)
+[2026-11-24 07:30:02] formats: A-last4-s43 (exit 0, 14 min)
+[2026-11-24 07:42:53] formats: A-last4-s44 (exit 0, 12 min)
+[2026-11-24 07:55:51] formats: C-post-audio (exit 0, 12 min)
+# Answers in formats no arm was trained on
+
+Session 4, 1026 utterances. Score: mean per-group recall in % (yes/no: the two answers; word and open: the four emotions); an unparseable answer counts as wrong. In brackets: share of parseable answers.
+
+| model (mean over its seeds) | yesno | word | open |
+|---|---:|---:|---:|
+| frozen-base (1) | 69.7 [100%] | 57.2 [100%] | 44.6 [83%] |
+| C-post-audio (1) | 74.7 [100%] | 61.1 [100%] | 45.3 [84%] |
+| A-last4 (3) | 69.8 [100%] | 53.6 [100%] | 44.1 [87%] |
+| A-all (3) | 74.3 [100%] | 73.1 [100%] | 55.2 [79%] |
+| B-audio (3) | 73.9 [100%] | 72.0 [100%] | 49.0 [73%] |
+| D-all-shuffled (3) | 78.5 [100%] | 70.9 [100%] | 55.5 [82%] |
+
+| difference pp [95% CI] | yesno | word | open |
+|---|---|---|---|
+| C-post-audio - frozen-base | +5.0 [+3.3, +6.7] | +3.9 [+1.8, +6.2] | +0.7 [-1.3, +2.5] |
+| A-last4 - frozen-base | +0.1 [-0.2, +0.5] | -3.6 [-5.6, -1.6] | -0.6 [-2.8, +1.2] |
+| A-all - frozen-base | +4.6 [+2.2, +7.3] | +15.8 [+12.7, +19.7] | +10.6 [+7.7, +13.7] |
+| B-audio - frozen-base | +4.2 [+1.9, +6.7] | +14.8 [+11.3, +19.1] | +4.3 [+0.5, +8.0] |
+| D-all-shuffled - frozen-base | +8.8 [+6.7, +11.2] | +13.7 [+9.6, +18.2] | +10.9 [+7.3, +14.4] |
+| B-audio - A-all | -0.4 [-2.3, +1.8] | -1.0 [-2.5, +0.3] | -6.3 [-10.4, -2.3] |
+| D-all-shuffled - A-all | +4.2 [+2.4, +6.3] | -2.2 [-4.9, -0.0] | +0.3 [-2.4, +2.4] |
+| B-audio - D-all-shuffled | -4.6 [-6.7, -2.9] | +1.2 [-1.6, +3.8] | -6.5 [-12.3, -1.6] |
+| A-last4 - A-all | -4.5 [-7.2, -1.9] | -19.4 [-24.2, -15.1] | -11.2 [-15.4, -7.6] |
+
+Gain of D-all-shuffled over the frozen base on the trained question: +17.4 pp. Reading declared before scoring:
+
+- yesno: **transfers**
+- word: **transfers**
+- open: **transfers**
+[2026-11-24 07:55:58] gender-F: training
+[2026-11-24 08:03:57] gender-F trained: best step 127, Session 3 UAR 0.7175335893729872, 206.1944039769005 s
+[2026-11-24 08:09:56] gender-F scored on its Session 4 utterances (exit 0)
+[2026-11-24 08:09:59] gender-M: training
+[2026-11-24 08:19:18] gender-M trained: best step 138, Session 3 UAR 0.6747342220321262, 232.05777254211716 s
+[2026-11-24 08:25:09] gender-M scored on its Session 4 utterances (exit 0)
+[2026-11-24 08:25:12] random2-part0: training
+[2026-11-24 08:33:04] random2-part0 trained: best step 86, Session 3 UAR 0.6772747140591705, 201.6863336819224 s
+[2026-11-24 08:38:38] random2-part0 scored on its Session 4 utterances (exit 0)
+[2026-11-24 08:38:41] random2-part1: training
+[2026-11-24 08:47:51] random2-part1 trained: best step 92, Session 3 UAR 0.6891376080160326, 234.84987057710532 s
+[2026-11-24 08:54:13] random2-part1 scored on its Session 4 utterances (exit 0)
+[2026-11-24 08:54:16] duration-short: training
+[2026-11-24 08:59:46] duration-short trained: best step 60, Session 3 UAR 0.6311808561808562, 142.59612913394812 s
+[2026-11-24 09:03:48] duration-short scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:03:51] duration-medium: training
+[2026-11-24 09:10:37] duration-medium trained: best step 60, Session 3 UAR 0.6787718680003607, 155.01529250096064 s
+[2026-11-24 09:14:48] duration-medium scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:14:51] duration-long: training
+[2026-11-24 09:20:34] duration-long trained: best step 88, Session 3 UAR 0.7402974007033543, 151.49086727795657 s
+[2026-11-24 09:24:19] duration-long scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:24:22] random3-part0: training
+[2026-11-24 09:30:21] random3-part0 trained: best step 88, Session 3 UAR 0.7042481749555844, 150.11664953886066 s
+[2026-11-24 09:34:12] random3-part0 scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:34:15] random3-part1: training
+[2026-11-24 09:40:03] random3-part1 trained: best step 60, Session 3 UAR 0.65974531983091, 147.70257363806013 s
+[2026-11-24 09:43:58] random3-part1 scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:44:01] random3-part2: training
+[2026-11-24 09:49:48] random3-part2 trained: best step 88, Session 3 UAR 0.6804344991008451, 142.7055547669297 s
+[2026-11-24 09:53:54] random3-part2 scored on its Session 4 utterances (exit 0)
+[2026-11-24 09:53:57] scripted-impro: training
+[2026-11-24 10:03:00] scripted-impro trained: best step 88, Session 3 UAR 0.755646675711208, 220.95554331794847 s
+[2026-11-24 10:08:34] scripted-impro scored on its Session 4 utterances (exit 0)
+[2026-11-24 10:08:37] scripted-script: training
+[2026-11-24 10:16:46] scripted-script trained: best step 133, Session 3 UAR 0.6750268952598547, 219.37419493007474 s
+[2026-11-24 10:22:21] scripted-script scored on its Session 4 utterances (exit 0)
+# Headroom for input-conditional adaptation
+
+Shared adapter: D-all-shuffled. Session 4, UAR in % over the four option orders.
+
+## Step zero: the shared adapter within each group
+
+| grouping | group | utterances | classes present | shared UAR per seed |
+|---|---|---:|---:|---|
+| gender | F | 523 | 4 | 75.5 / 74.1 / 68.7 |
+| gender | M | 503 | 4 | 75.5 / 76.2 / 68.2 |
+| duration | short | 354 | 4 | 69.6 / 69.0 / 64.8 |
+| duration | medium | 358 | 4 | 75.1 / 74.0 / 67.0 |
+| duration | long | 314 | 4 | 79.6 / 80.2 / 72.3 |
+| scripted | impro | 529 | 4 | 79.9 / 79.4 / 71.7 |
+| scripted | script | 497 | 4 | 69.3 / 69.5 / 63.5 |
+
+## Group specialists against the shared adapter (seed 42)
+
+| grouping | specialists | shared | random specialists | specialists − shared pp [95% CI] | specialists − random pp [95% CI] | headroom |
+|---|---:|---:|---:|---|---|---|
+| gender | 72.8 | 76.0 | 69.4 | -3.20 [-6.06, -0.81] | +3.40 [+0.50, +6.95] | no |
+| duration | 70.2 | 76.0 | 69.1 | -5.85 [-8.72, -3.59] | +1.03 [-0.83, +3.18] | no |
+| scripted | 74.3 | 76.0 | 69.4 | -1.72 [-4.31, +0.32] | +4.88 [+2.52, +7.26] | no |
+
+Seed standard deviation of the shared adapter: 4.06 pp; a gain must exceed 2 times it and 2 pp.
+
+Outcome under the declared rule: **closed**
+[2026-11-24 10:22:24] done
+[2026-11-24 10:22:24] finished with exit code 0 after 423 min; packing the small result files

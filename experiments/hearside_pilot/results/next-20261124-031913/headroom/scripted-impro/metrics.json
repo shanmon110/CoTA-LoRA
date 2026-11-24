@@ -1,0 +1,40 @@
+{
+  "uar": 0.747164461247637,
+  "accuracy": 0.747164461247637,
+  "recalls": {
+    "A": 0.6918714555765595,
+    "B": 0.6578449905482041,
+    "C": 0.7996219281663516,
+    "D": 0.8393194706994329
+  },
+  "confusion_matrix": [
+    [
+      366,
+      33,
+      91,
+      39
+    ],
+    [
+      16,
+      348,
+      57,
+      108
+    ],
+    [
+      48,
+      15,
+      423,
+      43
+    ],
+    [
+      17,
+      42,
+      26,
+      444
+    ]
+  ],
+  "utterances": 2116,
+  "specialist": "scripted-impro",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/train/scripted-impro/checkpoint-88",
+  "predictions_sha256": "4e7e55f2fd1561e2726ef319d848b6194be8b446987ef12c96a3ec55b767e8e3"
+}

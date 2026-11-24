@@ -1,0 +1,105 @@
+{
+  "train-fixed": {
+    "sha256": "3feff6798eb23f499b0cb379fede50a2eab6619071cc17de479da127e7058f88",
+    "utterances": 2108,
+    "sessions": [
+      1,
+      2
+    ],
+    "speakers": [
+      "Ses01F",
+      "Ses01M",
+      "Ses02F",
+      "Ses02M"
+    ],
+    "classes": {
+      "A": 366,
+      "B": 605,
+      "C": 391,
+      "D": 746
+    },
+    "answer_letters": {
+      "A": 366,
+      "B": 605,
+      "C": 391,
+      "D": 746
+    }
+  },
+  "train-shuffled": {
+    "sha256": "4bc61b46bbe3394734ed2cd9e1d95d95664b2250e526f6616f569d5ff07fb263",
+    "utterances": 2108,
+    "sessions": [
+      1,
+      2
+    ],
+    "speakers": [
+      "Ses01F",
+      "Ses01M",
+      "Ses02F",
+      "Ses02M"
+    ],
+    "classes": {
+      "A": 366,
+      "B": 605,
+      "C": 391,
+      "D": 746
+    },
+    "answer_letters": {
+      "A": 527,
+      "B": 527,
+      "C": 527,
+      "D": 527
+    }
+  },
+  "dev-fixed": {
+    "sha256": "ee412dd008b499e4879e026f7453f979e57c6ea940d8bc89c0b75ba13b4c43ed",
+    "utterances": 1151,
+    "sessions": [
+      3
+    ],
+    "speakers": [
+      "Ses03F",
+      "Ses03M"
+    ],
+    "classes": {
+      "A": 240,
+      "B": 286,
+      "C": 305,
+      "D": 320
+    },
+    "answer_letters": {
+      "A": 240,
+      "B": 286,
+      "C": 305,
+      "D": 320
+    }
+  },
+  "dev-shuffled": {
+    "sha256": "2c67f3ad333c13ed0002f918436f972f934d1da713e9ab67a286023405aee8df",
+    "utterances": 1151,
+    "sessions": [
+      3
+    ],
+    "speakers": [
+      "Ses03F",
+      "Ses03M"
+    ],
+    "classes": {
+      "A": 240,
+      "B": 286,
+      "C": 305,
+      "D": 320
+    },
+    "answer_letters": {
+      "A": 288,
+      "B": 288,
+      "C": 288,
+      "D": 287
+    }
+  },
+  "source": {
+    "path": "/root/autodl-tmp/iemocap/swift-ser/data/train.jsonl",
+    "sha256": "37b21be771c64189a6c73ddd8c5333adf7509cc78d8f8423ba73aa5c606fc14e",
+    "seed": 42
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "folder": "/root/autodl-fs/CoTA-LoRA/hearside-next-20261124-031913/headroom",
+  "criteria": {
+    "min_gain_pp": 2.0,
+    "seed_sd_multiple": 2.0
+  },
+  "seed_sd_pp": 4.059217431902809,
+  "shared_seeds": [
+    "D-all-shuffled",
+    "D-all-shuffled-s43",
+    "D-all-shuffled-s44"
+  ],
+  "duration_cuts_seconds": [
+    2.7524375,
+    5.0241875
+  ],
+  "groups": {
+    "gender": {
+      "F": {
+        "utterances": 523,
+        "shared_uar_per_seed": [
+          0.7549034960363861,
+          0.7413300728244316,
+          0.6866176720958976
+        ],
+        "classes_present": 4
+      },
+      "M": {
+        "utterances": 503,
+        "shared_uar_per_seed": [
+          0.7553436767772925,
+          0.7616880093088763,
+          0.6815721106467378
+        ],
+        "classes_present": 4
+      }
+    },
+    "duration": {
+      "short": {
+        "utterances": 354,
+        "shared_uar_per_seed": [
+          0.6961137820512822,
+          0.6895432692307693,
+          0.6482371794871795
+        ],
+        "classes_present": 4
+      },
+      "medium": {
+        "utterances": 358,
+        "shared_uar_per_seed": [
+          0.7513029661016949,
+          0.7398199152542373,
+          0.6704555084745762
+        ],
+        "classes_present": 4
+      },
+      "long": {
+        "utterances": 314,
+        "shared_uar_per_seed": [
+          0.7963100862907553,
+          0.8016337755223142,
+          0.7225600190900672
+        ],
+        "classes_present": 4
+      }
+    },
+    "scripted": {
+      "impro": {
+        "utterances": 529,
+        "shared_uar_per_seed": [
+          0.7988628557246849,
+          0.7938193650825676,
+          0.7174461325673067
+        ],
+        "classes_present": 4
+      },
+      "script": {
+        "utterances": 497,
+        "shared_uar_per_seed": [
+          0.6929572381521306,
+          0.6949351425157876,
+          0.6346415059452695
+        ],
+        "classes_present": 4
+      }
+    }
+  },
+  "groupings": {
+    "gender": {
+      "uar": 72.81642323555123,
+      "shared_uar": 76.01944395244166,
+      "gain_over_shared_pp": -3.2030207168904368,
+      "gain_over_shared_interval_95_pp": [
+        -6.0613466870201025,
+        -0.8060588019245533
+      ],
+      "answers_changed": 0.1574074074074074,
+      "random_uar": 69.41577534903575,
+      "gain_over_random_pp": 3.4006478865154732,
+      "gain_over_random_interval_95_pp": [
+        0.4956383965656084,
+        6.946757067847173
+      ],
+      "random_minus_shared_pp": -6.60366860340591,
+      "headroom": false
+    },
+    "duration": {
+      "uar": 70.17184785107753,
+      "shared_uar": 76.01944395244166,
+      "gain_over_shared_pp": -5.847596101364139,
+      "gain_over_shared_interval_95_pp": [
+        -8.716263310558302,
+        -3.5863925582591056
+      ],
+      "answers_changed": 0.15838206627680312,
+      "random_uar": 69.14680259227977,
+      "gain_over_random_pp": 1.0250452587977632,
+      "gain_over_random_interval_95_pp": [
+        -0.8338932615629343,
+        3.1814100940672927
+      ],
+      "random_minus_shared_pp": -6.872641360161902,
+      "headroom": false
+    },
+    "scripted": {
+      "uar": 74.29802873324631,
+      "shared_uar": 76.01944395244166,
+      "gain_over_shared_pp": -1.7214152191953547,
+      "gain_over_shared_interval_95_pp": [
+        -4.314138825518124,
+        0.31858724451507775
+      ],
+      "answers_changed": 0.17495126705653022,
+      "random_uar": 69.41577534903575,
+      "gain_over_random_pp": 4.882253384210555,
+      "gain_over_random_interval_95_pp": [
+        2.5202247633208605,
+        7.263619376027764
+      ],
+      "random_minus_shared_pp": -6.60366860340591,
+      "headroom": false
+    }
+  },
+  "outcome": "closed"
+}

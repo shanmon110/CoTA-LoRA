@@ -1,0 +1,74 @@
+{
+  "source": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/eval/manifests/orig.jsonl",
+  "source_sha256": "821c5d6eac678f15aff13ed46047cc1a152b55bc9d62e4ee633b88e9ab4ce243",
+  "utterances": 1026,
+  "prompts": {
+    "yesno": "Does the speaker sound {0}? Answer yes or no.",
+    "word": "How does the speaker sound? Choose one: {0}; {1}; {2}; {3}. Answer with the chosen words only.",
+    "open": "Describe the speaker's emotional state in one or two words."
+  },
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 4,
+    "max_new_tokens": 16
+  },
+  "lexicon": {
+    "A": [
+      "angry",
+      "anger",
+      "angered",
+      "mad",
+      "furious",
+      "irritated",
+      "annoyed",
+      "frustrated",
+      "frustration",
+      "outraged"
+    ],
+    "B": [
+      "happy",
+      "happiness",
+      "excited",
+      "excitement",
+      "joy",
+      "joyful",
+      "cheerful",
+      "delighted",
+      "amused",
+      "pleased",
+      "glad"
+    ],
+    "C": [
+      "sad",
+      "sadness",
+      "sorrow",
+      "sorrowful",
+      "depressed",
+      "unhappy",
+      "melancholy",
+      "melancholic",
+      "grief",
+      "mournful"
+    ],
+    "D": [
+      "neutral",
+      "calm",
+      "neutrality"
+    ]
+  },
+  "manifests": {
+    "yesno": {
+      "sha256": "9d20d54cd8e9d6e7361e9a6977da5c44b608938ec6a0d0dd9548cd52dcf7b40d",
+      "rows": 2052
+    },
+    "word": {
+      "sha256": "a6acb3415a2be46a72def614f9d7bd969eb3822e4e5e72b24587dd6c94c0cd2c",
+      "rows": 2052
+    },
+    "open": {
+      "sha256": "d5513f274ea5e9c018b4d7038d3c8d9ae7949978243024635eee4ce4c916caa0",
+      "rows": 1026
+    }
+  }
+}

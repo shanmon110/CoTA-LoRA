@@ -1,0 +1,22 @@
+{
+  "A-last4-s43": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/configs/A-last4-s43.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/data/dev-fixed.jsonl",
+    "like": "A-all",
+    "last_n": 4,
+    "seed": 43
+  },
+  "A-last4-s44": {
+    "config": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/configs/A-last4-s44.json",
+    "update_positions": "all",
+    "option_order": "fixed",
+    "train": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/data/train-fixed.jsonl",
+    "dev": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/data/dev-fixed.jsonl",
+    "like": "A-all",
+    "last_n": 4,
+    "seed": 44
+  }
+}

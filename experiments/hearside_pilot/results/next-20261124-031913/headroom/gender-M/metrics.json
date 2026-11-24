@@ -1,0 +1,40 @@
+{
+  "uar": 0.7251491053677932,
+  "accuracy": 0.7251491053677932,
+  "recalls": {
+    "A": 0.7236580516898609,
+    "B": 0.7813121272365805,
+    "C": 0.6998011928429424,
+    "D": 0.6958250497017893
+  },
+  "confusion_matrix": [
+    [
+      364,
+      47,
+      47,
+      45
+    ],
+    [
+      39,
+      393,
+      21,
+      50
+    ],
+    [
+      64,
+      53,
+      352,
+      34
+    ],
+    [
+      31,
+      87,
+      35,
+      350
+    ]
+  ],
+  "utterances": 2012,
+  "specialist": "gender-M",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/train/gender-M/checkpoint-138",
+  "predictions_sha256": "ac3ff35feef402c4ae72e830b5f7ad9c8941fdc21db42cd5cb59ee16ce6f29e8"
+}

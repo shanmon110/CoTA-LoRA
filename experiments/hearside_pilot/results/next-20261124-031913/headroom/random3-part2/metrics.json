@@ -1,0 +1,40 @@
+{
+  "uar": 0.7054093567251463,
+  "accuracy": 0.7054093567251462,
+  "recalls": {
+    "A": 0.7426900584795322,
+    "B": 0.6871345029239766,
+    "C": 0.7046783625730995,
+    "D": 0.6871345029239766
+  },
+  "confusion_matrix": [
+    [
+      254,
+      26,
+      39,
+      23
+    ],
+    [
+      28,
+      235,
+      39,
+      40
+    ],
+    [
+      52,
+      23,
+      241,
+      26
+    ],
+    [
+      36,
+      39,
+      32,
+      235
+    ]
+  ],
+  "utterances": 1368,
+  "specialist": "random3-part2",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-next-20261124-031913/train/random3-part2/checkpoint-88",
+  "predictions_sha256": "0d7d0d10c9896a1e54bd9ebd773fb8ed44048d3db33afa149c9c48c10eabe7a1"
+}
