@@ -1,0 +1,530 @@
+{
+  "IEMOCAP Session 4": {
+    "folder": "/home/claude/bundle-bands/session4",
+    "utterances": 1026,
+    "models": {
+      "frozen-base": [
+        "frozen-base"
+      ],
+      "A-first4": [
+        "A-first4",
+        "A-first4-s43",
+        "A-first4-s44"
+      ],
+      "A-mid4": [
+        "A-mid4",
+        "A-mid4-s43",
+        "A-mid4-s44"
+      ],
+      "A-last4": [
+        "A-last4",
+        "A-last4-s43",
+        "A-last4-s44"
+      ],
+      "A-all": [
+        "A-all",
+        "A-all-s43",
+        "A-all-s44"
+      ],
+      "B-audio": [
+        "B-audio",
+        "B-audio-s43",
+        "B-audio-s44"
+      ],
+      "D-all-shuffled": [
+        "D-all-shuffled",
+        "D-all-shuffled-s43",
+        "D-all-shuffled-s44"
+      ]
+    },
+    "criteria": {
+      "min_share": 0.5,
+      "chance": 0.3333333333333333,
+      "min_excess_pp": 15.0
+    },
+    "table": {
+      "frozen-base": {
+        "letter_agreement": {
+          "value": 0.05019493177387914,
+          "interval_95": [
+            0.04284723919300532,
+            0.056927602770821435
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8622482131254061,
+          "interval_95": [
+            0.8454359188707968,
+            0.8809293397475786
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.30517241379310345,
+          "interval_95": [
+            0.28510271678485954,
+            0.32177135763773673
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.11500974658869395,
+          "interval_95": [
+            0.09005606288290371,
+            0.14188069758224336
+          ]
+        }
+      },
+      "A-first4": {
+        "letter_agreement": {
+          "value": 0.032975958414554904,
+          "interval_95": [
+            0.024368236386728276,
+            0.04260136099743029
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8983105912930475,
+          "interval_95": [
+            0.87113017961825,
+            0.923480410312661
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.31611889855601444,
+          "interval_95": [
+            0.2963261294246425,
+            0.33324595204654683
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.09410872861165258,
+          "interval_95": [
+            0.07652773341721512,
+            0.11428668538234721
+          ]
+        }
+      },
+      "A-mid4": {
+        "letter_agreement": {
+          "value": 0.03833658219623132,
+          "interval_95": [
+            0.030604997080488465,
+            0.04731960127983709
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.878275936755469,
+          "interval_95": [
+            0.8524618409808333,
+            0.9020082184002872
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.31029821097621335,
+          "interval_95": [
+            0.28967125302630625,
+            0.3321472559929638
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.09811565951916829,
+          "interval_95": [
+            0.07823421691736056,
+            0.12109716658926428
+          ]
+        }
+      },
+      "A-last4": {
+        "letter_agreement": {
+          "value": 0.12800519818063677,
+          "interval_95": [
+            0.10575612796011633,
+            0.15430261881668283
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.6527507039202946,
+          "interval_95": [
+            0.5956023644102546,
+            0.7054997871729695
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.27491090296047055,
+          "interval_95": [
+            0.21945136486932038,
+            0.32872820202822334
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.12573099415204678,
+          "interval_95": [
+            0.0877329856772085,
+            0.16955984861902765
+          ]
+        }
+      },
+      "A-all": {
+        "letter_agreement": {
+          "value": 0.04061078622482131,
+          "interval_95": [
+            0.03158546423227707,
+            0.05088501950248269
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.883961446826944,
+          "interval_95": [
+            0.862287546962431,
+            0.9055283267361548
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.32949910066103244,
+          "interval_95": [
+            0.31158949940676395,
+            0.34731577838249256
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.09389213775178688,
+          "interval_95": [
+            0.07304501656127672,
+            0.11755286897367642
+          ]
+        }
+      },
+      "B-audio": {
+        "letter_agreement": {
+          "value": 0.028535845787307775,
+          "interval_95": [
+            0.023560970597576173,
+            0.0333205249737006
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.9101689408706952,
+          "interval_95": [
+            0.8947529416145369,
+            0.9259119185127718
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3260664239302575,
+          "interval_95": [
+            0.3043546813660137,
+            0.3457604341420064
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.08544509421702402,
+          "interval_95": [
+            0.06761731299698175,
+            0.1051797023183194
+          ]
+        }
+      },
+      "D-all-shuffled": {
+        "letter_agreement": {
+          "value": 0.02322936972059779,
+          "interval_95": [
+            0.018734400346527957,
+            0.027552585710751643
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.9353476283300844,
+          "interval_95": [
+            0.9228638030523648,
+            0.9484615894727607
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.31277833493264345,
+          "interval_95": [
+            0.29583199803107857,
+            0.3261727669022486
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.0769980506822612,
+          "interval_95": [
+            0.06112741983154043,
+            0.09528643186168116
+          ]
+        }
+      }
+    },
+    "reading": "not shown",
+    "last4_minus_all_share_pp": {
+      "delta": -5.45881977005619,
+      "interval_95": [
+        -10.396178274759494,
+        -0.8192318463169985
+      ]
+    }
+  },
+  "CREMA-D": {
+    "folder": "/home/claude/bundle-bands/cremad",
+    "utterances": 1092,
+    "models": {
+      "frozen-base": [
+        "frozen-base"
+      ],
+      "A-first4": [
+        "A-first4",
+        "A-first4-s43",
+        "A-first4-s44"
+      ],
+      "A-mid4": [
+        "A-mid4",
+        "A-mid4-s43",
+        "A-mid4-s44"
+      ],
+      "A-last4": [
+        "A-last4",
+        "A-last4-s43",
+        "A-last4-s44"
+      ],
+      "A-all": [
+        "A-all",
+        "A-all-s43",
+        "A-all-s44"
+      ],
+      "B-audio": [
+        "B-audio",
+        "B-audio-s43",
+        "B-audio-s44"
+      ],
+      "D-all-shuffled": [
+        "D-all-shuffled",
+        "D-all-shuffled-s43",
+        "D-all-shuffled-s44"
+      ]
+    },
+    "criteria": {
+      "min_share": 0.5,
+      "chance": 0.3333333333333333,
+      "min_excess_pp": 15.0
+    },
+    "table": {
+      "frozen-base": {
+        "letter_agreement": {
+          "value": 0.06211843711843712,
+          "interval_95": [
+            0.054945054945054944,
+            0.0699023199023199
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8261599511599511,
+          "interval_95": [
+            0.8081501831501832,
+            0.8438644688644689
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.32901706886403764,
+          "interval_95": [
+            0.31988126094883984,
+            0.3383723131205049
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.17063492063492064,
+          "interval_95": [
+            0.1623931623931624,
+            0.17887667887667888
+          ]
+        }
+      },
+      "A-first4": {
+        "letter_agreement": {
+          "value": 0.06583231583231584,
+          "interval_95": [
+            0.045177045177045176,
+            0.09523809523809523
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8228530728530729,
+          "interval_95": [
+            0.7631257631257631,
+            0.8670634920634921
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3129299341415377,
+          "interval_95": [
+            0.2999917520857215,
+            0.3253051320544093
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.1167073667073667,
+          "interval_95": [
+            0.10317205942205943,
+            0.13024013024013026
+          ]
+        }
+      },
+      "A-mid4": {
+        "letter_agreement": {
+          "value": 0.0352055352055352,
+          "interval_95": [
+            0.0231990231990232,
+            0.052655677655677656
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8893976393976394,
+          "interval_95": [
+            0.8427960927960928,
+            0.9223137973137975
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3217660624495332,
+          "interval_95": [
+            0.3006230103162807,
+            0.33861860360682045
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.13278388278388278,
+          "interval_95": [
+            0.1168091168091168,
+            0.14896214896214896
+          ]
+        }
+      },
+      "A-last4": {
+        "letter_agreement": {
+          "value": 0.10927960927960928,
+          "interval_95": [
+            0.0890822140822141,
+            0.1330891330891331
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.7006003256003256,
+          "interval_95": [
+            0.6534887566137566,
+            0.7420138888888889
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3572902564157275,
+          "interval_95": [
+            0.3461561258678652,
+            0.3688728739665627
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.1973951973951974,
+          "interval_95": [
+            0.18915343915343916,
+            0.20573870573870576
+          ]
+        }
+      },
+      "A-all": {
+        "letter_agreement": {
+          "value": 0.03739316239316239,
+          "interval_95": [
+            0.032814407814407816,
+            0.04237891737891738
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8826312576312576,
+          "interval_95": [
+            0.8685388685388685,
+            0.8954517704517704
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3287859829095183,
+          "interval_95": [
+            0.31730013161135584,
+            0.34048743223674705
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.1227106227106227,
+          "interval_95": [
+            0.11192511192511194,
+            0.13360042735042732
+          ]
+        }
+      },
+      "B-audio": {
+        "letter_agreement": {
+          "value": 0.03367928367928368,
+          "interval_95": [
+            0.027421652421652423,
+            0.03993691493691493
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.8876170126170125,
+          "interval_95": [
+            0.8698107448107448,
+            0.9042035510785511
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.3232278996574215,
+          "interval_95": [
+            0.3114918880899902,
+            0.3361498490812333
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.12016687016687017,
+          "interval_95": [
+            0.10775335775335776,
+            0.13278388278388278
+          ]
+        }
+      },
+      "D-all-shuffled": {
+        "letter_agreement": {
+          "value": 0.027421652421652423,
+          "interval_95": [
+            0.02162189662189662,
+            0.034188034188034185
+          ]
+        },
+        "emotion_agreement": {
+          "value": 0.9247557997557999,
+          "interval_95": [
+            0.9098494098494099,
+            0.9385938135938137
+          ]
+        },
+        "training_letter_share_of_errors": {
+          "value": 0.32480926714449315,
+          "interval_95": [
+            0.31175980816813315,
+            0.33773756981716885
+          ]
+        },
+        "training_letter_rate": {
+          "value": 0.11599511599511599,
+          "interval_95": [
+            0.1040903540903541,
+            0.1277981277981278
+          ]
+        }
+      }
+    },
+    "reading": "not shown",
+    "last4_minus_all_share_pp": {
+      "delta": 2.8504273506209152,
+      "interval_95": [
+        1.1385721343700694,
+        4.522005415501252
+      ]
+    }
+  }
+}
