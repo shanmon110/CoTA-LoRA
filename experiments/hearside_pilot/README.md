@@ -231,6 +231,14 @@ nohup bash experiments/hearside_pilot/run_probes.sh > /root/autodl-fs/CoTA-LoRA/
 nohup bash experiments/hearside_pilot/run_letters.sh > /root/autodl-fs/CoTA-LoRA/hearside-letters.out 2>&1 &
 ```
 
+## 第二个任务：AVQA 训练、MMAU 测试（2026-11-25 声明，尚未运行）
+
+声明见 `research/second-task-and-grpo-20261125.md` 的 1a 部分。在同一基座上训练前、中、后 4 层和全部层各三个种子，在 MMAU Test-mini 上按原顺序、移位后的选项顺序和一种不带字母的问法评测。实现在 `aqa.py`，运行用 `run_aqa.sh`：
+
+```
+nohup bash experiments/hearside_pilot/run_aqa.sh > /root/autodl-fs/CoTA-LoRA/hearside-aqa.out 2>&1 &
+```
+
 ## 运行
 
 服务器上一条命令（克隆 `main` 的当前版本并在后台运行）：
@@ -267,6 +275,7 @@ git clone --depth 1 https://github.com/shanmon110/CoTA-LoRA.git "$S" && cd "$S" 
 | `probes.py`、`run_probes.sh` | 测试 6 项通过：植入信号的层被探针找到、判读的正反例、重采样的分数、钩子取到的状态与玩具模型自己报告的隐藏状态一致。脚本用替身提取（随机状态）、真实的探针拟合和前几轮的真实回答走过，含单个模型提取失败的情况。真实模型上已完整跑通一次（提交 `b70baf9`）；提取时的回答与此前打分有约 2% 不同，原因未验证，见结果笔记 |
 | `conflict.py` | 测试 2 项通过（读选项的模型与按字母表回答的模型各一个构造例）；已在两个语料的真实预测上运行 |
 | `letters.py`、`run_letters.sh` | 测试 4 项通过（拟合的常数能还原植入的偏向；纯字母偏置的臂与“听得更好”的臂被正确区分）。脚本用替身 logit 走过，含单个模型失败的情况。真实模型上的 logit 提取未运行；提取代码没有单独的测试，靠运行时的两道检查（输出头每批只经过一次、取到的 logit 给出模型实际回答的字母） |
+| `aqa.py`、`run_aqa.sh` | 测试 4 项通过（各臂配置只差层段和种子；移位后正确选项文字不变；回答与选项的匹配规则；三种判读的构造例）。脚本用玩具题目、替身训练和替身打分走过（正常、单臂训练失败、续跑）。真实模型上未运行：音频问答任务上用这种适配器训练、以及不带字母的问法的生成，都是第一次 |
 | `run_pilot.sh` 的流程 | 正常流程在服务器上完整跑通一次；单元测试失败、单臂训练失败、续跑三条分支只用替身解释器走过 |
 | `followup.py` 的计分 | 用小实验的真实预测核对：各臂 UAR 与服务器汇总逐项相同，顺序差的区间与此前独立计算一致 |
 | `run_followup.sh` 的流程（正常、缺小实验目录、输入不一致、单臂失败、续跑） | 只用替身解释器和玩具语料走过；真实训练和评测未运行 |
