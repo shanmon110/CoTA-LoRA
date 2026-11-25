@@ -1,0 +1,15 @@
+............                                                             [100%]
+=============================== warnings summary ===============================
+../../../miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14
+  /root/miniconda3/lib/python3.12/site-packages/anyio/pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+experiments/hearside_pilot/tests/test_probes.py::test_resampler_scores_mean_per_class_recall
+  /root/autodl-tmp/trr-diagnostics/praat-src-b969244/experiments/hearside_pilot/probes.py:226: RuntimeWarning: invalid value encountered in divide
+    return ((self.weights @ right) / (self.weights @ self.count)).mean(axis=1)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+12 passed, 2 warnings in 10.72s
