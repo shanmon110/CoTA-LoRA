@@ -79,3 +79,6 @@ def test_assemble_refuses_predictions_scored_on_another_manifest(tmp_path):
     d2.write(run / 'metrics.json', dict(manifest_sha256=d2.digest(source / 'manifests' / 'orig.jsonl'), predictions_sha256=d2.digest(run / 'predictions.jsonl')))
     info = bands.assemble([source], tmp_path / 'formats', PROTOCOL, tmp_path / 'b')
     assert info['arms'] == {} and info['utterances'] == 2 and made['manifests']['open']['rows'] == 2      # no format answers yet: left out
+    # The omission is recorded, so a reader of the summary can tell this arm apart from one that never existed.
+    assert list(info['skipped_arms']) == ['frozen-base']
+    assert sorted(info['skipped_arms']['frozen-base']['missing_tasks']) == sorted(formats.FORMATS)

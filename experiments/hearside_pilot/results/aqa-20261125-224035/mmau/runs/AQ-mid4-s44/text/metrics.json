@@ -1,0 +1,13 @@
+{
+  "task": "text",
+  "arm": "AQ-mid4-s44",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-mid4-s44/checkpoint-128",
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 4,
+    "max_new_tokens": 48
+  },
+  "manifest_sha256": "f6c5ca459f0ded5508e4b0ad0866f44af2afc3004ee83e69059ee874cad99ae0",
+  "predictions_sha256": "38487192611e8f755cf6ac8a65abe77d0d53a564ee1523b733c1233d8a2450e2"
+}

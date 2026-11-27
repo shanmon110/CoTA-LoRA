@@ -369,6 +369,10 @@ if __name__ == '__main__':
     p.add_argument('--states', type=Path, required=True)
     p.add_argument('--folder', type=Path, required=True)
     p.add_argument('--arm', required=True)
+    p = commands.add_parser('agree-rate')
+    p.add_argument('--states', type=Path, required=True)
+    p.add_argument('--folder', type=Path, required=True)
+    p.add_argument('--arm', required=True)
     p = commands.add_parser('summarize')
     p.add_argument('--root', type=Path, required=True)
     p.add_argument('--session4', type=Path, required=True)
@@ -384,7 +388,12 @@ if __name__ == '__main__':
     elif args.command == 'agree':
         found = agree(args.states, args.folder, args.arm)
         print(json.dumps(found))
+        # The disagreement rate is reported to the caller, which decides what to do with it; the
+        # threshold lives here only so that a caller that pipes the output cannot lose the number.
         raise SystemExit(int(found['different'] > 0.01 * found['rows']))
+    elif args.command == 'agree-rate':
+        found = agree(args.states, args.folder, args.arm)
+        print(json.dumps(found))
     elif args.command == 'unchanged':
         print(json.dumps({split: unchanged(args.root, args.model, split, args.last_layer) for split in TESTS}))
     else:

@@ -103,7 +103,9 @@ for arm in $ARMS; do
     started=$SECONDS
     "$PY" -m experiments.hearside_pilot.crosscorpus run --folder "$CROSS" --model-config "$root/configs/$arm.json" --method ta-lora \
         --checkpoint "$(field "$root/train/$arm/result.json" best_checkpoint)" --arm "$arm" ${MCQ_BATCH:+--mcq-batch-size "$MCQ_BATCH"} > "$RUN/logs/run-$arm.log" 2>&1
-    log "$arm (exit $?, $(((SECONDS - started) / 60)) min)"
+    code=$?
+    log "$arm (exit $code, $(((SECONDS - started) / 60)) min)"
+    [ "$code" -eq 0 ] || stop "$arm could not be scored; see logs/run-$arm.log: $(tail -1 "$RUN/logs/run-$arm.log")"
     summary
 done
 summary

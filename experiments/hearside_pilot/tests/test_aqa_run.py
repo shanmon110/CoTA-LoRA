@@ -74,6 +74,26 @@ def test_answers_are_matched_to_options():
     assert aqa.by_letter(row, 'B') == (True, True) and aqa.by_letter(row, 'D') == (False, False) and aqa.by_letter(row, 'A') == (False, True)
 
 
+def test_a_truncated_answer_names_the_option_it_starts():
+    row = dict(choices=['No, it is not present.', 'Yes, it is present.'], gold_text='No, it is not present.')
+    assert aqa.by_text(row, 'No') == (True, True)                    # the start of exactly one option
+    assert aqa.by_text(row, 'Yes') == (False, True)
+    # A prefix that starts two options at once names neither.
+    both = dict(choices=['No, it is not present.', 'No, it is present.'], gold_text='No, it is not present.')
+    assert aqa.by_text(both, 'No') == (False, False)
+    # A prefix that contradicts nothing still names the wrong option when the wrong one is meant.
+    assert aqa.by_text(row, 'No, it is not') == (True, True)
+
+
+def test_a_prefix_has_to_end_at_a_word_boundary_and_be_long_enough():
+    # "air" is the start of "airbased on the given audio ...", but only in the middle of a word.
+    row = dict(choices=['desert', 'airbased on the given audio what is the most likely setting'], gold_text='desert')
+    assert aqa.by_text(row, 'Air') == (False, False)
+    # A single character is not read as naming an option.
+    short = dict(choices=['A dog barking', 'Rain'], gold_text='Rain')
+    assert aqa.by_text(short, 'R') == (False, False)
+
+
 def scenario(tmp_path, last4):
     tmp_path.mkdir()
     questions(tmp_path / 'test.jsonl')

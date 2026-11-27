@@ -168,7 +168,9 @@ case " $STAGES " in *" 2 "*)
         started=$SECONDS
         "$PY" -m experiments.hearside_pilot.formats run --folder "$RUN/formats" --model-config "$root/configs/$arm.json" --method ta-lora \
             --checkpoint "$(field "$root/train/$arm/result.json" best_checkpoint)" --arm "$arm" > "$RUN/logs/formats-$arm.log" 2>&1
-        log "formats: $arm (exit $?, $(((SECONDS - started) / 60)) min)"
+        code=$?
+        log "formats: $arm (exit $code, $(((SECONDS - started) / 60)) min)"
+        [ "$code" -eq 0 ] || stop "formats: $arm could not be scored; see logs/formats-$arm.log: $(tail -1 "$RUN/logs/formats-$arm.log")"
         formats_summary
     done
     formats_summary

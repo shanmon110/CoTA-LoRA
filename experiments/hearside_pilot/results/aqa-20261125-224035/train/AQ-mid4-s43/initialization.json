@@ -1,0 +1,44 @@
+{
+  "ab_sha256": "c65536e47c40557a48d66e9efc55222df53fd25902453e5f2e2e162ec85693a7",
+  "trainable_parameters": 131104,
+  "target_layers": [
+    16,
+    17,
+    18,
+    19
+  ],
+  "target_projections": [
+    "o_proj"
+  ],
+  "trainable_names": [
+    "thinker.model.layers.16.self_attn.ta_adapter.down",
+    "thinker.model.layers.16.self_attn.ta_adapter.up",
+    "thinker.model.layers.16.self_attn.ta_adapter.gate",
+    "thinker.model.layers.17.self_attn.ta_adapter.down",
+    "thinker.model.layers.17.self_attn.ta_adapter.up",
+    "thinker.model.layers.17.self_attn.ta_adapter.gate",
+    "thinker.model.layers.18.self_attn.ta_adapter.down",
+    "thinker.model.layers.18.self_attn.ta_adapter.up",
+    "thinker.model.layers.18.self_attn.ta_adapter.gate",
+    "thinker.model.layers.19.self_attn.ta_adapter.down",
+    "thinker.model.layers.19.self_attn.ta_adapter.up",
+    "thinker.model.layers.19.self_attn.ta_adapter.gate"
+  ],
+  "ab_init_sha256": "c65536e47c40557a48d66e9efc55222df53fd25902453e5f2e2e162ec85693a7",
+  "gate_init": 0.0,
+  "gate_multiplier": 0.0,
+  "update_positions": "all",
+  "supervision": {
+    "audio_placeholders": 250,
+    "feature_shape": [
+      1,
+      128,
+      30000
+    ],
+    "sequence_tokens": 314,
+    "supervised_tokens": 3,
+    "decoded_target": "C",
+    "encoded_question_and_choices_verified": true,
+    "first_supervised_letter": "C"
+  }
+}

@@ -123,10 +123,25 @@ def by_letter(row, answer):
 
 
 def by_text(row, answer):
-    """The option the answer names: equal to it, or the only option it contains."""
+    """The option the answer names: equal to it, or the only option it contains.
+
+    A truncated answer is accepted when it is the beginning of exactly one option and the rest of
+    that option carries no information the answer contradicts. The boundary is a word boundary, so
+    that "air" does not count as the start of the option "air based on the given audio ..."; and
+    the prefix has to be at least two characters long, so that a single stray letter is not read
+    as naming an option. This is the policy stated in research/second-task-and-grpo-20261125.md,
+    part 1a.
+    """
     said, options = normal(answer), {normal(c) for c in row['choices']}
     named = {said} & options or {o for o in options if o and re.search(rf'(?<!\w){re.escape(o)}(?!\w)', said)}
-    return (len(named) == 1 and named == {normal(row['gold_text'])}), len(named) == 1
+    if len(named) == 1:
+        return named == {normal(row['gold_text'])}, True
+    # No option is named outright. A truncated answer ("No" for "No, it is not present.") still names
+    # one option, and only that one, if it is the start of exactly one option, at a word boundary.
+    starts = {o for o in options if o and len(said) >= 2 and re.match(rf'(?<!\w){re.escape(said)}(?!\w)', o)}
+    if len(starts) == 1:
+        return starts == {normal(row['gold_text'])}, True
+    return False, False
 
 
 def summarize(folder, *, resamples=10000, seed=42):

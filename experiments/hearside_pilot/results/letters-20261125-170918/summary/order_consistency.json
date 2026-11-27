@@ -1,0 +1,122 @@
+{
+  "letter_bias": {
+    "A": -1.2304644487531056,
+    "B": 0.46408830901696,
+    "C": 1.3800277229025628,
+    "D": -0.6136515831664173
+  },
+  "corpora": {
+    "session4": {
+      "frozen-base": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.051007147498375566,
+        "same_emotion": 0.8606237816764133
+      },
+      "surrogate": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.15188434048083171,
+        "same_emotion": 0.6299545159194282
+      },
+      "A-all": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.04808317089018843,
+        "same_emotion": 0.871832358674464
+      },
+      "A-first4": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.028102664067576347,
+        "same_emotion": 0.9126055880441846
+      },
+      "A-last4": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.150909681611436,
+        "same_emotion": 0.6060753736192332
+      },
+      "A-last4-s43": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.1177712800519818,
+        "same_emotion": 0.6684535412605588
+      },
+      "A-last4-s44": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.11289798570500324,
+        "same_emotion": 0.6900584795321637
+      },
+      "A-mid4": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.04337231968810916,
+        "same_emotion": 0.8663092917478883
+      },
+      "D-all-shuffled": {
+        "utterances": 1026,
+        "pairs": 6156,
+        "same_letter": 0.024853801169590642,
+        "same_emotion": 0.9283625730994152
+      }
+    },
+    "cremad": {
+      "frozen-base": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.06288156288156288,
+        "same_emotion": 0.8249389499389499
+      },
+      "surrogate": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.15964590964590963,
+        "same_emotion": 0.6106532356532357
+      },
+      "A-all": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.037698412698412696,
+        "same_emotion": 0.8913308913308914
+      },
+      "A-first4": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.05128205128205128,
+        "same_emotion": 0.8528693528693528
+      },
+      "A-last4": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.13247863247863248,
+        "same_emotion": 0.6529304029304029
+      },
+      "A-last4-s43": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.09004884004884005,
+        "same_emotion": 0.7376373626373627
+      },
+      "A-last4-s44": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.10607448107448107,
+        "same_emotion": 0.7051282051282052
+      },
+      "A-mid4": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.02854090354090354,
+        "same_emotion": 0.9087301587301587
+      },
+      "D-all-shuffled": {
+        "utterances": 1092,
+        "pairs": 6552,
+        "same_letter": 0.025335775335775336,
+        "same_emotion": 0.9304029304029304
+      }
+    }
+  }
+}

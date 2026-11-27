@@ -1,0 +1,114 @@
+[INFO:swift] Successfully registered `/root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/dataset/data/dataset_info.json`.
+[INFO:swift] rank: -1, local_rank: -1, world_size: 1, local_world_size: 1
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Setting args.eval_human: True
+[INFO:swift] Setting args.lazy_tokenize: True
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Using environment variable `ENABLE_AUDIO_OUTPUT`, Setting ENABLE_AUDIO_OUTPUT: False.
+[WARNING:swift] Loading config from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. Custom Python code from the model repository will be executed. Only use models from sources you trust.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] attn_impl: eager
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+[INFO:swift] Setting image_factor: 28. You can adjust this hyperparameter through the environment variable: `IMAGE_FACTOR`.
+[INFO:swift] Setting min_pixels: 3136. You can adjust this hyperparameter through the environment variable: `MIN_PIXELS`.
+[INFO:swift] Setting max_pixels: 12845056. You can adjust this hyperparameter through the environment variable: `MAX_PIXELS`.
+[INFO:swift] Setting video_min_pixels: 100352. You can adjust this hyperparameter through the environment variable: `VIDEO_MIN_PIXELS`.
+[INFO:swift] Setting video_max_pixels: 602112. You can adjust this hyperparameter through the environment variable: `VIDEO_MAX_PIXELS`.
+[INFO:swift] Setting video_total_pixels: 90316800. You can adjust this hyperparameter through the environment variable: `VIDEO_TOTAL_PIXELS`.
+[INFO:swift] Setting max_ratio: 200. You can adjust this hyperparameter through the environment variable: `MAX_RATIO`.
+[INFO:swift] Setting frame_factor: 2. You can adjust this hyperparameter through the environment variable: `FRAME_FACTOR`.
+[INFO:swift] Setting fps: 2.0. You can adjust this hyperparameter through the environment variable: `FPS`.
+[INFO:swift] Setting fps_min_frames: 4. You can adjust this hyperparameter through the environment variable: `FPS_MIN_FRAMES`.
+[INFO:swift] Setting fps_max_frames: 768. You can adjust this hyperparameter through the environment variable: `FPS_MAX_FRAMES`.
+[INFO:swift] model_kwargs: {'device_map': 'cuda:0', 'torch_dtype': torch.bfloat16}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.19s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.05it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.50it/s]
+[INFO:swift] default_system: 'You are a helpful assistant.'
+[INFO:swift] max_length: 2048
+[INFO:swift] response_prefix: None
+[INFO:swift] agent_template: hermes
+[INFO:swift] norm_bbox: none
+[INFO:swift] Setting ROOT_IMAGE_DIR: None. You can adjust this hyperparameter through the environment variable: `ROOT_IMAGE_DIR`.
+[INFO:swift] Setting QWENVL_BBOX_FORMAT: legacy. You can adjust this hyperparameter through the environment variable: `QWENVL_BBOX_FORMAT`.
+[INFO:swift] Setting use_audio_in_video: False. You can adjust this hyperparameter through the environment variable: `USE_AUDIO_IN_VIDEO`.
+[INFO:swift] Setting sampling_rate: 16000. You can adjust this hyperparameter through the environment variable: `SAMPLING_RATE`.
+[INFO:swift] Setting swift_audio_load_backend: librosa. You can adjust this hyperparameter through the environment variable: `SWIFT_AUDIO_LOAD_BACKEND`.
+[INFO:swift] Setting swift_media_allowed_dirs: None. You can adjust this hyperparameter through the environment variable: `SWIFT_MEDIA_ALLOWED_DIRS`.
+[INFO:swift] Successfully registered `/root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/dataset/data/dataset_info.json`.
+[INFO:swift] rank: -1, local_rank: -1, world_size: 1, local_world_size: 1
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Setting args.eval_human: True
+[INFO:swift] Setting args.lazy_tokenize: True
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Using environment variable `ENABLE_AUDIO_OUTPUT`, Setting ENABLE_AUDIO_OUTPUT: False.
+[WARNING:swift] Loading config from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. Custom Python code from the model repository will be executed. Only use models from sources you trust.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] attn_impl: eager
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+[INFO:swift] Setting image_factor: 28. You can adjust this hyperparameter through the environment variable: `IMAGE_FACTOR`.
+[INFO:swift] Setting min_pixels: 3136. You can adjust this hyperparameter through the environment variable: `MIN_PIXELS`.
+[INFO:swift] Setting max_pixels: 12845056. You can adjust this hyperparameter through the environment variable: `MAX_PIXELS`.
+[INFO:swift] Setting video_min_pixels: 100352. You can adjust this hyperparameter through the environment variable: `VIDEO_MIN_PIXELS`.
+[INFO:swift] Setting video_max_pixels: 602112. You can adjust this hyperparameter through the environment variable: `VIDEO_MAX_PIXELS`.
+[INFO:swift] Setting video_total_pixels: 90316800. You can adjust this hyperparameter through the environment variable: `VIDEO_TOTAL_PIXELS`.
+[INFO:swift] Setting max_ratio: 200. You can adjust this hyperparameter through the environment variable: `MAX_RATIO`.
+[INFO:swift] Setting frame_factor: 2. You can adjust this hyperparameter through the environment variable: `FRAME_FACTOR`.
+[INFO:swift] Setting fps: 2.0. You can adjust this hyperparameter through the environment variable: `FPS`.
+[INFO:swift] Setting fps_min_frames: 4. You can adjust this hyperparameter through the environment variable: `FPS_MIN_FRAMES`.
+[INFO:swift] Setting fps_max_frames: 768. You can adjust this hyperparameter through the environment variable: `FPS_MAX_FRAMES`.
+[INFO:swift] model_kwargs: {'device_map': 'cuda:0', 'torch_dtype': torch.bfloat16}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.21s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.06it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.51it/s]
+[INFO:swift] default_system: 'You are a helpful assistant.'
+[INFO:swift] max_length: 2048
+[INFO:swift] response_prefix: None
+[INFO:swift] agent_template: hermes
+[INFO:swift] norm_bbox: none
+[INFO:swift] Setting ROOT_IMAGE_DIR: None. You can adjust this hyperparameter through the environment variable: `ROOT_IMAGE_DIR`.
+[INFO:swift] Setting QWENVL_BBOX_FORMAT: legacy. You can adjust this hyperparameter through the environment variable: `QWENVL_BBOX_FORMAT`.
+[INFO:swift] Setting use_audio_in_video: False. You can adjust this hyperparameter through the environment variable: `USE_AUDIO_IN_VIDEO`.
+[INFO:swift] Setting sampling_rate: 16000. You can adjust this hyperparameter through the environment variable: `SAMPLING_RATE`.
+[INFO:swift] Setting swift_audio_load_backend: librosa. You can adjust this hyperparameter through the environment variable: `SWIFT_AUDIO_LOAD_BACKEND`.
+[INFO:swift] Setting swift_media_allowed_dirs: None. You can adjust this hyperparameter through the environment variable: `SWIFT_MEDIA_ALLOWED_DIRS`.
+[INFO:swift] Successfully registered `/root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/dataset/data/dataset_info.json`.
+[INFO:swift] rank: -1, local_rank: -1, world_size: 1, local_world_size: 1
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Setting args.eval_human: True
+[INFO:swift] Setting args.lazy_tokenize: True
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Using environment variable `ENABLE_AUDIO_OUTPUT`, Setting ENABLE_AUDIO_OUTPUT: False.
+[WARNING:swift] Loading config from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. Custom Python code from the model repository will be executed. Only use models from sources you trust.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] attn_impl: eager
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+[INFO:swift] Setting image_factor: 28. You can adjust this hyperparameter through the environment variable: `IMAGE_FACTOR`.
+[INFO:swift] Setting min_pixels: 3136. You can adjust this hyperparameter through the environment variable: `MIN_PIXELS`.
+[INFO:swift] Setting max_pixels: 12845056. You can adjust this hyperparameter through the environment variable: `MAX_PIXELS`.
+[INFO:swift] Setting video_min_pixels: 100352. You can adjust this hyperparameter through the environment variable: `VIDEO_MIN_PIXELS`.
+[INFO:swift] Setting video_max_pixels: 602112. You can adjust this hyperparameter through the environment variable: `VIDEO_MAX_PIXELS`.
+[INFO:swift] Setting video_total_pixels: 90316800. You can adjust this hyperparameter through the environment variable: `VIDEO_TOTAL_PIXELS`.
+[INFO:swift] Setting max_ratio: 200. You can adjust this hyperparameter through the environment variable: `MAX_RATIO`.
+[INFO:swift] Setting frame_factor: 2. You can adjust this hyperparameter through the environment variable: `FRAME_FACTOR`.
+[INFO:swift] Setting fps: 2.0. You can adjust this hyperparameter through the environment variable: `FPS`.
+[INFO:swift] Setting fps_min_frames: 4. You can adjust this hyperparameter through the environment variable: `FPS_MIN_FRAMES`.
+[INFO:swift] Setting fps_max_frames: 768. You can adjust this hyperparameter through the environment variable: `FPS_MAX_FRAMES`.
+[INFO:swift] model_kwargs: {'device_map': 'cuda:0', 'torch_dtype': torch.bfloat16}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.16s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.10it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.57it/s]
+[INFO:swift] default_system: 'You are a helpful assistant.'
+[INFO:swift] max_length: 2048
+[INFO:swift] response_prefix: None
+[INFO:swift] agent_template: hermes
+[INFO:swift] norm_bbox: none
+[INFO:swift] Setting ROOT_IMAGE_DIR: None. You can adjust this hyperparameter through the environment variable: `ROOT_IMAGE_DIR`.
+[INFO:swift] Setting QWENVL_BBOX_FORMAT: legacy. You can adjust this hyperparameter through the environment variable: `QWENVL_BBOX_FORMAT`.
+[INFO:swift] Setting use_audio_in_video: False. You can adjust this hyperparameter through the environment variable: `USE_AUDIO_IN_VIDEO`.
+[INFO:swift] Setting sampling_rate: 16000. You can adjust this hyperparameter through the environment variable: `SAMPLING_RATE`.
+[INFO:swift] Setting swift_audio_load_backend: librosa. You can adjust this hyperparameter through the environment variable: `SWIFT_AUDIO_LOAD_BACKEND`.
+[INFO:swift] Setting swift_media_allowed_dirs: None. You can adjust this hyperparameter through the environment variable: `SWIFT_MEDIA_ALLOWED_DIRS`.

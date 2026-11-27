@@ -1,0 +1,13 @@
+{
+  "task": "text",
+  "arm": "frozen-base",
+  "checkpoint": null,
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 4,
+    "max_new_tokens": 48
+  },
+  "manifest_sha256": "f6c5ca459f0ded5508e4b0ad0866f44af2afc3004ee83e69059ee874cad99ae0",
+  "predictions_sha256": "fbffe17a5fe8adc59aea36adae803dac70012d7ef3c4087b483da4b2a0dd702a"
+}

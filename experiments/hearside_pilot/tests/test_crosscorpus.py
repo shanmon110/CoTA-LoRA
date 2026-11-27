@@ -137,6 +137,18 @@ def test_models_scored_with_different_batch_sizes_are_not_compared(tmp_path):
         crosscorpus.summarize(folder, resamples=50)
 
 
+def test_models_scored_with_different_free_text_settings_are_not_compared(tmp_path):
+    """The free-text formats are compared too, so their decoding settings have to agree."""
+    folder = tmp_path / 'out'
+    crosscorpus.build(corpus(tmp_path), PROTOCOL, folder)
+    for arm in ('frozen-base', 'A-all'):
+        answers(folder, arm, lambda row, task: 0.5)
+    path = folder / 'runs' / 'A-all' / 'word' / 'metrics.json'
+    d2.write(path, dict(d2.load(path), generation=dict(formats.GENERATION, batch_size=6)))
+    with pytest.raises(ValueError, match='different generation settings'):
+        crosscorpus.summarize(folder, resamples=50)
+
+
 def test_the_batch_size_is_fixed_at_build_time_and_changes_nothing_else(tmp_path):
     audio = corpus(tmp_path)
     usual = crosscorpus.build(audio, PROTOCOL, tmp_path / 'a')

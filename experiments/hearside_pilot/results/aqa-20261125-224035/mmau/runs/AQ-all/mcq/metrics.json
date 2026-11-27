@@ -1,0 +1,10 @@
+{
+  "task": "mcq",
+  "arm": "AQ-all",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-all/checkpoint-96",
+  "generation": {
+    "batch_size": 2
+  },
+  "manifest_sha256": "cbad452db201ec342af9262d6b04461a369c10932af7cee955b54b0b0dbba5d7",
+  "predictions_sha256": "c3567cfd75cbbf61f0566b945c33a8e53612381759a78ce0528d9e825351b2f7"
+}

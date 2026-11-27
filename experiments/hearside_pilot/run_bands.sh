@@ -132,7 +132,10 @@ for arm in $ARMS; do
         started=$SECONDS
         "$PY" -m experiments.hearside_pilot.crosscorpus run --folder "$corpus" --model-config "$RUN/configs/$arm.json" --method ta-lora \
             --checkpoint "$(field "$out/result.json" best_checkpoint)" --arm "$arm" >> "$RUN/logs/run-$arm.log" 2>&1
-        log "$arm on $(basename "$corpus") (exit $?, $(((SECONDS - started) / 60)) min)"
+        # Capture the exit code first: a command substitution in the log line would reset it.
+        code=$?
+        log "$arm on $(basename "$corpus") (exit $code, $(((SECONDS - started) / 60)) min)"
+        [ "$code" -eq 0 ] || stop "$arm could not be scored on $(basename "$corpus"); see logs/run-$arm.log"
     done
     summary
 done

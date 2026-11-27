@@ -112,7 +112,12 @@ for model in $MODELS; do
         [ "$model" = frozen-base ] && stop "without the frozen base there is nothing to compare"
         continue
     fi
-    log "$model: states extracted ($(((SECONDS - started) / 60)) min); answers differing from the earlier Session 4 scoring: $("$PY" -m experiments.hearside_pilot.probes agree --states "$STATES/$model/session4" --folder "$S4" --arm "$model" 2>&1 | tail -1)"
+    # `probes agree` exits non-zero when more than 1% of the letters differ from the earlier
+    # Session 4 scoring, so its output is read through `agree-rate`, which always exits zero.
+    # The rate is logged as it is: the disagreement is a property of the two scorings, not a failure
+    # of this run, and it was above the threshold for every model including the frozen base.
+    agree_json=$("$PY" -m experiments.hearside_pilot.probes agree-rate --states "$STATES/$model/session4" --folder "$S4" --arm "$model" 2>&1 | tail -1)
+    log "$model: states extracted ($(((SECONDS - started) / 60)) min); answers differing from the earlier Session 4 scoring: $agree_json"
     if [ "$model" = A-last4 ]; then
         log "A-last4: largest difference from the frozen base in the states below its trained layers: $("$PY" -m experiments.hearside_pilot.probes unchanged --root "$STATES" --model A-last4 --last-layer 32 2>&1 | tail -1)"
     fi

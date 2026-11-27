@@ -1,0 +1,68 @@
+{
+  "AQ-first4": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-first4.json",
+    "seed": 42,
+    "last_n": 4,
+    "first_layer": 0
+  },
+  "AQ-first4-s43": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-first4-s43.json",
+    "seed": 43,
+    "last_n": 4,
+    "first_layer": 0
+  },
+  "AQ-first4-s44": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-first4-s44.json",
+    "seed": 44,
+    "last_n": 4,
+    "first_layer": 0
+  },
+  "AQ-mid4": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-mid4.json",
+    "seed": 42,
+    "last_n": 4,
+    "first_layer": 16
+  },
+  "AQ-mid4-s43": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-mid4-s43.json",
+    "seed": 43,
+    "last_n": 4,
+    "first_layer": 16
+  },
+  "AQ-mid4-s44": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-mid4-s44.json",
+    "seed": 44,
+    "last_n": 4,
+    "first_layer": 16
+  },
+  "AQ-last4": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-last4.json",
+    "seed": 42,
+    "last_n": 4
+  },
+  "AQ-last4-s43": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-last4-s43.json",
+    "seed": 43,
+    "last_n": 4
+  },
+  "AQ-last4-s44": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-last4-s44.json",
+    "seed": 44,
+    "last_n": 4
+  },
+  "AQ-all": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-all.json",
+    "seed": 42,
+    "last_n": 36
+  },
+  "AQ-all-s43": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-all-s43.json",
+    "seed": 43,
+    "last_n": 36
+  },
+  "AQ-all-s44": {
+    "config": "/root/autodl-fs/CoTA-LoRA/hearside-aqa-20261125-224035/configs/AQ-all-s44.json",
+    "seed": 44,
+    "last_n": 36
+  }
+}

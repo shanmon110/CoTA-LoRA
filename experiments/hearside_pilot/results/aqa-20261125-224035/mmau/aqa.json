@@ -1,0 +1,22 @@
+{
+  "source": "/root/autodl-tmp/r1-aqa/data/pilot-01/test.jsonl",
+  "source_sha256": "f1b4ebdca86addbc05f3626d32d7fe979b44cf953d0d079ca390b4fefb739612",
+  "questions": 1000,
+  "audios": 1000,
+  "options": {
+    "2": 27,
+    "4": 948,
+    "5": 24,
+    "8": 1
+  },
+  "manifests": {
+    "mcq": {
+      "sha256": "cbad452db201ec342af9262d6b04461a369c10932af7cee955b54b0b0dbba5d7",
+      "rows": 3946
+    },
+    "text": {
+      "sha256": "f6c5ca459f0ded5508e4b0ad0866f44af2afc3004ee83e69059ee874cad99ae0",
+      "rows": 1000
+    }
+  }
+}

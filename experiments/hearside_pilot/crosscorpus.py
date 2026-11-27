@@ -150,6 +150,11 @@ def summarize(folder, *, resamples=10000, seed=42):
     batches = {json.dumps(d2.load(folder / 'runs' / arm / 'mcq' / 'metrics.json').get('generation'), sort_keys=True) for arm in arms}
     if len(batches) > 1:
         raise ValueError(f'The letter question was scored with different generation settings across models: {sorted(batches)}')
+    # The free-text formats are compared too, so their generation settings have to agree as well.
+    for name in formats.FORMATS:
+        texts = {json.dumps(d2.load(folder / 'runs' / arm / name / 'metrics.json').get('generation'), sort_keys=True) for arm in arms}
+        if len(texts) > 1:
+            raise ValueError(f'The {name} format was scored with different generation settings across models: {sorted(texts)}')
     value, boot, parseable = ({a: {} for a in arms} for _ in range(3))
     mcq = d2.read_jsonl(folder / 'mcq.jsonl')
     parts = dict(mcq_training_order=[r['rotation'] == 0 for r in mcq], mcq_other_orders=[r['rotation'] != 0 for r in mcq],

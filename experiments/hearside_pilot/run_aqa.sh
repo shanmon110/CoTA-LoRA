@@ -52,7 +52,7 @@ done
 if [ ! -f "$RUN/logs/tests-gating.ok" ]; then
     env CUDA_VISIBLE_DEVICES= "$PY" -m pytest -q -p no:cacheprovider \
         experiments/ms_swift_librispeech/tests/test_layer_band.py experiments/ms_swift_librispeech/tests/test_update_positions.py \
-        experiments/hearside_pilot/tests/test_aqa.py > "$RUN/logs/tests-gating.log" 2>&1 \
+        experiments/hearside_pilot/tests/test_aqa_run.py > "$RUN/logs/tests-gating.log" 2>&1 \
         || stop "unit tests failed; nothing was run. See logs/tests-gating.log: $(tail -1 "$RUN/logs/tests-gating.log")"
     log "unit tests: $(tail -1 "$RUN/logs/tests-gating.log")"
     touch "$RUN/logs/tests-gating.ok"
@@ -99,7 +99,10 @@ for arm in $ARMS; do
     started=$SECONDS
     "$PY" -m experiments.hearside_pilot.aqa run --folder "$EVAL" --model-config "$RUN/configs/$arm.json" --method ta-lora \
         --checkpoint "$(field "$out/result.json" best_checkpoint)" --arm "$arm" > "$RUN/logs/run-$arm.log" 2>&1
-    log "$arm on MMAU (exit $?, $(((SECONDS - started) / 60)) min)"
+    # Capture the exit code before the log line: the command substitution there would reset it.
+    code=$?
+    log "$arm on MMAU (exit $code, $(((SECONDS - started) / 60)) min)"
+    [ "$code" -eq 0 ] || stop "$arm could not be scored on MMAU; see logs/run-$arm.log: $(tail -1 "$RUN/logs/run-$arm.log")"
     summary
 done
 summary

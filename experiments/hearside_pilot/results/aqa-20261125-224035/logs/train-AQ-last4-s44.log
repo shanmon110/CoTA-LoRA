@@ -1,0 +1,1283 @@
+[INFO:swift] Successfully registered `/root/autodl-tmp/ms-swift-librispeech/src/ms-swift/swift/dataset/data/dataset_info.json`.
+[WARNING:swift] Importing external plugin: /root/autodl-tmp/trr-diagnostics/praat-src-b969244/experiments/ms_swift_librispeech/plugin.py
+[INFO:swift] Successfully imported external_plugins: ['/root/autodl-tmp/trr-diagnostics/praat-src-b969244/experiments/ms_swift_librispeech/plugin.py'].
+[INFO:swift] rank: -1, local_rank: -1, world_size: 1, local_world_size: 1
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Because len(args.val_dataset) > 0, setting split_dataset_ratio: 0.0
+[INFO:swift] Setting args.dataloader_persistent_workers: False because dataloader_num_workers is 0.
+[INFO:swift] args: SftArguments(
+_n_gpu=-1,
+acc_strategy=token,
+accelerator_config={'dispatch_batches': False},
+adafactor=False,
+adalora_beta1=0.85,
+adalora_beta2=0.85,
+adalora_deltaT=1,
+adalora_init_r=12,
+adalora_orth_reg_weight=0.5,
+adalora_target_r=8,
+adalora_tfinal=0,
+adalora_tinit=0,
+adam_beta1=0.9,
+adam_beta2=0.95,
+adam_epsilon=1e-08,
+adapter_act=gelu,
+adapter_length=128,
+adapters=[],
+add_non_thinking_prefix=True,
+add_version=False,
+agent_template=None,
+aligner_lr=None,
+attn_impl=eager,
+auto_find_batch_size=False,
+average_tokens_across_devices=False,
+batch_eval_metrics=False,
+bf16=True,
+bf16_full_eval=False,
+bnb_4bit_compute_dtype=torch.bfloat16,
+bnb_4bit_quant_storage=None,
+bnb_4bit_quant_type=nf4,
+bnb_4bit_use_double_quant=True,
+boft_block_num=0,
+boft_block_size=4,
+boft_dropout=0.0,
+boft_n_butterfly_factor=1,
+cached_dataset=[],
+cached_val_dataset=[],
+callbacks=[],
+check_model=False,
+columns={},
+create_checkpoint_symlink=False,
+custom_dataset_info=[],
+custom_register_path=[],
+data_seed=44,
+dataloader_drop_last=False,
+dataloader_multiprocessing_context=None,
+dataloader_num_workers=0,
+dataloader_persistent_workers=True,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+dataset=['/root/autodl-tmp/r1-aqa/data/pilot-01/train.jsonl'],
+dataset_num_proc=1,
+dataset_shuffle=True,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=18000000,
+debug=,
+decision_drop_instructions=0.0,
+decision_shuffle_fields=False,
+decision_state_as_text=0.0,
+decision_subsample_options=0,
+deepspeed=None,
+deepspeed_autotp_size=None,
+device_groups=None,
+device_map=None,
+disable_auto_column_mapping=False,
+disable_ignore_empty_think=False,
+disable_tqdm=True,
+do_eval=False,
+do_predict=False,
+do_train=False,
+download_mode=reuse_dataset_if_exists,
+ds3_gather_for_generation=True,
+early_stop_interval=None,
+enable_channel_loss=False,
+enable_dft_loss=False,
+enable_npu_model_patch=True,
+enable_thinking=None,
+entropack_linear_type=None,
+entropack_target_bpp=None,
+eval_accumulation_steps=None,
+eval_dataset=[],
+eval_dataset_args=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_generation_config=None,
+eval_limit=None,
+eval_metric=None,
+eval_on_start=False,
+eval_steps=32,
+eval_strategy=steps,
+eval_use_evalscope=False,
+eval_use_gather_object=False,
+experts_impl=None,
+external_plugins=['/root/autodl-tmp/trr-diagnostics/praat-src-b969244/experiments/ms_swift_librispeech/plugin.py'],
+extra_eval_args=None,
+fourier_n_frequency=2000,
+fourier_scaling=300.0,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+freeze_aligner=True,
+freeze_llm=False,
+freeze_parameters=[],
+freeze_parameters_ratio=0.0,
+freeze_parameters_regex=None,
+freeze_vit=True,
+fsdp=[],
+fsdp_config=None,
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+galore_cos_threshold=0.4,
+galore_gamma_proj=2,
+galore_optim_per_parameter=False,
+galore_proj_bits=4,
+galore_proj_group_size=256,
+galore_proj_quant=False,
+galore_proj_type=std,
+galore_quantization=False,
+galore_queue_size=5,
+galore_rank=128,
+galore_scale=1.0,
+galore_target_modules=None,
+galore_update_proj_gap=50,
+galore_with_embedding=False,
+generation_config=None,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=4,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=True,
+group_by_length=False,
+half_precision_backend=auto,
+hqq_axis=None,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=None,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_args_error=False,
+ignore_data_skip=False,
+include_for_metrics=[],
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+init_strategy=None,
+init_weights=True,
+interleave_prob=None,
+is_binary_loss_scale=None,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+lazy_tokenize=True,
+learning_rate=0.0002,
+length_column_name=length,
+lisa_activated_layers=0,
+lisa_step_interval=20,
+llamapro_num_groups=None,
+llamapro_num_new_blocks=4,
+load_args=False,
+load_best_model_at_end=False,
+load_data_args=False,
+load_from_cache_file=False,
+local_rank=-1,
+local_repo_path=None,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/runs,
+logging_first_step=True,
+logging_nan_inf_filter=True,
+logging_steps=1,
+logging_strategy=steps,
+logprobs=False,
+lora_alpha=16,
+lora_bias=none,
+lora_dropout=0.0,
+lora_dtype=float32,
+lora_ga_batch_size=2,
+lora_ga_direction=ArB2r,
+lora_ga_iters=2,
+lora_ga_max_length=1024,
+lora_ga_scale=stable,
+lora_ga_stable_gamma=16,
+lora_rank=8,
+lorap_lr_ratio=None,
+loss_scale=default,
+loss_type=None,
+lr_scheduler_kwargs=None,
+lr_scheduler_type=constant,
+max_epochs=None,
+max_grad_norm=1.0,
+max_length=2048,
+max_memory={},
+max_model_len=None,
+max_new_tokens=64,
+max_pixels=None,
+max_shard_size=5GB,
+max_steps=-1,
+metric_for_best_model=accuracy,
+model=/root/autodl-tmp/west-preflight/model,
+model_author=None,
+model_kwargs={},
+model_name=None,
+model_revision=None,
+model_type=qwen2_5_omni,
+modules_to_save=[],
+mp_parameters=,
+mrl_dims=None,
+neftune_noise_alpha=None,
+new_special_tokens=[],
+no_cuda=False,
+norm_bbox=None,
+num_beams=1,
+num_labels=None,
+num_train_epochs=2,
+optim=adamw_torch,
+optim_args=None,
+optim_target_modules=None,
+optimizer=None,
+output_dir=/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44,
+overwrite_output_dir=False,
+packing=False,
+packing_length=None,
+packing_num_proc=1,
+packing_strategy=binpack,
+padding_free=False,
+padding_side=right,
+past_index=-1,
+per_device_eval_batch_size=2,
+per_device_train_batch_size=4,
+predict_with_generate=False,
+prediction_loss_only=False,
+preserve_thinking=None,
+problem_type=None,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+quant_bits=None,
+quant_method=None,
+ray_exp_name=None,
+ray_scope=last,
+reft_args=None,
+reft_intervention_type=LoreftIntervention,
+reft_layer_key=None,
+reft_layers=None,
+reft_rank=4,
+remove_unused_columns=True,
+repetition_penalty=None,
+report_to=[],
+response_prefix=None,
+restore_callback_states_from_checkpoint=False,
+resume_from_checkpoint=None,
+resume_only_model=False,
+rope_scaling=None,
+router_aux_loss_coef=0.0,
+run_name=/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44,
+safe_serialization=True,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=32,
+save_strategy=steps,
+save_total_limit=2,
+seed=44,
+sequence_parallel_size=1,
+shuffle_buffer_size=1000,
+skip_memory_metrics=True,
+sortish_sampler=False,
+split_dataset_ratio=0.0,
+stop_words=[],
+stopping_strategy=first_exhausted,
+stream=False,
+streaming=False,
+strict=True,
+structured_outputs_regex=None,
+swanlab_email_language=zh,
+swanlab_exp_name=None,
+swanlab_mode=cloud,
+swanlab_notification_method=None,
+swanlab_project=ms-swift,
+swanlab_receiver_email=None,
+swanlab_secret=None,
+swanlab_sender_email=None,
+swanlab_smtp_port=None,
+swanlab_smtp_server=None,
+swanlab_token=<SWANLAB_TOKEN>,
+swanlab_webhook_url=None,
+swanlab_workspace=None,
+system=None,
+target_modules=^thinker\.model\.layers\.(32|33|34|35)\.(self_attn\.o_proj)$,
+target_parameters=None,
+target_regex=^thinker\.model\.layers\.(32|33|34|35)\.(self_attn\.o_proj)$,
+task_type=causal_lm,
+temperature=0.0,
+template=qwen2_5_omni,
+template_backend=swift,
+tf32=None,
+top_k=None,
+top_logprobs=None,
+top_p=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torch_dtype=torch.bfloat16,
+torch_empty_cache_steps=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+train_dataloader_shuffle=True,
+trainable_parameters=[],
+trainable_parameters_regex=None,
+truncation_strategy=delete,
+trust_remote_plugins=False,
+tuner_backend=peft,
+tuner_type=ta_lora,
+use_chat_template=True,
+use_cpu=False,
+use_dora=False,
+use_flash_ckpt=False,
+use_galore=False,
+use_hf=True,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_liger_kernel=False,
+use_logits_to_keep=None,
+use_mps_device=False,
+use_ray=False,
+use_rslora=False,
+use_swift_lora=False,
+val_dataset=['/root/autodl-tmp/r1-aqa/data/pilot-01/dev.jsonl'],
+val_dataset_shuffle=False,
+vera_d_initial=0.1,
+vera_dropout=0.0,
+vera_projection_prng_key=0,
+vera_rank=256,
+vit_gradient_checkpointing=False,
+vit_lr=None,
+warmup_ratio=0,
+warmup_steps=0,
+weight_decay=0.0,
+zero_hpz_partition_size=None,
+)
+[INFO:swift] Global seed set to 44
+[WARNING:swift] Loading model from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. This will execute custom Python code shipped in the model repository (e.g. configuration_*.py, modeling_*.py, tokenization_*.py). Only proceed if you trust the source of this model.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] Using environment variable `ENABLE_AUDIO_OUTPUT`, Setting ENABLE_AUDIO_OUTPUT: False.
+[WARNING:swift] Loading config from '/root/autodl-tmp/west-preflight/model' with trust_remote_code=True. Custom Python code from the model repository will be executed. Only use models from sources you trust.
+The argument `trust_remote_code` is to be used with Auto classes. It has no effect here and is ignored.
+Unrecognized keys in `rope_scaling` for 'rope_type'='default': {'mrope_section'}
+[INFO:swift] attn_impl: eager
+You have video processor config saved in `preprocessor.json` file which is deprecated. Video processor configs should be saved in their own `video_preprocessor.json` file. You can rename the file or load and save the processor back which renames it automatically. Loading from `preprocessor.json` will be removed in v5.0.
+[INFO:swift] Setting image_factor: 28. You can adjust this hyperparameter through the environment variable: `IMAGE_FACTOR`.
+[INFO:swift] Setting min_pixels: 3136. You can adjust this hyperparameter through the environment variable: `MIN_PIXELS`.
+[INFO:swift] Setting max_pixels: 12845056. You can adjust this hyperparameter through the environment variable: `MAX_PIXELS`.
+[INFO:swift] Setting video_min_pixels: 100352. You can adjust this hyperparameter through the environment variable: `VIDEO_MIN_PIXELS`.
+[INFO:swift] Setting video_max_pixels: 602112. You can adjust this hyperparameter through the environment variable: `VIDEO_MAX_PIXELS`.
+[INFO:swift] Setting video_total_pixels: 90316800. You can adjust this hyperparameter through the environment variable: `VIDEO_TOTAL_PIXELS`.
+[INFO:swift] Setting max_ratio: 200. You can adjust this hyperparameter through the environment variable: `MAX_RATIO`.
+[INFO:swift] Setting frame_factor: 2. You can adjust this hyperparameter through the environment variable: `FRAME_FACTOR`.
+[INFO:swift] Setting fps: 2.0. You can adjust this hyperparameter through the environment variable: `FPS`.
+[INFO:swift] Setting fps_min_frames: 4. You can adjust this hyperparameter through the environment variable: `FPS_MIN_FRAMES`.
+[INFO:swift] Setting fps_max_frames: 768. You can adjust this hyperparameter through the environment variable: `FPS_MAX_FRAMES`.
+[INFO:swift] model_kwargs: {'device_map': 'cuda:0', 'torch_dtype': torch.bfloat16}
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.00s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:01<00:00,  1.17it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:01<00:00,  1.69it/s]
+[INFO:swift] model.hf_device_map: {'': device(type='cuda', index=0)}
+[INFO:swift] model_info: ModelInfo(model_type='qwen2_5_omni', model_dir='/root/autodl-tmp/west-preflight/model', torch_dtype=torch.bfloat16, max_model_len=32768, quant_method=None, quant_bits=None, rope_scaling={'mrope_section': [16, 24, 24], 'rope_type': 'default', 'type': 'default'}, is_moe_model=False, is_multimodal=True, config=Qwen2_5OmniConfig {
+  "architectures": [
+    "Qwen2_5OmniModel"
+  ],
+  "enable_audio_output": false,
+  "enable_talker": true,
+  "hidden_size": 2048,
+  "keys_to_ignore_at_inference": [
+    "past_key_values"
+  ],
+  "model_type": "qwen2_5_omni",
+  "talker_config": {
+    "_name_or_path": "Qwen2.5-Omni-3B/talker",
+    "architectures": [
+      "Qwen2OmniTalkerForConditionalGeneration"
+    ],
+    "attention_dropout": 0.0,
+    "audio_end_token_id": 151648,
+    "audio_start_token_id": 151647,
+    "audio_token_index": 151646,
+    "embedding_size": 2048,
+    "head_dim": 64,
+    "hidden_act": "silu",
+    "hidden_size": 896,
+    "image_token_index": 151655,
+    "init_std": 0.02,
+    "initializer_range": 0.02,
+    "intermediate_size": 4864,
+    "max_position_embeddings": 32768,
+    "max_window_layers": 28,
+    "model_type": "qwen2_5_omni_talker",
+    "num_attention_heads": 14,
+    "num_hidden_layers": 24,
+    "num_key_value_heads": 2,
+    "position_id_per_seconds": 25,
+    "rms_norm_eps": 1e-06,
+    "rope_scaling": {
+      "mrope_section": [
+        16,
+        16,
+        0
+      ],
+      "rope_type": "default",
+      "type": "default"
+    },
+    "rope_theta": 1000000.0,
+    "seconds_per_chunk": 2,
+    "sliding_window": 32768,
+    "spatial_merge_size": 2,
+    "torch_dtype": "bfloat16",
+    "tts_codec_end_token_id": 8294,
+    "tts_codec_mask_token_id": 8296,
+    "tts_codec_pad_token_id": 8292,
+    "tts_codec_start_token_id": 8293,
+    "tts_text_end_token_id": 151861,
+    "tts_text_pad_token_id": 151859,
+    "tts_text_start_token_id": 151860,
+    "use_cache": true,
+    "use_sliding_window": false,
+    "video_token_index": 151656,
+    "vision_end_token_id": 151653,
+    "vision_start_token_id": 151652,
+    "vocab_size": 8448
+  },
+  "thinker_config": {
+    "_name_or_path": "Qwen2.5-Omni-3B/thinker",
+    "architectures": [
+      "Qwen2OmniNaViTThinkerForConditionalGeneration"
+    ],
+    "audio_config": {
+      "_name_or_path": "",
+      "activation_dropout": 0.0,
+      "activation_function": "gelu",
+      "add_cross_attention": false,
+      "architectures": null,
+      "attention_dropout": 0.0,
+      "bad_words_ids": null,
+      "begin_suppress_tokens": null,
+      "bos_token_id": null,
+      "chunk_size_feed_forward": 0,
+      "cross_attention_hidden_size": null,
+      "d_model": 1280,
+      "decoder_start_token_id": null,
+      "diversity_penalty": 0.0,
+      "do_sample": false,
+      "dropout": 0.0,
+      "early_stopping": false,
+      "encoder_attention_heads": 20,
+      "encoder_ffn_dim": 5120,
+      "encoder_layerdrop": 0.0,
+      "encoder_layers": 32,
+      "encoder_no_repeat_ngram_size": 0,
+      "eos_token_id": null,
+      "exponential_decay_length_penalty": null,
+      "finetuning_task": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "init_std": 0.02,
+      "initializer_range": 0.02,
+      "is_decoder": false,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "length_penalty": 1.0,
+      "max_length": 20,
+      "max_source_positions": 1500,
+      "min_length": 0,
+      "model_type": "qwen2_5_omni_audio_encoder",
+      "n_window": 100,
+      "no_repeat_ngram_size": 0,
+      "num_beam_groups": 1,
+      "num_beams": 1,
+      "num_hidden_layers": 32,
+      "num_mel_bins": 128,
+      "num_return_sequences": 1,
+      "output_attentions": false,
+      "output_dim": 2048,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "pad_token_id": null,
+      "prefix": null,
+      "problem_type": null,
+      "pruned_heads": {},
+      "remove_invalid_values": false,
+      "repetition_penalty": 1.0,
+      "return_dict": true,
+      "return_dict_in_generate": false,
+      "scale_embedding": false,
+      "sep_token_id": null,
+      "suppress_tokens": null,
+      "task_specific_params": null,
+      "temperature": 1.0,
+      "tf_legacy_loss": false,
+      "tie_encoder_decoder": false,
+      "tie_word_embeddings": true,
+      "tokenizer_class": null,
+      "top_k": 50,
+      "top_p": 1.0,
+      "torch_dtype": "bfloat16",
+      "torchscript": false,
+      "typical_p": 1.0,
+      "use_bfloat16": false
+    },
+    "audio_end_token_id": 151648,
+    "audio_start_token_id": 151647,
+    "audio_token_index": 151646,
+    "bos_token_id": 151644,
+    "eos_token_id": 151645,
+    "ignore_index": -100,
+    "image_token_index": 151655,
+    "init_std": 0.02,
+    "initializer_range": 0.02,
+    "model_type": "qwen2_5_omni_thinker",
+    "pad_token_id": 151643,
+    "position_id_per_seconds": 25,
+    "seconds_per_chunk": 2,
+    "text_config": {
+      "_name_or_path": "",
+      "add_cross_attention": false,
+      "architectures": null,
+      "attention_dropout": 0.0,
+      "bad_words_ids": null,
+      "begin_suppress_tokens": null,
+      "bos_token_id": null,
+      "chunk_size_feed_forward": 0,
+      "cross_attention_hidden_size": null,
+      "decoder_start_token_id": null,
+      "diversity_penalty": 0.0,
+      "do_sample": false,
+      "early_stopping": false,
+      "encoder_no_repeat_ngram_size": 0,
+      "eos_token_id": null,
+      "exponential_decay_length_penalty": null,
+      "finetuning_task": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "hidden_act": "silu",
+      "hidden_size": 2048,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "init_std": 0.02,
+      "initializer_range": 0.02,
+      "intermediate_size": 11008,
+      "is_decoder": false,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "length_penalty": 1.0,
+      "max_length": 20,
+      "max_position_embeddings": 32768,
+      "max_window_layers": 70,
+      "min_length": 0,
+      "model_type": "qwen2_5_omni_text",
+      "no_repeat_ngram_size": 0,
+      "num_attention_heads": 16,
+      "num_beam_groups": 1,
+      "num_beams": 1,
+      "num_hidden_layers": 36,
+      "num_key_value_heads": 2,
+      "num_return_sequences": 1,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "pad_token_id": null,
+      "prefix": null,
+      "problem_type": null,
+      "pruned_heads": {},
+      "remove_invalid_values": false,
+      "repetition_penalty": 1.0,
+      "return_dict": true,
+      "return_dict_in_generate": false,
+      "rms_norm_eps": 1e-06,
+      "rope_scaling": {
+        "mrope_section": [
+          16,
+          24,
+          24
+        ],
+        "rope_type": "default",
+        "type": "default"
+      },
+      "rope_theta": 1000000.0,
+      "sep_token_id": null,
+      "sliding_window": 32768,
+      "suppress_tokens": null,
+      "task_specific_params": null,
+      "temperature": 1.0,
+      "tf_legacy_loss": false,
+      "tie_encoder_decoder": false,
+      "tie_word_embeddings": false,
+      "tokenizer_class": null,
+      "top_k": 50,
+      "top_p": 1.0,
+      "torch_dtype": "bfloat16",
+      "torchscript": false,
+      "typical_p": 1.0,
+      "use_bfloat16": false,
+      "use_cache": true,
+      "use_sliding_window": false,
+      "vocab_size": 151936
+    },
+    "torch_dtype": "bfloat16",
+    "user_token_id": 872,
+    "video_token_index": 151656,
+    "vision_config": {
+      "_name_or_path": "",
+      "add_cross_attention": false,
+      "architectures": null,
+      "bad_words_ids": null,
+      "begin_suppress_tokens": null,
+      "bos_token_id": null,
+      "chunk_size_feed_forward": 0,
+      "cross_attention_hidden_size": null,
+      "decoder_start_token_id": null,
+      "depth": 32,
+      "diversity_penalty": 0.0,
+      "do_sample": false,
+      "early_stopping": false,
+      "embed_dim": 1280,
+      "encoder_no_repeat_ngram_size": 0,
+      "eos_token_id": null,
+      "exponential_decay_length_penalty": null,
+      "finetuning_task": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "fullatt_block_indexes": [
+        7,
+        15,
+        23,
+        31
+      ],
+      "hidden_act": "silu",
+      "hidden_size": 1280,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "in_channels": 3,
+      "in_chans": 3,
+      "init_std": 0.02,
+      "initializer_range": 0.02,
+      "intermediate_size": 3420,
+      "is_decoder": false,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "length_penalty": 1.0,
+      "max_length": 20,
+      "min_length": 0,
+      "model_type": "qwen2_5_omni_vision_encoder",
+      "no_repeat_ngram_size": 0,
+      "num_beam_groups": 1,
+      "num_beams": 1,
+      "num_heads": 16,
+      "num_return_sequences": 1,
+      "out_hidden_size": 2048,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "pad_token_id": null,
+      "patch_size": 14,
+      "prefix": null,
+      "problem_type": null,
+      "pruned_heads": {},
+      "remove_invalid_values": false,
+      "repetition_penalty": 1.0,
+      "return_dict": true,
+      "return_dict_in_generate": false,
+      "sep_token_id": null,
+      "spatial_merge_size": 2,
+      "spatial_patch_size": 14,
+      "suppress_tokens": null,
+      "task_specific_params": null,
+      "temperature": 1.0,
+      "temporal_patch_size": 2,
+      "tf_legacy_loss": false,
+      "tie_encoder_decoder": false,
+      "tie_word_embeddings": true,
+      "tokenizer_class": null,
+      "tokens_per_second": 25,
+      "top_k": 50,
+      "top_p": 1.0,
+      "torch_dtype": "bfloat16",
+      "torchscript": false,
+      "typical_p": 1.0,
+      "use_bfloat16": false,
+      "window_size": 112
+    },
+    "vision_end_token_id": 151653,
+    "vision_start_token_id": 151652,
+    "vision_token_id": 151654
+  },
+  "token2wav_config": {
+    "bigvgan_config": {
+      "_name_or_path": "",
+      "add_cross_attention": false,
+      "architectures": null,
+      "bad_words_ids": null,
+      "begin_suppress_tokens": null,
+      "bos_token_id": null,
+      "chunk_size_feed_forward": 0,
+      "cross_attention_hidden_size": null,
+      "decoder_start_token_id": null,
+      "diversity_penalty": 0.0,
+      "do_sample": false,
+      "early_stopping": false,
+      "encoder_no_repeat_ngram_size": 0,
+      "eos_token_id": null,
+      "exponential_decay_length_penalty": null,
+      "finetuning_task": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "is_decoder": false,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "length_penalty": 1.0,
+      "max_length": 20,
+      "mel_dim": 80,
+      "min_length": 0,
+      "model_type": "qwen2_5_omni_bigvgan",
+      "no_repeat_ngram_size": 0,
+      "num_beam_groups": 1,
+      "num_beams": 1,
+      "num_return_sequences": 1,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "pad_token_id": null,
+      "prefix": null,
+      "problem_type": null,
+      "pruned_heads": {},
+      "remove_invalid_values": false,
+      "repetition_penalty": 1.0,
+      "resblock_dilation_sizes": [
+        [
+          1,
+          3,
+          5
+        ],
+        [
+          1,
+          3,
+          5
+        ],
+        [
+          1,
+          3,
+          5
+        ]
+      ],
+      "resblock_kernel_sizes": [
+        3,
+        7,
+        11
+      ],
+      "return_dict": true,
+      "return_dict_in_generate": false,
+      "sep_token_id": null,
+      "suppress_tokens": null,
+      "task_specific_params": null,
+      "temperature": 1.0,
+      "tf_legacy_loss": false,
+      "tie_encoder_decoder": false,
+      "tie_word_embeddings": true,
+      "tokenizer_class": null,
+      "top_k": 50,
+      "top_p": 1.0,
+      "torch_dtype": null,
+      "torchscript": false,
+      "typical_p": 1.0,
+      "upsample_initial_channel": 1536,
+      "upsample_kernel_sizes": [
+        11,
+        7,
+        4,
+        4,
+        4,
+        4
+      ],
+      "upsample_rates": [
+        5,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "use_bfloat16": false,
+      "use_bias_at_final": false
+    },
+    "dit_config": {
+      "_name_or_path": "",
+      "add_cross_attention": false,
+      "architectures": null,
+      "bad_words_ids": null,
+      "begin_suppress_tokens": null,
+      "block_size": 24,
+      "bos_token_id": null,
+      "chunk_size_feed_forward": 0,
+      "cross_attention_hidden_size": null,
+      "decoder_start_token_id": null,
+      "depth": 22,
+      "dim": 1024,
+      "diversity_penalty": 0.0,
+      "do_sample": false,
+      "dropout": 0.1,
+      "early_stopping": false,
+      "emb_dim": 512,
+      "enc_attention_channels": 64,
+      "enc_channels": [
+        256,
+        256,
+        256,
+        256,
+        768
+      ],
+      "enc_dilations": [
+        1,
+        2,
+        3,
+        4,
+        1
+      ],
+      "enc_dim": 128,
+      "enc_emb_dim": 192,
+      "enc_global_context": true,
+      "enc_kernel_sizes": [
+        5,
+        3,
+        3,
+        3,
+        1
+      ],
+      "enc_lin_neurons": 192,
+      "enc_res2net_scale": 2,
+      "enc_se_channels": 64,
+      "encoder_no_repeat_ngram_size": 0,
+      "eos_token_id": null,
+      "exponential_decay_length_penalty": null,
+      "ff_mult": 2,
+      "finetuning_task": null,
+      "forced_bos_token_id": null,
+      "forced_eos_token_id": null,
+      "head_dim": 64,
+      "heads": 16,
+      "hidden_size": 1024,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "is_decoder": false,
+      "is_encoder_decoder": false,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "length_penalty": 1.0,
+      "look_ahead_layers": [
+        10
+      ],
+      "look_backward_layers": [
+        0,
+        20
+      ],
+      "max_length": 20,
+      "max_position_embeddings": 32768,
+      "mel_dim": 80,
+      "min_length": 0,
+      "model_type": "qwen2_5_omni_dit",
+      "no_repeat_ngram_size": 0,
+      "num_attention_heads": 16,
+      "num_beam_groups": 1,
+      "num_beams": 1,
+      "num_embeds": 8193,
+      "num_hidden_layers": 22,
+      "num_return_sequences": 1,
+      "output_attentions": false,
+      "output_hidden_states": false,
+      "output_scores": false,
+      "pad_token_id": null,
+      "prefix": null,
+      "problem_type": null,
+      "pruned_heads": {},
+      "remove_invalid_values": false,
+      "repeats": 2,
+      "repetition_penalty": 1.0,
+      "return_dict": true,
+      "return_dict_in_generate": false,
+      "rope_theta": 10000.0,
+      "sep_token_id": null,
+      "suppress_tokens": null,
+      "task_specific_params": null,
+      "temperature": 1.0,
+      "tf_legacy_loss": false,
+      "tie_encoder_decoder": false,
+      "tie_word_embeddings": true,
+      "tokenizer_class": null,
+      "top_k": 50,
+      "top_p": 1.0,
+      "torch_dtype": "float32",
+      "torchscript": false,
+      "typical_p": 1.0,
+      "use_bfloat16": false
+    },
+    "model_type": "qwen2_5_omni_token2wav"
+  },
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.52.3"
+}
+, task_type='causal_lm', num_labels=None)
+[INFO:swift] model.generation_config: GenerationConfig {
+  "eos_token_id": 151645,
+  "max_new_tokens": 64,
+  "pad_token_id": 151643
+}
+
+[INFO:swift] default_system: 'You are a helpful assistant.'
+[INFO:swift] max_length: 2048
+[INFO:swift] response_prefix: None
+[INFO:swift] agent_template: hermes
+[INFO:swift] norm_bbox: none
+[INFO:swift] Setting ROOT_IMAGE_DIR: None. You can adjust this hyperparameter through the environment variable: `ROOT_IMAGE_DIR`.
+[INFO:swift] Setting QWENVL_BBOX_FORMAT: legacy. You can adjust this hyperparameter through the environment variable: `QWENVL_BBOX_FORMAT`.
+[INFO:swift] Setting use_audio_in_video: False. You can adjust this hyperparameter through the environment variable: `USE_AUDIO_IN_VIDEO`.
+[INFO:swift] Setting sampling_rate: 16000. You can adjust this hyperparameter through the environment variable: `SAMPLING_RATE`.
+[INFO:swift] Start time of running main: 2026-11-26 03:42:33.051663
+[INFO:swift] swift.__version__: 4.7.0.dev0
+Map (num_proc=1): 100%|██████████| 2048/2048 [00:00<?, ? examples/s]Map (num_proc=1): 3048 examples [00:00, 7769.07 examples/s]         Map (num_proc=1): 4096 examples [00:00, 5964.11 examples/s]
+Map (num_proc=1): 100%|██████████| 256/256 [00:00<?, ? examples/s]Map (num_proc=1): 512 examples [00:00, 1248.47 examples/s]        
+[INFO:swift] train_dataset: Dataset({
+    features: ['messages', 'audios', 'dataset'],
+    num_rows: 2048
+})
+[INFO:swift] val_dataset: Dataset({
+    features: ['messages', 'audios', 'dataset'],
+    num_rows: 256
+})
+[INFO:swift] Setting swift_audio_load_backend: librosa. You can adjust this hyperparameter through the environment variable: `SWIFT_AUDIO_LOAD_BACKEND`.
+[INFO:swift] Setting swift_media_allowed_dirs: None. You can adjust this hyperparameter through the environment variable: `SWIFT_MEDIA_ALLOWED_DIRS`.
+[INFO:swift] [INPUT_IDS] [151644, 8948, 198, 2610, 525, 264, 10950, 17847, 13, 151645, 198, 151644, 872, 198, 151647, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151646, 151648, 198, 3838, 9864, 374, 304, 279, 2766, 5267, 32, 13, 5562, 198, 33, 13, 44305, 198, 34, 13, 8251, 198, 35, 13, 14147, 465, 198, 20841, 448, 279, 6524, 315, 279, 4396, 2999, 13, 151645, 198, 151644, 77091, 198, 34, 151645, 198]
+[INFO:swift] [INPUT] <|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+<|audio_bos|>[151646 * 250]<|audio_eos|>
+What animal is in the video?
+A. dog
+B. turkey
+C. cat
+D. otter
+Reply with the letter of the correct option.<|im_end|>
+<|im_start|>assistant
+C<|im_end|>
+
+[INFO:swift] [LABELS_IDS] [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 34, 151645, 198]
+[INFO:swift] [LABELS] [-100 * 305]C<|im_end|>
+
+[INFO:swift] The SftArguments will be saved in: /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/args.json
+[INFO:swift] model: Qwen2_5OmniForConditionalGeneration(
+  (thinker): Qwen2_5OmniThinkerForConditionalGeneration(
+    (audio_tower): Qwen2_5OmniAudioEncoder(
+      (conv1): Conv1d(128, 1280, kernel_size=(3,), stride=(1,), padding=(1,))
+      (conv2): Conv1d(1280, 1280, kernel_size=(3,), stride=(2,), padding=(1,))
+      (positional_embedding): SinusoidsPositionEmbedding()
+      (audio_bos_eos_token): Embedding(2, 2048)
+      (layers): ModuleList(
+        (0-31): 32 x Qwen2_5OmniAudioEncoderLayer(
+          (self_attn): Qwen2_5OmniAudioAttention(
+            (k_proj): Linear(in_features=1280, out_features=1280, bias=False)
+            (v_proj): Linear(in_features=1280, out_features=1280, bias=True)
+            (q_proj): Linear(in_features=1280, out_features=1280, bias=True)
+            (out_proj): Linear(in_features=1280, out_features=1280, bias=True)
+          )
+          (self_attn_layer_norm): LayerNorm((1280,), eps=1e-05, elementwise_affine=True, bias=True)
+          (activation_fn): GELUActivation()
+          (fc1): Linear(in_features=1280, out_features=5120, bias=True)
+          (fc2): Linear(in_features=5120, out_features=1280, bias=True)
+          (final_layer_norm): LayerNorm((1280,), eps=1e-05, elementwise_affine=True, bias=True)
+        )
+      )
+      (ln_post): LayerNorm((1280,), eps=1e-05, elementwise_affine=True, bias=True)
+      (avg_pooler): AvgPool1d(kernel_size=(2,), stride=(2,), padding=(0,))
+      (proj): Linear(in_features=1280, out_features=2048, bias=True)
+    )
+    (visual): Qwen2_5OmniVisionEncoder(
+      (patch_embed): Qwen2_5_VisionPatchEmbed(
+        (proj): Conv3d(3, 1280, kernel_size=(2, 14, 14), stride=(2, 14, 14), bias=False)
+      )
+      (rotary_pos_emb): Qwen2_5_VisionRotaryEmbedding()
+      (blocks): ModuleList(
+        (0-31): 32 x Qwen2_5OmniVisionBlock(
+          (norm1): Qwen2RMSNorm((1280,), eps=1e-06)
+          (norm2): Qwen2RMSNorm((1280,), eps=1e-06)
+          (attn): Qwen2_5OmniVisionAttention(
+            (q): Linear(in_features=1280, out_features=1280, bias=True)
+            (k): Linear(in_features=1280, out_features=1280, bias=True)
+            (v): Linear(in_features=1280, out_features=1280, bias=True)
+            (proj): Linear(in_features=1280, out_features=1280, bias=True)
+          )
+          (mlp): Qwen2_5OmniMLP(
+            (gate_proj): Linear(in_features=1280, out_features=3420, bias=True)
+            (up_proj): Linear(in_features=1280, out_features=3420, bias=True)
+            (down_proj): Linear(in_features=3420, out_features=1280, bias=True)
+            (act_fn): SiLU()
+          )
+        )
+      )
+      (merger): Qwen2_5OmniPatchMerger(
+        (ln_q): Qwen2RMSNorm((1280,), eps=1e-06)
+        (mlp): Sequential(
+          (0): Linear(in_features=5120, out_features=5120, bias=True)
+          (1): GELU(approximate='none')
+          (2): Linear(in_features=5120, out_features=2048, bias=True)
+        )
+      )
+    )
+    (model): Qwen2_5OmniThinkerTextModel(
+      (embed_tokens): Embedding(151936, 2048)
+      (layers): ModuleList(
+        (0-31): 32 x Qwen2_5OmniDecoderLayer(
+          (self_attn): Qwen2_5OmniAttention(
+            (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (k_proj): Linear(in_features=2048, out_features=256, bias=True)
+            (v_proj): Linear(in_features=2048, out_features=256, bias=True)
+            (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+            (rotary_emb): Qwen2_5OmniRotaryEmbedding()
+          )
+          (mlp): Qwen2MLP(
+            (gate_proj): Linear(in_features=2048, out_features=11008, bias=False)
+            (up_proj): Linear(in_features=2048, out_features=11008, bias=False)
+            (down_proj): Linear(in_features=11008, out_features=2048, bias=False)
+            (act_fn): SiLU()
+          )
+          (input_layernorm): Qwen2RMSNorm((2048,), eps=1e-06)
+          (post_attention_layernorm): Qwen2RMSNorm((2048,), eps=1e-06)
+        )
+        (32-35): 4 x Qwen2_5OmniDecoderLayer(
+          (self_attn): Qwen2_5OmniAttention(
+            (q_proj): Linear(in_features=2048, out_features=2048, bias=True)
+            (k_proj): Linear(in_features=2048, out_features=256, bias=True)
+            (v_proj): Linear(in_features=2048, out_features=256, bias=True)
+            (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+            (rotary_emb): Qwen2_5OmniRotaryEmbedding()
+            (ta_adapter): _SharedAtoms()
+          )
+          (mlp): Qwen2MLP(
+            (gate_proj): Linear(in_features=2048, out_features=11008, bias=False)
+            (up_proj): Linear(in_features=2048, out_features=11008, bias=False)
+            (down_proj): Linear(in_features=11008, out_features=2048, bias=False)
+            (act_fn): SiLU()
+          )
+          (input_layernorm): Qwen2RMSNorm((2048,), eps=1e-06)
+          (post_attention_layernorm): Qwen2RMSNorm((2048,), eps=1e-06)
+        )
+      )
+      (norm): Qwen2RMSNorm((2048,), eps=1e-06)
+      (rotary_emb): Qwen2_5OmniRotaryEmbedding()
+    )
+    (lm_head): Linear(in_features=2048, out_features=151936, bias=False)
+  )
+)
+[INFO:swift] model_parameter_info: Qwen2_5OmniForConditionalGeneration: 4703.5956M Params (0.1311M Trainable [0.0028%]), 1.9224M Buffers.
+[INFO:swift] use_reentrant: True
+[INFO:swift] The logging file will be saved in: /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/logging.jsonl
+[INFO:swift] Successfully registered post_encode hook: ['Qwen2_5OmniForConditionalGeneration'].
+[WARNING:swift] prepare gradient_checkpointing failed: 'Qwen2_5OmniAudioEncoder' object has no attribute '_require_grads_hook'
+[WARNING:swift] prepare gradient_checkpointing failed: 'Qwen2_5OmniVisionEncoder' object has no attribute '_require_grads_hook'
+[INFO:swift] use_logits_to_keep: False
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+{'loss': 0.44000429, 'grad_norm': 0.07659762, 'learning_rate': 0.0002, 'token_acc': 0.8125, 'epoch': 0.0078125, 'global_step/max_steps': '1/256', 'elapsed_time': '4s', 'remaining_time': '15m 52s', 'memory(GiB)': 13.56, 'train_speed(s/it)': 3.733176}
+{'loss': 0.12392415, 'grad_norm': 0.11104178, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 0.015625, 'global_step/max_steps': '2/256', 'elapsed_time': '7s', 'remaining_time': '14m 8s', 'memory(GiB)': 16.45, 'train_speed(s/it)': 3.339547}
+{'loss': 0.16332906, 'grad_norm': 0.08841868, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.0234375, 'global_step/max_steps': '3/256', 'elapsed_time': '9s', 'remaining_time': '13m 0s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 3.083524}
+{'loss': 0.35464278, 'grad_norm': 0.17715929, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.03125, 'global_step/max_steps': '4/256', 'elapsed_time': '12s', 'remaining_time': '12m 27s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.965975}
+{'loss': 0.28884286, 'grad_norm': 0.13429078, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.0390625, 'global_step/max_steps': '5/256', 'elapsed_time': '15s', 'remaining_time': '12m 25s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.968573}
+{'loss': 0.20324832, 'grad_norm': 0.19733523, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.046875, 'global_step/max_steps': '6/256', 'elapsed_time': '17s', 'remaining_time': '12m 5s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.900374}
+{'loss': 0.32933241, 'grad_norm': 0.08153313, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 0.0546875, 'global_step/max_steps': '7/256', 'elapsed_time': '20s', 'remaining_time': '12m 3s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.903445}
+{'loss': 0.12156999, 'grad_norm': 0.07954805, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.0625, 'global_step/max_steps': '8/256', 'elapsed_time': '23s', 'remaining_time': '11m 58s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.893804}
+{'loss': 0.28102547, 'grad_norm': 0.14822094, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.0703125, 'global_step/max_steps': '9/256', 'elapsed_time': '26s', 'remaining_time': '11m 50s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.873575}
+{'loss': 0.46202406, 'grad_norm': 0.08705669, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.078125, 'global_step/max_steps': '10/256', 'elapsed_time': '28s', 'remaining_time': '11m 38s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.836395}
+{'loss': 0.30278206, 'grad_norm': 0.05047502, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.0859375, 'global_step/max_steps': '11/256', 'elapsed_time': '31s', 'remaining_time': '11m 29s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.812151}
+{'loss': 0.21076973, 'grad_norm': 0.04404629, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.09375, 'global_step/max_steps': '12/256', 'elapsed_time': '33s', 'remaining_time': '11m 16s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.770397}
+{'loss': 0.32366285, 'grad_norm': 0.08073195, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.1015625, 'global_step/max_steps': '13/256', 'elapsed_time': '36s', 'remaining_time': '11m 6s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.742559}
+{'loss': 0.13251001, 'grad_norm': 0.03188291, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.109375, 'global_step/max_steps': '14/256', 'elapsed_time': '38s', 'remaining_time': '11m 2s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.737562}
+{'loss': 0.36484146, 'grad_norm': 0.09271906, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.1171875, 'global_step/max_steps': '15/256', 'elapsed_time': '41s', 'remaining_time': '10m 58s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.728407}
+{'loss': 0.21644539, 'grad_norm': 0.06848509, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.125, 'global_step/max_steps': '16/256', 'elapsed_time': '44s', 'remaining_time': '10m 53s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.719416}
+{'loss': 0.16396196, 'grad_norm': 0.0264402, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.1328125, 'global_step/max_steps': '17/256', 'elapsed_time': '46s', 'remaining_time': '10m 46s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.701663}
+{'loss': 0.28097734, 'grad_norm': 0.03448318, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.140625, 'global_step/max_steps': '18/256', 'elapsed_time': '48s', 'remaining_time': '10m 39s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.684987}
+{'loss': 0.19370675, 'grad_norm': 0.06207283, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.1484375, 'global_step/max_steps': '19/256', 'elapsed_time': '51s', 'remaining_time': '10m 34s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.67469}
+{'loss': 0.22034533, 'grad_norm': 0.04074489, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.15625, 'global_step/max_steps': '20/256', 'elapsed_time': '53s', 'remaining_time': '10m 27s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.656832}
+{'loss': 0.32551473, 'grad_norm': 0.10167481, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.1640625, 'global_step/max_steps': '21/256', 'elapsed_time': '56s', 'remaining_time': '10m 23s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.64912}
+{'loss': 0.10641797, 'grad_norm': 0.0501809, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.171875, 'global_step/max_steps': '22/256', 'elapsed_time': '58s', 'remaining_time': '10m 18s', 'memory(GiB)': 18.64, 'train_speed(s/it)': 2.639326}
+{'loss': 0.20772956, 'grad_norm': 0.05330241, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.1796875, 'global_step/max_steps': '23/256', 'elapsed_time': '1m 0s', 'remaining_time': '10m 12s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.627627}
+{'loss': 0.18884844, 'grad_norm': 0.06653541, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.1875, 'global_step/max_steps': '24/256', 'elapsed_time': '1m 3s', 'remaining_time': '10m 7s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.615446}
+{'loss': 0.17941709, 'grad_norm': 0.10393966, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.1953125, 'global_step/max_steps': '25/256', 'elapsed_time': '1m 5s', 'remaining_time': '10m 2s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.605778}
+{'loss': 0.26295525, 'grad_norm': 0.07228354, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.203125, 'global_step/max_steps': '26/256', 'elapsed_time': '1m 8s', 'remaining_time': '10m 0s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.607854}
+{'loss': 0.1193305, 'grad_norm': 0.036858, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.2109375, 'global_step/max_steps': '27/256', 'elapsed_time': '1m 10s', 'remaining_time': '9m 55s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.599358}
+{'loss': 0.22746444, 'grad_norm': 0.0960767, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.21875, 'global_step/max_steps': '28/256', 'elapsed_time': '1m 13s', 'remaining_time': '9m 53s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.599459}
+{'loss': 0.28188968, 'grad_norm': 0.11129086, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.2265625, 'global_step/max_steps': '29/256', 'elapsed_time': '1m 15s', 'remaining_time': '9m 48s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.590619}
+{'loss': 0.26349631, 'grad_norm': 0.04706906, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.234375, 'global_step/max_steps': '30/256', 'elapsed_time': '1m 18s', 'remaining_time': '9m 45s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.586951}
+{'loss': 0.20970888, 'grad_norm': 0.10608061, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.2421875, 'global_step/max_steps': '31/256', 'elapsed_time': '1m 20s', 'remaining_time': '9m 41s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.583953}
+{'loss': 0.23347998, 'grad_norm': 0.12847614, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.25, 'global_step/max_steps': '32/256', 'elapsed_time': '1m 22s', 'remaining_time': '9m 37s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 2.575664}
+{'eval_accuracy': 0.73046875, 'epoch': 0.25, 'global_step/max_steps': '32/256', 'elapsed_time': '1m 54s', 'remaining_time': '13m 19s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 3.566659}
+[INFO:swift] Saving model checkpoint to /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-32
+{'loss': 0.21018465, 'grad_norm': 0.07679935, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.2578125, 'global_step/max_steps': '33/256', 'elapsed_time': '1m 57s', 'remaining_time': '13m 11s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 3.54584}
+{'loss': 0.21014564, 'grad_norm': 0.08267909, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.265625, 'global_step/max_steps': '34/256', 'elapsed_time': '2m 0s', 'remaining_time': '13m 1s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 3.516929}
+{'loss': 0.24237883, 'grad_norm': 0.0640697, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.2734375, 'global_step/max_steps': '35/256', 'elapsed_time': '2m 2s', 'remaining_time': '12m 50s', 'memory(GiB)': 20.85, 'train_speed(s/it)': 3.484635}
+{'loss': 0.22678736, 'grad_norm': 0.04346041, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.28125, 'global_step/max_steps': '36/256', 'elapsed_time': '2m 4s', 'remaining_time': '12m 40s', 'memory(GiB)': 23.1, 'train_speed(s/it)': 3.454281}
+{'loss': 0.23322269, 'grad_norm': 0.07993669, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.2890625, 'global_step/max_steps': '37/256', 'elapsed_time': '2m 7s', 'remaining_time': '12m 31s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.427363}
+{'loss': 0.15232454, 'grad_norm': 0.05600763, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.296875, 'global_step/max_steps': '38/256', 'elapsed_time': '2m 9s', 'remaining_time': '12m 21s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.39894}
+{'loss': 0.3703655, 'grad_norm': 0.15254925, 'learning_rate': 0.0002, 'token_acc': 0.8125, 'epoch': 0.3046875, 'global_step/max_steps': '39/256', 'elapsed_time': '2m 12s', 'remaining_time': '12m 12s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.372053}
+{'loss': 0.40856969, 'grad_norm': 0.14699969, 'learning_rate': 0.0002, 'token_acc': 0.83333333, 'epoch': 0.3125, 'global_step/max_steps': '40/256', 'elapsed_time': '2m 14s', 'remaining_time': '12m 3s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.34795}
+{'loss': 0.17741987, 'grad_norm': 0.05880121, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.3203125, 'global_step/max_steps': '41/256', 'elapsed_time': '2m 16s', 'remaining_time': '11m 54s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.322142}
+{'loss': 0.26738656, 'grad_norm': 0.12103835, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.328125, 'global_step/max_steps': '42/256', 'elapsed_time': '2m 18s', 'remaining_time': '11m 45s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.29664}
+{'loss': 0.19833684, 'grad_norm': 0.11437162, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.3359375, 'global_step/max_steps': '43/256', 'elapsed_time': '2m 21s', 'remaining_time': '11m 38s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.275497}
+{'loss': 0.29548976, 'grad_norm': 0.13518943, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 0.34375, 'global_step/max_steps': '44/256', 'elapsed_time': '2m 23s', 'remaining_time': '11m 30s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.253435}
+{'loss': 0.3118172, 'grad_norm': 0.08081493, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 0.3515625, 'global_step/max_steps': '45/256', 'elapsed_time': '2m 26s', 'remaining_time': '11m 23s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.235852}
+{'loss': 0.20545837, 'grad_norm': 0.13054228, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.359375, 'global_step/max_steps': '46/256', 'elapsed_time': '2m 28s', 'remaining_time': '11m 16s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.218705}
+{'loss': 0.20885146, 'grad_norm': 0.09372194, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.3671875, 'global_step/max_steps': '47/256', 'elapsed_time': '2m 31s', 'remaining_time': '11m 9s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.20293}
+{'loss': 0.23565672, 'grad_norm': 0.11498798, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.375, 'global_step/max_steps': '48/256', 'elapsed_time': '2m 33s', 'remaining_time': '11m 3s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.187668}
+{'loss': 0.16655174, 'grad_norm': 0.04369021, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.3828125, 'global_step/max_steps': '49/256', 'elapsed_time': '2m 35s', 'remaining_time': '10m 57s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.172036}
+{'loss': 0.2289668, 'grad_norm': 0.08933266, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.390625, 'global_step/max_steps': '50/256', 'elapsed_time': '2m 38s', 'remaining_time': '10m 51s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.159141}
+{'loss': 0.17173409, 'grad_norm': 0.09380461, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.3984375, 'global_step/max_steps': '51/256', 'elapsed_time': '2m 40s', 'remaining_time': '10m 45s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.14485}
+{'loss': 0.16251794, 'grad_norm': 0.07626629, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.40625, 'global_step/max_steps': '52/256', 'elapsed_time': '2m 43s', 'remaining_time': '10m 38s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.129263}
+{'loss': 0.20387885, 'grad_norm': 0.13281906, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.4140625, 'global_step/max_steps': '53/256', 'elapsed_time': '2m 45s', 'remaining_time': '10m 33s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.115848}
+{'loss': 0.1037145, 'grad_norm': 0.09754366, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.421875, 'global_step/max_steps': '54/256', 'elapsed_time': '2m 47s', 'remaining_time': '10m 26s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.10032}
+{'loss': 0.21286045, 'grad_norm': 0.09333414, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.4296875, 'global_step/max_steps': '55/256', 'elapsed_time': '2m 50s', 'remaining_time': '10m 21s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.089608}
+{'loss': 0.20526937, 'grad_norm': 0.15923114, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.4375, 'global_step/max_steps': '56/256', 'elapsed_time': '2m 52s', 'remaining_time': '10m 16s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.078898}
+{'loss': 0.1787269, 'grad_norm': 0.1615621, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.4453125, 'global_step/max_steps': '57/256', 'elapsed_time': '2m 55s', 'remaining_time': '10m 11s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.069667}
+{'loss': 0.14739738, 'grad_norm': 0.08497991, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.453125, 'global_step/max_steps': '58/256', 'elapsed_time': '2m 57s', 'remaining_time': '10m 5s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.057605}
+{'loss': 0.13051908, 'grad_norm': 0.11992978, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.4609375, 'global_step/max_steps': '59/256', 'elapsed_time': '3m 0s', 'remaining_time': '10m 0s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.046605}
+{'loss': 0.25147563, 'grad_norm': 0.08433572, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.46875, 'global_step/max_steps': '60/256', 'elapsed_time': '3m 2s', 'remaining_time': '9m 55s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.033447}
+{'loss': 0.30964813, 'grad_norm': 0.12604064, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.4765625, 'global_step/max_steps': '61/256', 'elapsed_time': '3m 4s', 'remaining_time': '9m 49s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.021569}
+{'loss': 0.2890982, 'grad_norm': 0.10272115, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.484375, 'global_step/max_steps': '62/256', 'elapsed_time': '3m 7s', 'remaining_time': '9m 44s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.011074}
+{'loss': 0.19474347, 'grad_norm': 0.10317934, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.4921875, 'global_step/max_steps': '63/256', 'elapsed_time': '3m 9s', 'remaining_time': '9m 40s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.003913}
+{'loss': 0.11025903, 'grad_norm': 0.07657874, 'learning_rate': 0.0002, 'token_acc': 1.0, 'epoch': 0.5, 'global_step/max_steps': '64/256', 'elapsed_time': '3m 12s', 'remaining_time': '9m 35s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 2.995393}
+{'eval_accuracy': 0.734375, 'epoch': 0.5, 'global_step/max_steps': '64/256', 'elapsed_time': '3m 44s', 'remaining_time': '11m 13s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.503614}
+[INFO:swift] Saving model checkpoint to /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-64
+{'loss': 0.2232426, 'grad_norm': 0.08484523, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.5078125, 'global_step/max_steps': '65/256', 'elapsed_time': '3m 47s', 'remaining_time': '11m 7s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.491145}
+{'loss': 0.14388998, 'grad_norm': 0.07226819, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.515625, 'global_step/max_steps': '66/256', 'elapsed_time': '3m 49s', 'remaining_time': '11m 0s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.472943}
+{'loss': 0.29055038, 'grad_norm': 0.11004522, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.5234375, 'global_step/max_steps': '67/256', 'elapsed_time': '3m 52s', 'remaining_time': '10m 54s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.458155}
+{'loss': 0.12279775, 'grad_norm': 0.05448079, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 0.53125, 'global_step/max_steps': '68/256', 'elapsed_time': '3m 54s', 'remaining_time': '10m 47s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.441517}
+{'loss': 0.21767217, 'grad_norm': 0.07675608, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.5390625, 'global_step/max_steps': '69/256', 'elapsed_time': '3m 56s', 'remaining_time': '10m 41s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.426279}
+{'loss': 0.1724872, 'grad_norm': 0.02690543, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.546875, 'global_step/max_steps': '70/256', 'elapsed_time': '3m 59s', 'remaining_time': '10m 35s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.415557}
+{'loss': 0.18955772, 'grad_norm': 0.0400409, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.5546875, 'global_step/max_steps': '71/256', 'elapsed_time': '4m 2s', 'remaining_time': '10m 30s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.403235}
+{'loss': 0.16047499, 'grad_norm': 0.03995355, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.5625, 'global_step/max_steps': '72/256', 'elapsed_time': '4m 4s', 'remaining_time': '10m 23s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.388075}
+{'loss': 0.17113079, 'grad_norm': 0.03405977, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.5703125, 'global_step/max_steps': '73/256', 'elapsed_time': '4m 7s', 'remaining_time': '10m 18s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.377717}
+{'loss': 0.23407464, 'grad_norm': 0.10011448, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.578125, 'global_step/max_steps': '74/256', 'elapsed_time': '4m 9s', 'remaining_time': '10m 13s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.366255}
+{'loss': 0.16054392, 'grad_norm': 0.0538728, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.5859375, 'global_step/max_steps': '75/256', 'elapsed_time': '4m 11s', 'remaining_time': '10m 7s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.353114}
+{'loss': 0.1702771, 'grad_norm': 0.05745534, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.59375, 'global_step/max_steps': '76/256', 'elapsed_time': '4m 14s', 'remaining_time': '10m 2s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.344492}
+{'loss': 0.29923117, 'grad_norm': 0.09834195, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.6015625, 'global_step/max_steps': '77/256', 'elapsed_time': '4m 17s', 'remaining_time': '9m 57s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.333002}
+{'loss': 0.21456058, 'grad_norm': 0.04374875, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.609375, 'global_step/max_steps': '78/256', 'elapsed_time': '4m 19s', 'remaining_time': '9m 51s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.322908}
+{'loss': 0.18866438, 'grad_norm': 0.05483483, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.6171875, 'global_step/max_steps': '79/256', 'elapsed_time': '4m 22s', 'remaining_time': '9m 46s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.311815}
+{'loss': 0.12627016, 'grad_norm': 0.0363189, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.625, 'global_step/max_steps': '80/256', 'elapsed_time': '4m 24s', 'remaining_time': '9m 41s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.301885}
+{'loss': 0.2893087, 'grad_norm': 0.03419102, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.6328125, 'global_step/max_steps': '81/256', 'elapsed_time': '4m 27s', 'remaining_time': '9m 36s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.290238}
+{'loss': 0.27429283, 'grad_norm': 0.04615116, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.640625, 'global_step/max_steps': '82/256', 'elapsed_time': '4m 29s', 'remaining_time': '9m 31s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.280647}
+{'loss': 0.10868683, 'grad_norm': 0.03959553, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.6484375, 'global_step/max_steps': '83/256', 'elapsed_time': '4m 31s', 'remaining_time': '9m 25s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.26876}
+{'loss': 0.19175452, 'grad_norm': 0.03820601, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.65625, 'global_step/max_steps': '84/256', 'elapsed_time': '4m 34s', 'remaining_time': '9m 20s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.25771}
+{'loss': 0.20447356, 'grad_norm': 0.04073827, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.6640625, 'global_step/max_steps': '85/256', 'elapsed_time': '4m 36s', 'remaining_time': '9m 15s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.24695}
+{'loss': 0.38541564, 'grad_norm': 0.08536781, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 0.671875, 'global_step/max_steps': '86/256', 'elapsed_time': '4m 38s', 'remaining_time': '9m 10s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.2362}
+{'loss': 0.32944772, 'grad_norm': 0.17065562, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.6796875, 'global_step/max_steps': '87/256', 'elapsed_time': '4m 41s', 'remaining_time': '9m 5s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.225696}
+{'loss': 0.10455041, 'grad_norm': 0.05365179, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 0.6875, 'global_step/max_steps': '88/256', 'elapsed_time': '4m 43s', 'remaining_time': '9m 0s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.215352}
+{'loss': 0.23293179, 'grad_norm': 0.03644241, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.6953125, 'global_step/max_steps': '89/256', 'elapsed_time': '4m 45s', 'remaining_time': '8m 55s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.20543}
+{'loss': 0.17782556, 'grad_norm': 0.02405837, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.703125, 'global_step/max_steps': '90/256', 'elapsed_time': '4m 48s', 'remaining_time': '8m 51s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.200709}
+{'loss': 0.2794565, 'grad_norm': 0.04223161, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.7109375, 'global_step/max_steps': '91/256', 'elapsed_time': '4m 51s', 'remaining_time': '8m 47s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.193207}
+{'loss': 0.30070511, 'grad_norm': 0.08077564, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.71875, 'global_step/max_steps': '92/256', 'elapsed_time': '4m 53s', 'remaining_time': '8m 42s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.18583}
+{'loss': 0.21979347, 'grad_norm': 0.06354857, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.7265625, 'global_step/max_steps': '93/256', 'elapsed_time': '4m 55s', 'remaining_time': '8m 38s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.177082}
+{'loss': 0.25752211, 'grad_norm': 0.03776202, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.734375, 'global_step/max_steps': '94/256', 'elapsed_time': '4m 58s', 'remaining_time': '8m 33s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.168172}
+{'loss': 0.18241845, 'grad_norm': 0.04470444, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.7421875, 'global_step/max_steps': '95/256', 'elapsed_time': '5m 0s', 'remaining_time': '8m 29s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.161134}
+{'loss': 0.12272557, 'grad_norm': 0.05535281, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.75, 'global_step/max_steps': '96/256', 'elapsed_time': '5m 3s', 'remaining_time': '8m 25s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.153129}
+{'eval_accuracy': 0.71875, 'epoch': 0.75, 'global_step/max_steps': '96/256', 'elapsed_time': '5m 35s', 'remaining_time': '9m 19s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.491964}
+[INFO:swift] Saving model checkpoint to /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-96
+{'loss': 0.17681894, 'grad_norm': 0.04777246, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.7578125, 'global_step/max_steps': '97/256', 'elapsed_time': '5m 38s', 'remaining_time': '9m 14s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.485456}
+{'loss': 0.2880156, 'grad_norm': 0.15944918, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.765625, 'global_step/max_steps': '98/256', 'elapsed_time': '5m 41s', 'remaining_time': '9m 9s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.474789}
+{'loss': 0.17634445, 'grad_norm': 0.05794701, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.7734375, 'global_step/max_steps': '99/256', 'elapsed_time': '5m 43s', 'remaining_time': '9m 4s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.463294}
+{'loss': 0.30945694, 'grad_norm': 0.10034496, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.78125, 'global_step/max_steps': '100/256', 'elapsed_time': '5m 45s', 'remaining_time': '8m 58s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.4514}
+{'loss': 0.28527042, 'grad_norm': 0.05313596, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 0.7890625, 'global_step/max_steps': '101/256', 'elapsed_time': '5m 48s', 'remaining_time': '8m 53s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.440958}
+{'loss': 0.24450697, 'grad_norm': 0.0728816, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.796875, 'global_step/max_steps': '102/256', 'elapsed_time': '5m 50s', 'remaining_time': '8m 49s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.43493}
+{'loss': 0.19350861, 'grad_norm': 0.05238715, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.8046875, 'global_step/max_steps': '103/256', 'elapsed_time': '5m 53s', 'remaining_time': '8m 44s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.427678}
+{'loss': 0.2360197, 'grad_norm': 0.10453928, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.8125, 'global_step/max_steps': '104/256', 'elapsed_time': '5m 56s', 'remaining_time': '8m 40s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.420469}
+{'loss': 0.17895859, 'grad_norm': 0.08176123, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.8203125, 'global_step/max_steps': '105/256', 'elapsed_time': '5m 58s', 'remaining_time': '8m 35s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.412164}
+{'loss': 0.27532813, 'grad_norm': 0.12078817, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.828125, 'global_step/max_steps': '106/256', 'elapsed_time': '6m 1s', 'remaining_time': '8m 31s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.403394}
+{'loss': 0.17603958, 'grad_norm': 0.10140138, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.8359375, 'global_step/max_steps': '107/256', 'elapsed_time': '6m 3s', 'remaining_time': '8m 26s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.393742}
+{'loss': 0.22252683, 'grad_norm': 0.06672087, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.84375, 'global_step/max_steps': '108/256', 'elapsed_time': '6m 5s', 'remaining_time': '8m 21s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.384146}
+{'loss': 0.29832172, 'grad_norm': 0.09698442, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.8515625, 'global_step/max_steps': '109/256', 'elapsed_time': '6m 8s', 'remaining_time': '8m 16s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.374893}
+{'loss': 0.14824724, 'grad_norm': 0.06019072, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.859375, 'global_step/max_steps': '110/256', 'elapsed_time': '6m 10s', 'remaining_time': '8m 11s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.365466}
+{'loss': 0.23225404, 'grad_norm': 0.10400365, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.8671875, 'global_step/max_steps': '111/256', 'elapsed_time': '6m 13s', 'remaining_time': '8m 7s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.356376}
+{'loss': 0.17594084, 'grad_norm': 0.08154268, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.875, 'global_step/max_steps': '112/256', 'elapsed_time': '6m 15s', 'remaining_time': '8m 2s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.34788}
+{'loss': 0.1465833, 'grad_norm': 0.03639732, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.8828125, 'global_step/max_steps': '113/256', 'elapsed_time': '6m 17s', 'remaining_time': '7m 58s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.339567}
+{'loss': 0.3404403, 'grad_norm': 0.07866186, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.890625, 'global_step/max_steps': '114/256', 'elapsed_time': '6m 20s', 'remaining_time': '7m 53s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.331997}
+{'loss': 0.32328847, 'grad_norm': 0.11511886, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.8984375, 'global_step/max_steps': '115/256', 'elapsed_time': '6m 22s', 'remaining_time': '7m 49s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.324194}
+{'loss': 0.21637343, 'grad_norm': 0.09177728, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.90625, 'global_step/max_steps': '116/256', 'elapsed_time': '6m 25s', 'remaining_time': '7m 44s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.315461}
+{'loss': 0.23476011, 'grad_norm': 0.04006959, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.9140625, 'global_step/max_steps': '117/256', 'elapsed_time': '6m 27s', 'remaining_time': '7m 40s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.307119}
+{'loss': 0.20983197, 'grad_norm': 0.05847778, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.921875, 'global_step/max_steps': '118/256', 'elapsed_time': '6m 29s', 'remaining_time': '7m 35s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.298829}
+{'loss': 0.26085621, 'grad_norm': 0.07778569, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.9296875, 'global_step/max_steps': '119/256', 'elapsed_time': '6m 32s', 'remaining_time': '7m 31s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.290736}
+{'loss': 0.18873088, 'grad_norm': 0.06365407, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.9375, 'global_step/max_steps': '120/256', 'elapsed_time': '6m 34s', 'remaining_time': '7m 26s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.282493}
+{'loss': 0.24341308, 'grad_norm': 0.08041489, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 0.9453125, 'global_step/max_steps': '121/256', 'elapsed_time': '6m 36s', 'remaining_time': '7m 22s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.274406}
+{'loss': 0.13397841, 'grad_norm': 0.06215832, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 0.953125, 'global_step/max_steps': '122/256', 'elapsed_time': '6m 39s', 'remaining_time': '7m 18s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.266853}
+{'loss': 0.21253568, 'grad_norm': 0.05196539, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 0.9609375, 'global_step/max_steps': '123/256', 'elapsed_time': '6m 41s', 'remaining_time': '7m 13s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.258854}
+{'loss': 0.29000172, 'grad_norm': 0.09584078, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 0.96875, 'global_step/max_steps': '124/256', 'elapsed_time': '6m 43s', 'remaining_time': '7m 9s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.251293}
+{'loss': 0.09961364, 'grad_norm': 0.06863361, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 0.9765625, 'global_step/max_steps': '125/256', 'elapsed_time': '6m 46s', 'remaining_time': '7m 5s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.245524}
+{'loss': 0.20720567, 'grad_norm': 0.04966539, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 0.984375, 'global_step/max_steps': '126/256', 'elapsed_time': '6m 48s', 'remaining_time': '7m 1s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.2385}
+{'loss': 0.07142852, 'grad_norm': 0.06824518, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 0.9921875, 'global_step/max_steps': '127/256', 'elapsed_time': '6m 50s', 'remaining_time': '6m 57s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.231417}
+{'loss': 0.22561242, 'grad_norm': 0.05254063, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.0, 'global_step/max_steps': '128/256', 'elapsed_time': '6m 53s', 'remaining_time': '6m 53s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.224436}
+{'eval_accuracy': 0.703125, 'epoch': 1.0, 'global_step/max_steps': '128/256', 'elapsed_time': '7m 25s', 'remaining_time': '7m 25s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.479261}
+[INFO:swift] Saving model checkpoint to /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-128
+{'loss': 0.20325519, 'grad_norm': 0.04175025, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.0078125, 'global_step/max_steps': '129/256', 'elapsed_time': '7m 28s', 'remaining_time': '7m 21s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.475103}
+{'loss': 0.20918414, 'grad_norm': 0.06310905, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.015625, 'global_step/max_steps': '130/256', 'elapsed_time': '7m 31s', 'remaining_time': '7m 17s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.467986}
+{'loss': 0.39819068, 'grad_norm': 0.17112355, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 1.0234375, 'global_step/max_steps': '131/256', 'elapsed_time': '7m 33s', 'remaining_time': '7m 12s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.459188}
+{'loss': 0.33679774, 'grad_norm': 0.14523831, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.03125, 'global_step/max_steps': '132/256', 'elapsed_time': '7m 35s', 'remaining_time': '7m 8s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.45029}
+{'loss': 0.37531739, 'grad_norm': 0.25243947, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.0390625, 'global_step/max_steps': '133/256', 'elapsed_time': '7m 38s', 'remaining_time': '7m 3s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.441569}
+{'loss': 0.32222301, 'grad_norm': 0.08349056, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 1.046875, 'global_step/max_steps': '134/256', 'elapsed_time': '7m 40s', 'remaining_time': '6m 59s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.433061}
+{'loss': 0.12879573, 'grad_norm': 0.09767132, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 1.0546875, 'global_step/max_steps': '135/256', 'elapsed_time': '7m 42s', 'remaining_time': '6m 54s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.424587}
+{'loss': 0.15299301, 'grad_norm': 0.03656707, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 1.0625, 'global_step/max_steps': '136/256', 'elapsed_time': '7m 45s', 'remaining_time': '6m 50s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.416411}
+{'loss': 0.21908763, 'grad_norm': 0.12563545, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 1.0703125, 'global_step/max_steps': '137/256', 'elapsed_time': '7m 47s', 'remaining_time': '6m 46s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.408332}
+{'loss': 0.20100175, 'grad_norm': 0.04832286, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.078125, 'global_step/max_steps': '138/256', 'elapsed_time': '7m 49s', 'remaining_time': '6m 41s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.40074}
+{'loss': 0.22846296, 'grad_norm': 0.08564636, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.0859375, 'global_step/max_steps': '139/256', 'elapsed_time': '7m 52s', 'remaining_time': '6m 37s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.3947}
+{'loss': 0.10708149, 'grad_norm': 0.08897457, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 1.09375, 'global_step/max_steps': '140/256', 'elapsed_time': '7m 54s', 'remaining_time': '6m 33s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.387919}
+{'loss': 0.13178898, 'grad_norm': 0.06614186, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 1.1015625, 'global_step/max_steps': '141/256', 'elapsed_time': '7m 57s', 'remaining_time': '6m 29s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.381978}
+{'loss': 0.22507316, 'grad_norm': 0.10688718, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.109375, 'global_step/max_steps': '142/256', 'elapsed_time': '7m 59s', 'remaining_time': '6m 25s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.37455}
+{'loss': 0.21002448, 'grad_norm': 0.06788455, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.1171875, 'global_step/max_steps': '143/256', 'elapsed_time': '8m 2s', 'remaining_time': '6m 20s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.367163}
+{'loss': 0.09669307, 'grad_norm': 0.08335665, 'learning_rate': 0.0002, 'token_acc': 0.97916667, 'epoch': 1.125, 'global_step/max_steps': '144/256', 'elapsed_time': '8m 4s', 'remaining_time': '6m 16s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.361128}
+{'loss': 0.28294581, 'grad_norm': 0.08675615, 'learning_rate': 0.0002, 'token_acc': 0.83333333, 'epoch': 1.1328125, 'global_step/max_steps': '145/256', 'elapsed_time': '8m 7s', 'remaining_time': '6m 12s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.355631}
+{'loss': 0.30103177, 'grad_norm': 0.0961302, 'learning_rate': 0.0002, 'token_acc': 0.83333333, 'epoch': 1.140625, 'global_step/max_steps': '146/256', 'elapsed_time': '8m 9s', 'remaining_time': '6m 8s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.348642}
+{'loss': 0.18631953, 'grad_norm': 0.09905064, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 1.1484375, 'global_step/max_steps': '147/256', 'elapsed_time': '8m 11s', 'remaining_time': '6m 4s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.341647}
+{'loss': 0.27855375, 'grad_norm': 0.14245899, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.15625, 'global_step/max_steps': '148/256', 'elapsed_time': '8m 14s', 'remaining_time': '6m 0s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.334762}
+{'loss': 0.29946312, 'grad_norm': 0.05183762, 'learning_rate': 0.0002, 'token_acc': 0.85416667, 'epoch': 1.1640625, 'global_step/max_steps': '149/256', 'elapsed_time': '8m 16s', 'remaining_time': '5m 56s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.328004}
+{'loss': 0.35150257, 'grad_norm': 0.10162598, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.171875, 'global_step/max_steps': '150/256', 'elapsed_time': '8m 18s', 'remaining_time': '5m 52s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.32132}
+{'loss': 0.1702041, 'grad_norm': 0.04082758, 'learning_rate': 0.0002, 'token_acc': 0.9375, 'epoch': 1.1796875, 'global_step/max_steps': '151/256', 'elapsed_time': '8m 21s', 'remaining_time': '5m 48s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.314683}
+{'loss': 0.15907191, 'grad_norm': 0.0554581, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 1.1875, 'global_step/max_steps': '152/256', 'elapsed_time': '8m 23s', 'remaining_time': '5m 44s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.308078}
+{'loss': 0.285364, 'grad_norm': 0.089675, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.1953125, 'global_step/max_steps': '153/256', 'elapsed_time': '8m 25s', 'remaining_time': '5m 40s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.301575}
+{'loss': 0.30935779, 'grad_norm': 0.12607065, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 1.203125, 'global_step/max_steps': '154/256', 'elapsed_time': '8m 27s', 'remaining_time': '5m 36s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.295063}
+{'loss': 0.07777064, 'grad_norm': 0.07598322, 'learning_rate': 0.0002, 'token_acc': 1.0, 'epoch': 1.2109375, 'global_step/max_steps': '155/256', 'elapsed_time': '8m 30s', 'remaining_time': '5m 32s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.288531}
+{'loss': 0.13879089, 'grad_norm': 0.09205221, 'learning_rate': 0.0002, 'token_acc': 0.95833333, 'epoch': 1.21875, 'global_step/max_steps': '156/256', 'elapsed_time': '8m 32s', 'remaining_time': '5m 28s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.2823}
+{'loss': 0.2229386, 'grad_norm': 0.05888049, 'learning_rate': 0.0002, 'token_acc': 0.89583333, 'epoch': 1.2265625, 'global_step/max_steps': '157/256', 'elapsed_time': '8m 34s', 'remaining_time': '5m 24s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.276329}
+{'loss': 0.27118418, 'grad_norm': 0.12460361, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.234375, 'global_step/max_steps': '158/256', 'elapsed_time': '8m 37s', 'remaining_time': '5m 20s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.270037}
+{'loss': 0.19219111, 'grad_norm': 0.06557397, 'learning_rate': 0.0002, 'token_acc': 0.91666667, 'epoch': 1.2421875, 'global_step/max_steps': '159/256', 'elapsed_time': '8m 39s', 'remaining_time': '5m 17s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.263925}
+{'loss': 0.35920122, 'grad_norm': 0.14725664, 'learning_rate': 0.0002, 'token_acc': 0.875, 'epoch': 1.25, 'global_step/max_steps': '160/256', 'elapsed_time': '8m 41s', 'remaining_time': '5m 13s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.258079}
+{'eval_accuracy': 0.73046875, 'epoch': 1.25, 'global_step/max_steps': '160/256', 'elapsed_time': '9m 14s', 'remaining_time': '5m 32s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.462161}
+[INFO:swift] Saving model checkpoint to /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-160
+{'train_runtime': 554.4016, 'train_samples_per_second': 7.388, 'train_steps_per_second': 0.462, 'train_loss': 0.22504228, 'epoch': 1.25, 'global_step/max_steps': '160/256', 'elapsed_time': '9m 14s', 'remaining_time': '5m 33s', 'memory(GiB)': 25.38, 'train_speed(s/it)': 3.464999}
+[INFO:swift] last_model_checkpoint: /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-160
+[INFO:swift] best_model_checkpoint: /root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-last4-s44/checkpoint-64
+[INFO:swift] End time of running main: 2026-11-26 03:51:50.534821

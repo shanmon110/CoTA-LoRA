@@ -48,4 +48,7 @@ def score(model,template,manifest,generation,predictions):
                 print(json.dumps(dict(id=r['id'],reference=ref,prediction=pred)),file=f)
     result=metrics(pairs)
     tmp.replace(predictions)
+    # The decoding settings travel with the scores, so that a later comparison can refuse to
+    # put models together that were scored differently.
+    result['generation'] = dict(generation)
     return result

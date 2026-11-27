@@ -1,0 +1,13 @@
+{
+  "task": "text",
+  "arm": "AQ-all-s43",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-all-s43/checkpoint-160",
+  "generation": {
+    "do_sample": false,
+    "num_beams": 1,
+    "batch_size": 4,
+    "max_new_tokens": 48
+  },
+  "manifest_sha256": "f6c5ca459f0ded5508e4b0ad0866f44af2afc3004ee83e69059ee874cad99ae0",
+  "predictions_sha256": "48b27330400d68872d72957bfd2ef738cdace4df3e8b8999e5b6502c47bd0003"
+}

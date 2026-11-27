@@ -1,0 +1,71 @@
+[2026-11-25 17:09:18] run folder: /root/autodl-fs/CoTA-LoRA/hearside-letters-20261125-170918; batch size 4
+[2026-11-25 17:09:18] source: /root/autodl-fs/CoTA-LoRA at cbbc1c80def54159b3df983d1932b773cce20f84 
+[2026-11-25 17:09:21] unit tests: 6 passed, 1 warning in 3.00s
+[2026-11-25 17:36:31] frozen-base: letter logits extracted (27 min)
+[2026-11-25 17:58:10] A-last4: letter logits extracted (21 min)
+[2026-11-25 18:20:06] A-last4-s43: letter logits extracted (21 min)
+[2026-11-25 18:41:50] A-last4-s44: letter logits extracted (21 min)
+[2026-11-25 19:04:41] A-all: letter logits extracted (22 min)
+[2026-11-25 19:25:49] A-first4: letter logits extracted (21 min)
+[2026-11-25 19:47:37] A-mid4: letter logits extracted (21 min)
+[2026-11-25 20:09:06] D-all-shuffled: letter logits extracted (21 min)
+# The last four layers against a three-number surrogate
+
+Surrogate: the frozen base with one constant added to each letter logit, fitted on 2108 training utterances in the training option order. Constants: A -1.23, B +0.46, C +1.38, D -0.61. Mean per-class recall in %.
+
+## session4 (4104 rows)
+
+| model | training order | other orders | letters chosen in the training order, A B C D % |
+|---|---:|---:|---|
+| frozen-base | 51.6 | 57.3 | 54 15 3 29 |
+| surrogate | 61.5 | 47.8 | 41 23 9 27 |
+| A-all | 75.6 | 72.9 | 35 19 14 33 |
+| A-first4 | 73.1 | 71.3 | 38 25 15 22 |
+| A-last4 | 65.6 | 46.5 | 37 25 10 28 |
+| A-last4-s43 | 64.1 | 49.0 | 38 20 8 34 |
+| A-last4-s44 | 62.7 | 49.8 | 39 21 7 33 |
+| A-mid4 | 72.1 | 67.8 | 33 23 12 33 |
+| D-all-shuffled | 77.2 | 75.7 | 34 22 15 29 |
+| A-last4 (mean) | 64.1 | 48.4 |  |
+
+| difference pp [95% CI] | training order | other orders |
+|---|---|---|
+| surrogate minus base | +9.9 [+7.1, +12.5] | -9.6 [-11.6, -7.4] |
+| last4 minus base | +12.5 [+8.8, +15.8] | -8.9 [-11.4, -6.4] |
+| last4 minus surrogate | +2.6 [+0.6, +4.6] | +0.7 [-1.1, +2.2] |
+
+Share of the last-four-layer gain in the training order that the surrogate recovers: 79% [66, 95].
+Same letter as A-last4: frozen-base 77.0%, surrogate 93.8%, another seed of A-last4 95.1%.
+
+Reading declared before extraction: **mostly a letter bias**
+
+## cremad (4368 rows)
+
+| model | training order | other orders | letters chosen in the training order, A B C D % |
+|---|---:|---:|---|
+| frozen-base | 46.4 | 48.0 | 37 3 1 59 |
+| surrogate | 56.8 | 43.7 | 23 12 12 53 |
+| A-all | 60.8 | 63.8 | 25 7 11 56 |
+| A-first4 | 64.0 | 65.8 | 29 9 13 49 |
+| A-last4 | 55.3 | 43.7 | 19 14 10 56 |
+| A-last4-s43 | 51.1 | 45.5 | 20 7 6 66 |
+| A-last4-s44 | 51.6 | 45.1 | 21 8 7 65 |
+| A-mid4 | 60.5 | 60.0 | 23 10 10 57 |
+| D-all-shuffled | 64.7 | 63.5 | 27 10 12 52 |
+| A-last4 (mean) | 52.7 | 44.7 |  |
+
+| difference pp [95% CI] | training order | other orders |
+|---|---|---|
+| surrogate minus base | +10.3 [+7.9, +12.8] | -4.3 [-5.8, -2.8] |
+| last4 minus base | +6.2 [+3.4, +9.4] | -3.3 [-4.9, -1.8] |
+| last4 minus surrogate | -4.1 [-6.6, -1.6] | +1.0 [-0.2, +2.0] |
+
+Share of the last-four-layer gain in the training order that the surrogate recovers: 166% [118, 269].
+Same letter as A-last4: frozen-base 77.6%, surrogate 90.4%, another seed of A-last4 94.9%.
+
+Reading declared before extraction: **mostly a letter bias**
+
+[2026-11-25 20:09:10] done
+[2026-11-25 20:09:10] finished with exit code 0 after 179 min; packing the result files
+ARCHIVE: /root/autodl-fs/CoTA-LoRA/hearside-letters-20261125-170918-for-claude.tar.gz (692K)
+LETTERS EXIT 0

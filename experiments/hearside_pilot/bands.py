@@ -41,7 +41,7 @@ def assemble(evals, formats_folder, protocol, output):
         shutil.copyfile(formats_folder / f'{name}.jsonl', output / 'formats' / f'{name}.jsonl')
         manifests[name] = dict(sha256=made['manifests'][name]['sha256'], rows=made['manifests'][name]['rows'])
     ids = {task: [r['id'] for r in d2.read_jsonl(crosscorpus.manifest_path(output, task))] for task in crosscorpus.TASKS}
-    arms = {}
+    arms, skipped = {}, {}
     generation = dict(mcq=d2.load(protocol)['generation'], **{n: dict(formats.GENERATION) for n in formats.FORMATS})   # as those runs used
     for folder in evals:
         for run in sorted(p for p in (folder / 'runs').iterdir() if (p / 'orig' / 'metrics.json').exists()):
@@ -52,8 +52,12 @@ def assemble(evals, formats_folder, protocol, output):
                 raise ValueError(f'{run.name}: scored on another manifest, or its predictions changed')
             sources = dict(mcq=run / 'orig' / 'predictions.jsonl',
                            **{n: formats_folder / 'runs' / run.name / n / 'predictions.jsonl' for n in formats.FORMATS})
-            if not all(p.exists() for p in sources.values()):
-                continue                                   # an arm without all four tasks is left out, and listed as such
+            missing = sorted(n for n, p in sources.items() if not p.exists())
+            if missing:
+                # An arm without every task is left out of the comparison, and the omission is recorded
+                # so that a reader of the summary can tell the arm apart from one that never existed.
+                skipped[run.name] = dict(folder=str(folder), missing_tasks=missing)
+                continue
             for task, path in sources.items():
                 if [r['id'] for r in d2.read_jsonl(path)] != ids[task]:
                     raise ValueError(f'{run.name}/{task}: predictions do not follow the manifest')
@@ -62,11 +66,12 @@ def assemble(evals, formats_folder, protocol, output):
                 shutil.copyfile(path, target / 'predictions.jsonl')
                 d2.write(target / 'metrics.json', dict(task=task, arm=run.name, copied_from=str(path), manifest_sha256=manifests[task]['sha256'],
                                                        generation=generation[task],
+                                                       generation_source='reconstructed from the run protocol',
                                                        predictions_sha256=d2.digest(target / 'predictions.jsonl')))
             arms[run.name] = str(folder)
     info = dict(corpus='IEMOCAP Session 4', utterances=len({r['utterance'] for r in rows}), actors=len({r['dialogue'] for r in rows}),
                 clusters='dialogues', trained_here=True, mcq_generation=generation['mcq'],
-                text_generation=dict(formats.GENERATION), manifests=manifests, arms=arms)
+                text_generation=dict(formats.GENERATION), manifests=manifests, arms=arms, skipped_arms=skipped)
     d2.write(output / 'crosscorpus.json', info)
     return info
 

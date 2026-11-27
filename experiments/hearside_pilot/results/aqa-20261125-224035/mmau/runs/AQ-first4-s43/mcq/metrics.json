@@ -1,0 +1,10 @@
+{
+  "task": "mcq",
+  "arm": "AQ-first4-s43",
+  "checkpoint": "/root/autodl-tmp/trr-diagnostics/praat-src-b969244/hearside-aqa-20261125-224035/train/AQ-first4-s43/checkpoint-160",
+  "generation": {
+    "batch_size": 2
+  },
+  "manifest_sha256": "cbad452db201ec342af9262d6b04461a369c10932af7cee955b54b0b0dbba5d7",
+  "predictions_sha256": "8af829a6a34c96bcb469d6703101fcadc465b8c36c7cdf7a2cbe8d5e073badc9"
+}

@@ -1,0 +1,10 @@
+{
+  "task": "mcq",
+  "arm": "frozen-base",
+  "checkpoint": null,
+  "generation": {
+    "batch_size": 2
+  },
+  "manifest_sha256": "cbad452db201ec342af9262d6b04461a369c10932af7cee955b54b0b0dbba5d7",
+  "predictions_sha256": "3f2bd03aa129d0d9d75a86d0ce8bb70bc207aa6b2d56749f993d708d8ce8677a"
+}
