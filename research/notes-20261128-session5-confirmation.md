@@ -1,0 +1,119 @@
+# P1' · 在 IEMOCAP Session 5 上确认类别边缘校正（预先声明）
+
+**状态：判据在任何一个 Session 5 logit 被提取之前写下。**
+
+这份文件是 `research/notes-20261127-diagnosis-and-plan.md` 的 **P1'** 的预注册版本。
+它先于运行写下，运行后不改判据。Session 5 的任何数字都没有在写这份文件时存在。
+
+- 写下的时间：2026-11-28，Session 5 提取开始之前
+- 源码提交：`research/analysis-20261127`（见 `git rev-parse HEAD`）
+- 确认集：**IEMOCAP Session 5**（`/root/autodl-tmp/iemocap/swift-ser/data/test.jsonl`）
+- 听侧这条线**从未读过** Session 5：`experiments/hearside_pilot/data.py` 文件头
+  "Session 5 is not read"，`experiments/hearside_pilot/README.md` 第 30 行
+  "Session 4 只评测，Session 5 不读取"，第 296 行已把它指定为确认集。
+- **没有训练、没有微调、没有新数据。** 只是把已经训好的七个臂和冻结基座在
+  Session 5 上重新打分。
+
+## 1. 要确认的命题
+
+§4.2.0 的新命题是：
+
+> **后 4 层适配器学到的主要是类别边缘（class marginal），而不是新的听辨能力。**
+> 冻结基座本身有一个错的类别边缘；后 4 层把它**记忆并重新排列**成训练提示里
+> 「类别→槽位」的对应关系，于是它在训练顺序上变好、在换序后崩塌。
+> 一旦把这个边缘从两边都减掉，后 4 层臂相对基座的优势就消失。
+
+在 IEMOCAP Session 4 和 CREMA-D 上成立（`d8eda26` 的 `calib_n.py`，以及
+`research/tools/label_free_calibration.py`）：
+
+| 语料 | 后 4 层臂的原始 gap（对基座） | 校正后 gap | 原始顺序差 | 校正后顺序差 |
+|---|---:|---:|---:|---:|
+| Session 4 | −4.81 pp | **+0.11 pp** | +19.6 pp | **+1.3 pp** |
+| CREMA-D | −1.40 pp | **−1.26 pp** | +11.7 pp | **−1.0 pp** |
+
+**这两个语料都参与了这个分析的方法选择**（先验校正的形式、簇的定义、判据的方向
+都是在看过 Session 4 与 CREMA-D 之后定的）。所以在它们上面，这是**发现**，不是结论。
+
+## 2. 判据（预注册）
+
+在 Session 5 上，对 `A-last4` 臂族（`A-last4`、`A-last4-s43`、`A-last4-s44` 三个种子的
+均值）：
+
+- **CONFIRMED**：校正后相对**同样被校正过的**冻结基座的差距 **|gap| < 2 pp**，
+  **且** 校正后的顺序差（训练顺序分 − 其他顺序分）**|gap_order| < 5 pp**。
+  → §4.2.0 **升级为结论**，第 4 章按现在的样子成立。
+- **REFUTED**：校正后 gap **< −5 pp**。
+  → §4.2.0 **降级**为「类别边缘只是 IEMOCAP/CREMA-D 上的一个解释」，
+  第 4 章必须换论点。
+- **INCONCLUSIVE**：其余情形（−5 pp ≤ gap < 2 pp，或 gap 在 ±2 pp 内但顺序差 ≥ 5 pp）。
+  → 如实报告，**不允许**通过改判据或换种子把它变成 CONFIRMED。
+
+两种结果**都必须写进论文**：它同时回答「这个解释有多普适」和
+「我们有没有在自己数据上过度拟合一个分析」。
+
+**同时要报告（无论判据结果如何）**：
+
+- 校正对**每个臂**的效应（八个臂 + 三个种子），不只后 4 层臂；
+- 校正后的类别边缘与真实边缘、与基座边缘的距离（TV 距离）；
+- 三个种子各自的结论（不能只报均值）。
+
+## 3. 测量方法（与 Session 4 / CREMA-D 完全一致）
+
+复现 `research/tools/label_free_calibration.py` 与 `research/tools/prior_correction_by_order.py`：
+
+1. 取四个选项字母的 logits，**按每个槽位承载的情绪重新索引**（这样不同选项顺序下
+   的分数轴可比）；
+2. 对**每个选项顺序单独**估计模型自己的类别边缘 = 该顺序下每个情绪的平均
+   log 概率，**只用无标注语音**；
+3. 减去这个边缘，取 argmax。
+
+- 指标：四类平均召回（UAR），macro，与前面的所有数字同口径。
+- 先验拟合在**簇的一半**上（Session 5 用 dialogue 簇，与 Session 4 相同），
+  在**另一半**上打分，两个方向互换；报告值是 5 次随机划分 × 2 个方向的平均。
+  → **报告的增益永远不是「在被打分的行上拟合」的增益。**
+- 区间：簇 bootstrap，2,000 次重采样，重采样单位是 dialogue 簇。
+- 顺序差在**行**这一层算（训练顺序是行的属性，不是语音的属性）。
+
+## 4. 跑之前先验证代码（已完成）
+
+分析代码 `experiments/hearside_pilot/session5.py analyze` 在**已有**的 Session 4 和
+CREMA-D logits 上重跑，必须复现已知数字：
+
+- Session 4：逐臂 raw / corrected / gain 与 `research/tools/label_free_calibration.py`
+  **完全一致**（到 0.1 pp）：base 55.2→62.7；A-last4 50.4→62.8（+12.3）；
+  A-all 72.8→74.8；A-last4 校正后 gap +0.11。
+- CREMA-D：base 48.0→60.5；A-last4 46.6→59.3（+12.7）；A-last4 校正后 gap −1.26。
+- 顺序差：与 `research/tools/prior_correction_by_order.py` 一致（半划分方式不同，
+  差 ≤ 0.9 pp）：A-last4 Session 4 原始 +19.4 / 校正后 +1.4；
+  CREMA-D 原始 +11.7 / 校正后 −1.0。
+- 听侧全部单元测试在跑模型的同一个解释器上通过：**82 passed**。
+
+## 5. 数据与协议的固定
+
+- 清单：`experiments/hearside_pilot/session5.py` 生成，与 Session 4 的清单
+  **逐字段同构**（同样的键、同样的问题、同样的四个选项顺序、同样的 `#r{shift}` id）。
+- Session 5：**1,229 条语音**（无词汇内容的 12 条按 `d2.select_items` 的规则排除），
+  31 个 dialogue 簇，2 个说话人，4,916 行。
+- 类别分布比 Session 4 **更偏**（angry 13.8% vs Session 4 的 31.9%）：
+  这对一个只减边缘、不改判别的校正是**更难**的情形，因此对 CONFIRMED 更保守。
+- Session 5 的 IEMOCAP 原文有两处 `FXX` 占位符 id 带两行文本；这两个 id **不在**
+  清单里，读取器只读清单里有的 id，并对丢弃的 id 报错而不是静默接受。
+
+## 6. 不做的事
+
+- 不训练、不调参、不挑种子、不在 Session 5 上迭代任何设计选择。
+- 不用 Session 5 的标签做任何拟合；标签只在最后算 UAR 时用。
+- 不因为结果不利而改判据。
+
+## 7. 一次性的额外风险（必须记下来）
+
+Session 5 只有 2 个说话人（Ses05F、Ses05M），31 个 dialogue 簇。
+CREMA-D 那边簇的单位是 actor；Session 5 只能是 dialogue。
+**dialogue 内的说话人和情绪分布是相关的**，所以簇 bootstrap 在 Session 5 上
+比在 Session 4 上更保守（区间更宽）——这是已知的代价，方向对 CONFIRMED 不利。
+
+---
+
+## 结果（运行后填）
+
+*待填。*
