@@ -327,10 +327,30 @@ seed 42）；无新数据（AVQA 数据已在服务器）；无新基座。
 - 无论哪种，**这条结果必须写进论文**，因为它同时是"这个解释有多普适"和
   "我们有没有在自己数据上过度拟合一个分析"两个问题的答案。
 
-**成本。** 如果用已下载但从未用于分析的语料：**零 GPU**，只需一次推理（与本轮字母实验同量级，
-每个模型约 25 分钟，8 个模型约 3–4 小时 GPU）；如果需要下载新语料，多半天。
-**现有材料够吗？** 需要一个**之前完全没用过**的语料；仓库里
-`research/hearside-runs.md` 记录了所有用过的语料，必须先核一遍。
+**成本。** **零下载、零数据准备、零新数据。**
+
+**具体方案（已核实可行）：用 IEMOCAP Session 5。**
+
+- `experiments/hearside_pilot/data.py` 的文件头写着 "Session 5 is not read"，
+  `experiments/hearside_pilot/README.md` 第 30 行也写着 "Session 4 只评测，Session 5 不读取"，
+  而第 296 行**已经把它指定为确认集**："本实验属于探索性分析，结论需要在 Session 5
+  或另一个语料上按预先声明的流程确认"。**听侧这条线从来没有读过 Session 5。**
+- 清单已经准备好了：`/root/autodl-tmp/iemocap/swift-ser/data/test.jsonl`
+  ——**1,241 条 Session 5 语音，2 个说话人，音频文件全部存在**
+  （标签分布 A 170 / B 442 / C 245 / D 384）。
+  它是 `experiments/ms_swift_iemocap/config.json` 里的 `test` 划分，
+  听侧这条线从未碰过。
+- 协议文件 `experiments/hearside_pilot/pilot-iemocap-session4.json` 把
+  `data.sessions` 设成 `[4]`、`data.manifest` 设成 `dev.jsonl`。
+  **复制一份，把 `sessions` 改成 `[5]`、`manifest` 改成 `test.jsonl`，其余不动**
+  （classes、prompts、rotations 全部一致），就得到一个与 Session 4 完全同构的评测协议。
+- 复用现成的 `experiments/hearside_pilot/letters.py extract`：它已经支持
+  `--split session4|cremad` 两种来源，加一个 `session5` 分支指向新清单即可。
+  **每个模型一次推理，约 25 分钟；8 个模型（冻结基座 + 7 个臂）约 3–4 小时 GPU。**
+- 类先验校正、替身比较、顺序差分解这些分析脚本**全部只读 logit**，直接套用，
+  **零额外成本**。
+
+**现有材料够吗？** **够，而且是现成的。** 这是本次复核里少有的"什么都不用做就能确认"的一条。
 
 **是否已被现有结论证伪。** 没有。**这是现在优先级最高的动作**，
 因为 §4.2.0 的整章结论都压在上面。
