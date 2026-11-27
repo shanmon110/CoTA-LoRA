@@ -1,5 +1,7 @@
 """The pre-declared confirmation of the class-marginal correction on IEMOCAP Session 5.
 
+The manifest is built by `experiments/hearside_pilot/session5_manifest.py`.
+
 Session 5 has taken no part in choosing the correction: the correction's method was chosen
 after seeing IEMOCAP Session 4 and CREMA-D, so on those two corpora it is a finding, not a
 conclusion.  This module applies it to Session 5 and reads off the criteria that were written

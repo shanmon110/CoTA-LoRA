@@ -14,6 +14,7 @@ set -uo pipefail
 ROOT="${ROOT:-/root/autodl-fs/CoTA-LoRA}"
 PY="${PY:-/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python}"
 IEMOCAP="${IEMOCAP:-/root/autodl-tmp/iemocap/swift-ser}"
+IEMOCAP_ARCHIVE="${IEMOCAP_ARCHIVE:-/root/autodl-tmp/iemocap/iemocapfullrelease-v1.zip}"
 BASE_CONFIG="${BASE_CONFIG:-$IEMOCAP/pair-01/config.json}"
 DEPS="${DEPS:-$ROOT/deps}"
 PILOT="${PILOT:-$ROOT/hearside-pilot-20261123-160928}"
@@ -49,7 +50,7 @@ field() { "$PY" -c 'import json, sys; print(json.load(open(sys.argv[1]))[sys.arg
 
 log "run folder: $RUN; batch size $BATCH; limit $LIMIT"
 log "source: $SRC at $(git -C "$SRC" rev-parse HEAD 2>/dev/null || echo 'unknown commit') $(git -C "$SRC" status --porcelain --untracked-files=no 2>/dev/null | head -1 | sed 's/.*/(tracked files modified)/')"
-for path in "$PY" "$BASE_CONFIG" "$IEMOCAP/data/test.jsonl" "$IEMOCAP/iemocapfullrelease-v1.zip"; do
+for path in "$PY" "$BASE_CONFIG" "$IEMOCAP/data/test.jsonl" "$IEMOCAP_ARCHIVE"; do
     [ -e "$path" ] || stop "missing $path"
 done
 while pgrep -f 'hearside_pilot/run_(letters|bands|probes).sh' > /dev/null; do
@@ -60,7 +61,7 @@ done
 
 # The Session 5 manifest: the same four option orders and the same question as Session 4.
 if [ ! -f "$RUN/manifest/orig.jsonl" ]; then
-    "$PY" -m experiments.hearside_pilot.session5 --output "$RUN/manifest" > "$RUN/logs/manifest.log" 2>&1 \
+    "$PY" -m experiments.hearside_pilot.session5_manifest --output "$RUN/manifest" > "$RUN/logs/manifest.log" 2>&1 \
         || stop "building the Session 5 manifest failed; see logs/manifest.log: $(tail -1 "$RUN/logs/manifest.log")"
     log "manifest: $(tr -d '\n ' < "$RUN/logs/manifest.log" | cut -c1-300)"
 fi
