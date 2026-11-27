@@ -226,6 +226,8 @@ nohup bash experiments/hearside_pilot/run_probes.sh > /root/autodl-fs/CoTA-LoRA/
 ## 后 4 层学到的是什么（2026-11-25）
 
 见 `research/letter-bias-20261125.md`。第一步用已有预测检验“后 4 层把情感直接映射到训练顺序下的字母”，结果是**不成立**（`conflict.py`，结果在 `results/bands-20261125-045245/conflict/`）。第二步检验另一个解释，即它学到的主要是按字母施加的输出偏置；已运行，两个语料都读作 `mostly a letter bias`：
+事后分析还显示，从几十条无标注语音估计情感先验并减去，能把基座在 CREMA-D 上从 48.0 提到 61.0（探索性；先验估计与扣除的实现见 `results/letters-20261125-170918/recheck/calib_n.py`，复算见 `research/tools/emotion_prior_all_arms.py`）。
+
 
 ```
 nohup bash experiments/hearside_pilot/run_letters.sh > /root/autodl-fs/CoTA-LoRA/hearside-letters.out 2>&1 &
