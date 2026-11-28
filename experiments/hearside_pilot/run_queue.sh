@@ -41,10 +41,15 @@ log() { echo "[$(date '+%F %T')] $*" | tee -a "$QUEUE/queue.log" | tee -a "$LOG"
 step() { echo "[$(date '+%F %T')] ===== $* =====" | tee -a "$QUEUE/queue.log" | tee -a "$LOG"; }
 record() { echo "[$(date '+%F %T')] $1: $2" | tee -a "$QUEUE/queue.log" | tee -a "$LOG"; }
 
-# The GPU is used by one step at a time.
+# The GPU is used by one step at a time.  The queue's own process matches the pattern, so it
+# is excluded: `pgrep -f` would otherwise find the queue itself and wait forever.
 wait_for_gpu() {
-    while pgrep -f 'hearside_pilot/run_(letters|bands|probes|aqa|queue|avqa|avqa_surrogate)\.sh' > /dev/null; do
-        [ -z "${waited:-}" ] && log "another hear-side run holds the GPU; waiting for it"
+    local others
+    while true; do
+        others=$(pgrep -f 'hearside_pilot/run_(letters|bands|probes|avqa_same_dist|avqa_surrogate)\.sh' \
+                 | grep -v "^$$\$" | tr '\n' ' ')
+        [ -z "$others" ] && break
+        [ -z "${waited:-}" ] && log "another hear-side run holds the GPU (pids $others); waiting for it"
         waited=1
         sleep 60
     done
