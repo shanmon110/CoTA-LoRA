@@ -194,7 +194,53 @@ trainable_names:      每层 3 个 —— down (A), up (B), gate (g)
 方向要靠第 4 章的类别边缘分析和第 5 章的负翻转分析来读，
 本节**不能**单独用来支持任何机制主张。
 
-## 8. 没有做的事
+## 8. 一件**已设计但从未训练**的对照（影响论文能声称什么）
+
+`experiments/cota_review/matrix.json` 里有 8 个臂的配置，
+**但 `experiments/cota_review/` 下只有 `configs/` 和 `matrix.json`，没有任何 `result.json`**，
+服务器上也没有对应的 `train/` 目录。**这些臂一个都没有训练过。**
+
+| 臂 | 方法 | r/alpha | gate 乘子 | transport_gate | 独立 C | 可训练参数 |
+|---|---|---|---:|---|---|---:|
+| `cota-qa` | ta-lora | 8/16 | **1.0** | question_audio | 是 | 1,772,064 |
+| `cota-qa-live` | ta-lora | 8/16 | **1.0** | question_audio | 是 | 1,772,064 |
+| `cota-static` | ta-lora | 8/16 | **1.0** | static | 是 | 1,769,760 |
+| `ctrl-audio-mean` | ta-lora | 8/16 | **1.0** | static | 是 | 1,769,760 |
+| `ctrl-ordinary` | ta-lora | 8/16 | **1.0** | static | 是 | 1,769,760 |
+| `lora-r12` | **lora** | **12/24** | — | — | — | 1,769,472 |
+| `lora-r8` | **lora** | 8/16 | — | — | — | 1,179,648 |
+| `shared-r12` | ta-lora | 12/24 | **1.0** | static | 否 | 1,769,904 |
+
+三点必须写下来：
+
+1. **`cota-qa-live` 是"把门项做成数值有效"的那个臂**：
+   它的说明是"gate made numerically effective: FP32 transport path and 16x gate learning rate"。
+   **这正是 §2 证明本文所有臂缺的那一块**——
+   本文所有臂的 `gate_multiplier` 是 0，而 `cota-qa-live` 是 1，**并且**用了 FP32 传输路径
+   （`transport_precision='fp32'`），**并且**给门项 16 倍学习率
+   （`transport_gate_lr_multiplier: 16`）。
+   **这三条正好对应源码第 90–101 行注释里说的那个问题**：
+   BF16 autocast 会把门项乘子抹掉（`|m − 1| < 2^-9` 就没了），所以必须走 FP32 路径。
+
+2. **匹配 LoRA 对照（`lora-r12`，r12/alpha24）也从未训练。**
+   这是 `CLAUDE.md` 明确要求的名字（"匹配 LoRA 为 r12/alpha24，CoTA 为 r8/alpha16，
+   scale 都为 2"），**本轮核对的 30 个 checkpoint 里没有它**。
+   **所以本文的层段结论是"CoTA 配置的低秩更新 vs 冻结基座"，不是"CoTA vs 匹配 LoRA"。**
+   论文**不能**声称优于或持平于匹配 LoRA。
+
+3. **`lora-r8`（r8/alpha16，可训练参数 1,179,648）与本文的多层臂
+   （`A-all`：1,179,936）几乎完全同参数量**——
+   差 288 个参数，正好是 36 层的 8 个 gate。
+   **这就是一个现成的、参数匹配的对照臂**，而且它的配置已经写好了。
+   **如果只补一个训练，就该补这个**（在 IEMOCAP Session 4 上，1 个臂 ≈ 0.15–0.22 GPU 小时）。
+
+**结论**：本文现在的定位是**分析论文**，证据全部来自**已训练的那 30 个臂**；
+**`cota_review` 那一族是"方法侧的对照实验"，一次都没跑过**。
+论文如果想声称任何关于 CoTA 传输机制的东西，
+**必须先训练 `cota-qa-live` 和 `lora-r12`（以及 `lora-r8` 作为参数匹配对照）**，
+这是下一步唯一的、真正需要 GPU 训练的建议（成本约 1 GPU 小时 × 3 个臂）。
+
+## 9. 没有做的事
 
 - **没有重新训练任何臂**，没有验证"传输项若启用会怎样"。
 - **没有核对 `experiments/cota_review/` 那批 `gate_multiplier=1.0` 的结果**——
