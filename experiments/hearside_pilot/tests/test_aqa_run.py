@@ -115,3 +115,43 @@ def test_readings(tmp_path):
     assert same['readings']['claim_on_second_task'] == 'does not extend'
     nothing = scenario(tmp_path / 'c', lambda row, task: 0.5)
     assert nothing['readings']['bands']['AQ-last4'] == 'no gain' and nothing['readings']['claim_on_second_task'] == 'holds'
+
+
+def test_an_arm_outside_the_named_families_still_reaches_the_report(tmp_path):
+    """An arm that is not one of the `AQ-*` bands must not be silently dropped.
+
+    The three-arm comparison in experiments/cota_review/ trains `lora-r12`, `lora-r8` and
+    `cota-qa-live`.  None of them is a member of FAMILIES, so they became neither a group nor
+    a row in the table: they were trained, scored, and then absent from the summary.  The
+    summary looked complete -- it simply had one arm in it.
+    """
+    questions(tmp_path / 'test.jsonl')
+    folder = tmp_path / 'out'
+    aqa.build(tmp_path / 'test.jsonl', folder)
+    answers(folder, 'frozen-base', lambda row, task: 0.5, 0)
+    for arm, rule in (('lora-r12', lambda row, task: 0.7), ('cota-qa-live', lambda row, task: 0.8)):
+        answers(folder, arm, rule, sum(map(ord, arm)))
+    result = aqa.summarize(folder, resamples=300)
+
+    assert set(result['arms']) == {'frozen-base', 'lora-r12', 'cota-qa-live'}
+    assert set(result['table']) == {'frozen-base', 'lora-r12', 'cota-qa-live'}
+    assert 'lora-r12 - frozen-base' in result['contrasts']
+    # each arm gets the declared reading, because the reading is a property of the measurement
+    assert result['readings']['bands']['lora-r12'] == 'transfers'
+    assert result['readings']['bands']['cota-qa-live'] == 'transfers'
+    rendered = aqa.render(result)
+    assert '| lora-r12 (1) |' in rendered and '| cota-qa-live (1) |' in rendered
+
+
+def test_a_seed_arm_is_not_a_group_of_its_own(tmp_path):
+    """`AQ-all-s43` is a MEMBER of the family `AQ-all`, so it is not a row of its own."""
+    questions(tmp_path / 'test.jsonl')
+    folder = tmp_path / 'out'
+    aqa.build(tmp_path / 'test.jsonl', folder)
+    answers(folder, 'frozen-base', lambda row, task: 0.5, 0)
+    for arm in aqa.FAMILIES['AQ-all']:
+        answers(folder, arm, lambda row, task: 0.8, sum(map(ord, arm)))
+    result = aqa.summarize(folder, resamples=300)
+
+    assert 'AQ-all' in result['table'] and 'AQ-all-s43' not in result['table']
+    assert set(result['readings']['bands']) == {'AQ-all'}

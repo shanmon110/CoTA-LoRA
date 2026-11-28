@@ -188,6 +188,14 @@ def summarize(folder, *, resamples=10000, seed=42):
 
     groups = {a: [a] for a in ('frozen-base',) if a in arms}
     groups.update({f: [m for m in members if m in arms] for f, members in FAMILIES.items() if any(m in arms for m in members)})
+    # An arm that belongs to no family (a single trained adapter with no seed siblings, such as
+    # the three-arm comparison in experiments/cota_review/) is still an arm and still belongs in
+    # the table.  Without this it would be loaded, scored and then silently dropped from the
+    # report, which is exactly what happened to `lora-r12`, `lora-r8` and `cota-qa-live`.
+    # A seed arm is a MEMBER of a family, not a family of its own, so it must not become a group.
+    in_a_family = {m for members in FAMILIES.values() for m in members}
+    groups.update({a: [a] for a in arms if a not in in_a_family and a != 'frozen-base'})
+
     table = {g: dict({n: dict(per_model={m: value[m][n] for m in members}, mean=float(np.mean([value[m][n] for m in members]))) for n in MEASURES},
                      **{k: (np.mean([extra[m][k] for m in members], axis=0).tolist() if k == 'letter_shares_four_options'
                             else float(np.mean([extra[m][k] for m in members]))) for k in extra[members[0]]})
@@ -205,17 +213,21 @@ def summarize(folder, *, resamples=10000, seed=42):
             contrasts[f'{a} - {b}'] = {n: dict(delta_pp=100 * float(np.mean([value[x][n] - value[y][n] for x, y in zip(first, second)])),
                                                interval_95_pp=formats.interval(mean_boot(first, n) - mean_boot(second, n))) for n in MEASURES}
     return dict(folder=str(folder), questions=info['questions'], audios=info['audios'], arms=arms, table=table, contrasts=contrasts,
-                readings=judge(contrasts))
+                readings=judge(contrasts, groups))
 
 
-def judge(contrasts):
+def judge(contrasts, groups=()):
     """Readings declared in research/second-task-and-grpo-20261125.md, part 1a."""
     def low(arm, measure):
         return contrasts[f'{arm} - frozen-base'][measure]['interval_95_pp'][0]
 
     bands = {}
-    for arm in (*SHALLOW, 'AQ-all'):
-        if f'{arm} - frozen-base' not in contrasts:
+    # Every GROUP that has a contrast against the frozen base gets the declared reading, not
+    # just the four `AQ-*` bands: the reading is a property of the measurement, so a group
+    # trained outside that list (the three-arm comparison) must be read the same way.  A seed
+    # arm is a member of a group, not a group of its own, so it gets no reading of its own.
+    for arm in groups:
+        if arm == 'frozen-base' or f'{arm} - frozen-base' not in contrasts:
             continue
         if low(arm, 'original_order') <= 0:
             bands[arm] = 'no gain'
