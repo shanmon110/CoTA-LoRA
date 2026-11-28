@@ -204,6 +204,7 @@ for arm in arms:
 PYEOF
 log "gate liveness of the scored checkpoints:"; grep -E "gates non-zero|WARNING" "$RUN/logs/gate-live.log" | tee -a "$RUN/pilot.log"
 
+
 # ------------------------------------------------------------------ score the arms on the same MMAU test
 # The existing `AQ-*` arms were scored on MMAU Test-mini.  The three new arms are scored on the
 # SAME manifests with the same code, so the comparison is like for like -- but in a NEW folder.
@@ -225,6 +226,19 @@ if [ -f "$AQA_RUN/mmau/aqa.json" ]; then
         done
         log "the scoring folder is $MM; the historical $AQA_RUN/mmau is read only"
     fi
+    # Does the transport term change what the model says?  The same rows are scored twice with
+    # the same adapter: once with the term live, and once with the multiplier at zero, which
+    # switches off exactly the transport term and nothing else.  A term that is present but
+    # inert is a result to report, not a bug to hide.
+    if [ -f "$RUN/train/cota-qa-live/result.json" ]; then
+        "$PY" research/tools/transport_effect.py \
+            --config "$RUN/configs/cota-qa-live.json" \
+            --checkpoint "$(field "$RUN/train/cota-qa-live/result.json" best_checkpoint)" \
+            --manifest "$MM/mcq.jsonl" --limit 64 > "$RUN/logs/transport-effect.log" 2>&1 \
+            && log "transport effect: $(grep -E 'accuracy with|letter changed' "$RUN/logs/transport-effect.log" | tr '\n' ' ')" \
+            || log "the transport effect check failed; see logs/transport-effect.log: $(tail -1 "$RUN/logs/transport-effect.log")"
+    fi
+
     for arm in $ARMS; do
         [ -f "$RUN/train/$arm/result.json" ] || continue
         method=$("$PY" -c 'import json, sys; a=json.load(open(sys.argv[1]))["adapter"]; print("ta-lora" if "transport_gate" in a else "lora")' "$RUN/configs/$arm.json")
