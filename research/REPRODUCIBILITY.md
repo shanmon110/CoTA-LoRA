@@ -100,3 +100,50 @@ nohup bash experiments/hearside_pilot/run_queue.sh > /root/autodl-fs/CoTA-LoRA/q
 5. 旧队列脚本可能含原机器绝对目录与历史测试分数触发逻辑，不要将其直接当成新一轮科研协议。
 
 原始音频、训练/测试题目、权重和完整逐题预测未放入 GitHub；原协议和清单哈希用于定位它们。IEMOCAP 的授权应由使用者按实际来源核查。
+
+## 表格里的臂到底测的是什么（2026-11-28 补充）
+
+**复现本文任何一张表之前，先读这一段。**
+
+`checkpoint_audit.py` 对**全部 44 个已训练臂**的结论：
+
+```
+gate_multiplier      0.0
+transport_gate       None
+independent_C        None
+saved factors        down xN, gate xN, up xN
+```
+
+**每个臂每层只有三个因子：`down`（A）、`up`（B）、`gate`。**
+没有独立传输因子 `transport_up`（C），没有上下文门权重 `gate_weight`。
+
+**所以：**
+
+1. **共享门项**被 `gate_multiplier = 0.0` 关掉，传输对比项**不进前向**；
+2. **独立 C 项**（`transport_up`）**压根不存在**，而这条通路本来也**不过门项**。
+
+**两条独立的通路都不在，历史臂在数学上与「普通 LoRA（r=8、alpha=16、scale 2）」完全等价。**
+
+| 表里的臂名 | 实际是什么 |
+|---|---|
+| `A-all` / `A-last4` / `A-first4` / `A-mid4` | **普通 LoRA**，放在 36 层 / 后 4 层 / 前 4 层 / 中 4 层的 `o_proj` 上 |
+| `AQ-all` / `AQ-last4` / … | 同上，AQA 语料 |
+| `frozen-base` | 未微调的基座 |
+
+**所以论文里不能写 "CoTA last 4 layers"，要写 "low-rank update, last 4 layers"。**
+这不是修辞问题：**写成前者是误述方法。**
+
+**要复现传输机制本身，必须用 `experiments/cota_review/run_comparison.sh` 的配置**
+（`gate_multiplier=1` + `transport_precision='fp32'` + `transport_gate_lr_multiplier=16`
++ `independent_transport_up=True`）。**FP32 那一项不是可选的**：
+源码自己的注释说明，BF16 autocast 下距离 1 不到 2^-9 的乘子会被舍掉。
+
+**两个自查工具**（复制之后先跑一遍）：
+
+```bash
+# 每个臂的门项有没有被真的步进过（读训练循环自己写的优化器状态）
+python3 research/tools/gate_optimizer_state.py <run folder>
+
+# 被选中 checkpoint 的门项是不是数值上非零（否则这个臂测的还是历史臂那套东西）
+python3 research/tools/checkpoint_audit.py --runs <run folder>
+```
