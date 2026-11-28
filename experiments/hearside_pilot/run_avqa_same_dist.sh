@@ -4,22 +4,24 @@
 # The AQA arms are trained on AVQA and scored on MMAU Test-mini, and every arm is below the
 # frozen base there.  Two explanations are still open, and they need different chapters:
 #
-#   cross-corpus    the transfer is from AVQA to MMAU, so the layer-band question was never
-#                   really tested on the second task;
-#   cross-task      the transfer is from the AVQA task to the MMAU task, so the second task is
-#                   not comparable and the layer-band question needs a different one.
+#   cross-corpus    the transfer from AVQA to MMAU is what costs the accuracy, so the layer-band
+#                   question was never really tested on the second task;
+#   cross-task      the AVQA task and the MMAU task are not comparable, so the second task cannot
+#                   answer the layer-band question at all.
 #
-# The test: score the SAME arms on the AVQA split they were TRAINED on.  AVQA is same-corpus and
-# same-task, so any remaining deficit there is the deficit of the adapter itself, with no
-# transfer in the way.
+# The test: score the SAME arms on AVQA questions that were held out from both the training and
+# the early-stopping split.  Same corpus, same task, same distribution, and nothing memorised.
+# Any remaining deficit is the adapter's own, with no transfer in the way.
 #
-#   pre-declared   if the adapters are not below the frozen base on AVQA, the negative transfer
-#                  is cross-corpus: the layer-band question was not tested on the second task;
-#                  if they are below the frozen base on AVQA too, the negative transfer is
-#                  cross-task: the second task is not comparable at all.
+#   pre-declared   if the adapters are not below the frozen base on held-out AVQA, the negative
+#                  transfer is cross-corpus: the layer-band question was not tested on the
+#                  second task;
+#                  if they are below the frozen base on held-out AVQA too, the negative transfer
+#                  is cross-task: the second task is not comparable.
 #
-# The evaluation is inference only.  Nothing is trained.  The AVQA manifest is the one the
-# training used, so the distribution is exactly the training distribution.
+# Inference only.  Nothing is trained.  The manifest is built by
+# experiments/hearside_pilot/avqa_holdout.py, which splits by source video, so no video is in
+# both the evaluation fold and the reserve.
 #
 #   nohup bash experiments/hearside_pilot/run_avqa_same_dist.sh > /root/autodl-fs/CoTA-LoRA/avqa-same-dist.out 2>&1 &
 set -uo pipefail
@@ -27,12 +29,12 @@ set -uo pipefail
 ROOT="${ROOT:-/root/autodl-fs/CoTA-LoRA}"
 PY="${PY:-/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python}"
 DEPS="${DEPS:-$ROOT/deps}"
-AQA_DATA="${AQA_DATA:-/root/autodl-tmp/r1-aqa/data/pilot-01}"
 AQA_RUN="${AQA_RUN:-$ROOT/hearside-aqa-20261125-224035}"
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 RUN="${RUN:-$ROOT/hearside-avqa-same-dist-$(date +%Y%m%d-%H%M%S)}"
 BASE_CONFIG="${BASE_CONFIG:-$SRC/experiments/ms_swift_aqa/omni3b-pilot.json}"
-ARMS="${ARMS:-AQ-all AQ-last4 AQ-first4 AQ-mid4 AQ-all-s43 AQ-last4-s43 AQ-first4-s43 AQ-mid4-s43 AQ-all-s44 AQ-last4-s44 AQ-first4-s44 AQ-mid4-s44}"
+ARMS="${ARMS:-frozen-base AQ-all AQ-last4 AQ-first4 AQ-mid4 AQ-all-s43 AQ-last4-s43 AQ-first4-s43 AQ-mid4-s43 AQ-all-s44 AQ-last4-s44 AQ-first4-s44 AQ-mid4-s44}"
+SIZE="${SIZE:-3000}"
 ARCHIVE="${RUN%/}-for-claude.tar.gz"
 
 export PYTHONPATH="$SRC:$DEPS${PYTHONPATH:+:$PYTHONPATH}"
@@ -55,36 +57,49 @@ field() { "$PY" -c 'import json, sys; d = json.load(open(sys.argv[1])); print(ne
 
 log "run folder: $RUN"
 log "source: $SRC at $(git -C "$SRC" rev-parse HEAD 2>/dev/null || echo 'unknown commit')"
-for path in "$PY" "$BASE_CONFIG" "$AQA_DATA/dev.jsonl" "$AQA_RUN/train/AQ-all/result.json"; do
+for path in "$PY" "$BASE_CONFIG" "$AQA_RUN/train/AQ-all/result.json"; do
     [ -e "$path" ] || stop "missing $path"
 done
 
-# The AVQA evaluation manifest: the same four cyclic option orders and the same text format as
-# the MMAU one, so the two are scored with the same code and the numbers are comparable.
-if [ ! -f "$RUN/avqa/aqa.json" ]; then
-    "$PY" -m experiments.hearside_pilot.aqa build --test "$AQA_DATA/dev.jsonl" --output "$RUN/avqa" \
-        > "$RUN/logs/build.log" 2>&1 \
-        || stop "building the AVQA manifests failed; see logs/build.log: $(tail -1 "$RUN/logs/build.log")"
-    log "AVQA manifest: $(tr -d '\n' < "$RUN/logs/build.log" | cut -c1-400)"
+if [ ! -f "$RUN/logs/tests-gating.ok" ]; then
+    env CUDA_VISIBLE_DEVICES= "$PY" -m pytest -q -p no:cacheprovider \
+        experiments/hearside_pilot/tests/test_aqa_run.py > "$RUN/logs/tests-gating.log" 2>&1 \
+        || stop "unit tests failed; nothing was run. See logs/tests-gating.log: $(tail -1 "$RUN/logs/tests-gating.log")"
+    log "unit tests: $(tail -1 "$RUN/logs/tests-gating.log")"
+    touch "$RUN/logs/tests-gating.ok"
 fi
 
-started=$SECONDS
-"$PY" -m experiments.hearside_pilot.aqa run --folder "$RUN/avqa" --model-config "$BASE_CONFIG" \
-    --method frozen-base --arm frozen-base > "$RUN/logs/run-frozen-base.log" 2>&1
-code=$?
-log "frozen-base on AVQA (exit $code, $(((SECONDS - started) / 60)) min)"
-[ "$code" -eq 0 ] || stop "the frozen base could not be scored; see logs/run-frozen-base.log: $(tail -1 "$RUN/logs/run-frozen-base.log")"
+# The held-out AVQA manifest, and then the two MMAU-style manifests built from it.
+if [ ! -f "$RUN/holdout/holdout.json" ]; then
+    "$PY" -m experiments.hearside_pilot.avqa_holdout --output "$RUN/holdout" --size "$SIZE" \
+        > "$RUN/logs/holdout.log" 2>&1 \
+        || stop "building the held-out manifest failed; see logs/holdout.log: $(tail -1 "$RUN/logs/holdout.log")"
+    log "held-out AVQA: $(tr -d '\n' < "$RUN/logs/holdout.log" | cut -c1-400)"
+fi
+if [ ! -f "$RUN/avqa/aqa.json" ]; then
+    "$PY" -m experiments.hearside_pilot.aqa build --test "$RUN/holdout/holdout.jsonl" --output "$RUN/avqa" \
+        > "$RUN/logs/build.log" 2>&1 \
+        || stop "building the evaluation manifests failed; see logs/build.log: $(tail -1 "$RUN/logs/build.log")"
+    log "manifests: $(tr -d '\n' < "$RUN/logs/build.log" | cut -c1-300)"
+fi
 
 for arm in $ARMS; do
-    out="$AQA_RUN/train/$arm"
-    [ -f "$out/result.json" ] || { log "$arm has no trained checkpoint, skipped"; continue; }
-    started=$SECONDS
-    "$PY" -m experiments.hearside_pilot.aqa run --folder "$RUN/avqa" \
-        --model-config "$AQA_RUN/configs/$arm.json" --method ta-lora \
-        --checkpoint "$(field "$out/result.json" best_checkpoint)" --arm "$arm" \
-        > "$RUN/logs/run-$arm.log" 2>&1
-    code=$?
-    log "$arm on AVQA (exit $code, $(((SECONDS - started) / 60)) min)"
+    if [ "$arm" = frozen-base ]; then
+        started=$SECONDS
+        "$PY" -m experiments.hearside_pilot.aqa run --folder "$RUN/avqa" --model-config "$BASE_CONFIG" \
+            --method frozen-base --arm frozen-base > "$RUN/logs/run-frozen-base.log" 2>&1
+        code=$?
+    else
+        out="$AQA_RUN/train/$arm"
+        [ -f "$out/result.json" ] || { log "$arm has no trained checkpoint, skipped"; continue; }
+        started=$SECONDS
+        "$PY" -m experiments.hearside_pilot.aqa run --folder "$RUN/avqa" \
+            --model-config "$AQA_RUN/configs/$arm.json" --method ta-lora \
+            --checkpoint "$(field "$out/result.json" best_checkpoint)" --arm "$arm" \
+            > "$RUN/logs/run-$arm.log" 2>&1
+        code=$?
+    fi
+    log "$arm on the held-out AVQA (exit $code, $(((SECONDS - started) / 60)) min)"
     [ "$code" -eq 0 ] || log "$arm could not be scored; see logs/run-$arm.log: $(tail -1 "$RUN/logs/run-$arm.log")"
 done
 
