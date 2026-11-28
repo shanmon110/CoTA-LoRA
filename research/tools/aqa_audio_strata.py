@@ -232,8 +232,14 @@ def main():
     # the per-domain breakdown, so the strata are not confounded with the domain mix
     print()
     print('   the same loss rate, split by domain (the base correctness per domain is shown)')
-    for domain in DOMAINS:
-        ids = [i for i in all_ids if mcq_manifest[i]['domain'] == domain]
+    # Not every corpus labels its rows by domain.  The MMAU one does; the held-out AVQA one
+    # does not, and there the breakdown is simply absent rather than wrong.
+    available = [d for d in DOMAINS if any('domain' in mcq_manifest.get(i, {}) for i in all_ids)]
+    if not available:
+        print('   (this corpus does not label its rows by domain)')
+        return
+    for domain in available:
+        ids = [i for i in all_ids if mcq_manifest[i].get('domain') == domain]
         base_ok = sum(1 for i in ids if base_mcq.get(i, {}).get('is_correct'))
         line = [f'   {domain:9s} base {100 * base_ok / max(len(ids), 1):5.1f}% of {len(ids):5d} rows']
         for arm in arms:
