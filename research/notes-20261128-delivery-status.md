@@ -26,6 +26,21 @@
 
 预声明判据写在跑之前：`research/notes-20261128-session5-confirmation.md`（提交 `17db41b`）。
 
+## 2b. 源码级复核的结果（本次新增，零成本）
+
+`research/notes-20261128-source-review.md`，工具 `research/tools/checkpoint_audit.py`。
+
+**本文所有臂的 `gate_multiplier` 都是 0.0，传输项是可证明的恒等 no-op。**
+所以本文测的是**「r=8 低秩更新放在哪些层」**，**不是**「CoTA 传输机制放在哪些层」。
+这是有意的、仓库 README 和单元测试都写明的设计，**不改变任何结果**，
+但**改变臂的命名**——论文的表必须写成 "low-rank update, last 4 layers"，
+不能写成 "CoTA last 4 layers"，否则是误述方法。
+
+另外核对了：首答案查询在这些臂里**没有启用**（`transport_gate` 全为 `None`）；
+模态划分是**构造性的**（由 audio token id 决定，没有可调超参）；
+cache 只支持 append-only `DynamicCache`；
+**Omni 路径显式拒绝梯度检查点**（与交接文档一致，已在本仓库核实）。
+
 ## 3. 本轮新增/修复的代码
 
 | 文件 | 作用 |
@@ -45,6 +60,7 @@
 | `research/tools/aqa_surrogate.py` | P5 |
 | `research/tools/text_rules2.py` | P4 |
 | `research/tools/aqa_audio_strata.py` | P0 步骤 1 |
+| `research/tools/checkpoint_audit.py` | 源码级复核：可训练集合、门项、checkpoint 因子 |
 
 ## 4. 正在跑 / 排队中
 
@@ -53,8 +69,10 @@
 
 - **Q1–Q4：已完成**（54 秒，全部零 GPU）。
 - **Q5（P0 步骤 2，同分布 AVQA）**：运行中。13 个臂 × 3,001 题 × 4 个选项序
-  ≈ 12,004 行/臂，实测约 37 分钟/臂，**总计约 8 小时**。
+  ≈ 12,004 行/臂，实测 **45 分钟/臂**（冻结基座已完成，exit 0），**总计约 10 小时**。
   这是第 5 章剩下的**唯一空洞**：跨语料 vs 跨任务的归因。
+  **冻结基座已经落地：留出 AVQA 上 74.44%**，而它在 MMAU 上是 74.91%——
+  **两个任务对基座几乎一样难**，所以"跨任务"这个解释在基座这一层上已经不太成立。
 - **Q6（P5，AQA 替身）**：排在 Q5 之后。
 - **P2 故意不做**，它自己的前提是"只在 P0 给出明确归因后才做"——Q5 落地后再决定。
 
