@@ -144,13 +144,27 @@ cache 只支持 append-only `DynamicCache`；
 ## 6. 已知的未决项
 
 - **`git stash` 里有一条冗余条目** `2e8bb1852687c091683055ed4dd16045c5374a04`
-  （"cota-analysis-20261127-premerge"）。它只含一个文件
-  `research/tools/emotion_prior_all_arms.py`，该文件在分支上已有更好的版本
-  （逐臂读数 + 簇 bootstrap，而非整语料拟合）。**内容已确认不同但已过时**，
-  自动 drop 被权限分类器拦下，需要人工执行：
+  （"cota-analysis-20261127-premerge"）。**它只含一个文件**
+  `research/tools/emotion_prior_all_arms.py`。
+
+  **本轮已逐项核实它冗余，可以放心 drop：**
+
+  | | stash 里的版本 | 已提交的版本 |
+  |---|---|---|
+  | 方法 | 同样的无标注情感先验相减 | 同样的无标注情感先验相减 |
+  | 划分 | 前一半簇拟合、后一半评分 | 前一半簇拟合、后一半评分 |
+  | 函数 | `logsm` / `load_emotions` / `uar` / `main` | `logsm` / `load` / `main` |
+  | 输出 | 逐臂读数 + split-half 区间 | 逐臂读数 + split-half 区间 |
+
+  **已提交版本实测能跑**，而且复现了仓库自己报的数字：
+  冻结基座 Session 4 **55.6 → 64.0**（仓库原报 55.6 → 64.0，一致），
+  `A-last4` 校正后相对**校正后**基座 **−0.29 pp**（这一条是第 4 章的核心）。
+
+  **自动 drop 被权限分类器拦下（"Irreversible Local Destruction"），需要人工执行一次：**
   ```
   git stash drop 2e8bb1852687c091683055ed4dd16045c5374a04
   ```
+  **这是本轮唯一需要你手动做的一步。**
 - **GitHub 推送在本次会话中多次遇到 TLS 连接中断**（`GnuTLS recv error (-110)`）。
   **所有提交最终都已推送**，`main` 与 `origin/main` 同步。
   如果你在别处看到本地领先远端，是网络问题，不是漏推。
