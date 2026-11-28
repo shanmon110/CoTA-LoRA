@@ -68,7 +68,37 @@ trainable_names:      每层 3 个 —— down (A), up (B), gate (g)
 这与仓库 README 第 35 行的记载一致（"gate 参数此时没有梯度（原先是零梯度）"），
 也对应单元测试 `test_zero_multiplier_skips_the_contrast_without_changing_outputs_or_gradients`。
 
-**checkpoint 侧的独立证实**：所有臂保存的 `gate` 张量**全为 0**
+### 2b. **来自训练本身的独立证据**（比读源码更强）
+
+每个 checkpoint 里都存了 `optimizer.pt`，那是**训练循环自己写的**。
+Adam **只会为它真正更新过的参数分配状态**（`exp_avg`、`exp_avg_sq`）。
+所以：**门项有没有优化器状态，直接回答"训练时它有没有拿到过梯度"**，
+而且这个证据**完全不依赖对前向代码的解读**。
+
+工具：`research/tools/gate_optimizer_state.py`。以 `A-last4-s43`（264 步）为例：
+
+```
+index parameter                                                      optimizer state?
+    0 thinker.model.layers.32.self_attn.ta_adapter.down                           yes
+    1 thinker.model.layers.32.self_attn.ta_adapter.up                             yes
+    2 thinker.model.layers.32.self_attn.ta_adapter.gate                          NONE
+    3 thinker.model.layers.33.self_attn.ta_adapter.down                           yes
+    4 thinker.model.layers.33.self_attn.ta_adapter.up                             yes
+    5 thinker.model.layers.33.self_attn.ta_adapter.gate                          NONE
+    6 thinker.model.layers.34.self_attn.ta_adapter.down                           yes
+    7 thinker.model.layers.34.self_attn.ta_adapter.up                             yes
+    8 thinker.model.layers.34.self_attn.ta_adapter.gate                          NONE
+    9 thinker.model.layers.35.self_attn.ta_adapter.down                           yes
+   10 thinker.model.layers.35.self_attn.ta_adapter.up                             yes
+   11 thinker.model.layers.35.self_attn.ta_adapter.gate                          NONE
+```
+
+**全部 44 个臂、全部 144 个门参数：0 个有优化器状态；
+而 100% 的 `down`/`up` 因子都有**（多步之后仍非零）。
+
+**所以门项在每一个臂里都从未被更新过。** 这不是"学得小"，是"没有被步进过"。
+
+**checkpoint 张量侧的旁证**：所有臂保存的 `gate` 张量**全为 0**
 （`nonzero 0/8`，`min = max = mean = +0.000000`）——
 如果门项真的参与了训练，它不会一个比特都没动。
 
