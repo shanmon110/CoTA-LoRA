@@ -48,6 +48,49 @@ python tools/verify_handoff_export.py
 
 该命令只读取清单与文件，检查字节哈希、可执行位和符号链接，不加载模型、不训练。清单覆盖导出产物，排除清单自身及 Git 元数据。
 
+## 分析线（2026-11-27 起，分支 `research/analysis-20261127`，已合并入 `main`）
+
+这条线的**分析工具全部是只读的**：读已跟踪的逐题预测或已保存的 logit，不训练、不改权重。
+可复现的入口有四类：
+
+```bash
+# 1. 听侧的全部单元测试（本轮 82 passed）
+env CUDA_VISIBLE_DEVICES= /root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python \
+  -m pytest -q -p no:cacheprovider experiments/hearside_pilot/tests/
+
+# 2. 四条零成本分析（全部只读已跟踪的预测）
+python3 -I research/tools/session5_verdict.py   <session5 logits folder>
+python3 -I research/tools/aqa_slot_vs_class.py  <aqa run folder>
+python3 -I research/tools/text_rules2.py
+python3 -I research/tools/prosody_control.py     <cremad run folder>
+python3 -I research/tools/aqa_audio_strata.py    <aqa run folder>
+
+# 3. 两条 GPU 步骤（一次性推理，不训练）
+bash experiments/hearside_pilot/run_avqa_same_dist.sh     # P0 步骤 2
+bash experiments/hearside_pilot/run_aqa_surrogate.sh      # P5
+
+# 4. 全部剩下的工作，按顺序排队，失败不阻塞后续步骤
+nohup bash experiments/hearside_pilot/run_queue.sh > /root/autodl-fs/CoTA-LoRA/queue.out 2>&1 &
+```
+
+**依赖说明。** `research/tools/` 下的工具只用 numpy（部分用 scipy 的分位数），
+系统 python 里**没有 scipy**，要跑请用 `/root/autodl-tmp/iemocap/swift-ser/venv-5090/bin/python`
+（numpy 1.26.4 / scipy 1.17.1 / torch 2.12.1+cu130）。该环境**没有 parselmouth**，
+所以 `experiments/trr_diagnostics/d2.py prepare`（需要韵律孪生）跑不了——
+本轮的 Session 5 清单因此用了一个更轻的构造器 `experiments/hearside_pilot/session5_manifest.py`，
+它**只读清单里有的 id**，并对冲突的转写报错而不是静默接受。
+
+**预声明文档。** 每条有判据的实验，判据都写在跑之前，单独成文：
+
+- `research/notes-20261128-session5-confirmation.md`（P1' 的判据，提交 `17db41b`）
+- `research/notes-20261127-diagnosis-and-plan.md` §3（P0 / P0b / P1 / P1' / P2 / P3 / P4 / P5）
+
+**原始记录的位置。** 运行结果不在 Git 里（在服务器上）：
+
+- `/root/autodl-fs/CoTA-LoRA/queue-20261128-174926/results/` —— 本轮四条零成本分析的输出
+- `/root/autodl-fs/CoTA-LoRA/hearside-session5-20261128-011343/` —— Session 5 的 8 个模型推理
+- `/root/autodl-fs/CoTA-LoRA/hearside-avqa-same-dist-*/` —— P0 步骤 2（运行中）
+
 ## 迁移到其他机器
 
 1. 先阅读和复核，按来源准备合法模型与数据。
