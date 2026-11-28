@@ -36,10 +36,28 @@
 但**改变臂的命名**——论文的表必须写成 "low-rank update, last 4 layers"，
 不能写成 "CoTA last 4 layers"，否则是误述方法。
 
+**这是三条独立证据，不是一条：**
+
+1. **读源码**：`gate_multiplier == 0` 让传输项**逐位**成为恒等 no-op
+   （`swift_asr_ta_runtime.py:470`）。
+2. **数值复现**：multiplier 0 时 `grad(gate) is None`；multiplier 1 时 `grad(gate)` 非零。
+3. **来自训练本身**（**最强的一条**）：每个 checkpoint 都存了训练循环自己写的
+   `optimizer.pt`。Adam **只为它真正更新过的参数分配状态**。
+   **全部 44 个臂、全部 144 个门参数：0 个有优化器状态；
+   而 100% 的 `down`/`up` 因子都有**（数百步之后仍非零）。
+   **所以门项在每一个臂里都从未被更新过**——不是"学得小"，是"没有被步进过"。
+   工具：`research/tools/gate_optimizer_state.py`。
+
 另外核对了：首答案查询在这些臂里**没有启用**（`transport_gate` 全为 `None`）；
 模态划分是**构造性的**（由 audio token id 决定，没有可调超参）；
 cache 只支持 append-only `DynamicCache`；
 **Omni 路径显式拒绝梯度检查点**（与交接文档一致，已在本仓库核实）。
+
+**测量到的位移（第三个新结果）**：用 `initialization.json` 里的种子
+在隔离的 CPU RNG 上重建初始 A，再逐字节核对记录的 SHA——**全部 30 个臂的重建 SHA 精确匹配**。
+在**相对**位移上，**4 层臂移动得比 36 层臂远 2–3 倍**（0.30–0.72 对 0.18–0.33）。
+**这是层段比较从未分离掉的混杂。** 但它**不解释方向**：
+移动最远的臂（`AQ-first4`，0.718）是最差的。工具：`research/tools/adapter_displacement.py`。
 
 ## 3. 本轮新增/修复的代码
 
@@ -61,6 +79,10 @@ cache 只支持 append-only `DynamicCache`；
 | `research/tools/text_rules2.py` | P4 |
 | `research/tools/aqa_audio_strata.py` | P0 步骤 1 |
 | `research/tools/checkpoint_audit.py` | 源码级复核：可训练集合、门项、checkpoint 因子 |
+| `research/tools/gate_optimizer_state.py` | 门项有没有被步进过（读 `optimizer.pt`，不依赖读源码） |
+| `research/tools/adapter_displacement.py` | 初始化的 SHA 复核 + 相对位移（层段比较的混杂） |
+| `experiments/cota_review/run_comparison.sh` | **本项目唯一还缺的那次训练**：匹配 LoRA vs 传输臂 |
+| `experiments/cota_review/run_after_queue.sh` | 队列结束后自动开跑上面那次训练 |
 
 ## 4. 正在跑 / 排队中
 
@@ -76,9 +98,41 @@ cache 只支持 append-only `DynamicCache`；
 - **Q6（P5，AQA 替身）**：排在 Q5 之后。
 - **P2 故意不做**，它自己的前提是"只在 P0 给出明确归因后才做"——Q5 落地后再决定。
 
+### 4b. **Q5 已经给出第一个读数（关键）**
+
+| | 留出 AVQA（同分布） | MMAU（跨语料） |
+|---|---:|---:|
+| 冻结基座 | 74.44% | 74.91% |
+| **AQ-all** | **81.71%** | 72.10% |
+| 相对基座 | **+7.27 pp** [+6.31, +8.25] | **−2.81 pp** [−4.17, −1.47] |
+
+**预声明的判据已经触发：负迁移是**跨语料**的。**
+在同分布上适配器不是"没有退化"，而是**显著变好**。
+
+**和步骤 1 合起来读，项目的负迁移结论变成正面结论：**
+**不是"适配器坏了"，而是"适配器学到了对源语料音频的特化，迁移不到目标语料"。**
+后果：**AQA 上的层段排序不能用来支持或否定层段主张**，因为层段问题在第二个任务上根本没被测过。
+（细节见 `research/notes-20261127-diagnosis-and-plan.md` §4.2.2(e)。）
+
+### 4c. **Q7：本次新增的那次训练（唯一一次）**
+
+`experiments/cota_review/run_comparison.sh`，由 `run_after_queue.sh` 在队列结束后自动开跑。
+**三个臂：** 匹配 LoRA（r12/alpha24）、参数匹配 LoRA（r8/alpha16，与 36 层臂只差 36×8 个门参数）、
+以及**传输臂在数值上真正生效的配置**（multiplier 1 + FP32 传输通路 + 16× 门学习率）。
+
+**判据在跑之前写在脚本头里：**
+在修正后的基线上，如果传输臂比匹配 LoRA 高**超过 2 pp**，
+就是方法贡献；否则**传输线关闭**，本文就是它已经是的分析论文。
+**"没有增益"是合法结果，也是预期结果，照记不误。**
+
+**为什么是这次而不是别的：** `experiments/cota_review/` 里 8 个对比臂的配置文件一直都在，
+**但一个结果都没有**。CLAUDE.md 点名的匹配 LoRA 从未训练过。
+所以本文目前**不能**声称"CoTA 优于匹配的 LoRA"——因为那个比较从未存在过。
+
 ## 5. 明确**没有**做的事（必须记下来）
 
-- **没有训练任何模型。** 本轮全部是一次性推理或只读分析。
+- **没有训练任何模型**——**除了 §4c 里那一次**（Q7），它是为了补上一个从未存在过的比较。
+  其余全部是一次性推理或只读分析。
 - **没有用 Session 5 的标签做任何拟合**，标签只在最后算 UAR 时使用。
 - **没有因为结果不利改判据**；Session 5 的判据在跑之前写下。
 - **没有在 `main` 上做过实验**；所有提交在 `research/analysis-20261127`，
