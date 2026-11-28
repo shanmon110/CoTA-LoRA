@@ -270,7 +270,7 @@ if __name__ == '__main__':
     p = commands.add_parser('run')
     p.add_argument('--folder', type=Path, required=True)
     p.add_argument('--model-config', type=Path, required=True)
-    p.add_argument('--method', choices=['frozen-base', 'ta-lora'], required=True)
+    p.add_argument('--method', choices=['frozen-base', 'ta-lora', 'lora', 'dora'], required=True)
     p.add_argument('--checkpoint', type=Path)
     p.add_argument('--arm', required=True)
     p = commands.add_parser('summarize')
