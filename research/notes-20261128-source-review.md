@@ -102,6 +102,69 @@ index parameter                                                      optimizer s
 （`nonzero 0/8`，`min = max = mean = +0.000000`）——
 如果门项真的参与了训练，它不会一个比特都没动。
 
+## 2c. **历史臂连独立 C 都没有**（审计确认，44 个臂全部）
+
+`checkpoint_audit.py` 对全部历史臂的结果：
+
+```
+   --- AQ-all
+       gate_multiplier      0.0
+       transport_gate       None
+       independent_C        None
+       saved factors        down x36, gate x36, up x36
+```
+
+**历史臂保存的因子只有 `down`、`up`、`gate` 三个。**
+没有独立的 `transport_up`（C），没有 `gate_weight`。
+
+这一点很重要，因为它把"传输机制缺席"的证据从一条变成两条**互相独立**的：
+
+1. **共享门项**：`gate_multiplier = 0.0` ⇒ 门项乘子为零 ⇒ 传输对比项不进前向。
+2. **独立 C 项**：C 因子根本不存在 ⇒ 即使门项打开，也没有第二条传输通路。
+
+在 `_SharedAtoms._project` 里，传输分支是
+
+```python
+def _project(self, coeff, extra):
+    update = F.linear(coeff, self.up)
+    if self.transport_up is not None:
+        update = update + F.linear(extra, self.transport_up)
+    return update
+```
+
+**C 这一条通路根本不过门项。**
+所以历史臂是**双重缺席**：共享门项被乘子关掉，独立 C 项压根没建。
+
+**因此历史臂在数学上与"普通 r=8 LoRA"完全等价。**
+CLAUDE.md 说"完整关闭传输需关闭共享门项和独立 C 项"——历史臂**两项都关了**。
+这不是"部分关闭"，是**完整关闭**。
+
+### 2d. **传输项真的有效吗？**（在数值上真正生效的配置下实测）
+
+新的三臂比较（§7）要跑 `cota-qa-live`：multiplier 1 + FP32 传输通路 + 16× 门学习率。
+在 16 行的小冒烟训练上实测：
+
+- **36/36 个门参数拿到了优化器状态**（对比：历史臂 0/144）；
+- 门权重**从全零变成了非零**（8 步后 max |gate| ≈ 1.2e-3）；
+- `transport_up`（C）**从零初始化长到 |.| ≈ 15**（普通 `up` 是 0.026 量级）。
+
+**但有一个必须记下来的警告：**
+在同一个冒烟跑里，**被选中评测的 checkpoint-1 的门项仍然是全零**
+（开发集分数打平，`select()` 取**第一个**最大值）。
+所以"门项可训练"不等于"被评测的那个 checkpoint 的门项是活的"。
+
+**为此在比较脚本里加了显式检查**（`run_comparison.sh` 的 gate-live 段）：
+读**被选中 checkpoint** 的 `gate` 张量，若仍为数值零就**打印 WARNING**，
+并且这条 WARNING 本身就是结果——那意味着这个臂测的还是和历史臂一样的东西。
+
+**另一个更根本的观察：** `gate` 的 |.| ≈ 1e-3，而独立 C 的 |.| ≈ 15。
+按 `_project` 的结构，**C 这一条通路上没有门项**，
+所以真正起作用的是 C，不是门。
+**门项是被乘在 `A·contrast` 上的那一项**（`coeff + gate * extra`），
+它的量级比 C 小几个数量级。
+**所以"传输机制"真正起作用的是独立 C，而不是条件门。**
+这一点必须在论文里说清楚，否则会把功劳记错地方。
+
 ## 3. 首答案查询
 
 `_answer_query`（`swift_asr_ta_runtime.py:286-311`）在 `transport_gate` 不为 `None` 时才被调用

@@ -159,7 +159,50 @@ for arm in $ARMS; do
     [ -f "$RUN/train/$arm/result.json" ] || continue
     "$PY" research/tools/gate_optimizer_state.py "$RUN" > "$RUN/logs/gate-state-$arm.log" 2>&1
     log "$arm gate state: $(grep -E "gate w/ state" "$RUN/logs/gate-state-$arm.log" | tail -1)"
+    "$PY" research/tools/checkpoint_audit.py --runs "$RUN" --arms "$arm" > "$RUN/logs/audit-$arm.log" 2>&1 \
+        || log "$arm audit failed; see logs/audit-$arm.log"
 done
+
+# The gate must not be numerically inert in the checkpoint that is actually scored.
+# The checkpoint selection takes the FIRST maximal development score, so a flat dev curve
+# would select an early checkpoint whose gate has barely moved -- which would silently
+# recreate the very situation this run exists to escape.  So it is checked explicitly.
+"$PY" - "$RUN" "$ARMS" <<'PYEOF' > "$RUN/logs/gate-live.log" 2>&1 || true
+import json, pathlib, sys
+
+run = pathlib.Path(sys.argv[1])
+arms = sys.argv[2].split()
+try:
+    import torch
+    from safetensors.torch import load_file
+except ImportError:
+    print('torch or safetensors is unavailable; the gate-live check was not run')
+    raise SystemExit(0)
+
+for arm in arms:
+    result = run / 'train' / arm / 'result.json'
+    if not result.exists():
+        continue
+    best = json.loads(result.read_text())['best_checkpoint']
+    path = pathlib.Path(best) / 'adapter_model.safetensors'
+    if not path.exists():
+        print(f'{arm}: no adapter_model.safetensors in {best}')
+        continue
+    tensors = load_file(str(path))
+    gates = {k: v for k, v in tensors.items() if k.endswith('.gate')}
+    if not gates:
+        print(f'{arm}: this is not a TA arm; it has no gate')
+        continue
+    largest = max(float(v.float().abs().max()) for v in gates.values())
+    nonzero = sum(1 for v in gates.values() if torch.count_nonzero(v))
+    live = nonzero > 0
+    print(f'{arm}: {nonzero}/{len(gates)} gates non-zero, largest |gate| = {largest:.3e} '
+          f'-> the transport term is {"LIVE" if live else "INERT in this checkpoint"}')
+    if not live:
+        print(f'{arm}: WARNING the selected checkpoint has a numerically zero gate, so this arm '
+              f'measures the same thing the historical arms measured.')
+PYEOF
+log "gate liveness of the scored checkpoints:"; grep -E "gates non-zero|WARNING" "$RUN/logs/gate-live.log" | tee -a "$RUN/pilot.log"
 
 # ------------------------------------------------------------------ score the arms on the same MMAU test
 # The existing `AQ-*` arms were scored on MMAU Test-mini.  The three new arms are scored on the
